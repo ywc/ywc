@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ywc>
+<item abbr="AF" name_en="Afghanistan"/>
+<item abbr="AX" name_en="Aland Islands"/>
+<item abbr="AL" name_en="Albania"/>
+<item abbr="DZ" name_en="Algeria"/>
+<item abbr="AS" name_en="American Samoa"/>
+<item abbr="AD" name_en="Andorra"/>
+<item abbr="AO" name_en="Angola"/>
+<item abbr="AI" name_en="Anguilla"/>
+<item abbr="AQ" name_en="Antarctica"/>
+<item abbr="AG" name_en="Antigua and Barbuda"/>
+<item abbr="AR" name_en="Argentina"/>
+<item abbr="AM" name_en="Armenia"/>
+<item abbr="AW" name_en="Aruba"/>
+<item abbr="AU" name_en="Australia"/>
+<item abbr="AT" name_en="Austria"/>
+<item abbr="AZ" name_en="Azerbaijan"/>
+<item abbr="BS" name_en="Bahamas"/>
+<item abbr="BH" name_en="Bahrain"/>
+<item abbr="BD" name_en="Bangladesh"/>
+<item abbr="BB" name_en="Barbados"/>
+<item abbr="BY" name_en="Belarus"/>
+<item abbr="BE" name_en="Belgium"/>
+<item abbr="BZ" name_en="Belize"/>
+<item abbr="BJ" name_en="Benin"/>
+<item abbr="BM" name_en="Bermuda"/>
+<item abbr="BT" name_en="Bhutan"/>
+<item abbr="BO" name_en="Bolivia"/>
+<item abbr="BA" name_en="Bosnia and Herzegovina"/>
+<item abbr="BW" name_en="Botswana"/>
+<item abbr="BV" name_en="Bouvet Island"/>
+<item abbr="BR" name_en="Brazil"/>
+<item abbr="IO" name_en="British Indian Ocean Territory"/>
+<item abbr="BN" name_en="Brunei Darussalam"/>
+<item abbr="BG" name_en="Bulgaria"/>
+<item abbr="BF" name_en="Burkina Faso"/>
+<item abbr="BI" name_en="Burundi"/>
+<item abbr="KH" name_en="Cambodia"/>
+<item abbr="CM" name_en="Cameroon"/>
+<item abbr="CA" name_en="Canada"/>
+<item abbr="CV" name_en="Cape Verde"/>
+<item abbr="KY" name_en="Cayman Islands"/>
+<item abbr="CF" name_en="Central African Republic"/>
+<item abbr="TD" name_en="Chad"/>
+<item abbr="CL" name_en="Chile"/>
+<item abbr="CN" name_en="China"/>
+<item abbr="CX" name_en="Christmas Island"/>
+<item abbr="CC" name_en="Cocos (Keeling) Islands"/>
+<item abbr="CO" name_en="Colombia"/>
+<item abbr="KM" name_en="Comoros"/>
+<item abbr="CG" name_en="Congo"/>
+<item abbr="CD" name_en="Congo, The Democratic Republic of the"/>
+<item abbr="CK" name_en="Cook Islands"/>
+<item abbr="CR" name_en="Costa Rica"/>
+<item abbr="CI" name_en="Cote d&apos;Ivoire"/>
+<item abbr="HR" name_en="Croatia"/>
+<item abbr="CU" name_en="Cuba"/>
+<item abbr="CY" name_en="Cyprus"/>
+<item abbr="CZ" name_en="Czech Republic"/>
+<item abbr="DK" name_en="Denmark"/>
+<item abbr="DJ" name_en="Djibouti"/>
+<item abbr="DM" name_en="Dominica"/>
+<item abbr="DO" name_en="Dominican Republic"/>
+<item abbr="EC" name_en="Ecuador"/>
+<item abbr="EG" name_en="Egypt"/>
+<item abbr="SV" name_en="El Salvador"/>
+<item abbr="GQ" name_en="Equatorial Guinea"/>
+<item abbr="ER" name_en="Eritrea"/>
+<item abbr="EE" name_en="Estonia"/>
+<item abbr="ET" name_en="Ethiopia"/>
+<item abbr="FK" name_en="Falkland Islands (Malvinas)"/>
+<item abbr="FO" name_en="Faroe Islands"/>
+<item abbr="FJ" name_en="Fiji"/>
+<item abbr="FI" name_en="Finland"/>
+<item abbr="FR" name_en="France"/>
+<item abbr="GF" name_en="French Guiana"/>
+<item abbr="PF" name_en="French Polynesia"/>
+<item abbr="TF" name_en="French Southern Territories"/>
+<item abbr="GA" name_en="Gabon"/>
+<item abbr="GM" name_en="Gambia"/>
+<item abbr="GE" name_en="Georgia"/>
+<item abbr="DE" name_en="Germany"/>
+<item abbr="GH" name_en="Ghana"/>
+<item abbr="GI" name_en="Gibraltar"/>
+<item abbr="GR" name_en="Greece"/>
+<item abbr="GL" name_en="Greenland"/>
+<item abbr="GD" name_en="Grenada"/>
+<item abbr="GP" name_en="Guadeloupe"/>
+<item abbr="GU" name_en="Guam"/>
+<item abbr="GT" name_en="Guatemala"/>
+<item abbr="GG" name_en="Guernsey"/>
+<item abbr="GN" name_en="Guinea"/>
+<item abbr="GW" name_en="Guinea-Bissau"/>
+<item abbr="GY" name_en="Guyana"/>
+<item abbr="HT" name_en="Haiti"/>
+<item abbr="HM" name_en="Heard Island and McDonald Islands"/>
+<item abbr="VA" name_en="Holy See (Vatican City State)"/>
+<item abbr="HN" name_en="Honduras"/>
+<item abbr="HK" name_en="Hong Kong"/>
+<item abbr="HU" name_en="Hungary"/>
+<item abbr="IS" name_en="Iceland"/>
+<item abbr="IN" name_en="India"/>
+<item abbr="ID" name_en="Indonesia"/>
+<item abbr="IR" name_en="Iran, Islamic Republic of"/>
+<item abbr="IQ" name_en="Iraq"/>
+<item abbr="IE" name_en="Ireland"/>
+<item abbr="IM" name_en="Isle of Man"/>
+<item abbr="IL" name_en="Israel"/>
+<item abbr="IT" name_en="Italy"/>
+<item abbr="JM" name_en="Jamaica"/>
+<item abbr="JP" name_en="Japan"/>
+<item abbr="JE" name_en="Jersey"/>
+<item abbr="JO" name_en="Jordan"/>
+<item abbr="KZ" name_en="Kazakhstan"/>
+<item abbr="KE" name_en="Kenya"/>
+<item abbr="KI" name_en="Kiribati"/>
+<item abbr="KP" name_en="Korea, Democratic People&apos;s Republic of"/>
+<item abbr="KR" name_en="Korea, Republic of"/>
+<item abbr="KW" name_en="Kuwait"/>
+<item abbr="KG" name_en="Kyrgyzstan"/>
+<item abbr="LA" name_en="Lao People&apos;s Democratic Republic"/>
+<item abbr="LV" name_en="Latvia"/>
+<item abbr="LB" name_en="Lebanon"/>
+<item abbr="LS" name_en="Lesotho"/>
+<item abbr="LR" name_en="Liberia"/>
+<item abbr="LY" name_en="Libyan Arab Jamahiriya"/>
+<item abbr="LI" name_en="Liechtenstein"/>
+<item abbr="LT" name_en="Lithuania"/>
+<item abbr="LU" name_en="Luxembourg"/>
+<item abbr="MO" name_en="Macao"/>
+<item abbr="MK" name_en="Macedonia, The Former Yugoslav Republic of"/>
+<item abbr="MG" name_en="Madagascar"/>
+<item abbr="MW" name_en="Malawi"/>
+<item abbr="MY" name_en="Malaysia"/>
+<item abbr="MV" name_en="Maldives"/>
+<item abbr="ML" name_en="Mali"/>
+<item abbr="MT" name_en="Malta"/>
+<item abbr="MH" name_en="Marshall Islands"/>
+<item abbr="MQ" name_en="Martinique"/>
+<item abbr="MR" name_en="Mauritania"/>
+<item abbr="MU" name_en="Mauritius"/>
+<item abbr="YT" name_en="Mayotte"/>
+<item abbr="MX" name_en="Mexico"/>
+<item abbr="FM" name_en="Micronesia, Federated States of"/>
+<item abbr="MD" name_en="Moldova"/>
+<item abbr="MC" name_en="Monaco"/>
+<item abbr="MN" name_en="Mongolia"/>
+<item abbr="ME" name_en="Montenegro"/>
+<item abbr="MS" name_en="Montserrat"/>
+<item abbr="MA" name_en="Morocco"/>
+<item abbr="MZ" name_en="Mozambique"/>
+<item abbr="MM" name_en="Myanmar"/>
+<item abbr="NA" name_en="Namibia"/>
+<item abbr="NR" name_en="Nauru"/>
+<item abbr="NP" name_en="Nepal"/>
+<item abbr="NL" name_en="Netherlands"/>
+<item abbr="AN" name_en="Netherlands Antilles"/>
+<item abbr="NC" name_en="New Caledonia"/>
+<item abbr="NZ" name_en="New Zealand"/>
+<item abbr="NI" name_en="Nicaragua"/>
+<item abbr="NE" name_en="Niger"/>
+<item abbr="NG" name_en="Nigeria"/>
+<item abbr="NU" name_en="Niue"/>
+<item abbr="NF" name_en="Norfolk Island"/>
+<item abbr="MP" name_en="Northern Mariana Islands"/>
+<item abbr="NO" name_en="Norway"/>
+<item abbr="OM" name_en="Oman"/>
+<item abbr="PK" name_en="Pakistan"/>
+<item abbr="PW" name_en="Palau"/>
+<item abbr="PS" name_en="Palestinian Territory, Occupied"/>
+<item abbr="PA" name_en="Panama"/>
+<item abbr="PG" name_en="Papua New Guinea"/>
+<item abbr="PY" name_en="Paraguay"/>
+<item abbr="PE" name_en="Peru"/>
+<item abbr="PH" name_en="Philippines"/>
+<item abbr="PN" name_en="Pitcairn"/>
+<item abbr="PL" name_en="Poland"/>
+<item abbr="PT" name_en="Portugal"/>
+<item abbr="PR" name_en="Puerto Rico"/>
+<item abbr="QA" name_en="Qatar"/>
+<item abbr="RE" name_en="Reunion"/>
+<item abbr="RO" name_en="Romania"/>
+<item abbr="RU" name_en="Russian Federation"/>
+<item abbr="RW" name_en="Rwanda"/>
+<item abbr="BL" name_en="Saint Barthelemy"/>
+<item abbr="SH" name_en="Saint Helena"/>
+<item abbr="KN" name_en="Saint Kitts and Nevis"/>
+<item abbr="LC" name_en="Saint Lucia"/>
+<item abbr="MF" name_en="Saint Martin"/>
+<item abbr="PM" name_en="Saint Pierre and Miquelon"/>
+<item abbr="VC" name_en="Saint Vincent and the Grenadines"/>
+<item abbr="WS" name_en="Samoa"/>
+<item abbr="SM" name_en="San Marino"/>
+<item abbr="ST" name_en="Sao Tome and Principe"/>
+<item abbr="SA" name_en="Saudi Arabia"/>
+<item abbr="SN" name_en="Senegal"/>
+<item abbr="RS" name_en="Serbia"/>
+<item abbr="SC" name_en="Seychelles"/>
+<item abbr="SL" name_en="Sierra Leone"/>
+<item abbr="SG" name_en="Singapore"/>
+<item abbr="SK" name_en="Slovakia"/>
+<item abbr="SI" name_en="Slovenia"/>
+<item abbr="SB" name_en="Solomon Islands"/>
+<item abbr="SO" name_en="Somalia"/>
+<item abbr="ZA" name_en="South Africa"/>
+<item abbr="GS" name_en="South Georgia and the South Sandwich Islands"/>
+<item abbr="ES" name_en="Spain"/>
+<item abbr="LK" name_en="Sri Lanka"/>
+<item abbr="SD" name_en="Sudan"/>
+<item abbr="SR" name_en="Suriname"/>
+<item abbr="SJ" name_en="Svalbard and Jan Mayen"/>
+<item abbr="SZ" name_en="Swaziland"/>
+<item abbr="SE" name_en="Sweden"/>
+<item abbr="CH" name_en="Switzerland"/>
+<item abbr="SY" name_en="Syrian Arab Republic"/>
+<item abbr="TW" name_en="Taiwan, Province of China"/>
+<item abbr="TJ" name_en="Tajikistan"/>
+<item abbr="TZ" name_en="Tanzania, United Republic of"/>
+<item abbr="TH" name_en="Thailand"/>
+<item abbr="TL" name_en="Timor-Leste"/>
+<item abbr="TG" name_en="Togo"/>
+<item abbr="TK" name_en="Tokelau"/>
+<item abbr="TO" name_en="Tonga"/>
+<item abbr="TT" name_en="Trinidad and Tobago"/>
+<item abbr="TN" name_en="Tunisia"/>
+<item abbr="TR" name_en="Turkey"/>
+<item abbr="TM" name_en="Turkmenistan"/>
+<item abbr="TC" name_en="Turks and Caicos Islands"/>
+<item abbr="TV" name_en="Tuvalu"/>
+<item abbr="UG" name_en="Uganda"/>
+<item abbr="UA" name_en="Ukraine"/>
+<item abbr="AE" name_en="United Arab Emirates"/>
+<item abbr="GB" name_en="United Kingdom"/>
+<item abbr="US" name_en="United States"/>
+<item abbr="UM" name_en="United States Minor Outlying Islands"/>
+<item abbr="UY" name_en="Uruguay"/>
+<item abbr="UZ" name_en="Uzbekistan"/>
+<item abbr="VU" name_en="Vanuatu"/>
+<item abbr="VE" name_en="Venezuela"/>
+<item abbr="VN" name_en="Vietnam"/>
+<item abbr="VG" name_en="Virgin Islands, British"/>
+<item abbr="VI" name_en="Virgin Islands, U.S."/>
+<item abbr="WF" name_en="Wallis and Futuna"/>
+<item abbr="EH" name_en="Western Sahara"/>
+<item abbr="YE" name_en="Yemen"/>
+<item abbr="ZM" name_en="Zambia"/>
+<item abbr="ZW" name_en="Zimbabwe"/>
+</ywc>

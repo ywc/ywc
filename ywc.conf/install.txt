@@ -1,0 +1,24 @@
+## packages to install
+Mandatory:
+tomcat6 tomcat6-webapps tomcat6-admin-webapps
+ImageMagick
+
+Optional:
+ufraw
+ffmpeg ( must include details )
+OpenOffice (and set officehome in ywc.backend.d)
+
+
+## install code
+mkdir -p /data/ywc
+cd /data
+svn co https://svn.enthu.se/repo/code/ywc 
+chmod -R 1777 /data/ywc/ywc.temp
+
+## update httpd conf and adapt it
+cp /data/ywc/ywc.core/ywc.conf/httpd/ywc.httpd.conf /etc/httpd/conf.d/
+
+## ywc.properties file
+cp /data/ywc/ywc.core/ywc.conf/ywc.properties-default /data/ywc/ywc.core/ywc.conf/ywc.properties
+
+

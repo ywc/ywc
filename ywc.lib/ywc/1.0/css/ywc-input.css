@@ -1,0 +1,32 @@
+
+input.ywc-input-datetime { width:auto; text-align:center; }
+
+div.ywc-fileupload { position:relative; height:auto; font-size:12px; width:100%; overflow:hidden; background:#eeeeee; }
+div.ywc-fileupload form.ywc-fileupload { border:none; }
+div.ywc-fileupload form.ywc-fileupload div.fileupload-buttonbar, div.ywc-fileupload form.ywc-fileupload div.row, div.ywc-fileupload form.ywc-fileupload div.span16
+	{ position:relative; width:98%; left:1%; margin:none; top:1%; margin-top:4px; height:98%; border:none; }
+div.ywc-fileupload form.ywc-fileupload div.fileupload-buttonbar div.fileupload-progressbar { position:relative; float:left; clear:both; width:100%; }	
+div.ywc-fileupload form.ywc-fileupload div.fileupload-buttonbar span.fileinput-button { position:relative; float:left; margin:2px; margin-right:50px; }
+div.ywc-fileupload form.ywc-fileupload div.fileupload-buttonbar button { position:relative; float:left; margin-left:8px; }
+div.ywc-fileupload span.fileupload-secondary-buttons { float:right; }
+
+div.ywc-input-checkbox { position:relative; float:left; width:auto; height:auto; clear:both; border:none; }
+div.ywc-input-checkbox input { position:relative; float:left; margin-left:3px; }
+div.ywc-input-checkbox label { position:relative; float:left; margin-left:8px; }
+
+input.ywc-input-text, textarea.ywc-input-text {
+	position:relative; float:left; border:solid 1px #bbbbbb; color:#333333; background-color:white; z-index:1001; resize:none; }
+div.ywc-input-text { position:relative; float:left; width:0px; height:0px; left:0px; top:7px; border:none; overflow:visible; z-index:2; z-index:1002; }
+div.ywc-input-text img { position:absolute; cursor:pointer; background-color:transparent; visibility:hidden; }
+div.ywc-input-text img.icon { visibility:visible; }
+div.ywc-input-text img.erase { z-index:1; }
+div.ywc-input-text img.loading { z-index:2; }
+input.ywc-input-label, textarea.ywc-input-label { color:#c8c8c8; }
+
+.ywc-input-button { position:relative; cursor:pointer; height:auto; width:auto; background-color:#e8e8e8; clear:none; border:solid 1px #a1a1a1; text-align:center; margin:1px; overflow:hidden; }
+.ywc-input-button-label { position:relative; z-index:1; width:100%; margin:0px; left:0%; top:25%; z-index:1; color:#464646; background-color:transparent; border:none; font-weight:normal; }
+.ywc-input-button-circle { position:absolute; right:10%; }
+.ywc-input-button-circle * { position:absolute; top:0%; left:0%; width:100%; height:100%; border:none; z-index:0; }
+.ywc-input-button-circle div { text-align:center; vertical-align:middle; z-index:1; font-weight:bold; height:auto; }
+.ywc-input-button-label-on { color:#e8e8e8; text-shadow: 0px -2px 1px #000000; filter: dropshadow(color=#000000, offx=0, offy=-2); }
+.ywc-input-button-circle-on { color:#e8e8e8; text-shadow: 0px -1px 1px #000000; filter: dropshadow(color=#000000, offx=0, offy=-1); }

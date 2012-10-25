@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/bws">
+
+  <Environment name="debug" override="false" type="java.lang.Boolean" value="true"/>
+</Context>

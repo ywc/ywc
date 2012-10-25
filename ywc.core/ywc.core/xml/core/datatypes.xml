@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<datatypes>
+<datatype value="scope" />
+<datatype value="template" />
+<datatype value="placeholder" />
+<datatype value="transform" />
+<datatype value="include" />
+<datatype value="uri" />
+<datatype value="cache" />
+
+<datatype value="user" />
+</datatypes>

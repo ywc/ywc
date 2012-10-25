@@ -1,0 +1,53 @@
+<!--
+  -- LIGHTSTREAMER - www.lightstreamer.com
+  -- Lightstreamer HTML Client - lsblank.html
+  -- Version 5.0 Build 1446.9 Revision: 32109 $
+  -- Copyright (c) 2004-2012 Weswit Srl. All Rights Reserved.
+  -->    
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Lightstreamer Blank Page</title>
+<script language="JavaScript">
+  
+  function LS_extractParam(name) {
+    var pattern = new RegExp("[#?&]" + name + "=[^&]*","i");
+    var qs = location.search;
+    if (qs.indexOf("?LS_querystring=") == 0) {
+      qs = decode(qs.replace("LS_querystring=",""));
+    }
+    var result = pattern.exec(qs);
+    if (result && result[0]) {
+      var prefLen = name.length + 2;
+      return decode(result[0].substring(prefLen));
+    } else {
+      return null;
+    }
+  }
+  
+  function decode(str) {
+    if (window.decodeURIComponent) {
+      return decodeURIComponent(str);
+    } else {
+      return unescape(str);
+    }
+  }
+  
+  var LS_domain = LS_extractParam("domain");
+  if (LS_domain != null) {
+    var alpha_numeric = new RegExp("^[a-zA-Z0-9\\.\\-]*$");
+    if (alpha_numeric.test(LS_domain)) {
+      document.domain = LS_domain;
+    }
+  }
+
+
+  function evalProxy(code) {
+    eval(code);
+    return true;
+  }
+</script>
+
+</head>
+</html>

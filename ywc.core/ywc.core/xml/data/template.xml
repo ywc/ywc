@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ywc>
+<template template_id="aaaaaa" disable_javascript="0" title="Default Template" scope="all" onload="" width="980" disable_includes="0" default_classes="" includes="ywc-core;" content_type="text/html" />
+<template template_id="aaaaab" disable_javascript="0" title="Generic JSON" scope="all" onload="" width="0" disable_includes="0" default_classes="" includes="" content_type="application/json" />
+<template template_id="aaaaac" disable_javascript="1" title="Generic E-mail" scope="all" onload="" width="0" disable_includes="1" default_classes="" includes="" content_type="text/html" />
+<template template_id="aaaaad" disable_javascript="0" title="Generic XML" scope="all" onload="" width="0" disable_includes="0" default_classes="" includes="" content_type="text/xml" />
+<template template_id="aaaaaf" disable_javascript="1" title="Generic HTML (1 Placeholder)" scope="all" onload="" width="0" disable_includes="0" default_classes="" includes="" content_type="text/html" />
+<template template_id="aaaaag" disable_javascript="0" title="Generic AJAX (HTML)" scope="all" onload="" width="600" disable_includes="0" default_classes="" includes="" content_type="text/html*ajax" />
+<template template_id="aaaaah" disable_javascript="0" title="Generic Javascript" scope="all" onload="" width="0" disable_includes="0" default_classes="" includes="" content_type="text/javascript" />
+<template template_id="aaaaai" disable_javascript="0" title="YWC Intranet Landing Page" scope="all" onload="" width="0" disable_includes="0" default_classes="ywc-intranet-template" includes="ywc-intranet;" content_type="text/html" />
+<template template_id="aaaaaj" disable_javascript="0" title="Generic Text" scope="all" onload="" width="0" disable_includes="0" default_classes="" includes="" content_type="text/plain" />
+</ywc>

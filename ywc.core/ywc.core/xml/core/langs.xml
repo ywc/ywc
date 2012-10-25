@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<langs>
+<lang abbr="en" name_en="English" name="English" />
+<lang abbr="fr" name_en="French" name="Français" />
+<!--<lang abbr="af" name_en="Afrikaans" name="" />
+<lang abbr="ar" name_en="Arabic" name="" />
+<lang abbr="bg" name_en="Bulgarian" name="" />
+<lang abbr="bn" name_en="Bengali/Bangla" name="" />
+<lang abbr="bs" name_en="Bosnian" name="" />
+<lang abbr="ca" name_en="Catalan" name="" />
+<lang abbr="cs" name_en="Czech" name="" />
+<lang abbr="cy" name_en="Welsh" name="" />
+<lang abbr="da" name_en="Danish" name="" />
+<lang abbr="de" name_en="German" name="" />
+<lang abbr="el" name_en="Greek" name="" />
+<lang abbr="eo" name_en="Esperanto" name="" />
+<lang abbr="es" name_en="Spanish" name="" />
+<lang abbr="et" name_en="Estonian" name="" />
+<lang abbr="eu" name_en="Basque" name="" />
+<lang abbr="fa" name_en="Persian" name="" />
+<lang abbr="fi" name_en="Finnish" name="" />
+<lang abbr="fo" name_en="Faroese" name="" />
+<lang abbr="gl" name_en="Galician" name="" />
+<lang abbr="gu" name_en="Gujarati" name="" />
+<lang abbr="he" name_en="Hebrew" name="" />
+<lang abbr="hi" name_en="Hindi" name="" />
+<lang abbr="hr" name_en="Croatian" name="" />
+<lang abbr="hu" name_en="Hungarian" name="" />
+<lang abbr="is" name_en="Icelandic" name="" />
+<lang abbr="it" name_en="Italian" name="" />
+<lang abbr="ja" name_en="Japanese" name="" />
+<lang abbr="ka" name_en="Georgian" name="" />
+<lang abbr="km" name_en="Khmer" name="" />
+<lang abbr="ko" name_en="Korean" name="" />
+<lang abbr="lt" name_en="Lithuanian" name="" />
+<lang abbr="lv" name_en="Latvian" name="" />
+<lang abbr="mn" name_en="Mongolian" name="" />
+<lang abbr="ms" name_en="Malay" name="" />
+<lang abbr="nb" name_en="Norwegian Bokmal" name="" />
+<lang abbr="nl" name_en="Dutch" name="" />
+<lang abbr="no" name_en="Norwegian" name="" />
+<lang abbr="pl" name_en="Polish" name="" />
+<lang abbr="pt" name_en="Portuguese (Portugal)" name="" />
+<lang abbr="ro" name_en="Romanian" name="" />
+<lang abbr="ru" name_en="Russian" name="" />
+<lang abbr="sk" name_en="Slovak" name="" />
+<lang abbr="sl" name_en="Slovenian" name="" />
+<lang abbr="sr" name_en="Serbian (Cyrillic)" name="" />
+<lang abbr="sv" name_en="Swedish" name="" />
+<lang abbr="th" name_en="Thai" name="" />
+<lang abbr="tr" name_en="Turkish" name="" />
+<lang abbr="uk" name_en="Ukrainian" name="" />
+<lang abbr="vi" name_en="Vietnamese" name="" />
+<lang abbr="zh" name_en="Chinese Traditional" name="" />
+<lang abbr="zh-cn" name_en="Chinese Simplified" name="" />
+<lang abbr="en-au" name_en="English (Australia)" name="English (Australia)" />
+<lang abbr="en-ca" name_en="English (Canadian)" name="English (Canadian)" />
+<lang abbr="en-gb" name_en="English (United Kingdom)" name="English (United Kingdom)" />
+<lang abbr="fr-ca" name_en="French (Canada)" name="" />
+<lang abbr="pt-br" name_en="Portuguese (Brazil)" name="" />
+<lang abbr="sr-latn" name_en="Serbian (Latin)" name="" />
+-->
+</langs>

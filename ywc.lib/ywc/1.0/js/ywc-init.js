@@ -1,0 +1,3 @@
+/**
+* YWC Global Initialization
+*/

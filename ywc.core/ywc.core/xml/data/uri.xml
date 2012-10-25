@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ywc>
+<uri uri_id="aaaaaa" asset_id="aaaaab" title="Site Icon" scope="all" pattern="/favicon.ico" onload="" required_params="" asset_type="media" includes="" type="media" />
+<uri uri_id="aaaaab" asset_id="aaaaag" title="YWC Inputs" scope="all" pattern="^/ywc/ui-input/(text|select|hidden|button)$" onload="" required_params="" asset_type="template" includes="" type="regex" />
+<uri uri_id="aaaaac" asset_id="aaaaab" title="CSS Wrapped as JSONP" scope="all" pattern="/ywc/css-as-jsonp/" onload="" required_params="" asset_type="template" includes="" type="regex" />
+<uri uri_id="aaaaad" asset_id="aaaaag" title="YWC Intranet: Asset Detail Popup" scope="all" pattern="/ywc/intranet/popup/detail" onload="" required_params="" asset_type="template" includes="" type="page" />
+<uri uri_id="aaaaah" asset_id="aaaaab" title="Countries as JSON" scope="all" pattern="/ywc/data/countries" onload="" required_params="" asset_type="template" includes="" type="page" />
+<uri uri_id="aaaaaj" asset_id="aaaaag" title="YWC Intranet: Asset Detail Utilities" scope="all" pattern="/ywc/intranet/popup/utility" onload="" required_params="" asset_type="template" includes="" type="page" />
+<uri uri_id="aaaaak" asset_id="aaaaag" title="YWC Intranet: Subscribe Popup" scope="all" pattern="/ywc/intranet/popup/subscribe" onload="" required_params="" asset_type="template" includes="" type="page" />
+<uri uri_id="aaaaal" asset_id="aaaaag" title="YWC Intranet: Authentication Popup" scope="all" pattern="/ywc/intranet/popup/auth" onload="" required_params="" asset_type="template" includes="" type="page" />
+<uri uri_id="aaaaam" asset_id="aaaaag" title="YWC Intranet: Asset Edit Popup" scope="all" pattern="/ywc/intranet/popup/edit" onload="" required_params="" asset_type="template" includes="" type="page" />
+<uri uri_id="aaaaan" asset_id="aaaaag" title="YWC Intranet: Asset Archive Popup" scope="all" pattern="/ywc/intranet/popup/archive" onload="" required_params="" asset_type="template" includes="" type="page" />
+<uri uri_id="aaaaao" asset_id="aaaaah" title="YWC Intranet: Asset Paging" scope="all" pattern="/ywc/intranet/asset/paging" onload="" required_params="" asset_type="template" includes="" type="page" />
+<uri uri_id="aaaaap" asset_id="aaaaag" title="YWC Intranet: Directory Popup" scope="all" pattern="/ywc/intranet/popup/directory" onload="" required_params="" asset_type="template" includes="" type="page" />
+<uri uri_id="aaaaar" asset_id="aaaaag" title="YWC Intranet: News Article Popup" scope="all" pattern="/ywc/intranet/popup/news" onload="" required_params="" asset_type="template" includes="" type="page" />
+<uri uri_id="aaaaas" asset_id="aaaaac" title="YWC Intranet: Email" scope="all" pattern="^/ywc/intranet/email/" onload="" required_params="" asset_type="template" includes="" type="regex" />
+<uri uri_id="aaaaat" asset_id="aaaaaa" title="YWC Intranet: Permalink" scope="all" pattern="^/ywc/intranet/link/" onload="" required_params="" asset_type="template" includes="" type="regex" />
+<uri uri_id="aaaaau" asset_id="aaaaad" title="YWC Intranet: Who Am I" scope="all" pattern="/ywc/intranet/whoami" onload="" required_params="" asset_type="template" includes="" type="page" />
+<uri uri_id="aaaaav" asset_id="aaaaaj" title="YWC Intranet: Title" scope="all" pattern="^/ywc/intranet/title/" onload="" required_params="" asset_type="template" includes="" type="regex" />
+<uri uri_id="aaaaaw" asset_id="aaaaad" title="YWC Intranet: Cache ID" scope="all" pattern="/ywc/intranet/cache" onload="" required_params="" asset_type="template" includes="" type="page" />
+<uri uri_id="tttttt" asset_id="aaaaaa" title="YWC Input Test" scope="all" pattern="/ywc/ui-input/test" onload="" required_params="" asset_type="template" includes="" type="page" />
+</ywc>
