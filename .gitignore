@@ -1,2 +1,7 @@
 
 .DS_Store
+
+ywc.core/ywc.java/ywc.backend.d/nbproject/private/*
+ywc.core/ywc.java/ywc.backend.ws/nbproject/private/*
+ywc.core/ywc.java/ywc.core/nbproject/private/*
+ywc.core/ywc.java/ywc.frontend/nbproject/private/*
