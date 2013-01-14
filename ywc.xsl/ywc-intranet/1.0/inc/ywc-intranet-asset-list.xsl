@@ -2,6 +2,7 @@
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ywc="http://www.iter.org/ywc" xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882" xmlns:rs="urn:schemas-microsoft-com:rowset" xmlns:z="#RowsetSchema" exclude-result-prefixes="xs xsl ywc dt rs z">
 
 <xsl:include href="../../../ywc/1.0/ui-asset/asset-list-item.xsl" />
+<xsl:include href="../../../xcal-calendar/1.0/xcal-calendar.xsl" />
 	
 <xsl:template name="ywcIntranetAssetList">
 <xsl:param name="listName" as="xs:string" select="''" /><!-- system name of list (can be matched to a ywcCacheId) -->
@@ -31,21 +32,27 @@
 		</xsl:for-each>
 	</xsl:variable>
 
-	<!-- fetches xml cache file, or blank if it suspects an invalid path -->
-	<xsl:variable name="srcXml" select="
-		document(concat('../../../../ywc.cache/xml/'
+	<!-- constructs path for xml cache file, or blank if it suspects an invalid path -->
+	<xsl:variable name="srcXmlPath" select="
+		concat('../../../../ywc.cache/xml/'
 			,if (contains($ywcCacheId,'..')) then 'core/blank'
 			else concat('cache/',$ywcCacheId)
-		,'.xml'))" />
+		,'.xml')" />
+
+	<xsl:variable name="srcXml" select="
+			if ($listName = 'calendar') then ywc:iCalxCal(unparsed-text($srcXmlPath))
+			else document($srcXmlPath)
+		" />
 		
 	<!-- aggregates xml input based on multiple possible xml structures (Drupal and Sharepoint, LDAP) -->
 	<xsl:variable name="srcXmlAggr" select="
 		(	$srcXml/nodes/node
 		|	$srcXml/rs:data/z:row
 		|	$srcXml/users/user
+		|	$srcXml/vcalendar/vevent
 		)[
 			(string-length(string-join((*|@*),'')) &gt; 0)
-		]" />		
+		]" />	
 		
 	<!-- filter xml by searchTerm-->
 	<xsl:variable name="srcXml_" select="
@@ -73,6 +80,7 @@
 			if (count($srcXml/nodes) &gt; 0) then 'drupal'
 			else if (count($srcXml/rs:data) &gt; 0) then 'sharepoint'
 			else if (count($srcXml/users) &gt; 0) then 'directory'
+			else if (count($srcXml/vcalendar) &gt; 0) then 'ical'
 			else ''" />
 		
 		<xsl:value-of select='"$(function(){"' />
@@ -95,6 +103,7 @@
 				<xsl:variable name="assetId" select="concat($listName,'_',
 					if (string-length(nid) &gt; 0) then nid
 					else if (string-length(ywc:getNodeValue(.,'id')) &gt; 0) then ywc:getNodeValue(.,'id')
+					else if (string-length(ywc:getNodeValue(.,'uid')) &gt; 0) then replace(ywc:getNodeValue(.,'uid'),'\.','_')
 					else position()
 					)" />
 				
@@ -104,6 +113,7 @@
 					else if ($srcXmlProfile = 'directory') then concat(
 						ywc:getNodeValue(.,'firstname'),' ',ywc:getNodeValue(.,'lastname')
 						)
+					else if ($srcXmlProfile = 'ical') then 'your mom'
 					else ywc:getNodeValue(.,'author')
 					" />
 				
@@ -140,6 +150,7 @@
 					
 					<xsl:with-param name="title" select="
 						if ($srcXmlProfile = 'directory') then $userFullName
+						else if ($srcXmlProfile = 'ical') then ywc:getNodeValue(.,'summary')
 						else ywc:getNodeValue(.,'title')
 					"/>
 					
@@ -155,6 +166,7 @@
 								"YWC.f.intranetPostPopup(&apos;",$listName,"&apos;,&apos;",$assetId,"&apos;,&apos;"
 									,if ($srcXmlProfile = "drupal") then ywc:getNodeValue(.,"nid")
 									else if ($srcXmlProfile = "sharepoint") then ywc:getNodeValue(.,"id")
+									else if ($srcXmlProfile = "ical") then replace(ywc:getNodeValue(.,"uid"),"\.","_")
 									else ""
 								,"&apos;)")
 							)'/>
@@ -164,6 +176,7 @@
 						else if (contains($listName,"events")) then "When"
 						else if ($srcXmlProfile = "drupal") then ""
 						else if ($srcXmlProfile = "sharepoint") then ""
+						else if ($srcXmlProfile = "ical") then ""
 						else ""
 					'/>
 					
@@ -198,6 +211,7 @@
 						if ($srcXmlProfile = "directory") then 1
 						else if ($srcXmlProfile = "drupal") then 0
 						else if ($srcXmlProfile = "sharepoint") then 0
+						else if ($srcXmlProfile = "ical") then 0
 						else 1
 					'/>
 					
@@ -208,6 +222,7 @@
 						else if ($listName = "marketplace") then "Posted by"
 						else if ($listName = "announcements") then "Posted by"
 						else if ($listName = "lost-and-found") then "Posted by"
+						else if ($listName = "calendar") then "Location"
 						else ""
 					'/>
 					
@@ -221,6 +236,7 @@
 						else if ($listName = "marketplace") then $userFullName
 						else if ($listName = "announcements") then $userFullName
 						else if ($listName = "lost-and-found") then $userFullName
+						else if ($listName = "calendar") then "Somewhere"
 						else if ($listName = "community")
 							then concat(ywc:getNodeValue(.,"type"),", ",ywc:getNodeValue(.,"category"))
 						else ""

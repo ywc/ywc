@@ -8,7 +8,8 @@
 /ywc.xsl/oist
 /ywc.db/oist
 
-/ywc.core/ywc.java/ywc.core/dist/ywc.core.jar
+ywc.core/ywc.java/ywc.core/dist/ywc.core.jar
+ywc.core/ywc.java/ywc.core/build/built-jar.properties
 
 ywc.core/ywc.java/ywc.backend.d/nbproject/private/*
 ywc.core/ywc.java/ywc.backend.ws/nbproject/private/*
