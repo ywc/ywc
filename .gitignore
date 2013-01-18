@@ -16,3 +16,7 @@ ywc.core/ywc.java/ywc.backend.ws/nbproject/private/*
 ywc.core/ywc.java/ywc.core/nbproject/private/*
 ywc.core/ywc.java/ywc.frontend/nbproject/private/*
 /ywc.core/ywc.java/ywc.backend.d/build/
+/ywc.core/ywc.java/ywc.backend.d/dist/
+/ywc.core/ywc.java/ywc.backend.ws/build/
+/ywc.core/ywc.java/ywc.backend.ws/dist/
+/ywc.core/ywc.java/ywc.frontend/dist/

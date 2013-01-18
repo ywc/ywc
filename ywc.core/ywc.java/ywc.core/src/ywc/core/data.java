@@ -68,7 +68,7 @@ public class data {
             BufferedReader br = new BufferedReader(fr);
             String s;
             while((s = br.readLine()) != null) { 
-                cachedData += s; 
+                cachedData += s +"\n"; 
             }
             fr.close();
             
@@ -111,7 +111,7 @@ public class data {
             String inputLine;
 
             while ((inputLine = in.readLine()) != null) {
-                data += inputLine;
+                data += inputLine + "\n";
             }
             in.close();
         } catch (Exception ex) {
@@ -219,9 +219,9 @@ public class data {
 
             while ((inputLine = in.readLine()) != null) {
                 if (data == null) {
-                    data = inputLine;
+                    data = inputLine + "\n";
                 } else {
-                    data += inputLine;
+                    data += inputLine + "\n";
                 }
             }
             in.close();
