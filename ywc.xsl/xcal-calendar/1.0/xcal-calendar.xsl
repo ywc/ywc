@@ -4,7 +4,12 @@
 <xsl:function name="ywc:iCalxCal">
 <xsl:param name="ical-data-raw" as="xs:string" />
     
-    <xsl:variable name="ical-data" select='normalize-space(replace($ical-data-raw,"&amp;","&amp;amp;"))'/>
+    <xsl:variable name="ical-data" select='
+            normalize-space(
+                replace(
+                    $ical-data-raw
+                ,"&amp;","&amp;amp;")
+                )'/>
     <xsl:variable name="ical-properties" select="substring-before($ical-data,' BEGIN:VEVENT')"/>
     <xsl:variable name="ical-events">
         <xsl:value-of select="concat('BEGIN:VEVENT ',substring-before(substring-after($ical-data,'BEGIN:VEVENT '),' END:VCALENDAR'))"/>
@@ -116,7 +121,7 @@
     <xsl:param name="type" select="'event'"/>
     <xsl:param name="output-format" select="'xcalendar'"/>
     <xsl:param name="property-and-attribute-caps" select="substring-before($input,':')"/>
-    <xsl:param name="property-and-attribute" select="translate($property-and-attribute-caps,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')"/>
+    <xsl:param name="property-and-attribute" select="lower-case($property-and-attribute-caps)"/>
     <xsl:param name="property">
         <xsl:choose>
             <xsl:when test="contains($property-and-attribute,';')">
@@ -147,7 +152,7 @@
     <xsl:param name="plural-values" select="contains($string-before-next-property,';')"/>
     <xsl:param name="multiple-items">
         <xsl:if test="$plural-values">
-            <xsl:value-of select="translate($string-before-next-property,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')"/>
+            <xsl:value-of select="lower-case($string-before-next-property)"/>
         </xsl:if>
     </xsl:param>
     <xsl:param name="items">

@@ -315,7 +315,18 @@ YWC.f.dateConvert = function(inputDateTime,wh) {
 		timeStamp = timeStamp-YWC.user.date.zone.offset;
 		if (wh.debug === true) { console.log('YWC: initial conversion error -> '+inputDateTime+' -> '+timeStamp); }
 	}
-	
+
+	if (isNaN(timeStamp)) {
+		// if input is iCal datetime format
+		if ((inputDateTime.indexOf("-") == -1) && (inputDateTime.indexOf("T") > 0) && (inputDateTime.indexOf("Z") > 0)) {
+			timeStamp = (new Date(
+				parseInt(inputDateTime.substr(0,4)),parseInt(inputDateTime.substr(4,2),10)-1
+				,parseInt(inputDateTime.substr(6,2),10),parseInt(inputDateTime.substr(9,2),10)
+				,parseInt(inputDateTime.substr(11,2),10),parseInt(inputDateTime.substr(13,2),10)
+			)).valueOf();
+		}
+	}
+
 	var obj = new Date();
 	
 	if (typeof wh.resolutionInSeconds == 'undefined') { wh.resolutionInSeconds = 1; }

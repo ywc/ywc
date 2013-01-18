@@ -195,6 +195,10 @@
 							else if ($srcXmlProfile = "sharepoint") then ywc:getNodeValue(.,"expirationdate")
 							else ""
 							,"&apos;,{&apos;type&apos;:&apos;date&apos;,&apos;format&apos;:&apos;local&apos;})")
+						else if (contains($listName,"calendar")) then concat("YWC.f.dateConvert(&apos;"
+							,if ($srcXmlProfile = "ical") then ywc:getNodeValue(.,"dtstart")
+							else ""
+							,"&apos;,{&apos;type&apos;:&apos;datet&apos;,&apos;format&apos;:&apos;local&apos;})")
 						else if ($listName = "news") then concat("YWC.f.dateConvert(&apos;"
 							,if ($srcXmlProfile = "sharepoint") then ywc:getNodeValue(.,"publishdatetime")
 								else if ($srcXmlProfile = "drupal") then ywc:getNodeValue(.,"posted")
@@ -222,7 +226,7 @@
 						else if ($listName = "marketplace") then "Posted by"
 						else if ($listName = "announcements") then "Posted by"
 						else if ($listName = "lost-and-found") then "Posted by"
-						else if ($listName = "calendar") then "Location"
+						else if ($listName = "calendar") then ""
 						else ""
 					'/>
 					
@@ -236,7 +240,7 @@
 						else if ($listName = "marketplace") then $userFullName
 						else if ($listName = "announcements") then $userFullName
 						else if ($listName = "lost-and-found") then $userFullName
-						else if ($listName = "calendar") then "Somewhere"
+						else if ($listName = "calendar") then ""
 						else if ($listName = "community")
 							then concat(ywc:getNodeValue(.,"type"),", ",ywc:getNodeValue(.,"category"))
 						else ""

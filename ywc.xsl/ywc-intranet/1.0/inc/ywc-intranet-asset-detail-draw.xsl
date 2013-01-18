@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ywc="http://www.iter.org/ywc" xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882" xmlns:rs="urn:schemas-microsoft-com:rowset" xmlns:z="#RowsetSchema" exclude-result-prefixes="xs xsl ywc dt rs z">
 
+<xsl:include href="../../../xcal-calendar/1.0/xcal-calendar.xsl" />
+
 <xsl:template name="ywcIntranetAssetDetailDraw">
 <xsl:param name="listName" as="xs:string" select="''" />
 <xsl:param name="assetId" as="xs:string" select="''" />
@@ -22,30 +24,43 @@
 		</xsl:for-each>
 	</xsl:variable>
 
+	<!-- constructs path for xml cache file, or blank if it suspects an invalid path -->
+	<xsl:variable name="srcXmlPath" select="
+		concat('../../../../ywc.cache/xml/'
+			,if (contains($ywcCacheId,'..')) then 'core/blank'
+			else concat('cache/',$ywcCacheId)
+		,'.xml')" />
+
 	<xsl:variable name="srcXml" select="
-				document(concat('../../../../ywc.cache/xml/'
-				,if (contains($ywcCacheId,'..')) then 'core/blank'
-				else concat('cache/',$ywcCacheId)
-				,'.xml'))" />
+			if ($listName = 'calendar') then ywc:iCalxCal(unparsed-text($srcXmlPath))
+			else document($srcXmlPath)
+		" />
 
 	<xsl:variable name="srcXmlProfile" select="
 			if (count($srcXml/nodes) &gt; 0) then 'drupal'
 			else if (count($srcXml/rs:data) &gt; 0) then 'sharepoint'
 			else if (count($srcXml/users) &gt; 0) then 'directory'
+			else if (count($srcXml/vcalendar) &gt; 0) then 'ical'
 			else ''" />
 				
 	<xsl:variable name="srcIdName" select="
 			if ($srcXmlProfile = 'drupal') then 'nid'
 			else if ($srcXmlProfile = 'sharepoint') then 'id'
 			else if ($srcXmlProfile = 'directory') then 'uid'
+			else if ($srcXmlProfile = 'ical') then 'uid'
 			else ''" />
 
 	<xsl:for-each select="
 			(	$srcXml/nodes/node
 			|	$srcXml/rs:data/z:row
+			|	$srcXml/vcalendar/vevent
 			)/(*|@*)[
-				(lower-case(name())=$srcIdName) or (lower-case(substring-after(name(),'ows_'))=$srcIdName)
-			][.=$srcIdVal]/..
+						(lower-case(name())=$srcIdName)
+				or 	(lower-case(substring-after(name(),'ows_'))=$srcIdName)
+			][
+						(.=$srcIdVal)
+				or 	(replace(.,'\.','_')=$srcIdVal)
+			]/..
 		">
 		
 		<xsl:variable name="dateCreated" as="xs:dateTime" select="
@@ -82,6 +97,7 @@
 		<xsl:variable name="meta1" select="
 			if ($srcXmlProfile = 'drupal') then ywc:directoryUserFullName(ywc:getNodeValue(.,'author'))
 			else if ($srcXmlProfile = 'sharepoint') then substring-after(ywc:getNodeValue(.,'author'),';#')
+			else if ($srcXmlProfile = 'ical') then 'calendar'
 			else ywc:getNodeValue(.,'author')
 			" />
 			
@@ -172,10 +188,16 @@
 			<xsl:with-param name="cacheId" select="$ywcCacheId"/>
 			<xsl:with-param name="assetId" select="$assetId"/>
 			<xsl:with-param name="width" select="$boxWidth"/>
-			<xsl:with-param name="title" select="ywc:getNodeValue(.,'title')"/>
+			<xsl:with-param name="title" select="
+					if ($srcXmlProfile = 'ical') then ywc:getNodeValue(.,'summary')
+					else ywc:getNodeValue(.,'title')
+				"/>
 			<xsl:with-param name="thmb" select="ywc:getImgUrl(ywc:getNodeValue(.,'attachments'),1)"/>
 			<xsl:with-param name="thmbLink" select="concat(ywc:getImgUrl(ywc:getNodeValue(.,'attachments'),1),'?size=2048')"/>
-			<xsl:with-param name="body" select="ywc:removeImages(ywc:getNodeValue(.,'body'))"/>
+			<xsl:with-param name="body" select="
+					if ($srcXmlProfile = 'ical') then ywc:getNodeValue(.,'summary')
+					else ywc:removeImages(ywc:getNodeValue(.,'body'))
+				"/>
 			<xsl:with-param name="meta" select="($meta1,$meta2,$meta3,$meta4)" />
 			<xsl:with-param name="metaLabels" select="($metaLabel1,$metaLabel2,$metaLabel3,$metaLabel4)" />
 			<xsl:with-param name="useJavascript" select="$useJavascript" />
