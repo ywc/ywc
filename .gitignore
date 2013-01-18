@@ -8,9 +8,18 @@
 /ywc.xsl/oist
 /ywc.db/oist
 
-/ywc.core/ywc.java/ywc.backend.d/build/
-/ywc.core/ywc.java/ywc.backend.d/dist/
-/ywc.core/ywc.java/ywc.backend.ws/build/
-/ywc.core/ywc.java/ywc.backend.ws/dist/
-/ywc.core/ywc.java/ywc.frontend/dist/
+/ywc.core/ywc.java/ywc.core/nbproject/
 /ywc.core/ywc.java/ywc.core/dist/
+/ywc.core/ywc.java/ywc.core/build/
+
+/ywc.core/ywc.java/ywc.frontend/nbproject/
+/ywc.core/ywc.java/ywc.frontend/dist/
+/ywc.core/ywc.java/ywc.frontend/build/
+
+/ywc.core/ywc.java/ywc.backend.d/nbproject/
+/ywc.core/ywc.java/ywc.backend.d/dist/
+/ywc.core/ywc.java/ywc.backend.d/build/
+
+/ywc.core/ywc.java/ywc.backend.ws/nbproject/
+/ywc.core/ywc.java/ywc.backend.ws/dist/
+/ywc.core/ywc.java/ywc.backend.ws/build/
