@@ -228,6 +228,8 @@ YWC.f.intranetPostArchivePopup = function(listName) {
 			,'uiHeaderColor':YWC.intranet.uiHeaderColor
 			,'uiHeaderBgColor':YWC.intranet.uiHeaderBgColor
 			,'uiFallbackImage':YWC.intranet.uiFallbackImage
+			,'sortBy':YWC.list.meta[listName].sortBy
+			,'sortOrder':YWC.list.meta[listName].sortOrder
 		}
 	});
 }

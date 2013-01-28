@@ -20,6 +20,8 @@
 <xsl:variable name="uiHeaderColor" as="xs:string" select="ywc:getParam('uiHeaderColor',$params)" />
 <xsl:variable name="uiHeaderBgColor" as="xs:string" select="ywc:getParam('uiHeaderBgColor',$params)" />
 <xsl:variable name="uiFallbackImage" as="xs:string" select="ywc:getParam('uiFallbackImage',$params)" />
+<xsl:variable name="sortBy" as="xs:string" select="ywc:getParam('sortBy',$params)" />
+<xsl:variable name="sortOrder" as="xs:string" select="ywc:getParam('sortOrder',$params)" />
 <xsl:variable name="preUri" as="xs:string" select="ywc:getParam('preUri',$params)" />
 
 <xsl:template match="/">
@@ -35,6 +37,8 @@
 		<xsl:with-param name="uiHeaderColor" select="$uiHeaderColor"/>
 		<xsl:with-param name="uiHeaderBgColor" select="$uiHeaderBgColor"/>
 		<xsl:with-param name="uiFallbackImage" select="$uiFallbackImage"/>
+		<xsl:with-param name="sortBy" select="$sortBy"/>
+		<xsl:with-param name="sortOrder" select="$sortOrder"/>
 	</xsl:call-template>
 	
 	
