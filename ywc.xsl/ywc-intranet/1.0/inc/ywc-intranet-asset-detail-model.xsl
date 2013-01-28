@@ -77,7 +77,7 @@
 			<!-- asset title -->
 			<div style="font-weight:bold; font-size:115%; padding:0px; color:black;">	
 				<xsl:value-of select="
-					if (string-length($title) &gt; 0) then $title
+					if (string-length($title) &gt; 0) then ywc:removeFormatting($title)
 					else '&lt;span style=&quot;display:none !important;&quot;&gt;Title&lt;/span&gt;'
 					" disable-output-escaping="yes" />
 			</div>
@@ -101,7 +101,7 @@
 						if (string-length($metaLabels[1]) &gt; 0) then concat($metaLabels[1],': ')
 						else ''" disable-output-escaping="yes" />
 					<xsl:value-of select="
-					if (string-length($meta[1]) &gt; 0) then $meta[1]
+					if (string-length($meta[1]) &gt; 0) then ywc:removeFormatting($meta[1])
 					else '&lt;span style=&quot;display:none !important;&quot;&gt;Meta #1&lt;/span&gt;'
 					" disable-output-escaping="yes" />
 					</span>
@@ -113,7 +113,7 @@
 						if (string-length($metaLabels[4]) &gt; 0) then concat($metaLabels[4],': ')
 						else ''" disable-output-escaping="yes" />
 					<xsl:value-of select="
-					if (string-length($meta[4]) &gt; 0) then $meta[4]
+					if (string-length($meta[4]) &gt; 0) then ywc:removeFormatting($meta[4])
 					else '&lt;span style=&quot;display:none !important;&quot;&gt;Meta #4&lt;/span&gt;'
 					" disable-output-escaping="yes" />
 					</span>
@@ -125,7 +125,7 @@
 						if (string-length($metaLabels[3]) &gt; 0) then concat($metaLabels[3],': ')
 						else ''" disable-output-escaping="yes" />
 					<xsl:value-of select="
-					if (string-length($meta[3]) &gt; 0) then $meta[3]
+					if (string-length($meta[3]) &gt; 0) then ywc:removeFormatting($meta[3])
 					else '&lt;span style=&quot;display:none !important;&quot;&gt;Meta #3&lt;/span&gt;'
 					" disable-output-escaping="yes" />
 					</span>

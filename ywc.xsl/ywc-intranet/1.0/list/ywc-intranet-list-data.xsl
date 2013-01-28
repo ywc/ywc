@@ -20,6 +20,7 @@
 		<xsl:with-param name="listTarget" select="ywc:getParam('listTarget',$params)"/>
 		<xsl:with-param name="searchTerm" select="ywc:getParam('searchTerm',$params)"/>
 		<xsl:with-param name="sortBy" select="ywc:getParam('sortBy',$params)"/>
+		<xsl:with-param name="sortOrder" select="ywc:getParam('sortOrder',$params)"/>
 		<xsl:with-param name="groupSize" select="xs:integer(ywc:getParam('groupSize',$params))"/>
 		<xsl:with-param name="groupCurr" select="xs:integer(ywc:getParam('groupCurr',$params))"/>
 		<xsl:with-param name="filterByDateTime" select="ywc:getParam('filterByDateTime',$params)"/>

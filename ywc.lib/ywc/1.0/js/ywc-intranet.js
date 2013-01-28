@@ -517,7 +517,8 @@ YWC.f.intranetAssetPagingDataSource = function(listName,listTarget) {
 		,url:YWC.uri.pre+'ywc/intranet/asset/paging'
 		,data:{
 			'listName':listName,'listTarget':listTarget
-			,'sortBy':''
+			,'sortBy':YWC.list.meta[listTarget].sortBy
+			,'sortOrder':YWC.list.meta[listTarget].sortOrder
 			,'groupCurr':YWC.list.meta[listTarget].groupCurr
 			,'groupSize':YWC.list.meta[listTarget].groupSize
 			,'searchTerm':YWC.f.assetSearchTerm(listTarget)

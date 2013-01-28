@@ -10,6 +10,7 @@
 <xsl:param name="groupSize" as="xs:integer" select="6" />
 <xsl:param name="groupCurr" as="xs:integer" select="0" />
 <xsl:param name="sortBy" as="xs:string" select="''" />
+<xsl:param name="sortOrder" as="xs:string" select="'descending'" />
 <xsl:param name="searchTerm" as="xs:string" select="''" />
 <xsl:param name="filterByDateTime" as="xs:string" select="''" />
 <xsl:param name="uiFallbackImage" as="xs:string" select="''" />
@@ -89,11 +90,12 @@
 					"YWC.list.list[&apos;",$listTarget_,"&apos;]=[];"
 					)' />
 		
+		<xsl:variable name="sortOrder_" select="if (string-length($sortOrder)!=0) then $sortOrder else 'descending'" />
+		<xsl:variable name="sortBy_" select="if (string-length($sortBy)!=0) then $sortBy else 'nid'" />
+
 		<xsl:for-each select="$srcXml__">
-			<xsl:sort data-type="text" order="descending" select="
-				if (string-length($sortBy)!=0) then (*|@*)[name()=$sortBy]
-				else nid
-				" /><!-- this sort fallback could be improved to not always fallback on Drupal structure... -->
+			<xsl:sort data-type="text" order="{$sortOrder_}" select="ywc:dateStringToNumbers((*|@*)[name()=$sortBy_])" />
+			<!-- this sort fallback could be improved to not always fallback on Drupal structure... -->
 				
 			<xsl:if test="	(position() &gt; ($groupSize*$groupCurr))
 				and (position() &lt;= ($groupSize*($groupCurr+1)))
@@ -191,7 +193,7 @@
 								," ",if (string-length(ywc:getNodeValue(.,"office")) &gt; 0)
 									then concat("Office: ",ywc:getNodeValue(.,"office")) else "" )
 						else if (contains($listName,"events")) then concat("YWC.f.dateConvert(&apos;"
-							,if ($srcXmlProfile = "drupal") then ywc:getNodeValue(.,"start_datetime")
+							,if ($srcXmlProfile = "drupal") then ywc:getNodeValue(.,"start-date")
 							else if ($srcXmlProfile = "sharepoint") then ywc:getNodeValue(.,"expirationdate")
 							else ""
 							,"&apos;,{&apos;type&apos;:&apos;date&apos;,&apos;format&apos;:&apos;local&apos;})")
@@ -266,6 +268,8 @@
 		<xsl:value-of select='concat(""
 			,"YWC.f.assetMetaCount(&apos;",$listTargetEsc,"&apos;,&apos;",count($srcXml__),"&apos;);"
 			,"YWC.list.meta[&apos;",$listTargetEsc,"&apos;].groupSize=",$groupSize,";"
+			,"YWC.list.meta[&apos;",$listTargetEsc,"&apos;].sortBy=&apos;",ywc:escApos($sortBy_),"&apos;;"
+			,"YWC.list.meta[&apos;",$listTargetEsc,"&apos;].sortOrder=&apos;",ywc:escApos($sortOrder_),"&apos;;"
 			,"YWC.list.meta[&apos;",$listTargetEsc,"&apos;].dataSource=function(){"
 				,"YWC.f.intranetAssetPagingDataSource(&apos;",ywc:escApos($listName),"&apos;,&apos;",$listTargetEsc,"&apos;);"
 			,"};"

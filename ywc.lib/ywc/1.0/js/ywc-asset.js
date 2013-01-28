@@ -166,9 +166,11 @@ YWC.f.assetDrawSingle = function(listId,assetId,animate) {
 			shell.find("span.asset-title").attr({'onClick':obj.clickTitleAction}).addClass("asset-title-clickable");
 		}
 		
-		shell.find("span.asset-title").html(
-			YWC.f.strLimitLength(YWC.f.strTrim(obj.title),obj.titleMaxLength));
-		
+		shell.find("span.asset-title").html(YWC.f.strLimitLength(YWC.f.strTrim(
+			//YWC.f.strRemoveTags(
+				obj.title
+			//	)
+			),obj.titleMaxLength));
 		
 		shell.find("div.asset-controls a").html(obj.clickAltHtml).each(function(){
 			if ((obj.clickAltHtml != "") && (obj.clickAltAction != "")) {

@@ -319,7 +319,7 @@
 					<xsl:with-param name="value" select="concat('',
 						if (string-length(ywc:getParam('valueStart',$params)) &gt; 0) then ywc:getParam('valueStart',$params)
 						else if (string-length(ywc:getNodeValue($srcNode,'start')) &gt; 0) then ywc:getNodeValue($srcNode,'start')
-						else if (string-length(ywc:getNodeValue($srcNode,'start_datetime')) &gt; 0) then ywc:getNodeValue($srcNode,'start_datetime')
+						else if (string-length(ywc:getNodeValue($srcNode,'start-date')) &gt; 0) then ywc:getNodeValue($srcNode,'start-date')
 						else xs:string(ywc:unixTime() + 3600*1000)
 					)"/>
 					<xsl:with-param name="type" select="'datetime'"/>

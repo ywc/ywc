@@ -46,7 +46,7 @@
 		,"&apos;",ywc:escApos($assetId),"&apos;,"
 		,"{&apos;visible&apos;:",if ($visible = 1) then "true" else "false"
 				
-		,if (string-length($title) = 0) then "" else concat(",&apos;title&apos;:&apos;",ywc:escApos($title),"&apos;")
+		,if (string-length($title) = 0) then "" else concat(",&apos;title&apos;:&apos;",ywc:escApos(ywc:removeFormatting($title)),"&apos;")
 		,if ($titleMaxLength = 0) then "" else concat(",&apos;titleMaxLength&apos;:",$titleMaxLength)
 					
 		,if (string-length($body) = 0) then "" else concat(",&apos;body&apos;:&apos;",ywc:escApos($body),"&apos;")
@@ -65,12 +65,12 @@
 		,if (string-length($clickAltLabel) = 0) then "" else concat(",&apos;clickAltLabel&apos;:&apos;",ywc:escApos($clickAltLabel),"&apos;")		
 		,if (string-length($metaLabel) = 0) then "" else concat(",&apos;metaLabel&apos;:&apos;",ywc:escApos($metaLabel),"&apos;")		
 		,if (string-length($metaValue) = 0) then "" else concat(",&apos;metaValue&apos;:"
-			,if ($metaValueAsString = 1) then concat("&apos;",ywc:escApos($metaValue),"&apos;")
+			,if ($metaValueAsString = 1) then concat("&apos;",ywc:escApos(ywc:removeFormatting($metaValue)),"&apos;")
 				else $metaValue
 			)	
 		,if (string-length($metaAltLabel) = 0) then "" else concat(",&apos;metaAltLabel&apos;:&apos;",ywc:escApos($metaAltLabel),"&apos;")
 		,if (string-length($metaAltValue) = 0) then "" else concat(",&apos;metaAltValue&apos;:"
-			,if ($metaAltValueAsString = 1) then concat("&apos;",ywc:escApos($metaAltValue),"&apos;")
+			,if ($metaAltValueAsString = 1) then concat("&apos;",ywc:escApos(ywc:removeFormatting($metaAltValue)),"&apos;")
 				else $metaAltValue
 			)	
 		,if ($metaMaxLength = 0) then "" else concat(",&apos;metaMaxLength&apos;:",$metaMaxLength)	

@@ -50,6 +50,21 @@ YWC.f.strEscAmp = function(s) {
 }
 
 /**
+* Removes tags from a string
+* @param {string} s The string to be analyzed
+* @returns {string} The re-formatted string
+* @public
+*/
+YWC.f.strRemoveTags = function(s) {
+	if (typeof s === "string") {
+		return s.replace(/(<([^>]+)>)/ig,"");
+	} else {
+		throw new Error("YWC: strEscAmp -> input not string. returning empty string.");
+		return "";
+	}
+}
+
+/**
 * Removes whitespace on either end of a string
 * @param {string} s The string to be analyzed
 * @returns {string} The trimmed string
@@ -291,6 +306,7 @@ YWC.f.dateConvert = function(inputDateTime,wh) {
 	
 	var timeStamp = 0;
 	if (wh.debug === true) { console.log('YWC: dateConvert -> input: '+inputDateTime); }
+	if (typeof inputDateTime == "string") { inputDateTime = YWC.f.strRemoveTags(inputDateTime); }
 	if (String(inputDateTime).length >= 14) {
 		inputDateTime = String(inputDateTime);
 		if (inputDateTime.lastIndexOf('E') > -1) {
