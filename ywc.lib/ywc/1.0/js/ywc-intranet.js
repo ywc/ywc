@@ -222,14 +222,19 @@ YWC.f.intranetSubscribeConfirm = function(listId,listName){
 }
 
 YWC.f.intranetPostArchivePopup = function(listName) {
+	var sendSortBy = ""; var sendSortOrder = "descending";
+	if (typeof YWC.list.meta[listName] != "undefined") {
+		sendSortBy = YWC.list.meta[listName].sortBy;
+		sendSortOrder = YWC.list.meta[listName].sortOrder;
+	}
 	YWC.f.popupLoad({ 'source':YWC.uri.pre+'ywc/intranet/popup/archive'
 		,'top':50,'z':'1','width':480,'id':'ywc-intranet-popup-archive-'+listName
 		,'params':{'listName':listName
 			,'uiHeaderColor':YWC.intranet.uiHeaderColor
 			,'uiHeaderBgColor':YWC.intranet.uiHeaderBgColor
 			,'uiFallbackImage':YWC.intranet.uiFallbackImage
-			,'sortBy':YWC.list.meta[listName].sortBy
-			,'sortOrder':YWC.list.meta[listName].sortOrder
+			,'sortBy':sendSortBy
+			,'sortOrder':sendSortOrder
 		}
 	});
 }

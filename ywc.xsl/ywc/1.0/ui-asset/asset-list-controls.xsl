@@ -23,7 +23,9 @@
 		</xsl:if>
 
 		<div class="asset-list-search {
-			if (($showBttnAdd = 0) and ($showBttnSubscribe = 0)) then 'asset-list-search-wide' else ''
+			if (($showBttnAdd = 0) and ($showBttnSubscribe = 0)) then 'asset-list-search-wide'
+			else if (($showBttnAdd = 0) and ($showBttnSubscribe = 1)) then 'asset-list-search-left'
+			else ''
 		}">
 			<xsl:call-template name="ywcInputText">
 				<xsl:with-param name="preUri" select="$preUri"/>
