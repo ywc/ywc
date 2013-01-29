@@ -79,7 +79,10 @@
 							
 				else if (string-length(ywc:getNodeValue(.,'expirationdate')) &gt; 0)
 					then xs:dateTime(ywc:removeSpace(ywc:getNodeValue(.,'expirationdate')))
-					
+
+				else if (string-length(ywc:getNodeValue(.,'start-date')) &gt; 0)
+					then xs:dateTime(ywc:dateStringProcess(ywc:getNodeValue(.,'start-date')))
+
 				else xs:dateTime('1970-01-01T00:00:00Z')
 			" />
 		
@@ -95,7 +98,7 @@
 			" />
 		
 		<xsl:variable name="meta1" select="
-			if ($srcXmlProfile = 'drupal') then ywc:directoryUserFullName(ywc:getNodeValue(.,'author'))
+			if ($srcXmlProfile = 'drupal') then ywc:directoryUserFullName(ywc:getNodeValue(.,'author'),'')
 			else if ($srcXmlProfile = 'sharepoint') then substring-after(ywc:getNodeValue(.,'author'),';#')
 			else if ($srcXmlProfile = 'ical') then 'calendar'
 			else ywc:getNodeValue(.,'author')
@@ -128,8 +131,8 @@
 			
 		<xsl:variable name="meta3" select="
 			if (string-length(ywc:getNodeValue(.,'type')) &gt; 0) then ywc:getNodeValue(.,'type')
-			else if (string-length(ywc:getNodeValue(.,'category')) &gt; 0) then ywc:getNodeValue(.,'category')
 			else if (string-length(ywc:getNodeValue(.,'location')) &gt; 0) then ywc:getNodeValue(.,'location')
+			else if (string-length(ywc:getNodeValue(.,'category')) &gt; 0) then ywc:getNodeValue(.,'category')
 			else ''" />
 			
 		<xsl:variable name="meta4" select="
@@ -163,7 +166,7 @@
 			else if (string-length(ywc:getNodeValue(.,'category')) &gt; 0) then ywc:getNodeValue(.,'category')
 			else ''" />
 
-		<xsl:variable name="metaLabel1" select="'Posted by'" />
+		<xsl:variable name="metaLabel1" select="if (string-length($meta1) != 0) then 'Posted by' else ''" />
 		<xsl:variable name="metaLabel2" select="
 			if (string-length(ywc:getNodeValue(.,'price')) &gt; 0) then 'Price'
 			else if ($dateExpiration &gt; xs:dateTime('1970-01-01T00:00:00Z')) then ''
@@ -171,8 +174,8 @@
 			else ''" />
 		<xsl:variable name="metaLabel3" select="
 			if (string-length(ywc:getNodeValue(.,'type')) &gt; 0) then 'Type'
-			else if (string-length(ywc:getNodeValue(.,'category')) &gt; 0) then 'Category'
 			else if (string-length(ywc:getNodeValue(.,'location')) &gt; 0) then 'Location'
+			else if (string-length(ywc:getNodeValue(.,'category')) &gt; 0) then 'Category'
 			else ''" />
 		<xsl:variable name="metaLabel4" select="
 			if ($duration &gt; 0) then ''

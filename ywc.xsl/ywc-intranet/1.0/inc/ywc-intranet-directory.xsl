@@ -6,6 +6,7 @@
 	
 	<xsl:function name="ywc:directoryUserFullName" as="xs:string">
 		<xsl:param name="uid" />
+		<xsl:param name="fallbackValue" />
 		
 		<xsl:variable as="xs:string" name="ywcCacheId">
 			<xsl:for-each select="document('../../../../ywc.cache/xml/data/cache.xml')/ywc/cache[lower-case(@name)='directory']">
@@ -23,7 +24,7 @@
 		
 		<xsl:choose>
 			<xsl:when test="count($userNodes) = 0">
-				<xsl:value-of select="'Unknown User'" />
+				<xsl:value-of select="$fallbackValue" />
 			</xsl:when>
 			<xsl:otherwise>
 				<xsl:for-each select="$userNodes">

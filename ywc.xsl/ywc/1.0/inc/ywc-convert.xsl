@@ -96,6 +96,14 @@
 <xsl:value-of select="$formatMonth" />
 </xsl:function>
 
+<xsl:function name="ywc:dateStringProcess" as="xs:string">
+<xsl:param name="dateString" as="xs:string" />
+<xsl:variable name="dateString_" as="xs:string" select="ywc:removeSpace(ywc:dateStringToNumbers(ywc:removeFormatting($dateString)))" />
+<xsl:variable name="dateString__" as="xs:string" select=" if (string-length($dateString_) = 15) then concat($dateString_,':00') else $dateString_ " />
+<xsl:value-of select="concat(substring($dateString__,1,10),'T',substring($dateString__,11),'Z')" />
+</xsl:function>
+
+
 <xsl:function name="ywc:removeFormatting" as="xs:string">
 <xsl:param name="text" as="xs:string" />
 <xsl:variable name="formatted" as="xs:string*">

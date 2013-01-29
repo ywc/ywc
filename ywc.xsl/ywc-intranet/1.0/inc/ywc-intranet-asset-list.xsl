@@ -110,7 +110,7 @@
 					)" />
 				
 				<xsl:variable name="userFullName" select="
-					if ($srcXmlProfile = 'drupal') then ywc:directoryUserFullName(ywc:getNodeValue(.,'author'))
+					if ($srcXmlProfile = 'drupal') then ywc:directoryUserFullName(ywc:getNodeValue(.,'author'),'Unknown User')
 					else if ($srcXmlProfile = 'sharepoint') then substring-after(ywc:getNodeValue(.,'author'),';#')
 					else if ($srcXmlProfile = 'directory') then concat(
 						ywc:getNodeValue(.,'firstname'),' ',ywc:getNodeValue(.,'lastname')
