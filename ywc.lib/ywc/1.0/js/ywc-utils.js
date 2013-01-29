@@ -306,7 +306,16 @@ YWC.f.dateConvert = function(inputDateTime,wh) {
 	
 	var timeStamp = 0;
 	if (wh.debug === true) { console.log('YWC: dateConvert -> input: '+inputDateTime); }
-	if (typeof inputDateTime == "string") { inputDateTime = YWC.f.strRemoveTags(inputDateTime); }
+	
+	if (typeof inputDateTime == "string") {
+		//getting rid of extraneous string formatting
+		inputDateTime = YWC.f.strRemoveTags(inputDateTime);
+		var allDayIndex = inputDateTime.toLowerCase().indexOf("(all day)");
+		if (inputDateTime.toLowerCase().indexOf("(all day)") >= 0) {
+			inputDateTime = inputDateTime.toLowerCase().replace(/\(all day\)/g,"01:00:00").toUpperCase();
+		}
+	}
+	
 	if (String(inputDateTime).length >= 14) {
 		inputDateTime = String(inputDateTime);
 		if (inputDateTime.lastIndexOf('E') > -1) {
@@ -322,6 +331,7 @@ YWC.f.dateConvert = function(inputDateTime,wh) {
 	
 	if (isNaN(timeStamp)) {
 		// if string conversion fails (Safari + IE), then manually set year+month+day+hour+minute+second
+		if (inputDateTime.length == 16) { inputDateTime += ":00"; }
 		timeStamp = (new Date(
 			parseInt(inputDateTime.substr(0,4)),parseInt(inputDateTime.substr(5,2),10)-1
 			,parseInt(inputDateTime.substr(8,2),10),parseInt(inputDateTime.substr(11,2),10)
@@ -426,7 +436,6 @@ YWC.f.dateConvert = function(inputDateTime,wh) {
 				
 			}
 		}
-		
 		return rtrn;	
 	} else {
 		return "could not convert date/time";

@@ -87,13 +87,11 @@
 <xsl:function name="ywc:dateStringToNumbers" as="xs:string">
 <xsl:param name="dateString" as="xs:string" />
 <xsl:variable name="formatMonth" as="xs:string" select="
-			replace(
 			replace(replace(replace(replace(replace(replace(replace(
 			replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(
 				lower-case($dateString)
 			,'jan','01'),'feb','02'),'mar','03'),'apr','04'),'may','05'),'jun','06'),'jul','07'),'aug','08'),'sep','09'),'oct','10'),'nov','11'),'dec','12')
 			,'(mon)',''),'(tue)',''),'(wed)',''),'(thu)',''),'(fri)',''),'(sat)',''),'(sun)','')
-			,'  ',' ')
 	" />
 <xsl:value-of select="$formatMonth" />
 </xsl:function>
