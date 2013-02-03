@@ -100,7 +100,8 @@
 <xsl:param name="dateString" as="xs:string" />
 <xsl:variable name="dateString_" as="xs:string" select="ywc:removeSpace(ywc:dateStringToNumbers(ywc:removeFormatting($dateString)))" />
 <xsl:variable name="dateString__" as="xs:string" select=" if (string-length($dateString_) = 15) then concat($dateString_,':00') else $dateString_ " />
-<xsl:value-of select="concat(substring($dateString__,1,10),'T',substring($dateString__,11),'Z')" />
+<xsl:variable name="dateStringReplaced" as="xs:string" select="replace($dateString__,'\(allday\)','00:00:00')" />
+<xsl:value-of select="concat(substring($dateStringReplaced,1,10),'T',substring($dateStringReplaced,11),'Z')" />
 </xsl:function>
 
 

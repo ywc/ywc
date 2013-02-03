@@ -113,7 +113,7 @@
 						if (string-length($metaLabels[4]) &gt; 0) then concat($metaLabels[4],': ')
 						else ''" disable-output-escaping="yes" />
 					<xsl:value-of select="
-					if (string-length($meta[4]) &gt; 0) then ywc:removeFormatting($meta[4])
+					if (string-length($meta[4]) &gt; 0) then $meta[4]
 					else '&lt;span style=&quot;display:none !important;&quot;&gt;Meta #4&lt;/span&gt;'
 					" disable-output-escaping="yes" />
 					</span>

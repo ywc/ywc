@@ -85,10 +85,16 @@
 
 				else xs:dateTime('1970-01-01T00:00:00Z')
 			" />
-		
+
 		<xsl:variable name="duration" as="xs:integer" select="
 				if (string-length(ywc:getNodeValue(.,'duration')) &gt; 0)
 					then xs:integer(round(xs:double(ywc:removeSpace(ywc:getNodeValue(.,'duration')))))
+
+				else if (string-length(ywc:getNodeValue(.,'end-date')) &gt; 0) then
+					if (contains(lower-case(ywc:getNodeValue(.,'end-date')),'all day'))
+						then -1
+					else xs:integer((xs:dateTime(ywc:dateStringProcess(ywc:getNodeValue(.,'end-date'))) - $dateExpiration) div xs:dayTimeDuration('PT1S'))
+
 				else 0 " />
 				
 		<xsl:variable name="dateEnd" as="xs:dateTime" select="
@@ -159,8 +165,9 @@
 					,'&lt;span class=&quot;ywc-intranet-date-unformatted-time&quot;&gt;'
 						,if ($useJavascript = 1) then $dateEnd else substring(concat('',$dateEnd),12,5)
 					,'&lt;/span&gt;'
-					)					
-					
+					)			
+
+			else if ($duration = -1) then 'All Day'
 					
 					
 			else if (string-length(ywc:getNodeValue(.,'category')) &gt; 0) then ywc:getNodeValue(.,'category')
@@ -179,6 +186,7 @@
 			else ''" />
 		<xsl:variable name="metaLabel4" select="
 			if ($duration &gt; 0) then ''
+			else if ($duration = -1) then ''
 			else if (string-length(ywc:getNodeValue(.,'category')) &gt; 0) then 'Category'
 			else ''" />
 		
