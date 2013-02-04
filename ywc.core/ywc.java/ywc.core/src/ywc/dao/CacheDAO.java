@@ -82,6 +82,15 @@ public class CacheDAO {
         if (entry != null) {
             if (entry.properties.containsKey("destination") && entry.properties.get("destination").toString().equals("drupal")) {
                 DrupalDAO drupal = new DrupalDAO();
+                
+                // override drupal endpoint
+                if (entry.properties.containsKey("drupalEndpoint")) {
+                    logger.info("Override Drupal endpoint with " + entry.properties.get("drupalEndpoint"));
+                    drupal.setEndpoint(entry.properties.get("drupalEndpoint").toString(), 
+                                        entry.properties.get("drupalUser").toString(), 
+                                        entry.properties.get("drupalPass").toString());
+                }
+
                 if (drupal.login()) {
                     entry.properties.put("Cookie", drupal.getCookie());
 

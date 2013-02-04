@@ -55,6 +55,12 @@ public class DrupalDAO {
         httpPass = pHttpPass;
     } 
     
+    public void setEndpoint(String pEndpoint, String pUser, String pPass) {
+        url = pEndpoint;
+        user = pUser;
+        pass = pPass;
+    }
+    
     public String getCookie() {return cookie;}
     public boolean login() {
         boolean ret = false;
