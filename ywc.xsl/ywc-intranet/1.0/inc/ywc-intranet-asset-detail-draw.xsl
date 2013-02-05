@@ -104,7 +104,9 @@
 			" />
 		
 		<xsl:variable name="meta1" select="
-			if ($srcXmlProfile = 'drupal') then ywc:directoryUserFullName(ywc:getNodeValue(.,'author'),'')
+			if ($srcXmlProfile = 'drupal') then 
+				if (string-length(ywc:getNodeValue(.,'authorname')) != 0) then ywc:directoryUserFullName(ywc:getNodeValue(.,'authorname'),'')
+				else ywc:directoryUserFullName(ywc:getNodeValue(.,'author'),'')
 			else if ($srcXmlProfile = 'sharepoint') then substring-after(ywc:getNodeValue(.,'author'),';#')
 			else if ($srcXmlProfile = 'ical') then 'calendar'
 			else ywc:getNodeValue(.,'author')
