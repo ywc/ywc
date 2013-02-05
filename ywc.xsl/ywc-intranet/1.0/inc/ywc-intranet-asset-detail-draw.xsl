@@ -222,7 +222,9 @@
 			<xsl:with-param name="currentUser" select="$currentUser"/>
 			<xsl:with-param name="author" select="ywc:getNodeValue(.,'author')"/>
 			<xsl:with-param name="replyEmail" select="ywc:directoryUserEmail(
-				if ($srcXmlProfile = 'drupal') then ywc:getNodeValue(.,'author')
+				if ($srcXmlProfile = 'drupal') then
+					if (string-length(ywc:getNodeValue(.,'authorname')) != 0) then ywc:getNodeValue(.,'authorname')
+					else ywc:getNodeValue(.,'author')
 				else if ($srcXmlProfile = 'sharepoint') then substring-after(ywc:getNodeValue(.,'author'),';#')
 				else ywc:getNodeValue(.,'author')
 				)"/>
