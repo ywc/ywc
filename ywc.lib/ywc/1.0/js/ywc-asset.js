@@ -103,6 +103,40 @@ YWC.f.assetParseAttachments = function(assetId) {
 	if (typeof YWC.store[assetId].attachments === "undefined") {
 		YWC.store[assetId].attachments = [];
 	}
+
+	// check image field for HTML formatted image URI
+	if ((typeof YWC.store[assetId].image === "string") && (YWC.store[assetId].image.substr(0,1) === "<")) {
+		YWC.f.assetParseAttachmentHtml(assetId,"image");
+	}
+
+}
+
+YWC.f.assetParseAttachmentHtml = function(assetId,attributeName) {
+	
+	if (typeof YWC.store[assetId].attachments === "string") {
+		YWC.store[assetId].attachments = [];
+	}
+	
+	$(	$.parseXML("<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+				+"\n<ywc>"+YWC.f.strEscAmp(YWC.store[assetId][attributeName])+"</ywc>"
+		)).find("*[href]").each(function(){
+			var attObj = {"orig":$(this).attr("href")};
+			attObj.name = attObj.orig.substr(1+attObj.orig.lastIndexOf("/"));
+			attObj.ext = attObj.name.substr(1+attObj.name.lastIndexOf("."));
+			var type = $(this).attr("type");
+			if (typeof type !== "undefined") {
+				attObj.size = parseInt(type.substr(7+type.lastIndexOf("length=")));
+			}
+			YWC.store[assetId].attachments.push(attObj);
+		});
+
+		if (	(attributeName === "image")
+			&& 	(YWC.store[assetId].attachments.length > 0)
+			) {
+			YWC.store[assetId][attributeName] = YWC.store[assetId].attachments[0].orig;
+		}
+
+	console.log("gotta parse: "+assetId);
 }
 
 YWC.f.assetDrawSingle = function(listId,assetId,animate) {

@@ -104,6 +104,10 @@
 <xsl:value-of select="concat(substring($dateStringReplaced,1,10),'T',substring($dateStringReplaced,11),'Z')" />
 </xsl:function>
 
+<xsl:function name="ywc:getImgUrlFromHtml" as="xs:string">
+<xsl:param name="text" as="xs:string" />
+	<xsl:value-of select="substring-before(substring-after(substring-before(substring-after($text,'&lt;img '),'&gt;'),'src=&quot;'),'&quot;')" />
+</xsl:function>
 
 <xsl:function name="ywc:removeFormatting" as="xs:string">
 <xsl:param name="text" as="xs:string" />

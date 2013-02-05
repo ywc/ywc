@@ -120,14 +120,16 @@
 					" />
 				
 				<xsl:variable name="parsedAttachments" select="
-						ywc:getImgUrl(ywc:getNodeValue(.,'attachments'),1)
+							ywc:getImgUrl(ywc:getNodeValue(.,'attachments'),1)
 						" />
 						
-				<xsl:variable name="parsedImages" select="
-						if (string-length(ywc:getNodeValue(.,'images')) &gt; 0)
-							then ywc:getImgUrl(ywc:getNodeValue(.,'images'),1)
-						else ''
-						" />						
+				<xsl:variable name="parsedImages" select='
+						if (string-length(ywc:getNodeValue(.,"images")) &gt; 0)
+							then ywc:getImgUrl(ywc:getNodeValue(.,"images"),1)
+						else if (string-length(ywc:getNodeValue(.,"image")) &gt; 0)
+							then ywc:getImgUrlFromHtml(ywc:getNodeValue(.,"image"))
+						else ""
+						' />						
 				
 				<xsl:variable name="thmbUri" select='
 					if ($srcXmlProfile = "directory") then ywc:getNodeValue(.,"thumbnailUrl")
