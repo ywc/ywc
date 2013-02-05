@@ -127,6 +127,10 @@ YWC.f.assetParseAttachmentHtml = function(assetId,attributeName) {
 			if (typeof type !== "undefined") {
 				attObj.size = parseInt(type.substr(7+type.lastIndexOf("length=")));
 			}
+			if (attributeName === "image") {
+				attObj.image = attObj.orig;
+				attObj.size = 0;
+			}
 			YWC.store[assetId].attachments.push(attObj);
 		});
 
@@ -135,8 +139,6 @@ YWC.f.assetParseAttachmentHtml = function(assetId,attributeName) {
 			) {
 			YWC.store[assetId][attributeName] = YWC.store[assetId].attachments[0].orig;
 		}
-
-	console.log("gotta parse: "+assetId);
 }
 
 YWC.f.assetDrawSingle = function(listId,assetId,animate) {

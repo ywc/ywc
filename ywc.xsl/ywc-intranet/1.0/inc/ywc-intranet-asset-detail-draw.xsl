@@ -203,7 +203,9 @@
 					if ($srcXmlProfile = 'ical') then ywc:getNodeValue(.,'summary')
 					else ywc:getNodeValue(.,'title')
 				"/>
-			<xsl:with-param name="thmb" select="ywc:getImgUrl(ywc:getNodeValue(.,'attachments'),1)"/>
+			<xsl:with-param name="thmb" select="
+						ywc:getImgUrl(ywc:getNodeValue(.,'attachments'),1)
+					"/>
 			<xsl:with-param name="thmbLink" select="concat(ywc:getImgUrl(ywc:getNodeValue(.,'attachments'),1),'?size=2048')"/>
 			<xsl:with-param name="body" select="
 					if ($srcXmlProfile = 'ical') then ywc:getNodeValue(.,'summary')

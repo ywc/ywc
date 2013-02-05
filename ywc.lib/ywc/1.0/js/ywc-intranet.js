@@ -452,12 +452,12 @@ YWC.f.intranetPostPopupRefine = function(listName,assetId) {
 				var ext = obj.attachments[i].ext.toLowerCase();	
 				
 				var fileSize = Math.round(obj.attachments[i].size/1024);
-				if (fileSize <= 0) { fileSize = 'Unknown'; }
+				if ((isNaN(fileSize)) || (fileSize <= 0)) { fileSize = 'Unknown'; }
 				else if (fileSize > 1024) { fileSize = Math.round(fileSize/102.4)/10; fileSize+=' MB'; }
 				else { fileSize+=' kB'; }
 				
 				if ((ext=="jpeg")||(ext=="jpg")||(ext=="png")||(ext=="gif")) {
-					if (hideThmb && (obj.attachments[i].image != null)&&(obj.attachments[i].image != "")) {
+					if (hideThmb && (obj.attachments[i].image != null)&&(obj.attachments[i].image != "")&&(obj.attachments[i].image.indexOf("http") != 0)) {
 						hideThmb = false;
 					} else {
 						YWC.f.assetDisplayData(gallerylistName,gallerylistName+'-'+i,{
