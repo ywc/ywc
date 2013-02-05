@@ -270,7 +270,7 @@
 					or ($useJavascript = 1))
 					then concat(
 					"mailto:",$replyEmail
-					,"?subject=",encode-for-uri(concat("Re: ",$title))
+					,"?subject=",encode-for-uri(concat("Re: ",ywc:removeFormatting($title)))
 					,"&amp;body=%20%0A----------"
 					,"%0A",encode-for-uri(concat("This is an e-mail response to a posting on ",$domain))
 					,"%0A",encode-for-uri("The original posting can be viewed in its entirety here:")
@@ -301,7 +301,7 @@
 				if ($useJavascript = 0)
 					then concat(
 					"mailto:"
-					,"?subject=",encode-for-uri(concat("Fwd: ",$title))
+					,"?subject=",encode-for-uri(concat("Fwd: ",ywc:removeFormatting($title)))
 					,"&amp;body=%20%0A----------"
 					,"%0A",encode-for-uri(concat("This is an e-mail forwarding for a posting on ",$domain))
 					,"%0A",encode-for-uri("The original posting can be viewed in its entirety here:")
