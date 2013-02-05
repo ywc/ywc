@@ -79,7 +79,9 @@
 			<span style="float:right;" class="ywc-intranet-date-unformatted-date">
 				<xsl:value-of select='
 					
-					if ($srcXmlProfile = "drupal") then ywc:getNodeValue(.,"posted")
+					if ($srcXmlProfile = "drupal") then
+							if ($listName = "news-external") then ywc:getNodeValue(.,"published")
+							else ywc:getNodeValue(.,"posted")
 						else if ($srcXmlProfile = "sharepoint") then ywc:getNodeValue(.,"publishdatetime")
 						else ""
 					' disable-output-escaping="yes" />

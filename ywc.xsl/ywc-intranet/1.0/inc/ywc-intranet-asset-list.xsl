@@ -209,7 +209,9 @@
 								else ""
 							,"&apos;,{&apos;type&apos;:&apos;date&apos;,&apos;format&apos;:&apos;local&apos;})")
 						else concat("YWC.f.dateConvert(&apos;"
-							,if ($srcXmlProfile = "drupal") then ywc:getNodeValue(.,"posted")
+							,if ($srcXmlProfile = "drupal") then
+									if ($listName = "news-external") then ywc:getNodeValue(.,"published")
+									else ywc:getNodeValue(.,"posted")
 								else if ($srcXmlProfile = "sharepoint") then ywc:getNodeValue(.,"created")
 								else ""
 							,"&apos;,{&apos;type&apos;:&apos;date&apos;,&apos;format&apos;:&apos;local&apos;})")
