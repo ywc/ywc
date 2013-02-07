@@ -42,9 +42,11 @@
 .ywc-container-list-controls .asset-list-search { position:absolute; top:2px; left:105px; float:left; width:45%; }
 .ywc-container-list-controls .asset-list-search-wide { left:4%; width:110%; }
 .ywc-container-list-controls .asset-list-search-left { left:5%; width:70%; }
+.ywc-container-list-controls .asset-list-search-left-wide { left:4%; width:84%; }
 .ywc-container-list-controls img.bttn-add-item { position:absolute; left:8px; top:4px; width:90px; cursor:pointer; }
 .ywc-container-list-controls img.bttn-subscribe { position:absolute; right:8px; top:1px; width:25px; cursor:pointer; }
 .ywc-container-list-controls img.bttn-archive { position:absolute; right:40px; top:-5px; width:40px; cursor:pointer; }
+.ywc-container-list-controls img.bttn-archive-right { right:10px; }
 
 .ywc-container-list-paging div.ywc-list-paging-inner, .ywc-container-list-feedback div.ywc-list-feedback { position:relative; left:10%; width:80%; margin:8px 0px; height:auto; text-align:center; border:none; }
 

@@ -23,8 +23,9 @@
 		</xsl:if>
 
 		<div class="asset-list-search {
-			if (($showBttnAdd = 0) and ($showBttnSubscribe = 0)) then 'asset-list-search-wide'
-			else if (($showBttnAdd = 0) and ($showBttnSubscribe = 1)) then 'asset-list-search-left'
+			if (($showBttnAdd = 0) and ($showBttnSubscribe = 0) and ($showBttnArchive = 0)) then 'asset-list-search-wide'
+			else if (($showBttnAdd = 0) and ($showBttnSubscribe = 0) and ($showBttnArchive = 1)) then 'asset-list-search-left-wide'
+			else if (($showBttnAdd = 0) and ($showBttnSubscribe = 1) and ($showBttnArchive = 1)) then 'asset-list-search-left'
 			else ''
 		}">
 			<xsl:call-template name="ywcInputText">
@@ -46,7 +47,9 @@
 		</div>
 
 		<xsl:if test="$showBttnArchive = 1">
-			<img src="{$preUri}lib/ywc-image/1.0/bttn/misc/books-01.png" class="bttn-archive" id="ywc-list-controls-bttn-archive-{$listName}" onClick="YWC.f.intranetPostArchivePopup('{$listName}');" onLoad="YWC.f.uiSetHoverBulge(this,4,'hz',true)" />
+			<img src="{$preUri}lib/ywc-image/1.0/bttn/misc/books-01.png" class="bttn-archive {
+				if (($showBttnAdd = 0) and ($showBttnSubscribe = 0) and ($showBttnArchive = 1)) then 'bttn-archive-right' else ''
+				}" id="ywc-list-controls-bttn-archive-{$listName}" onClick="YWC.f.intranetPostArchivePopup('{$listName}');" onLoad="YWC.f.uiSetHoverBulge(this,4,'hz',true)" />
 		</xsl:if>
 		
 		<xsl:if test="$showBttnSubscribe = 1">

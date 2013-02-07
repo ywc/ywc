@@ -8,6 +8,7 @@
 <xsl:param name="preTitle" as="xs:string" select="''" />
 <xsl:param name="groupSize" as="xs:integer" select="6" />
 <xsl:param name="showButtonAdd" as="xs:integer" select="1" />
+<xsl:param name="showButtonSubscribe" as="xs:integer" select="1" />
 <xsl:param name="showButtons" as="xs:integer" select="1" />
 <xsl:param name="showSearch" as="xs:integer" select="1" />
 <xsl:param name="searchAutoFocus" as="xs:integer" select="0" />
@@ -40,7 +41,7 @@
 				<xsl:with-param name="listName" select="$listTarget_"/>
 				<xsl:with-param name="listHumanName" select="lower-case(concat($preTitle,@title))"/>
 				<xsl:with-param name="showBttnAdd" select="if ($showButtonAdd = 1) then $showButtons else $showButtonAdd"/>
-				<xsl:with-param name="showBttnSubscribe" select="$showButtons"/>
+				<xsl:with-param name="showBttnSubscribe" select="if ($showButtonSubscribe = 1) then $showButtons else $showButtonSubscribe"/>
 				<xsl:with-param name="showBttnArchive" select="$showButtons"/>
 				<xsl:with-param name="searchAutoFocus" select="$searchAutoFocus"/>
 				<xsl:with-param name="filterByDateTime" select="$filterByDateTime"/>
