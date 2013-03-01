@@ -1,4 +1,4 @@
 ywc
 ===
 
-A multi-platform web development solution built on XSL and Javascript.
+A multi-platform web development solution built on server-side XSL and client-side Javascript.
