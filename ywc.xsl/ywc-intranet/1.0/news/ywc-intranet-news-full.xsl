@@ -76,7 +76,7 @@
 				,ywc:getNodeValue(.,'source')
 				,'&lt;/span&gt;')
 				" disable-output-escaping="yes" />
-			<span style="float:right;clear:right;" class="ywc-intranet-date-unformatted-date">
+			<span style="float:right;" class="ywc-intranet-date-unformatted-date">
 				<xsl:value-of select='
 					
 					if ($srcXmlProfile = "drupal") then
@@ -85,7 +85,7 @@
 						else if ($srcXmlProfile = "sharepoint") then ywc:getNodeValue(.,"publishdatetime")
 						else ""
 					' disable-output-escaping="yes" />
-			</span>
+			</span><br />
 		</div>
 
 		<div style="width:99%;font-size:14px;margin-top:10px;">
