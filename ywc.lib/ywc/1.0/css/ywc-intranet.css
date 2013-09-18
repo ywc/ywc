@@ -98,7 +98,7 @@ div.ywc-intranet-news-controls .bttn-archive { top:1px; width:40px; right:45%; }
 .ywc-intranet-news-full div.news-attachments a { color:#21368C; font-weight:bold; text-decoration:none; font-size:120%; margin-top:5px; clear:both; }
 .ywc-intranet-news-full div.news-attachments a:hover { text-decoration:underline; }
 .ywc-intranet-news-full div.news-attachments a img { position:relative; top:-10px; width:30px; height:30px; float:left; display:inline; margin-right:5px; }
-.ywc-intranet-news-full ol, .ywc-intranet-news-full ul { list-style:disc outside none; }
+.ywc-intranet-news-full ol, .ywc-intranet-news-full ul { list-style:disc inside none; padding-top:4px; padding-bottom:4px; }
 
 div.ywc-intranet-widget-weather, div.ywc-intranet-widget-weather-header { width:99%; font-size:16px; height:auto; background-color:#ffffff; border:solid 1px #ddd; margin:0px 0px 2px 0px; padding:1px 0px; border-bottom:none; cursor:pointer; }
 div.ywc-intranet-widget-weather:hover, div.ywc-intranet-widget-weather-header:hover { background-color:#eeeeee; border-color:#ccc; }
