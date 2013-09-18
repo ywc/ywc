@@ -85,12 +85,12 @@
 						else if ($srcXmlProfile = "sharepoint") then ywc:getNodeValue(.,"publishdatetime")
 						else ""
 					' disable-output-escaping="yes" />
-			</span><br />
+			</span>
 		</div>
 
 		<div style="width:99%;font-size:14px;margin-top:10px;">
 		
-			<span class="news-body" style="font-size:12px;text-decoration:none;color:black;">
+			<span class="news-body" style="font-size:12px;text-decoration:none;color:black;clear:left;">
 				
 				<xsl:if test="string-length($imgUri) &gt; 0">
 				<a href="{$imgUri}?size=1024" target="_blank">
