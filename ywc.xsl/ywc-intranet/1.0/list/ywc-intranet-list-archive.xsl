@@ -38,6 +38,7 @@
 		<xsl:with-param name="uiHeaderBgColor" select="$uiHeaderBgColor"/>
 		<xsl:with-param name="uiFallbackImage" select="$uiFallbackImage"/>
 		<xsl:with-param name="sortBy" select="$sortBy"/>
+		<xsl:with-param name="sortByType" select="'number'"/>
 		<xsl:with-param name="sortOrder" select="$sortOrder"/>
 	</xsl:call-template>
 	

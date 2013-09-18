@@ -18,6 +18,7 @@
 <xsl:param name="uiHeaderFont" as="xs:string" select="'frutiger75'" />
 <xsl:param name="filterByDateTime" as="xs:string" select="''" />
 <xsl:param name="sortBy" as="xs:string" select="''" />
+<xsl:param name="sortByType" as="xs:string" select="'text'" />
 <xsl:param name="sortOrder" as="xs:string" select="'descending'" />
 <xsl:param name="uiFallbackImage" as="xs:string" select="''" />
 	
@@ -62,6 +63,7 @@
 			<xsl:with-param name="groupSize" select="$groupSize"/>
 			<xsl:with-param name="filterByDateTime" select="$filterByDateTime"/>
 			<xsl:with-param name="sortBy" select="$sortBy"/>
+			<xsl:with-param name="sortByType" select="$sortByType"/>
 			<xsl:with-param name="sortOrder" select="$sortOrder"/>
 			<xsl:with-param name="uiFallbackImage" select="$uiFallbackImage"/>
 		</xsl:call-template>

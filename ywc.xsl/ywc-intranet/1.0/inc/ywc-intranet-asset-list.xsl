@@ -11,6 +11,7 @@
 <xsl:param name="groupCurr" as="xs:integer" select="0" />
 <xsl:param name="sortBy" as="xs:string" select="''" />
 <xsl:param name="sortOrder" as="xs:string" select="'descending'" />
+<xsl:param name="sortByType" as="xs:string" select="'text'" />
 <xsl:param name="searchTerm" as="xs:string" select="''" />
 <xsl:param name="filterByDateTime" as="xs:string" select="''" />
 <xsl:param name="uiFallbackImage" as="xs:string" select="''" />
@@ -94,7 +95,7 @@
 		<xsl:variable name="sortBy_" select="if (string-length($sortBy)!=0) then $sortBy else 'nid'" />
 
 		<xsl:for-each select="$srcXml__">
-			<xsl:sort data-type="text" order="{$sortOrder_}" select="(*|@*)[name()=$sortBy_]" />
+			<xsl:sort data-type="{$sortByType}" order="{$sortOrder_}" select="(*|@*)[name()=$sortBy_]" />
 			<!-- this sort fallback could be improved to not always fallback on Drupal structure... -->
 				
 			<xsl:if test="	(position() &gt; ($groupSize*$groupCurr))
