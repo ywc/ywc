@@ -102,6 +102,7 @@ div.ywc-intranet-news-controls .bttn-archive { top:1px; width:40px; right:45%; }
 div.ywc-popup ol, div.ywc-popup ul { list-style:disc outside none; padding:8px 0px 8px 16px; }
 div.ywc-popup em { font-style:italic; }
 div.ywc-popup strong { font-weight:bold; }
+div.ywc-popup p { margin:1em 0em; }
 
 div.ywc-intranet-widget-weather, div.ywc-intranet-widget-weather-header { width:99%; font-size:16px; height:auto; background-color:#ffffff; border:solid 1px #ddd; margin:0px 0px 2px 0px; padding:1px 0px; border-bottom:none; cursor:pointer; }
 div.ywc-intranet-widget-weather:hover, div.ywc-intranet-widget-weather-header:hover { background-color:#eeeeee; border-color:#ccc; }
