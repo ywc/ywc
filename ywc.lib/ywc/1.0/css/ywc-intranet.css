@@ -36,9 +36,9 @@ div.ywc-popup-detail-body-thmb:hover { border:solid 1px #aaaaaa; }
 div.ywc-popup-detail-body-thmb img { position:absolute; left:0%; top:0%; border:none; visibility:hidden; }
 
 div.ywc-popup-detail-body * { word-wrap:break-word; }
-div.ywc-popup-detail-body strong { font-weight:bold; }
-div.ywc-popup-detail-body em { font-style:italic; }
-div.ywc-popup-detail-body ol, div.ywc-popup-detail-body ul { word-wrap:normal; }
+body.ywc-body strong { font-weight:bold; }
+body.ywc-body em { font-style:italic; }
+body.ywc-body ol, div.ywc-popup-detail-body ul { word-wrap:normal; }
 /*span.ywc-popup-detail-body-content p { display:inline; } */
 div.ywc-popup-detail-attachments, div.ywc-popup-edit-attachments, div.ywc-intranet-detail-attachments-label {
 	position:relative; float:left; border:none; height:auto; width:99%; clear:both; border-bottom:solid 1px #cccccc; padding:8px 0px; }
