@@ -8,6 +8,7 @@
 <xsl:param name="font-color" as="xs:string" select="'222222'" />
 <xsl:param name="labels" as="xs:string*" select="()" />
 <xsl:param name="links" as="xs:string*" select="()" />
+<xsl:param name="menusXmlRef" as="xs:string" select="''" />
 <xsl:param name="uid" as="xs:string" select="''" />
 	
 	<div class="ywc-intranet-nav-global" style="background:url({$bg-img});height:auto;">
@@ -19,6 +20,17 @@
 				<xsl:value-of select="$labels[$pos]" />
 			</a></div>
 		</xsl:for-each>	
+
+<!-- 		<xsl:if test="string-length($menusXmlRef) &gt; 0">
+				<xsl:variable name="menus-xml" select="ywc:returnYwcCache($menusXmlRef)/menus/menu/item" />
+				<xsl:for-each select="$menus-xml">
+					<div class="item-top" style="font-size:{$font-size}px;padding:{($height - $font-size) div 2}px 10px;">
+						<a href="{@url}" target="_blank">	
+							<xsl:value-of select="@title" />
+						</a>
+					</div>
+				</xsl:for-each>	
+		</xsl:if> -->
 		
 		<xsl:variable name="userId" select="
 			if ((string-length($uid) &gt; 0) and ($uid != '(null)')) then concat('User: ',$uid) 
