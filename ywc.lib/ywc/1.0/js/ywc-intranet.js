@@ -222,10 +222,11 @@ YWC.f.intranetSubscribeConfirm = function(listId,listName){
 }
 
 YWC.f.intranetPostArchivePopup = function(listName) {
-	var sendSortBy = ""; var sendSortOrder = "descending";
+	var sendSortBy = ""; var sendSortOrder = "descending"; var sendSortByType = "text";
 	if (typeof YWC.list.meta[listName] != "undefined") {
 		sendSortBy = YWC.list.meta[listName].sortBy;
 		sendSortOrder = YWC.list.meta[listName].sortOrder;
+		sendSortByType = YWC.list.meta[listName].sortByType;
 	}
 	YWC.f.popupLoad({ 'source':YWC.uri.pre+'ywc/intranet/popup/archive'
 		,'top':50,'z':'1','width':480,'id':'ywc-intranet-popup-archive-'+listName
@@ -235,6 +236,7 @@ YWC.f.intranetPostArchivePopup = function(listName) {
 			,'uiFallbackImage':YWC.intranet.uiFallbackImage
 			,'sortBy':sendSortBy
 			,'sortOrder':sendSortOrder
+			,'sortByType':sendSortByType
 		}
 	});
 }
@@ -526,6 +528,7 @@ YWC.f.intranetAssetPagingDataSource = function(listName,listTarget) {
 			'listName':listName,'listTarget':listTarget
 			,'sortBy':YWC.list.meta[listTarget].sortBy
 			,'sortOrder':YWC.list.meta[listTarget].sortOrder
+			,'sortByType':YWC.list.meta[listTarget].sortByType
 			,'groupCurr':YWC.list.meta[listTarget].groupCurr
 			,'groupSize':YWC.list.meta[listTarget].groupSize
 			,'searchTerm':YWC.f.assetSearchTerm(listTarget)

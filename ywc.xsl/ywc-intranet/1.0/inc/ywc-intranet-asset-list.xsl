@@ -92,6 +92,7 @@
 					)' />
 		
 		<xsl:variable name="sortOrder_" select="if (string-length($sortOrder)!=0) then $sortOrder else 'descending'" />
+		<xsl:variable name="sortByType_" select="if (string-length($sortByType)!=0) then $sortByType else 'text'" />
 		<xsl:variable name="sortBy_" select="if (string-length($sortBy)!=0) then $sortBy else 'nid'" />
 
 		<xsl:for-each select="$srcXml__">
@@ -275,6 +276,7 @@
 			,"YWC.list.meta[&apos;",$listTargetEsc,"&apos;].groupSize=",$groupSize,";"
 			,"YWC.list.meta[&apos;",$listTargetEsc,"&apos;].sortBy=&apos;",ywc:escApos($sortBy_),"&apos;;"
 			,"YWC.list.meta[&apos;",$listTargetEsc,"&apos;].sortOrder=&apos;",ywc:escApos($sortOrder_),"&apos;;"
+			,"YWC.list.meta[&apos;",$listTargetEsc,"&apos;].sortByType=&apos;",ywc:escApos($sortByType_),"&apos;;"
 			,"YWC.list.meta[&apos;",$listTargetEsc,"&apos;].dataSource=function(){"
 				,"YWC.f.intranetAssetPagingDataSource(&apos;",ywc:escApos($listName),"&apos;,&apos;",$listTargetEsc,"&apos;);"
 			,"};"
