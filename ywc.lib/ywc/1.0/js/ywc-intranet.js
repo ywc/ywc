@@ -679,8 +679,8 @@ YWC.f.intranetPostEditAttachmentsList = function(listName,assetId,append) {
 					,'thmb':thmb
 					,'title':attObj.name
 					,'clickAction':'window.open(\''+orig+'\')'
-		//		,'clickAltHtml':'Remove'
-		//		,'clickAltAction':'YWC.f.intranetPostEditAttachmentsAdd(\''+YWC.f.strEscApos(listName)+'\',\''+YWC.f.strEscApos(assetId)+'\',true);'
+					,'clickAltHtml':'Remove'
+					,'clickAltAction':'YWC.f.intranetPostEditAttachmentRemove(\''+YWC.f.strEscApos(listName)+'\',\''+YWC.f.strEscApos(assetId)+'\','+i+');'
 				});
 				YWC.list.meta[assetListId].count++;
 		}
@@ -689,12 +689,17 @@ YWC.f.intranetPostEditAttachmentsList = function(listName,assetId,append) {
 	YWC.f.assetDrawList(assetListId,false,false);
 }
 
-YWC.f.intranetPostEditAttachmentsAdd = function(listName,assetId,addRemove) {
-	
-	if (addRemove || confirm('Are you sure?')) {
-		console.log('asdf');
+YWC.f.intranetPostEditAttachmentRemove = function(listName,assetId,inputListIndex) {
+	// still needs to be made to work for editing postings
+	var editAssetList = 'attachments-'+listName+'-edit';
+	if (YWC.input.value.file[listName+"-upload"][inputListIndex] !== null) {
+		YWC.input.value.file[listName+"-upload"].splice(inputListIndex,1);
+		delete YWC.list.data[editAssetList][editAssetList+'-'+inputListIndex];
+		YWC.list.list[editAssetList].splice(inputListIndex,1);
+		YWC.list.meta[editAssetList].count--;
+		YWC.f.assetDrawList('attachments-'+listName+'-edit',false,false);
 	}
-	
+
 }
 
 YWC.f.intranetAutoRefresh = function(executeAutoRefresh) {
