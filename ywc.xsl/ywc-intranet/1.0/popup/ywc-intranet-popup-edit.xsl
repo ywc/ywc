@@ -421,9 +421,8 @@
 						if (string-length(ywc:getParam('valueBody',$params)) &gt; 0) then ywc:getParam('valueBody',$params)
 						else if (string-length(ywc:getNodeValue($srcNode,'body')) &gt; 0) then ywc:getNodeValue($srcNode,'body')
 						else ''
-						
 					)"/>
-					
+
 				</xsl:call-template>
 			
 			</td>

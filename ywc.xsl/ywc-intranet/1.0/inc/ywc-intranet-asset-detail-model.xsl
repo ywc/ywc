@@ -49,13 +49,13 @@
 		
 		<div class="ywc-popup-detail" id="ywc-popup-detail-{$listName}-{$assetId}">
 		
-<!-- 		<xsl:if test="
+ 		<xsl:if test="
 				(	(string-length($currentUser) &gt; 1)
 					and ($currentUser = $author)
 					and ($useJavascript = 1)
 				)
 				or 	exists(index-of($adminUsers,lower-case($currentUser)))
-				"> -->
+				"> 
 			<!-- we don't need inline styles here because the edit controls should only be available on main intranet page -->
 
 			<div class="ywc-popup-detail-edit-bttns">
@@ -79,7 +79,7 @@
 
 			</div>
 
-<!-- 		</xsl:if> -->
+ 		</xsl:if>
 		
 		<!-- header container -->
 		<div style="position:relative; font-size:100%; float:left; border:none; height:auto; width:99%; clear:both; padding-bottom:10px; margin-bottom:5px;">
