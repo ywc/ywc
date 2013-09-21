@@ -59,7 +59,7 @@
 			<!-- we don't need inline styles here because the edit controls should only be available on main intranet page -->
 
 			<div class="ywc-popup-detail-edit-bttns">
-<!-- 				<div class="bttn-edit ywc-crnr-5 bttn-edit-lf"
+ 				<div class="bttn-edit ywc-crnr-5 bttn-edit-lf"
 					onClick="YWC.f.intranetCheckAuth(function(){'{'}YWC.f.intranetPopupPostEdit('{$listName}','{substring-after($assetId,concat($listName,'_'))}');{'}'});">
 					<img src="{$preUri}lib/ywc-image/1.0/bttn/misc/edit-01.png" />
 					<span>Click here to edit the content of this item...</span>
@@ -69,13 +69,13 @@
 					<img src="{$preUri}lib/ywc-image/1.0/bttn/misc/trash-01.png" />
 					<span>...or here to delete it.</span>
 				</div>
-			-->
+			
 
-				<div style="width:100%;text-align:center;" class="bttn-edit ywc-crnr-5 bttn-edit-rt"
+<!-- 				<div style="width:100%;text-align:center;" class="bttn-edit ywc-crnr-5 bttn-edit-rt"
 					onClick="YWC.f.intranetPostDelete('{$listName}','{substring-after($assetId,concat($listName,'_'))}','{$cacheId}');">
 					<img src="{$preUri}lib/ywc-image/1.0/bttn/misc/trash-01.png" />
 					<span>Click here to delete this posting...</span>
-				</div>
+				</div> -->
 
 			</div>
 
