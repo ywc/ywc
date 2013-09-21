@@ -10,7 +10,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `ywccore` /*!40100 DEFAULT CHARACTER SET latin1 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `ywccore` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
 USE `ywccore`;
 DROP TABLE IF EXISTS `data_cache`;
@@ -115,12 +115,12 @@ INSERT INTO `data_placeholder` VALUES ('aaaaag','aaaaah','Javascript Generic',0,
 INSERT INTO `data_placeholder` VALUES ('aaaaah','aaaaaf','Single Placeholder',0,0,100,100,'','','body','','','all');
 INSERT INTO `data_placeholder` VALUES ('aaaaai','aaaaai','YWC Intranet: Background',0,0,100,100,'','','bg','','','all');
 INSERT INTO `data_placeholder` VALUES ('aaaaaj','aaaaai','YWC Intranet: Banner (Top)',0,0,100,40,'','','body','ywc-intranet-plh-banner','','all');
-INSERT INTO `data_placeholder` VALUES ('aaaaak','aaaaai','YWC Intranet: Global Nav',0,40,100,80,'','','body','ywc-intranet-plh-nav-global','','all');
-INSERT INTO `data_placeholder` VALUES ('aaaaal','aaaaai','YWC Intranet: Footer',0,240,100,280,'','','body','ywc-intranet-plh-nav-footer','','all');
-INSERT INTO `data_placeholder` VALUES ('aaaaam','aaaaai','YWC Intranet: Left Column',0,80,18,240,'','','body','ywc-intranet-plh-clmn-side ywc-intranet-plh-clmn-side-left','','all');
-INSERT INTO `data_placeholder` VALUES ('aaaaan','aaaaai','YWC Intranet: Left Middle Column',18,80,50,240,'','','body','ywc-intranet-plh-clmn-mddl ywc-intranet-plh-clmn-mddl-left','','all');
-INSERT INTO `data_placeholder` VALUES ('aaaaao','aaaaai','YWC Intranet: Right Middle Column',50,80,82,240,'','','body','ywc-intranet-plh-clmn-mddl ywc-intranet-plh-clmn-mddl-right','','all');
-INSERT INTO `data_placeholder` VALUES ('aaaaap','aaaaai','YWC Intranet: Right Column',82,80,100,240,'','','body','ywc-intranet-plh-clmn-side ywc-intranet-plh-clmn-side-right','','all');
+INSERT INTO `data_placeholder` VALUES ('aaaaak','aaaaai','YWC Intranet: Global Nav',0,40,100,70,'','','body','ywc-intranet-plh-nav-global','','all');
+INSERT INTO `data_placeholder` VALUES ('aaaaal','aaaaai','YWC Intranet: Footer',0,230,100,280,'','','body','ywc-intranet-plh-nav-footer','','all');
+INSERT INTO `data_placeholder` VALUES ('aaaaam','aaaaai','YWC Intranet: Left Column',0,70,18,230,'','','body','ywc-intranet-plh-clmn-side ywc-intranet-plh-clmn-side-left','','all');
+INSERT INTO `data_placeholder` VALUES ('aaaaan','aaaaai','YWC Intranet: Left Middle Column',18,70,50,230,'','','body','ywc-intranet-plh-clmn-mddl ywc-intranet-plh-clmn-mddl-left','','all');
+INSERT INTO `data_placeholder` VALUES ('aaaaao','aaaaai','YWC Intranet: Right Middle Column',50,70,82,230,'','','body','ywc-intranet-plh-clmn-mddl ywc-intranet-plh-clmn-mddl-right','','all');
+INSERT INTO `data_placeholder` VALUES ('aaaaap','aaaaai','YWC Intranet: Right Column',82,70,100,230,'','','body','ywc-intranet-plh-clmn-side ywc-intranet-plh-clmn-side-right','','all');
 INSERT INTO `data_placeholder` VALUES ('aaaaaq','aaaaai','YWC Intranet: Favicon',0,0,100,100,'','','head','','','all');
 INSERT INTO `data_placeholder` VALUES ('aaaaar','aaaaad','Generic XML',0,0,0,0,'','','body','','','all');
 INSERT INTO `data_placeholder` VALUES ('aaaaas','aaaaaj','Plain Text Generic',0,0,0,0,'','','body','','','all');
