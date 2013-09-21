@@ -689,6 +689,7 @@ YWC.f.intranetPostEditAttachmentsList = function(listName,assetId,append) {
 	YWC.f.assetDrawList(assetListId,false,false);
 }
 
+
 YWC.f.intranetPostEditAttachmentRemove = function(listName,assetId,inputListIndex) {
 	// still needs to be made to work for editing postings
 	var editAssetList = 'attachments-'+listName+'-edit';
@@ -696,7 +697,16 @@ YWC.f.intranetPostEditAttachmentRemove = function(listName,assetId,inputListInde
 		YWC.input.value.file[listName+"-upload"].splice(inputListIndex,1);
 		delete YWC.list.data[editAssetList][editAssetList+'-'+inputListIndex];
 		YWC.list.list[editAssetList].splice(inputListIndex,1);
-		YWC.list.meta[editAssetList].count--;
+		var tmpDataObj = {}; var tmpListArr = [];
+		for (var i = 0; i < YWC.list.list[editAssetList].length; i++) {
+			tmpDataObj[editAssetList+'-'+i] = YWC.list.data[editAssetList][YWC.list.list[editAssetList][i].substr(4)];
+			tmpDataObj[editAssetList+'-'+i].assetId = editAssetList+'-'+i;
+			tmpDataObj[editAssetList+'-'+i].clickAltAction = 'YWC.f.intranetPostEditAttachmentRemove(\''+YWC.f.strEscApos(listName)+'\',\''+YWC.f.strEscApos(assetId)+'\','+i+');'
+			tmpListArr[i] = "111*"+editAssetList+"-"+i;
+		}
+		YWC.list.list[editAssetList] = tmpListArr;
+		delete YWC.list.data[editAssetList]; YWC.list.data[editAssetList] = tmpDataObj;
+		YWC.list.meta[editAssetList].count = YWC.list.list[editAssetList].length;
 		YWC.f.assetDrawList('attachments-'+listName+'-edit',false,false);
 	}
 

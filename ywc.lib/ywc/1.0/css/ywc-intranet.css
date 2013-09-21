@@ -57,6 +57,8 @@ table.ywc-intranet-asset-edit td.label { width:80px; border:none; padding:none; 
 table.ywc-intranet-asset-edit td.label label { position:relative; float:right; padding-right:8px; font-weight:bold; }
 table.ywc-intranet-asset-edit td.input { border:none; padding:5px 0px 5px 0px; }
 
+.ywc-intranet-edit-attachments .asset-controls .asset-controls-inner { font-weight:bold; }
+
 div.ywc-container-popup-utility div.utility-title { position:relative; width:99%; border:none; margin-bottom:5px; clear:both; height:auto; font-weight:bold; font-size:18px; }
 div.ywc-container-popup-utility div.utility-desc { position:relative; width:99%; border:none; margin-bottom:5px; clear:both; height:auto; font-size:12px; }
 div.ywc-container-popup-utility div.utility-body { position:relative; width:99%; border:none; clear:both; height:auto; font-size:12px; }
