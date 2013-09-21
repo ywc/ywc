@@ -11,7 +11,7 @@
 <xsl:param name="menusXmlRef" as="xs:string" select="''" />
 <xsl:param name="uid" as="xs:string" select="''" />
 	
-	<div class="ywc-intranet-nav-global" style="background:url({$bg-img});height:auto;">
+	<div class="ywc-intranet-nav-global ywc-crnr-5 ywc-crnr-b-off" style="background:url({$bg-img});">
 	
 		<xsl:for-each select="$labels">
 		<xsl:variable name="pos" select="position()" />
@@ -21,16 +21,48 @@
 			</a></div>
 		</xsl:for-each>	
 
-<!-- 		<xsl:if test="string-length($menusXmlRef) &gt; 0">
+		<xsl:if test="string-length($menusXmlRef) &gt; 0">
+			<ul class="ywc-crnr-5 ywc-crnr-b-off">
 				<xsl:variable name="menus-xml" select="ywc:returnYwcCache($menusXmlRef)/menus/menu/item" />
-				<xsl:for-each select="$menus-xml">
-					<div class="item-top" style="font-size:{$font-size}px;padding:{($height - $font-size) div 2}px 10px;">
-						<a href="{@url}" target="_blank">	
-							<xsl:value-of select="@title" />
-						</a>
-					</div>
+				<xsl:for-each select="$menus-xml[@language='en']">
+					<li style="background:url({$bg-img});" class="ywc-crnr-5 ywc-crnr-b-off">
+						<a href="{@url}" target="_blank"><xsl:value-of select="@title" /></a>
+						<xsl:if test="count(item) &gt; 0">							
+							<ul>
+								<xsl:for-each select="item[@language='en']">
+									<li style="background:url({$bg-img});">
+										<a href="{@url}" target="_blank"><xsl:value-of select="@title" /></a>
+										<xsl:if test="count(item) &gt; 0">
+<!-- 											<xsl:value-of select="'&lt;div class=&quot;ywc-flyout-indicator&quot;&gt;t&lt;/div&gt;'" disable-output-escaping="yes" /> -->
+											<ul>
+												<xsl:for-each select="item[@language='en']">
+													<li style="background:url({$bg-img});">
+														<a href="{@url}" target="_blank"><xsl:value-of select="@title" /></a>
+														<xsl:if test="count(item) &gt; 0">
+		<!-- 													<xsl:value-of select="'&lt;div class=&quot;ywc-flyout-indicator&quot;&gt;t&lt;/div&gt;'" disable-output-escaping="yes" /> -->
+															<ul>
+																<xsl:for-each select="item[@language='en']">
+																	<li style="background:url({$bg-img});">
+																		<a href="{@url}" target="_blank"><xsl:value-of select="@title" /></a>
+																	</li>
+																</xsl:for-each>
+															</ul>
+														</xsl:if>
+													</li>
+												</xsl:for-each>
+											</ul>
+										</xsl:if>
+									</li>
+								</xsl:for-each>
+							</ul>
+						</xsl:if>
+					</li>
 				</xsl:for-each>	
-		</xsl:if> -->
+			</ul>
+			<script type="text/javascript"><!--
+				-->YWC.exec.setQueue("YWC.f.intranetInitGlobalNav();");<!--
+			--></script>
+		</xsl:if> 
 		
 		<xsl:variable name="userId" select="
 			if ((string-length($uid) &gt; 0) and ($uid != '(null)')) then concat('User: ',$uid) 

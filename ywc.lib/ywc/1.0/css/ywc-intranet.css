@@ -4,16 +4,35 @@ div.ywc-intranet-template { min-width:1100px; }
 div.ywc-intranet-plh-clmn-side { min-width:195px; }
 div.ywc-intranet-plh-clmn-mddl { min-width:350px; }
 
-div.ywc-intranet-nav-global, div.ywc-intranet-nav-footer { position:absolute; left:0%; top:0%; width:100%; height:100%; }
+div.ywc-intranet-nav-global, div.ywc-intranet-nav-footer { position:absolute; left:0%; top:0%; width:100%; height:100%; z-index:9999; }
 
 div.ywc-intranet-nav-footer { background-color:#dddddd; color:#999999; text-align:center; height:auto; padding:6px 0px; margin:10px 0px; }
 div.ywc-intranet-nav-footer a { text-decoration:none; cursor:pointer; }
 div.ywc-intranet-nav-footer a:hover { text-decoration:underline; }
 
 div.ywc-intranet-nav-global { background-color:black; color:white; text-align:left; }
-div.ywc-intranet-nav-global div.item-top { cursor:pointer; }
-div.ywc-intranet-nav-global div.item-top a { text-decoration:none; color:white; }
-div.ywc-intranet-nav-global div.item-top:hover a { text-decoration:underline; }
+div.ywc-intranet-nav-global a { color:white; text-decoration:none; }
+div.ywc-intranet-nav-global ul { position: relative; }
+div.ywc-intranet-nav-global ul li { cursor:pointer; float:left; zoom:1; background-color:black; padding:0px 10px; border-left:solid 1px #333; }
+div.ywc-intranet-nav-global ul a:hover {}
+div.ywc-intranet-nav-global ul a:active {}
+div.ywc-intranet-nav-global ul li a { display:block; padding:0px 8px; }
+
+div.ywc-intranet-nav-global ul li:last-child a { border-right: none; } /* Doesn't work in IE */
+div.ywc-intranet-nav-global ul li.hover,
+ div.ywc-intranet-nav-global ul li:hover { position:relative; }
+div.ywc-intranet-nav-global ul li.hover a {  }
+
+div.ywc-intranet-nav-global ul ul { width:280px; visibility:hidden; position:absolute; top:100%; left:0; }
+div.ywc-intranet-nav-global ul ul li { float:none; }
+/* IE 6 & 7 Needs Inline Block */
+div.ywc-intranet-nav-global ul ul li a { width:100%; display:inline-block; } 
+
+div.ywc-intranet-nav-global ul ul ul { left:100%; top:0; }
+div.ywc-intranet-nav-global ul li:hover > ul { visibility:visible; }
+div.ywc-intranet-nav-global div.ywc-flyout-indicator { position:relative; float:right; height:3px; width:3px; background-color:white; }
+
+
 
 /* ensures that search boxes in the side columns won't be wider than the the column container */
 div.ywc-intranet-plh-clmn-side .ywc-container-list-controls .asset-list-search-wide { left:4%; width:100%; }
