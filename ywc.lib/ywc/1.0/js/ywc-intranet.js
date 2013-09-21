@@ -221,12 +221,16 @@ YWC.f.intranetSubscribeConfirm = function(listId,listName){
 	}
 }
 
-YWC.f.intranetPostArchivePopup = function(listName) {
-	var sendSortBy = ""; var sendSortOrder = "descending"; var sendSortByType = "text";
+YWC.f.intranetPostArchivePopup = function(listName,sortOptions) {
+	if (sortOptions == null) { var sortOptions = {}; }
 	if (typeof YWC.list.meta[listName] != "undefined") {
-		sendSortBy = YWC.list.meta[listName].sortBy;
-		sendSortOrder = YWC.list.meta[listName].sortOrder;
-		sendSortByType = YWC.list.meta[listName].sortByType;
+		var sendSortBy = (sortOptions.sortBy != null) ? sortOptions.sortBy : YWC.list.meta[listName].sortBy;
+		var sendSortOrder = (sortOptions.sortOrder != null) ? sortOptions.sortOrder : YWC.list.meta[listName].sortOrder;
+		var sendSortByType = (sortOptions.sortByType != null) ? sortOptions.sortByType : YWC.list.meta[listName].sortByType;
+	} else {
+		var sendSortBy = (sortOptions.sortBy != null) ? sortOptions.sortBy : "";
+		var sendSortOrder = (sortOptions.sortOrder != null) ? sortOptions.sortOrder : "descending";
+		var sendSortByType = (sortOptions.sortByType != null) ? sortOptions.sortByType : "text";
 	}
 	YWC.f.popupLoad({ 'source':YWC.uri.pre+'ywc/intranet/popup/archive'
 		,'top':50,'z':'1','width':480,'id':'ywc-intranet-popup-archive-'+listName

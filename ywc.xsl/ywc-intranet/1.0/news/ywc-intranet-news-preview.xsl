@@ -135,7 +135,7 @@
 							<img src="{$preUri}lib/ywc-image/1.0/bttn/misc/books-01.png"
 								class="bttn bttn-archive" onLoad="YWC.f.uiSetHoverBulge(this,4,'hz',true)"
 								id="ywc-list-controls-bttn-archive-news"
-								onClick="YWC.f.intranetPostArchivePopup('news');" />
+								onClick="YWC.f.intranetPostArchivePopup('news',{'{'}sortBy:'{$sortBy}'{'}'});" />
 								
 							<img src="{$preUri}lib/ywc-image/1.0/bttn/mail/envelope-01.png"
 								class="bttn bttn-subscribe" onLoad="YWC.f.uiSetHoverBulge(this,4,'hz',true)"
