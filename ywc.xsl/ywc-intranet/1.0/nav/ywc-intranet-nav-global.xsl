@@ -33,13 +33,11 @@
 									<li style="background:url({$bg-img});">
 										<a href="{@url}" target="_blank"><xsl:value-of select="@title" /></a>
 										<xsl:if test="count(item) &gt; 0">
-<!-- 											<xsl:value-of select="'&lt;div class=&quot;ywc-flyout-indicator&quot;&gt;t&lt;/div&gt;'" disable-output-escaping="yes" /> -->
 											<ul>
 												<xsl:for-each select="item[@language='en']">
 													<li style="background:url({$bg-img});">
 														<a href="{@url}" target="_blank"><xsl:value-of select="@title" /></a>
 														<xsl:if test="count(item) &gt; 0">
-		<!-- 													<xsl:value-of select="'&lt;div class=&quot;ywc-flyout-indicator&quot;&gt;t&lt;/div&gt;'" disable-output-escaping="yes" /> -->
 															<ul>
 																<xsl:for-each select="item[@language='en']">
 																	<li style="background:url({$bg-img});">
@@ -60,7 +58,7 @@
 				</xsl:for-each>	
 			</ul>
 			<script type="text/javascript"><!--
-				-->YWC.exec.setQueue("YWC.f.intranetInitGlobalNav();");<!--
+				-->YWC.f.coreSetDefault('intranet','uiGlobalNavFlyout',true);<!--
 			--></script>
 		</xsl:if> 
 		

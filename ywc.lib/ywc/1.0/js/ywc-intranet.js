@@ -24,6 +24,8 @@ YWC.f.coreSetDefault("intranet","dataTypeSendEmail","json");
 YWC.f.coreSetDefault("intranet","autoRefreshLists",[]);
 YWC.f.coreSetDefault("intranet","autoRefreshInterval",60000);
 
+YWC.f.coreSetDefault("intranet","uiGlobalNavFlyout",false);
+
 YWC.f.intranetCheckAuth = function(callback,skipToPopout) {
 	if (callback == null) { var callback = ""; }
 	if (!YWC.intranet.authCheckToggle) {
@@ -747,37 +749,17 @@ YWC.f.intranetInitGlobalNavDropdown = function(menuItemObj,toggleOpenClose) {
 }
 
 YWC.f.intranetInitGlobalNav = function() {
-	
-		console.log("asdfasdf");
-
-
-    $(".ywc-intranet-nav-global ul li").hover(function(){
-    
-        $(this).addClass("hover");
-        $('ul:first',this).css('visibility', 'visible');
-    
-    }, function(){
-    
-        $(this).removeClass("hover");
-        $('ul:first',this).css('visibility', 'hidden');
-    
-    });
-    
-    $(".ywc-intranet-nav-global ul li ul li:has(ul)").find("a:first").append(" &raquo; ");
-
-
-
-
-    // var config = {    
-    //      sensitivity: 3, // number = sensitivity threshold (must be 1 or higher)    
-    //      interval: 200,  // number = milliseconds for onMouseOver polling interval    
-    //      timeout: 200,   // number = milliseconds delay before onMouseOut    
-    //      over: YWC.f.intranetInitGlobalNavDropdown(this,true),
-    //      out: YWC.f.intranetInitGlobalNavDropdown(this,false)
-    // };
-
-    // $(".ywc-intranet-nav-global ul li").hoverIntent(config);
-    
-    // $(".ywc-intranet-nav-global ul li ul li:has(ul)").find("a:first").append(" &raquo; ");
-
+	if (YWC.intranet.uiGlobalNavFlyout) {
+		$(".ywc-intranet-nav-global ul li").hover(function(){
+			$(this).addClass("hover");
+			$('ul:first',this).css('visibility','visible');
+		}, function(){
+			$(this).removeClass("hover");
+			$('ul:first',this).css('visibility','hidden');
+		});
+		$(".ywc-intranet-nav-global ul li ul li:has(ul)").find("a:first").append("<div class=\"ywc-flyout-indicator\"></div>");//.append(" &raquo; ");
+	}
 }
+YWC.exec.setQueue(YWC.f.intranetInitGlobalNav());
+
+
