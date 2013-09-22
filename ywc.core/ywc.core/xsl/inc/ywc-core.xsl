@@ -202,9 +202,9 @@
 <xsl:function name="ywc:returnYwcCache">
 <xsl:param name="name" as="xs:string" />
 	
-	<xsl:variable name="cache-path" select="document('../../../../ywc.cache/xml/data/cache.xml')/ywc/cache[@name = $name]" />
+	<xsl:variable name="cache-path" select="document('../../../../cache/xml/data/cache.xml')/ywc/cache[@name = $name]" />
 	<xsl:for-each select="$cache-path">
-		<xsl:copy-of select="document(concat('../../../../ywc.cache/xml/cache/',@cache_id,'.xml'))" />
+		<xsl:copy-of select="document(concat('../../../../cache/xml/cache/',@cache_id,'.xml'))" />
 	</xsl:for-each>
 
 </xsl:function>

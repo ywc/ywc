@@ -9,14 +9,14 @@
 		<xsl:param name="fallbackValue" />
 		
 		<xsl:variable as="xs:string" name="ywcCacheId">
-			<xsl:for-each select="document('../../../../ywc.cache/xml/data/cache.xml')/ywc/cache[lower-case(@name)='directory']">
+			<xsl:for-each select="document('../../../../cache/xml/data/cache.xml')/ywc/cache[lower-case(@name)='directory']">
 				<xsl:value-of select="@cache_id" />
 			</xsl:for-each>
 		</xsl:variable>
 
 		<!-- fetches xml cache file, or blank if it suspects an invalid path -->
 		<xsl:variable name="srcXml" select="
-			document(concat('../../../../ywc.cache/xml/'
+			document(concat('../../../../cache/xml/'
 				,if (contains($ywcCacheId,'..')) then 'core/blank' else concat('cache/',$ywcCacheId)
 			,'.xml'))/users/user[(string-length(string-join((*|@*),'')) &gt; 0)]" />
 		
@@ -38,14 +38,14 @@
 		<xsl:param name="uid" />
 		
 		<xsl:variable as="xs:string" name="ywcCacheId">
-			<xsl:for-each select="document('../../../../ywc.cache/xml/data/cache.xml')/ywc/cache[lower-case(@name)='directory']">
+			<xsl:for-each select="document('../../../../cache/xml/data/cache.xml')/ywc/cache[lower-case(@name)='directory']">
 				<xsl:value-of select="@cache_id" />
 			</xsl:for-each>
 		</xsl:variable>
 
 		<!-- fetches xml cache file, or blank if it suspects an invalid path -->
 		<xsl:variable name="srcXml" select="
-			document(concat('../../../../ywc.cache/xml/'
+			document(concat('../../../../cache/xml/'
 				,if (contains($ywcCacheId,'..')) then 'core/blank' else concat('cache/',$ywcCacheId)
 			,'.xml'))/users/user[(string-length(string-join((*|@*),'')) &gt; 0)]" />
 		

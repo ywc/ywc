@@ -79,7 +79,7 @@ public class settings {
     }
 
     public static String getPathYwcCache() {
-        return getProp("path.ywc_cache_root",getYWCpath()+"/ywc.cache");
+        return getProp("path.ywc_cache_root",getYWCpath()+"/cache");
     }
 
     public static String getPathYwcXsl() {

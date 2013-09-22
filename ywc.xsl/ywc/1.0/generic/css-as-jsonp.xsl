@@ -14,7 +14,7 @@
 <xsl:template match="/">
 	
 	<xsl:for-each select="	(	document('../../../../ywc.core/ywc.core/xml/data/include.xml')
-							| 	document('../../../../ywc.cache/xml/data/include.xml')
+							| 	document('../../../../cache/xml/data/include.xml')
 							)/ywc/include[@name = $includeName][@content_type = 'text/css']"><!--
 		-->if ((typeof $ != 'undefined')<!--
 		--> <xsl:value-of select="'&amp;&amp;'" disable-output-escaping="yes"/><!--

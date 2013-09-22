@@ -21,7 +21,7 @@
 			<xsl:with-param name="bg-color" select="$uiHeaderBgColor"/>
 		</xsl:call-template>
 	
-		<xsl:variable name="srcXml" select="document(concat('../../../../ywc.cache/xml/cache/',@cache_id,'.xml'))" />
+		<xsl:variable name="srcXml" select="document(concat('../../../../cache/xml/cache/',@cache_id,'.xml'))" />
 		
 		<xsl:variable name="srcXmlAggr" select="
 			(	$srcXml/nodes/node

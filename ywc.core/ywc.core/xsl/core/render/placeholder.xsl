@@ -9,7 +9,7 @@
 <xsl:param name="uri_id" as="xs:string" select="'aaaaaa'" />
 <xsl:param name="content_type" as="xs:string" select="'text/html'" />
 
-<xsl:variable name="xml_transform" select="(document('../../../xml/data/transform.xml') | document('../../../../../ywc.cache/xml/data/transform.xml'))/ywc/transform[@uri_id = $uri_id]" />
+<xsl:variable name="xml_transform" select="(document('../../../xml/data/transform.xml') | document('../../../../../cache/xml/data/transform.xml'))/ywc/transform[@uri_id = $uri_id]" />
 	
 	<xsl:for-each select="$xml_placeholder">
 		<xsl:sort data-type="number" select="@top_left_y" />

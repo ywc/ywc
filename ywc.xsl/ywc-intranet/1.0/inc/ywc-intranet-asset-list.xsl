@@ -19,7 +19,7 @@
 	<xsl:variable name="listTarget_" select="if (string-length($listTarget) = 0) then $listName else $listTarget" />
 	
 	<xsl:variable name="cacheXml" select="document(
-						'../../../../ywc.cache/xml/data/cache.xml'
+						'../../../../cache/xml/data/cache.xml'
 						)/ywc/cache[lower-case(@name)=lower-case($listName)]" />
 	
 	<xsl:variable as="xs:string" name="ywcCacheId">
@@ -36,7 +36,7 @@
 
 	<!-- constructs path for xml cache file, or blank if it suspects an invalid path -->
 	<xsl:variable name="srcXmlPath" select="
-		concat('../../../../ywc.cache/xml/'
+		concat('../../../../cache/xml/'
 			,if (contains($ywcCacheId,'..')) then 'core/blank'
 			else concat('cache/',$ywcCacheId)
 		,'.xml')" />

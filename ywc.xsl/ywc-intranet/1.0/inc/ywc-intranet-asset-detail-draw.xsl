@@ -26,7 +26,7 @@
 
 	<!-- constructs path for xml cache file, or blank if it suspects an invalid path -->
 	<xsl:variable name="srcXmlPath" select="
-		concat('../../../../ywc.cache/xml/'
+		concat('../../../../cache/xml/'
 			,if (contains($ywcCacheId,'..')) then 'core/blank'
 			else concat('cache/',$ywcCacheId)
 		,'.xml')" />

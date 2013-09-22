@@ -12,8 +12,8 @@
 <xsl:param name="parent_node_uri" select="." />
 	
 	<xsl:variable name="preUri" select="ywc:preUri($uri_params_lang_delims[1],$uri_params_lang_delims[3])" />
-	<xsl:variable name="xml_template" select="document('../../../xml/data/template.xml') | document('../../../../../ywc.cache/xml/data/template.xml')" />
-	<xsl:variable name="xml_placeholder" select="(document('../../../xml/data/placeholder.xml') | document('../../../../../ywc.cache/xml/data/placeholder.xml'))/ywc/placeholder[@template_id = $template_id]" />
+	<xsl:variable name="xml_template" select="document('../../../xml/data/template.xml') | document('../../../../../cache/xml/data/template.xml')" />
+	<xsl:variable name="xml_placeholder" select="(document('../../../xml/data/placeholder.xml') | document('../../../../../cache/xml/data/placeholder.xml'))/ywc/placeholder[@template_id = $template_id]" />
 	<xsl:for-each select="$xml_template/ywc/template[@template_id = $template_id]">
 		
 		<xsl:variable name="content_type">
@@ -88,7 +88,7 @@
 	<xsl:value-of select="concat(
 						string-join(
 							ywc:aggregateIncludes( $preUri
-								, document('../../../xml/data/include.xml') | document('../../../../../ywc.cache/xml/data/include.xml')
+								, document('../../../xml/data/include.xml') | document('../../../../../cache/xml/data/include.xml')
 								, concat($template_row/@includes,';',$parent_node_uri/@includes)
 								, 'top'
 							)
@@ -163,7 +163,7 @@
 		<xsl:if test="$template_row[1]/@disable_includes != 1">
 			<xsl:value-of select="concat('&#xA;&lt;/div&gt;&#xA;'
 								,string-join(ywc:aggregateIncludes( $preUri
-										, document('../../../xml/data/include.xml') | document('../../../../../ywc.cache/xml/data/include.xml')
+										, document('../../../xml/data/include.xml') | document('../../../../../cache/xml/data/include.xml')
 										, concat($template_row/@includes,';',$parent_node_uri/@includes)
 										, 'bottom'
 									),'')

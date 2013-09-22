@@ -67,7 +67,7 @@
 	</xsl:variable>
 
 	<xsl:variable name="srcXml" select="
-				document(concat('../../../../ywc.cache/xml/'
+				document(concat('../../../../cache/xml/'
 				,if (contains($ywcCacheId,'..')) then 'core/blank'
 				else concat('cache/',$ywcCacheId)
 				,'.xml'))" />

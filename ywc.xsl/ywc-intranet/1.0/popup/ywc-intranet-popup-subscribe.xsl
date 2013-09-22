@@ -12,7 +12,7 @@
 <xsl:include href="../../../ywc/1.0/ui-input/ywc-input-button.xsl" />
 
 <xsl:variable name="username" select="''"/>
-<xsl:variable name="me-xml" select="document('../../../../ywc.cache/xml/cache/ldap.xml')/users/user[@uid=$user]" />
+<xsl:variable name="me-xml" select="document('../../../../cache/xml/cache/ldap.xml')/users/user[@uid=$user]" />
 
 <xsl:variable name="preUri" as="xs:string" select="ywc:getParam('preUri',$params)" />
 <xsl:variable name="listName" as="xs:string" select="ywc:getParam('listName',$params)" />

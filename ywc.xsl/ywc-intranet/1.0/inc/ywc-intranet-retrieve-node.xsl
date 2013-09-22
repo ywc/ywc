@@ -33,8 +33,8 @@
 			</xsl:when>
 			<!-- Drupal: if string matches to separate node table -->
 			<xsl:when test="contains($nodeString,'&lt;/a&gt;')">
-				<xsl:variable name="ywcCacheId" select="document('../../../../ywc.cache/xml/data/cache.xml')/ywc/cache[lower-case(@name)='images']/@cache_id" />
-				<xsl:variable name="imgXml" select="document(concat('../../../../ywc.cache/xml/cache/',$ywcCacheId,'.xml'))/nodes/node" />
+				<xsl:variable name="ywcCacheId" select="document('../../../../cache/xml/data/cache.xml')/ywc/cache[lower-case(@name)='images']/@cache_id" />
+				<xsl:variable name="imgXml" select="document(concat('../../../../cache/xml/cache/',$ywcCacheId,'.xml'))/nodes/node" />
 				
 				<xsl:for-each select="tokenize(lower-case($nodeString),'&lt;/a&gt;, &lt;a ')">
 					<xsl:variable name="imgId" select="substring-before(substring-after(.,'href=&quot;'),'&quot;')" />
