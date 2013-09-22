@@ -693,6 +693,9 @@ YWC.f.intranetPostEditAttachmentsList = function(listName,assetId,append) {
 	}
 	
 	YWC.f.assetDrawList(assetListId,false,false);
+
+	// Remove completed upload row from file uploader
+	$("div#ywc-fileupload-"+listName+"-upload-container tbody.files tr.template-download").remove();
 }
 
 
