@@ -1,6 +1,0 @@
-3.6.4
-
-This CKEditor package has been modified from the original to replace two png files in the skin entitled "kama".
-
-skins/kama/images/sprites_ie6.png
-skins/kama/images/sprites.png

@@ -40,7 +40,7 @@ YWC.f.coreLoadFileAsync = function(type,id,uri,callback) {
 		if (document.getElementById('script-jquery') == null) {
 			var s = document.createElement("script");
 			s.type = "text/javascript"; s.async = true; s.id = "script-jquery";
-			s.src = YWC.uri.pre+"lib/jquery/jquery/1.7.2/jquery.min.js";
+			s.src = YWC.uri.pre+"lib/vendor/jquery/jquery/1.7.2/jquery.min.js";
 			if (window.BrowserDetect.browser != 'Explorer') { s.onload = setTimeout(callback,25); }
 			s.onreadystatechange = function() { setTimeout(callback,25); }
 			var x = document.getElementsByTagName("head")[0]; x.appendChild(s);
@@ -412,11 +412,11 @@ YWC.f.uiLoadJqueryUI = function(callback) {
 	
 	if (callback != null) { YWC.ui.jQueryUI.onLoad = callback; }
 	
-	var themeUri = "lib/jquery-ui/jquery-ui-themes/"+YWC.ui.jQueryUI.v+"/"+YWC.ui.jQueryUI.theme+"/jquery-ui.css";
+	var themeUri = "lib/vendor/jquery-ui/jquery-ui-themes/"+YWC.ui.jQueryUI.v+"/"+YWC.ui.jQueryUI.theme+"/jquery-ui.css";
 	if (YWC.ui.jQueryUI.themeUri != "") { themeUri = YWC.ui.jQueryUI.themeUri; }
 	
 	if (YWC.f.coreLoadFileAsync("script","jquery-ui"
-			,YWC.uri.cdn+"lib/jquery-ui/jquery-ui/"+YWC.ui.jQueryUI.v+"/jquery-ui.min.js"
+			,YWC.uri.cdn+"lib/vendor/jquery-ui/jquery-ui/"+YWC.ui.jQueryUI.v+"/jquery-ui.min.js"
 			,"YWC.f.uiLoadJqueryUI();") ){
 
 	} else if (YWC.f.coreLoadFileAsync("link","jquery-ui"

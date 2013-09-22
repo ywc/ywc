@@ -13,15 +13,6 @@
 	<xsl:param name="maxFiles" as="xs:integer" select="25" />
 	<xsl:param name="paramNames" as="xs:string*" select="()" />
 	<xsl:param name="paramValues" as="xs:string*" select="()" />
-	
-	<!--<xsl:value-of disable-output-escaping="yes" select="concat(
-		'&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; id=&quot;link-bootstrap&quot;'
-			,' href=&quot;',$preUri,'lib/jquery/jquery-fileupload/jquery-fileupload/5.13/css/bootstrap.ywc.min.css&quot;'
-			,' /&gt;'
-		,'&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; id=&quot;link-bootstrap&quot;'
-			,' href=&quot;',$preUri,'lib/jquery/jquery-fileupload/jquery-fileupload/5.13/css/bootstrap-responsive.min.css&quot;'
-			,' /&gt;'
-		)" />-->
 
 	<div id="ywc-fileupload-{$id}-container" class="ui-widget-header ywc-crnr-5 ywc-fileupload"
 		style="width:{

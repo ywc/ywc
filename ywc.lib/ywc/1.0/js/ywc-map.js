@@ -60,7 +60,7 @@ YWC.f.mapInit = function(mapId,mapParams,onLoad) {
 	YWC.f.mapSetParams(mapId,mapParams);
 	if (onLoad != null) { YWC.map.google[mapId].onLoad = onLoad; }
 	
-	var themeUri = "lib/jquery-ui/jquery-ui-themes/"+YWC.ui.jQueryUI.v+"/"+YWC.ui.jQueryUI.theme+"/jquery-ui.css";
+	var themeUri = "lib/vendor/jquery-ui/jquery-ui-themes/"+YWC.ui.jQueryUI.v+"/"+YWC.ui.jQueryUI.theme+"/jquery-ui.css";
 	if (YWC.ui.jQueryUI.themeUri != "") { themeUri = YWC.ui.jQueryUI.themeUri; }
 	
 	for (i in YWC.map.google) { var firstMapId = i; break; }
@@ -80,7 +80,7 @@ YWC.f.mapInit = function(mapId,mapParams,onLoad) {
 			,"YWC.f.mapInit('"+mapId+"',{})")){
 
 	} else if (YWC.f.coreLoadFileAsync("script","jquery-ui"
-			,YWC.uri.cdn+"lib/jquery-ui/jquery-ui/"+YWC.ui.jQueryUI.v+"/jquery-ui.min.js"
+			,YWC.uri.cdn+"lib/vendor/jquery-ui/jquery-ui/"+YWC.ui.jQueryUI.v+"/jquery-ui.min.js"
 			,"YWC.f.mapInit('"+mapId+"',{})")){
 
 	} else if (YWC.f.coreLoadFileAsync("link","jquery-ui"
