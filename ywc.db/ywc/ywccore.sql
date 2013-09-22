@@ -59,12 +59,12 @@ CREATE TABLE `data_include` (
 
 LOCK TABLES `data_include` WRITE;
 /*!40000 ALTER TABLE `data_include` DISABLE KEYS */;
-INSERT INTO `data_include` VALUES ('aaaaaa','browser-detect','Detect Browser/Flash','1.0','lib/browser-detect/1.0/browser-detect.js','text/javascript','-','-',1,0,0,'','bottom','all');
-INSERT INTO `data_include` VALUES ('aaaaab','css-reset','CSS Reset','2.0','lib/css-reset/2.0/css-reset.css','text/css','-','-',1,0,0,'','top','all');
-INSERT INTO `data_include` VALUES ('aaaaac','jquery','jQuery Core','1.7.2','lib/jquery/jquery/1.7.2/jquery.min.js','text/javascript','-','-',2,0,0,'','top','all');
-INSERT INTO `data_include` VALUES ('aaaaad','jquery-history','jQuery Plugin: History','1.0','lib/jquery/jquery-history/1.0/jquery-history.js','text/javascript','jquery;','-',3,0,0,'','bottom','all');
-INSERT INTO `data_include` VALUES ('aaaaae','jquery-hoverintent','jQuery Plugin: HoverIntent','r6','lib/jquery/jquery-hoverintent/r6/jquery-hoverintent.modified.min.js','text/javascript','jquery;','-',3,0,0,'','bottom','all');
-INSERT INTO `data_include` VALUES ('aaaaaf','jquery-list-attributes','jQuery Plugin: List Attributes','1.1.0.mod','lib/jquery/jquery-list-attributes/1.1.0.mod/jquery-list-attributes.js','text/javascript','jquery;','-',3,0,0,'','bottom','all');
+INSERT INTO `data_include` VALUES ('aaaaaa','browser-detect','Detect Browser/Flash','1.0','lib/vendor/browser-detect/1.0/browser-detect.js','text/javascript','-','-',1,0,0,'','bottom','all');
+INSERT INTO `data_include` VALUES ('aaaaab','css-reset','CSS Reset','2.0','lib/vendor/css-reset/2.0/css-reset.css','text/css','-','-',1,0,0,'','top','all');
+INSERT INTO `data_include` VALUES ('aaaaac','jquery','jQuery Core','1.7.2','lib/vendor/jquery/jquery/1.7.2/jquery.min.js','text/javascript','-','-',2,0,0,'','top','all');
+INSERT INTO `data_include` VALUES ('aaaaad','jquery-history','jQuery Plugin: History','1.0','lib/vendor/jquery/jquery-history/1.0/jquery-history.js','text/javascript','jquery;','-',3,0,0,'','bottom','all');
+INSERT INTO `data_include` VALUES ('aaaaae','jquery-hoverintent','jQuery Plugin: HoverIntent','r6','lib/vendor/jquery/jquery-hoverintent/r6/jquery-hoverintent.modified.min.js','text/javascript','jquery;','-',3,0,0,'','bottom','all');
+INSERT INTO `data_include` VALUES ('aaaaaf','jquery-list-attributes','jQuery Plugin: List Attributes','1.1.0.mod','lib/vendor/jquery/jquery-list-attributes/1.1.0.mod/jquery-list-attributes.js','text/javascript','jquery;','-',3,0,0,'','bottom','all');
 INSERT INTO `data_include` VALUES ('aaaaba','ywc-core','YWC Core','1.0','lib/ywc/1.0/js/ywc-core.js','text/javascript','css-reset; browser-detect; jquery; jquery-history; ywc-social; ywc-popup; ywc-input; ywc-utils; ywc-api; ywc-asset;','-',5,0,0,'','top','all');
 INSERT INTO `data_include` VALUES ('aaaabb','ywc-core','YWC Core','1.0','lib/ywc/1.0/css/ywc-core.css','text/css','css-reset; browser-detect; jquery; jquery-history; ywc-social; ywc-popup; ywc-input; ywc-utils; ywc-api; ywc-asset;','-',5,0,0,'','top','all');
 INSERT INTO `data_include` VALUES ('aaaabc','ywc-api','YWC Plugin: External API','1.0','lib/ywc/1.0/js/ywc-api.js','text/javascript','ywc-core;','-',6,0,0,'','bottom','all');
