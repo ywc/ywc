@@ -72,11 +72,11 @@ YWC.f.mapInit = function(mapId,mapParams,onLoad) {
 		YWC.f.coreLoadFileAsync("script","google-maps"
 			,"//maps.googleapis.com/maps/api/js?ywc_v=3.0&sensor=false&callback=YWC.f.mapInit","");
 	} else if (YWC.f.coreLoadFileAsync("script","google-maps-richmarker"
-			,YWC.uri.cdn+"lib/google-maps/rich-marker/1.0/src/richmarker-compiled.js"
+			,YWC.uri.cdn+"lib/vendor/google-maps/rich-marker/1.0/src/richmarker-compiled.js"
 			,"YWC.f.mapInit('"+mapId+"',{})")){
 			
 	} else if (YWC.f.coreLoadFileAsync("script","google-maps-markerclusterer"
-			,YWC.uri.cdn+"lib/google-maps/marker-clusterer-plus/2.0.6/src/markerclusterer_packed.js"
+			,YWC.uri.cdn+"lib/vendor/google-maps/marker-clusterer-plus/2.0.6/src/markerclusterer_packed.js"
 			,"YWC.f.mapInit('"+mapId+"',{})")){
 
 	} else if (YWC.f.coreLoadFileAsync("script","jquery-ui"
