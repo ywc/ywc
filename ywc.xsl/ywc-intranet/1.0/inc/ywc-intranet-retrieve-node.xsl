@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ywc="http://www.iter.org/ywc" xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882" xmlns:rs="urn:schemas-microsoft-com:rowset" xmlns:z="#RowsetSchema" exclude-result-prefixes="xs xsl ywc dt rs z">
 	
-<xsl:include href="../../../json2xml/1.0/json2xml.xsl" />	
+<xsl:include href="../../../vendor/json2xml/1.0/json2xml.xsl" />	
 	
 
 <xsl:function name="ywc:getImgUrl" as="xs:string">
