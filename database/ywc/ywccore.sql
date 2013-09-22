@@ -243,7 +243,7 @@ INSERT INTO `data_uri` VALUES ('aaaaak','page','/ywc/intranet/popup/subscribe','
 INSERT INTO `data_uri` VALUES ('aaaaal','page','/ywc/intranet/popup/auth','template','aaaaag','YWC Intranet: Authentication Popup','','','','all');
 INSERT INTO `data_uri` VALUES ('aaaaam','page','/ywc/intranet/popup/edit','template','aaaaag','YWC Intranet: Asset Edit Popup','','','','all');
 INSERT INTO `data_uri` VALUES ('aaaaan','page','/ywc/intranet/popup/archive','template','aaaaag','YWC Intranet: Asset Archive Popup','','','','all');
-INSERT INTO `data_uri` VALUES ('aaaaao','page','/ywc/intranet/asset/paging','template','aaaaah','YWC Intranet: Asset Paging','','','','all');
+INSERT INTO `data_uri` VALUES ('aaaaao','page','/ywc/intranet/asset/list','template','aaaaah','YWC Intranet: Asset Paging','','','','all');
 INSERT INTO `data_uri` VALUES ('aaaaap','page','/ywc/intranet/popup/directory','template','aaaaag','YWC Intranet: Directory Popup','','','','all');
 INSERT INTO `data_uri` VALUES ('aaaaar','page','/ywc/intranet/popup/news','template','aaaaag','YWC Intranet: News Article Popup','','','','all');
 INSERT INTO `data_uri` VALUES ('aaaaas','regex','^/ywc/intranet/email/','template','aaaaac','YWC Intranet: Email','','','','all');

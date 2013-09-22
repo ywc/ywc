@@ -529,7 +529,7 @@ YWC.f.intranetPostPopupRefine = function(listName,assetId) {
 YWC.f.intranetAssetPagingDataSource = function(listName,listTarget) {
 	$.ajax({ type:"POST" //set to POST to account for character encoding issues... normally this should be a GET
 		,dataType:"script"
-		,url:YWC.uri.pre+'ywc/intranet/asset/paging'
+		,url:YWC.uri.pre+'ywc/intranet/asset/list'
 		,data:{
 			'listName':listName,'listTarget':listTarget
 			,'sortBy':YWC.list.meta[listTarget].sortBy
