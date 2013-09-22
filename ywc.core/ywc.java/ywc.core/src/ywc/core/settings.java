@@ -83,7 +83,7 @@ public class settings {
     }
 
     public static String getPathYwcXsl() {
-        return getYWCpath() + "/ywc.xsl/";
+        return getYWCpath() + "/xsl/";
     }
 
     public static String getPathYwcLib() {
