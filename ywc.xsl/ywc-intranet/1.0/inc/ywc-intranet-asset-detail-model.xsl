@@ -31,7 +31,7 @@
 	<xsl:variable as="xs:string*" name="adminUsers" select="
 			tokenize(
 			replace(
-			unparsed-text('../../../../ywc.conf/admin_users.txt')
+			unparsed-text('../../../../config/admin_users.txt')
 			,'&#xD;','')
 			,'&#xA;')
 		" />

@@ -244,7 +244,7 @@ public class settings {
         String ret = fallbackValue;
         try {
             Properties properties = new Properties();
-            InputStream inputStream = new FileInputStream(getYWCpath() + "/ywc.conf/ywc.properties");
+            InputStream inputStream = new FileInputStream(getYWCpath() + "/config/ywc.properties");
             properties.load(inputStream);
             inputStream.close();
             ret = properties.getProperty(pName);

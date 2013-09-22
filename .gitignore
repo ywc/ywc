@@ -2,12 +2,12 @@
 .DS_Store
 
 /ywc.cache
-/ywc.conf/ywc.properties
+/config/ywc.properties
 
 /ywc.lib/oist
 /ywc.xsl/oist
 /ywc.db/oist
-/ywc.conf/oist
+/config/oist
 
 /ywc.core/ywc.java/ywc.core/nbproject/private
 /ywc.core/ywc.java/ywc.core/dist
