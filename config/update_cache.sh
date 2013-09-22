@@ -19,10 +19,11 @@ tar -zxvf /tmp/oist-tida.tar.gz;
  
 # copy directories into correct locations
 if [ ! -f /tmp/oist-tida ]; then
- sudo rm -Rf /data/ywc/public/oist /data/ywc/database/oist /data/ywc/xsl/oist;
+ sudo rm -Rf /data/ywc/public/oist /data/ywc/database/oist /data/ywc/config/oist /data/ywc/xsl/oist;
  sudo mv /tmp/oist-tida/public/oist /data/ywc/public/oist;
  sudo mv /tmp/oist-tida/database/oist /data/ywc/database/oist;
  sudo mv /tmp/oist-tida/xsl/oist /data/ywc/xsl/oist;
+ sudo mv /tmp/oist-tida/config/oist /data/ywc/config/oist;
 fi
 
 # post cleanup
