@@ -103,12 +103,12 @@ YWC.f.inputLoadRichText = function(targetSelector) {
 	var ckEditorVersion = "4.2.1";
 	
 	if (YWC.f.coreLoadFileAsync("script","ckeditor-base"
-				,YWC.uri.pre+"lib/ckeditor/"+ckEditorVersion+"/ckeditor.js"
+				,YWC.uri.pre+"lib/vendor/ckeditor/"+ckEditorVersion+"/ckeditor.js"
 				,"YWC.f.inputLoadRichText('"+targetSelector+"');") ){
 					
 	} else if ((typeof CKEDITOR != 'undefined') && 
 				YWC.f.coreLoadFileAsync("script","ckeditor-jquery"
-				,YWC.uri.cdn+"lib/ckeditor/"+ckEditorVersion+"/adapters/jquery.js"
+				,YWC.uri.cdn+"lib/vendor/ckeditor/"+ckEditorVersion+"/adapters/jquery.js"
 				,"YWC.f.inputLoadRichText('"+targetSelector+"');") ){
 					
 	} else if ((typeof CKEDITOR != 'undefined') && (typeof CKEDITOR.instances != 'undefined') && $().ckeditor) {
@@ -156,7 +156,7 @@ YWC.f.inputLoadRichText = function(targetSelector) {
 			// 		, 'Superscript', '-', 'TextColor', '-', 'BGColor', '-', 'RemoveFormat' ]
 		//	 	, [ 'Link', '-', 'Unlink' ]
 //			]
-			,contentsCss:YWC.uri.pre+"lib/ckeditor/"+ckEditorVersion+"/samples/assets/outputxhtml/outputxhtml.css"
+			,contentsCss:YWC.uri.pre+"lib/vendor/ckeditor/"+ckEditorVersion+"/samples/assets/outputxhtml/outputxhtml.css"
 			,baseHref:''
 			,blockedKeystrokes:[]
 			,browserContextMenuOnCtrl:true
