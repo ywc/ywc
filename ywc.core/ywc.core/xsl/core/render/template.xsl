@@ -286,7 +286,7 @@
 		<xsl:value-of select="concat('&#xA;&lt;link rel=&quot;stylesheet&quot;'
 									,' type=&quot;text/css&quot;'				
 									,' id=&quot;link-',@name,'&quot;'
-									,' href=&quot;',$preUri,@uri
+									,' href=&quot;',$preUri,'lib/',@uri
 										,'?ywc_v=',@version
 										, if (@force_update = '1') then concat('&amp;update=',current-time()) else ''								
 										,@params,'&quot;'

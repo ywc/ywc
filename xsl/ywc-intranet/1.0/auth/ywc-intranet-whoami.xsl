@@ -8,11 +8,11 @@
 <xsl:output method="xml" encoding="UTF-8" omit-xml-declaration="yes" />
 
 <xsl:template match="/">
-<xsl:value-of select="concat(
-			'&#xA;&lt;user uid=&quot;'
-			,if ($user != '(null)') then $user else ''
-			,'&quot; /&gt;'
-			)" disable-output-escaping="yes" />
+  <xsl:value-of select="concat(
+  			'&#xA;&lt;user uid=&quot;'
+  			,if ($user != '(null)') then $user else ''
+  			,'&quot; /&gt;'
+  			)" disable-output-escaping="yes" />
 </xsl:template>
 
 </xsl:stylesheet>

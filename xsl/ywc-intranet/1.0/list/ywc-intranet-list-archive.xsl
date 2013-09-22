@@ -27,7 +27,6 @@
 
 <xsl:template match="/">
 	
-	
 	<xsl:call-template name="ywcIntranetAssetListFull">
 		<xsl:with-param name="preUri" select="$preUri"/>
 		<xsl:with-param name="listName" select="$listName"/>
@@ -42,9 +41,6 @@
 		<xsl:with-param name="sortByType" select="$sortByType"/>
 		<xsl:with-param name="sortOrder" select="$sortOrder"/>
 	</xsl:call-template>
-	
-	
-
 	
 </xsl:template>
 

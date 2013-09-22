@@ -10,7 +10,7 @@
 <uri uri_id="aaaaal" asset_id="aaaaag" title="YWC Intranet: Authentication Popup" scope="all" pattern="/ywc/intranet/popup/auth" onload="" required_params="" asset_type="template" includes="" type="page" />
 <uri uri_id="aaaaam" asset_id="aaaaag" title="YWC Intranet: Asset Edit Popup" scope="all" pattern="/ywc/intranet/popup/edit" onload="" required_params="" asset_type="template" includes="" type="page" />
 <uri uri_id="aaaaan" asset_id="aaaaag" title="YWC Intranet: Asset Archive Popup" scope="all" pattern="/ywc/intranet/popup/archive" onload="" required_params="" asset_type="template" includes="" type="page" />
-<uri uri_id="aaaaao" asset_id="aaaaah" title="YWC Intranet: Asset Paging" scope="all" pattern="/ywc/intranet/asset/paging" onload="" required_params="" asset_type="template" includes="" type="page" />
+<uri uri_id="aaaaao" asset_id="aaaaah" title="YWC Intranet: Asset Paging" scope="all" pattern="/ywc/intranet/asset/list" onload="" required_params="" asset_type="template" includes="" type="page" />
 <uri uri_id="aaaaap" asset_id="aaaaag" title="YWC Intranet: Directory Popup" scope="all" pattern="/ywc/intranet/popup/directory" onload="" required_params="" asset_type="template" includes="" type="page" />
 <uri uri_id="aaaaar" asset_id="aaaaag" title="YWC Intranet: News Article Popup" scope="all" pattern="/ywc/intranet/popup/news" onload="" required_params="" asset_type="template" includes="" type="page" />
 <uri uri_id="aaaaas" asset_id="aaaaac" title="YWC Intranet: Email" scope="all" pattern="^/ywc/intranet/email/" onload="" required_params="" asset_type="template" includes="" type="regex" />
