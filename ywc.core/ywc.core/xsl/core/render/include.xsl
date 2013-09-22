@@ -20,7 +20,7 @@
 		<xsl:for-each select="$all-includes[@name = substring-before($this-item,',')]
 				[@include_id = substring-before(substring-after($this-item,','),',')]">
 		
-			<xsl:value-of select="concat('&#xA;&#xA;',unparsed-text(concat('../../../../../ywc.',@uri)))" />
+			<xsl:value-of select="concat('&#xA;&#xA;',unparsed-text(concat('../../../../../public/',@uri)))" />
 
 		</xsl:for-each>
 	
