@@ -23,8 +23,8 @@ NameVirtualHost *:80
   RewriteCond    %{REQUEST_URI} !/bws
   RewriteRule ^(.*)$ http://localhost:8081/fws/router?uri=$1 [P,QSA]
  
-  Alias /lib /data/ywc/ywc.lib
-  <Directory /data/ywc/ywc.lib>
+  Alias /lib /data/ywc/public
+  <Directory /data/ywc/public>
     Order allow,deny
     Allow from all
     Options +Indexes

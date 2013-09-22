@@ -87,7 +87,7 @@ public class settings {
     }
 
     public static String getPathYwcLib() {
-        return getYWCpath() + "/ywc.lib/";
+        return getYWCpath() + "/public/";
     }
 
     public static String getPathImageMagick() {

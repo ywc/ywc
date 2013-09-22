@@ -4,7 +4,7 @@
 /cache
 /config/ywc.properties
 
-/ywc.lib/oist
+/public/oist
 /xsl/oist
 /database/oist
 /config/oist
