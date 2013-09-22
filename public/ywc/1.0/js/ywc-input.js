@@ -116,7 +116,7 @@ YWC.f.inputLoadRichText = function(targetSelector) {
 		// destroy previous instances with the same ID
 		var domId = $(targetSelector).attr('id');
 		var instanceObj = CKEDITOR.instances[domId];
-		if (instanceObj) { instanceObj.destroy(true); }
+		if (instanceObj) { try { instanceObj.destroy(true); } catch(err) { console.log("CKEditor instance '"+domId+"' was detected before re-creation but could not be destroyed."); } }
 		// create editor
 		$(targetSelector).ckeditor(function(){$(targetSelector).css({'visibility':'visible'});},{
 			skin:'moono',resize_minWidth:400,language:'en'
@@ -131,31 +131,6 @@ YWC.f.inputLoadRichText = function(targetSelector) {
 				,[ 'SpecialChar']
 				,[ 'Source']
 			]
-	// 		,toolbar: [
-	// // { name: 'document', groups: [ 'mode', 'document', 'doctools' ], items: [ 'Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates' ] },
-	// // { name: 'clipboard', groups: [ 'clipboard', 'undo' ], items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
-	// // { name: 'editing', groups: [ 'find', 'selection', 'spellchecker' ], items: [ 'Find', 'Replace', '-', 'SelectAll', '-', 'Scayt' ] },
-	// // { name: 'forms', items: [ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField' ] },
-	// // { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] },
-	// // { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl' ] },
-	// // { name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] },
-	// // { name: 'insert', items: [ 'Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe' ] },
-	// // { name: 'styles', items: [ 'Styles', 'Format', 'Font', 'FontSize' ] },
-	// // { name: 'colors', items: [ 'TextColor', 'BGColor' ] },
-	// // { name: 'tools', items: [ 'Maximize', 'ShowBlocks' ] },
-	// // { name: 'others', items: [ '-' ] }
-	// 	/	]
-	//		,toolbar:[ [ 'Undo', '-', 'Redo' ]
-	//			, [ 'Paste', '-', 'PasteText', '-', 'PasteFromWord' ]
-	//			, [ 'Outdent', '-', 'Indent' ]
-	//			, [ 'NumberedList', '-', 'BulletedList' ]
-	//			, [ 'Font', '-', 'FontSize' ]
-			// 	,[ 'Replace','-','SpellChecker' ]
-			// 	, [ 'Smiley', '-', 'SpecialChar' ]
-			// 	,[ 'Bold', '-', 'Italic', '-', 'Underline', '-', 'Strike', '-', 'Subscript', '-'
-			// 		, 'Superscript', '-', 'TextColor', '-', 'BGColor', '-', 'RemoveFormat' ]
-		//	 	, [ 'Link', '-', 'Unlink' ]
-//			]
 			,contentsCss:YWC.uri.pre+"lib/vendor/ckeditor/"+ckEditorVersion+"/samples/assets/outputxhtml/outputxhtml.css"
 			,baseHref:''
 			,blockedKeystrokes:[]
