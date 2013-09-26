@@ -46,20 +46,12 @@ public class settings {
         return getProp("ywc.db.engine",null);
     }
 
-    public static String getDBPath() {
-        return getProp("ywc.db.path",null);
-    }
-
     public static String getDBHost() {
         return getProp("ywc.db.host",null);
     }
 
     public static String getDBPort() {
         return getProp("ywc.db.port",null);
-    }
-
-    public static String getDBName() {
-        return getProp("ywc.db.name",null);
     }
 
     public static String getDBUser() {

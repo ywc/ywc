@@ -18,14 +18,14 @@ public class query {
     public static ArrayList exec(String quStr, String[] quVars) {
 
         long queryStart = System.currentTimeMillis();
-
         Connection quCon = null;
         PreparedStatement quStatement = null;
         ResultSet quResultSet = null;
         int quRowCount = 0;
         HashMap quReturn = null;
         ArrayList rtrnObj = new ArrayList();
-
+        
+        
         try {
 
             String action = quStr.substring(0, 6).toUpperCase();
@@ -38,11 +38,14 @@ public class query {
             String DbEngine = settings.getDBEngine();
             
             if ("sqlite".equals(DbEngine)) {
-                String quGrp = quStr.substring(0,quStr.indexOf("_")).substring(quStr.substring(0,quStr.indexOf("_")).lastIndexOf(" ")+1);
-                String quDb = quStr.substring(1+quStr.indexOf("_")).substring(0,quStr.substring(1+quStr.indexOf("_")).indexOf(" "));
-                quStr = quStr.replace(quGrp+"_"+quDb,quDb);
+                String quPrefix = quStr.substring(0,quStr.indexOf("_")).substring(quStr.substring(0,quStr.indexOf("_")).lastIndexOf(" ")+1);
+                String quDb = "ywc"+settings.getYwcEnvApp();
+                if (quPrefix.contains(".")) {
+                    quDb = quPrefix.substring(0,quPrefix.indexOf("."));
+                }
+                String quTable = quPrefix+"_"+quStr.substring(1+quStr.indexOf("_")).substring(0,quStr.substring(1+quStr.indexOf("_")).indexOf(" ")).replace(quDb+".", "");
+                quStr = quStr.replace(quDb+".","");
             }
-            
 
             if (quCon != null) {
 
@@ -153,15 +156,18 @@ public class query {
         
         String engine = settings.getDBEngine();
         if (engine.equals("sqlite")) {
-            String sqlite_path_absolute = "";
-            sqlite_path_absolute = settings.getYWCpath() + "/" + settings.getDBPath();
             try {
                 Driver d = (Driver) Class.forName("org.sqlite.JDBC").newInstance();
                 DriverManager.registerDriver(d);
                 try {
-                   String quGrp = quStr.substring(0,quStr.indexOf("_")).substring(quStr.substring(0,quStr.indexOf("_")).lastIndexOf(" ")+1);
-                    String quDb = quStr.substring(1+quStr.indexOf("_")).substring(0,quStr.substring(1+quStr.indexOf("_")).indexOf(" "));
-                    con = DriverManager.getConnection("jdbc:sqlite:" + sqlite_path_absolute + "/" + quGrp + "/" +quDb + ".sqlite");
+                    String quPrefix = quStr.substring(0,quStr.indexOf("_")).substring(quStr.substring(0,quStr.indexOf("_")).lastIndexOf(" ")+1);
+                    String quDb = "ywc"+settings.getYwcEnvApp();
+                    if (quPrefix.contains(".")) {
+                        quDb = quPrefix.substring(0,quPrefix.indexOf("."));
+                    }
+                    String quTable = quPrefix+"_"+quStr.substring(1+quStr.indexOf("_")).substring(0,quStr.substring(1+quStr.indexOf("_")).indexOf(" ")).replace(quDb+".", "");
+                    String dbSubDir = (quDb.equals("ywccore")) ? "ywc" : settings.getYwcEnvApp();
+                    con = DriverManager.getConnection("jdbc:sqlite:"+settings.getYWCpath()+"/database/"+dbSubDir+"/"+quDb+".sqlite");
                 } catch (SQLException e) {
                     System.out.println("Error creating SQLite connection: " + e.toString());
                 }
@@ -175,7 +181,7 @@ public class query {
             String driver = "com.mysql.jdbc.Driver";
             try {
                 Class.forName(driver).newInstance();
-                con = DriverManager.getConnection(url + settings.getDBName(), settings.getDBUser(), settings.getDBPass());
+                con = DriverManager.getConnection(url + "ywc"+settings.getYwcEnvApp(), settings.getDBUser(), settings.getDBPass());
                 
             } catch (Exception e) {
                 
@@ -187,7 +193,7 @@ public class query {
             String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
             try {
                 Class.forName(driver).newInstance();
-                con = DriverManager.getConnection(url + ";databaseName="+settings.getDBName()+";user="+settings.getDBUser()+";password="+settings.getDBPass());
+                con = DriverManager.getConnection(url + ";databaseName=ywc"+settings.getYwcEnvApp()+";user="+settings.getDBUser()+";password="+settings.getDBPass());
                 
             } catch (Exception e) {
                 
