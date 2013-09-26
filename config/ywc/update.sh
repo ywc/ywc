@@ -13,5 +13,8 @@ git pull;
 # update core database
 mysql -hlocalhost -uywc -pywcywc < database/ywc/ywccore.sql;
 
+if [ ! -f config/$YWC_APP/update.sh ]; then
+  config/$YWC_APP/update.sh;
+fi
 
 #/usr/bin/java -jar ywc.core/ywc.java/ywc.backend.d/dist/ywc.backend.d.jar
