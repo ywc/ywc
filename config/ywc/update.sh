@@ -10,11 +10,15 @@ export YWC_APP=`cat config/app_name`;
 # update ywc core
 git pull;
 
-# update core database
-mysql -hlocalhost -uywc -pywcywc < database/ywc/ywccore.sql;
-
-if [ ! -f config/$YWC_APP/update.sh ]; then
+# run app specific update script
+if [ -f config/$YWC_APP/update.sh ]; then
   config/$YWC_APP/update.sh;
 fi
+
+# update ywc databases (core and app)
+rm database/ywc/ywccore.sqlite3 database/$YWC_APP/ywc$YWC_APP.sqlite3;
+sqlite3 database/ywc/ywccore.sqlite3 < database/ywc/ywccore.sqlite.sql;
+sqlite3 database/$YWC_APP/ywc$YWC_APP.sqlite3 < database/$YWC_APP/ywc$YWC_APP.sqlite.sql;
+chmod a+rwx database/ywc/ywccore.sqlite3 database/$YWC_APP/ywc$YWC_APP.sqlite3;
 
 #/usr/bin/java -jar ywc.core/ywc.java/ywc.backend.d/dist/ywc.backend.d.jar

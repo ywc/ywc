@@ -167,7 +167,7 @@ public class query {
                     }
                     String quTable = quPrefix+"_"+quStr.substring(1+quStr.indexOf("_")).substring(0,quStr.substring(1+quStr.indexOf("_")).indexOf(" ")).replace(quDb+".", "");
                     String dbSubDir = (quDb.equals("ywccore")) ? "ywc" : settings.getYwcEnvApp();
-                    con = DriverManager.getConnection("jdbc:sqlite:"+settings.getYWCpath()+"/database/"+dbSubDir+"/"+quDb+".sqlite");
+                    con = DriverManager.getConnection("jdbc:sqlite:"+settings.getYWCpath()+"/database/"+dbSubDir+"/"+quDb+".sqlite3");
                 } catch (SQLException e) {
                     System.out.println("Error creating SQLite connection: " + e.toString());
                 }
