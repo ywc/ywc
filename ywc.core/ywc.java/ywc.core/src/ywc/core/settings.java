@@ -22,24 +22,24 @@ public class settings {
         return getProp(prop,null);
     } //oist.xxx
 
-    public static String getYWCSiteName() {
-        return getProp("ywc.site.name",null);
+    public static String getYwcEnvApp() {
+        return getProp("ywc.env.app",null);
     } //oist, enthuse,...
    
-    public static String getYWCSiteEnv() {
-        return getProp("ywc.site.env",null);
+    public static String getYwcEnv() {
+        return getProp("ywc.env.env",null);
     } //prod, dev, test,..
     
-    public static String getYWCSiteDomain() {
-        return getProp("ywc.site.domain","y-w-c.org");
+    public static String getYwcEnvDomain() {
+        return getProp("ywc.env.domain","y-w-c.org");
     } //domain name of site
     
     public static String getYWCMediaDomain() {
         return getProp("ywc.media.domain","y-w-c.org");
     } //domain name of site    
     
-    public static String getYWCSiteProtocol() {
-        return getProp("ywc.site.protocol","http");
+    public static String getYwcEnvProtocol() {
+        return getProp("ywc.env.protocol","http");
     } //protocol of site
     
     public static String getDBEngine() {

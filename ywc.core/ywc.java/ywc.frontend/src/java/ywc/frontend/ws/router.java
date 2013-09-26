@@ -67,8 +67,8 @@ public class router extends HttpServlet {
                 paramObj.put("uri", uri);
                 paramObj.put("params", params);
                 paramObj.put("user", user);
-                paramObj.put("domain", settings.getYWCSiteDomain());
-                paramObj.put("protocol", settings.getYWCSiteProtocol());
+                paramObj.put("domain", settings.getYwcEnvDomain());
+                paramObj.put("protocol", settings.getYwcEnvProtocol());
 
                 if (!process.isUriRedirect(paramObj, uri, routerStart, response, request)) {
 
@@ -80,6 +80,8 @@ public class router extends HttpServlet {
                     paramObj.put("ywc_delim_outer", settings.getYwcXslDelimOuter());
                     paramObj.put("ywc_delim_inner", settings.getYwcXslDelimInner());
                     paramObj.put("ywc_delim_command", settings.getYwcXslDelimCommand());
+                    paramObj.put("ywc_env_env", settings.getYwcEnv());
+                    paramObj.put("ywc_env_app", settings.getYwcEnvApp());
 
                     mcHash = "ywc_" + ywc.core.str.md5sum(settings.getPathYwcCache() + "/xml/data/uri.xml" + "%" + settings.getPathYwcCoreData() + "xsl/core/render/master.xsl" + "%" + uri + "%" + params + "%" + lang + "%" + user);
 

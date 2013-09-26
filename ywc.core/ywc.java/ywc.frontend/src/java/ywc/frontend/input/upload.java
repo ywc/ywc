@@ -112,7 +112,7 @@ public class upload {
                 if (orig_save) {
                     long fileSize = filesystem.fileSize(savePath);
                     fileObj.put("orig", "doc/orig/"+media_id+"/"+filename);
-                    fileObj.put("image", settings.getYWCSiteProtocol()+"://"+settings.getYWCMediaDomain()
+                    fileObj.put("image", settings.getYwcEnvProtocol()+"://"+settings.getYWCMediaDomain()
                                         +"/img/scale/dynamic/"+media_id+"/image.jpg");
                     fileObj.put("size", fileSize);
                     

@@ -30,7 +30,7 @@ public class BackEndD {
         
         try {
 
-            if (settings.getYWCSiteName() != null) {
+            if (settings.getYwcEnvApp() != null) {
 
                 String action = null;
                 if (args.length > 0) {

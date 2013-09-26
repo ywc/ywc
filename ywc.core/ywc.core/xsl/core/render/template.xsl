@@ -10,6 +10,7 @@
 <xsl:param name="ywc_delim_header" as="xs:string" select="''" />
 <xsl:param name="template_id" as="xs:string" select="'aaaaaa'" />
 <xsl:param name="parent_node_uri" select="." />
+<xsl:param name="env" as="xs:string*" select="('env','app')" />
 	
 	<xsl:variable name="preUri" select="ywc:preUri($uri_params_lang_delims[1],$uri_params_lang_delims[3])" />
 	<xsl:variable name="xml_template" select="document('../../../xml/data/template.xml') | document('../../../../../cache/xml/data/template.xml')" />
@@ -34,6 +35,7 @@
 			<xsl:with-param name="placeholders" select="$xml_placeholder[(@placement = 'head') or (@placement = 'bg')]"/>
 			<xsl:with-param name="parent_node_uri" select="$parent_node_uri"/>
 			<xsl:with-param name="preUri" select="$preUri"/>
+			<xsl:with-param name="env" select="$env"/>
 		</xsl:call-template>
 		
 		<!-- render template placeholders -->
@@ -64,6 +66,7 @@
 <xsl:param name="template_row" select="." />
 <xsl:param name="placeholders" select="." />
 <xsl:param name="preUri" select="." />
+<xsl:param name="env" as="xs:string*" select="('env','app')" />
 
 <xsl:choose>
 	<xsl:when test="$template_row[1]/@content_type = 'text/html'">
@@ -81,6 +84,7 @@
 	<xsl:call-template name="ywcJavascriptInitialize">
 		<xsl:with-param name="preUri" select="$preUri"/>
 		<xsl:with-param name="absUri" select="$uri_params_lang_delims[1]"/>
+		<xsl:with-param name="env" select="$env"/>
 	</xsl:call-template>
 </xsl:if>
 
