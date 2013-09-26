@@ -10,6 +10,7 @@
 /config/oist
 
 /database/ywc/ywccore.sqlite
+/database/ywc/ywccore.sqlite3
 
 /ywc.core/ywc.java/ywc.core/nbproject/private
 /ywc.core/ywc.java/ywc.core/dist
