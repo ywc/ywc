@@ -760,9 +760,15 @@ YWC.f.intranetInitGlobalNav = function() {
 			$(this).removeClass("hover");
 			$('ul:first',this).css('visibility','hidden');
 		});
-//		$(".ywc-intranet-nav-global ul li ul li:has(ul)").find("a:first").append("<div class=\"ywc-flyout-indicator\"></div>");
 	}
 }
 YWC.exec.setQueue(YWC.f.intranetInitGlobalNav());
+
+YWC.f.intranetBrowserFilter = function() {
+	if ((BrowserDetect.browser==="Explorer") && (BrowserDetect.version<=8)) {
+		alert("Please use a different browser to access this site. Preferably Chrome, Firefox, or Internet Explorer 10 (or higher).")
+	}
+}
+YWC.exec.setQueue(YWC.f.intranetBrowserFilter());
 
 
