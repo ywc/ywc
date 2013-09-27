@@ -209,6 +209,4 @@
 
 </xsl:function>
 
-
-
 </xsl:stylesheet>

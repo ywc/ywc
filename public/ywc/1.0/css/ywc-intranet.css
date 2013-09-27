@@ -17,13 +17,14 @@ div.ywc-intranet-nav-global ul li { cursor:pointer; float:left; zoom:1; backgrou
 div.ywc-intranet-nav-global ul a:hover {}
 div.ywc-intranet-nav-global ul a:active {}
 div.ywc-intranet-nav-global ul li a { display:block; padding:0px 8px; }
+div.ywc-intranet-nav-global .icon-chevron-right { position:relative; font-size:125%; float:right; margin:4px 8px; color:white; }
 
 div.ywc-intranet-nav-global ul li:last-child a { border-right: none; } /* Doesn't work in IE */
 div.ywc-intranet-nav-global ul li.hover,
  div.ywc-intranet-nav-global ul li:hover { position:relative; }
 div.ywc-intranet-nav-global ul li.hover a {  }
 
-div.ywc-intranet-nav-global ul ul { width:280px; visibility:hidden; position:absolute; top:100%; left:0; }
+div.ywc-intranet-nav-global ul ul { width:350px; visibility:hidden; position:absolute; top:100%; left:0; }
 div.ywc-intranet-nav-global ul ul li { float:none; }
 /* IE 6 & 7 Needs Inline Block */
 div.ywc-intranet-nav-global ul ul li a { width:100%; display:inline-block; } 

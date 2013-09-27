@@ -26,22 +26,22 @@
 				<xsl:variable name="menus-xml" select="ywc:returnYwcCache($menusXmlRef)/menus/menu/item" />
 				<xsl:for-each select="$menus-xml[@language='en']">
 					<li style="background:url({$bg-img});" class="ywc-crnr-5 ywc-crnr-b-off">
-						<a href="{@url}" target="_blank"><xsl:value-of select="@title" /></a>
-						<xsl:if test="count(item) &gt; 0">							
+						<a href="{@url}" target="_blank"><xsl:value-of select="replace(upper-case(@title),' AND ',' &amp; ')" /></a>
+						<xsl:if test="count(item) &gt; 0">
 							<ul>
 								<xsl:for-each select="item[@language='en']">
 									<li style="background:url({$bg-img});">
-										<a href="{@url}" target="_blank"><xsl:value-of select="@title" /></a>
+										<a href="{@url}" target="_blank"><xsl:value-of select="replace(upper-case(@title),' AND ',' &amp; ')" /><xsl:if test="count(item) &gt; 0"><xsl:value-of select="'&lt;i class=&quot;icon-chevron-right&quot;&gt;&lt;/i&gt;'" disable-output-escaping="yes"/></xsl:if></a>
 										<xsl:if test="count(item) &gt; 0">
 											<ul>
 												<xsl:for-each select="item[@language='en']">
 													<li style="background:url({$bg-img});">
-														<a href="{@url}" target="_blank"><xsl:value-of select="@title" /></a>
+														<a href="{@url}" target="_blank"><xsl:value-of select="replace(upper-case(@title),' AND ',' &amp; ')" /><xsl:if test="count(item) &gt; 0"><xsl:value-of select="'&lt;i class=&quot;icon-chevron-right&quot;&gt;&lt;/i&gt;'" disable-output-escaping="yes"/></xsl:if></a>
 														<xsl:if test="count(item) &gt; 0">
 															<ul>
 																<xsl:for-each select="item[@language='en']">
 																	<li style="background:url({$bg-img});">
-																		<a href="{@url}" target="_blank"><xsl:value-of select="@title" /></a>
+																		<a href="{@url}" target="_blank"><xsl:value-of select="replace(upper-case(@title),' AND ',' &amp; ')" /><xsl:if test="count(item) &gt; 0"><xsl:value-of select="'&lt;i class=&quot;icon-chevron-right&quot;&gt;&lt;/i&gt;'" disable-output-escaping="yes"/></xsl:if></a>
 																	</li>
 																</xsl:for-each>
 															</ul>

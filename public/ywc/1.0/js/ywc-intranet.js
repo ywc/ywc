@@ -760,7 +760,7 @@ YWC.f.intranetInitGlobalNav = function() {
 			$(this).removeClass("hover");
 			$('ul:first',this).css('visibility','hidden');
 		});
-		$(".ywc-intranet-nav-global ul li ul li:has(ul)").find("a:first").append("<div class=\"ywc-flyout-indicator\"></div>");//.append(" &raquo; ");
+//		$(".ywc-intranet-nav-global ul li ul li:has(ul)").find("a:first").append("<div class=\"ywc-flyout-indicator\"></div>");
 	}
 }
 YWC.exec.setQueue(YWC.f.intranetInitGlobalNav());
