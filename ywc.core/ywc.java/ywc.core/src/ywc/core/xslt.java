@@ -141,7 +141,7 @@ public class xslt {
             xslt transformer = new xslt(new StreamSource(xslFile));
             outStr = transformer.transform(new StreamSource(xmlFile), xslParams);
 
-            if (mcHash != null) {
+            if (isCachedEnabled && (mcHash != null)) {
                 mccon.mc.set(mcHash, outStr);
             }
 

@@ -69,13 +69,6 @@
 					<img src="{$preUri}lib/ywc-image/1.0/bttn/misc/trash-01.png" />
 					<span>...or here to delete it.</span>
 				</div>
-			
-
-<!-- 				<div style="width:100%;text-align:center;" class="bttn-edit ywc-crnr-5 bttn-edit-rt"
-					onClick="YWC.f.intranetPostDelete('{$listName}','{substring-after($assetId,concat($listName,'_'))}','{$cacheId}');">
-					<img src="{$preUri}lib/ywc-image/1.0/bttn/misc/trash-01.png" />
-					<span>Click here to delete this posting...</span>
-				</div> -->
 
 			</div>
 

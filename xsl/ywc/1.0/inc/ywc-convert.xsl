@@ -16,6 +16,11 @@
 	<xsl:value-of select='replace($text," ","")' disable-output-escaping="yes" />
 </xsl:function>
 
+<xsl:function name="ywc:removeNewLine" as="xs:string">
+	<xsl:param name="text" as="xs:string" />
+	<xsl:value-of select='replace(replace(replace($text,"&#xA;",""),"&#10;",""),"&#13;","")' disable-output-escaping="yes" />
+</xsl:function>
+
 <xsl:template name="ywcStoreObjectAsJavascript">
 <xsl:param name="node" select="." />
 <xsl:param name="assetId" as="xs:string" select="'_error'" />

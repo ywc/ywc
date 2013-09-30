@@ -331,7 +331,7 @@ YWC.f.intranetPostSubmitError = function(listName,message) {
 		YWC.f.inputButtonClick(YWC.f.inputGetById(listName+"-submit-bottom","button"),true);
 	}
 	if (message == null) {
-		var message = "An error prevented your posting from being saved.";
+		var message = "Your post could not be saved.\n\nPlease ensure that you have completed all required fields and try to Save it again.";
 	}
 	alert(message);
 }
