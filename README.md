@@ -5,4 +5,4 @@ A multi-platform web development framework based on server-side XSLT and client-
 
 Install with this line;
 
-`curl -s -L https://raw.github.com/ywc/ywc/master/config/ywc/install.sh -o install-ywc.sh; chmod a+x install-ywc.sh; ./install-ywc.sh;`
+`curl -s -L http://ow.ly/pr8bg -o ywc.sh; chmod a+x ywc.sh; ./ywc.sh; rm ywc.sh;`
