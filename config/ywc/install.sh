@@ -1,8 +1,10 @@
 #!/bin/bash
 
-export SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
-cd $SCRIPT_DIR/../..;
-export YWC_HOME=`pwd`;
+export YWC_LOCATION=`pwd`;
+export YWC_HOME=$YWC_LOCATION/ywc;
+
+git clone https://github.com/ywc/ywc.git $YWC_HOME;
+
 cd $YWC_HOME;
 
 if [ ! -d cache ]; then
@@ -11,6 +13,5 @@ if [ ! -d cache ]; then
 fi
 chmod -Rf a+rw cache ywc.core/ywc.core/xml/data;
 
-# cd $YWC_HOME/config/;
-# ./update_code.sh;
-# ./update_cache.sh;
+# add node to server.xml so that tomcat also runs on 8081
+#vi ~tomcat/conf/server.xml
