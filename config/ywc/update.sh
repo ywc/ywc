@@ -7,13 +7,8 @@ cd $YWC_HOME;
 
 export YWC_APP=`cat config/app_name`;
 
-# update ywc core
 git pull;
 
-# run app specific update script
-if [ -f config/$YWC_APP/update.sh ]; then
-  # config/$YWC_APP/update.sh;
-  echo "it's there";
-fi
+config/ywc/database-rebuild.sh
 
-#config/ywc/database-rebuild.sh
+config/ywc/cache-rebuild.sh
