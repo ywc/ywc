@@ -18,3 +18,4 @@ chmod a+rwx database/ywc/ywccore.sqlite3 database/$YWC_APP/ywc$YWC_APP.sqlite3;
 
 # running backend.d
 java -jar ywc.core/ywc.java/ywc.backend.d/dist/ywc.backend.d.jar;
+

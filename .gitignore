@@ -1,8 +1,10 @@
 
 .DS_Store
 
-/cache
 /config/ywc.properties
+
+/cache
+/config/app_name
 
 /public/oist
 /xsl/oist
