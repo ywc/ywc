@@ -37,7 +37,8 @@ public class rtrn {
                     returnStream(srcFileStream, response, "local -> "+media_id+"."+ext);
 
                 } else if ("aws".equals(storageMethod)) {
-                    response.sendRedirect("http://" + settings.getCdnTypeAwsBucketName() + ".s3.amazonaws.com/" + fileDir + "/" + fileName);
+                    String redirectDomain = settings.getCdnTypeAwsCloudFrontDomain().equals("") ? settings.getCdnTypeAwsS3BucketName()+".s3.amazonaws.com" : settings.getCdnTypeAwsCloudFrontDomain();
+                    response.sendRedirect(settings.getYwcEnvProtocol()+"://"+redirectDomain+"/"+fileDir+"/"+fileName);
 
                 } else if ("sftp".equals(storageMethod)) {
                     

@@ -94,8 +94,12 @@ public class settings {
         return getProp("path.openoffice","/usr/bin");
     }
 
-    public static String getCdnTypeAwsBucketName() {
+    public static String getCdnTypeAwsS3BucketName() {
         return getProp("aws.s3.bucket_default","ywc-cdn");
+    }
+    
+    public static String getCdnTypeAwsCloudFrontDomain() {
+        return getProp("aws.cloudfront.domain","");
     }
     
     public static String getCdnTypeAwsCredsAccessKey() {

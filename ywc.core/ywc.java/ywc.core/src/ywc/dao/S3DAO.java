@@ -98,7 +98,7 @@ public class S3DAO {
         HashMap rtrn = new HashMap();
 
         if (bucketName == null) {
-            bucketName = settings.getCdnTypeAwsBucketName();
+            bucketName = settings.getCdnTypeAwsS3BucketName();
         }
 
         AmazonS3 s3 = new AmazonS3Client(new YWCAWSCredentials());
