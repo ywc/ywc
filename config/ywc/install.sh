@@ -19,6 +19,8 @@ if [ ! -d cache ]; then
 fi
 chmod -Rf 1777 cache ywc.core/ywc.core/xml/data;
 
+cat config/ywc/templates/httpd.conf >> /etc/apache2/httpd.conf;
+
 yum install -y tomcat6 tomcat6-webapps tomcat6-admin-webapps ImageMagick;
 
 # publish latest WARs & JARs

@@ -5,6 +5,8 @@
 package ywc.ingest;
 
 import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import ywc.core.settings;
@@ -73,7 +75,18 @@ public class cdn {
                     rtrn = S3DAO.fileExists(null, fileDir + "/" + fileName);
                     
                 } else if ("sftp".equals(storageMethod)) {
-                    rtrn = false;
+                    String fileUrl = ""+"/"+fileDir+"/"+fileName;
+                    try {
+                        HttpURLConnection.setFollowRedirects(false);
+                        // note : you may also need
+                        // HttpURLConnection.setInstanceFollowRedirects(false)
+                        HttpURLConnection con = (HttpURLConnection) new URL(fileUrl).openConnection();
+                        con.setRequestMethod("HEAD");
+                        rtrn = (con.getResponseCode() == HttpURLConnection.HTTP_OK);
+                    } catch (Exception ex) {
+                        Logger.getLogger(cdn.class.getName()).log(Level.SEVERE,null,ex);
+                        rtrn = false;
+                    }
                 }
 
             } catch (IOException ex) {
