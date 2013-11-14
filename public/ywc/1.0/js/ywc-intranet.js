@@ -741,16 +741,6 @@ YWC.f.intranetAutoRefresh = function(executeAutoRefresh) {
 		}
 }
 
-// YWC.f.intranetInitGlobalNavDropdown = function(menuItemObj,toggleOpenClose) {
-// 	if (toggleOpenClose) {
-// 		$(menuItemObj).addClass("hover");
-// 		$('ul:first',menuItemObj).css('visibility', 'visible');
-// 	} else {
-// 		$(menuItemObj).removeClass("hover");
-//     $('ul:first',menuItemObj).css('visibility', 'hidden');
-// 	}
-// }
-
 YWC.f.intranetInitGlobalNavOpen = function() {
 	$(this).addClass("hover");
 	$('ul:first',this).css({visibility:'visible',opacity:1});

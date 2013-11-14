@@ -40,7 +40,7 @@ YWC.f.coreLoadFileAsync = function(type,id,uri,callback) {
 		if (document.getElementById('script-jquery') == null) {
 			var s = document.createElement("script");
 			s.type = "text/javascript"; s.async = true; s.id = "script-jquery";
-			s.src = YWC.uri.pre+"lib/vendor/jquery/jquery/1.7.2/jquery.min.js";
+			s.src = YWC.uri.pre+"lib/vendor/jquery/jquery/1.10.2/jquery.min.js";
 			if (window.BrowserDetect.browser != 'Explorer') { s.onload = setTimeout(callback,25); }
 			s.onreadystatechange = function() { setTimeout(callback,25); }
 			var x = document.getElementsByTagName("head")[0]; x.appendChild(s);
@@ -184,28 +184,11 @@ YWC.exec.setQueue("YWC.f.coreSetDateTime();");
 
 
 if (typeof $ != 'undefined') {
-	$(document).ready(function(){
-		YWC.exec.setQueue("if(typeof YWC.f.setUiOnHashChange != 'undefined'){YWC.f.setUiOnHashChange();}");
-	});
 	$(window).resize(function(){
 		YWC.exec.setQueue("if(typeof YWC.f.uiResetHoverBulge != 'undefined'){YWC.f.uiResetHoverBulge();}");
 	});
 } else {
 	console.log('YWC: uiOnHashChange, uiResetHoverBulge could not be set (jQuery not found)');
-}
-
-YWC.f.setUiOnHashChange = function(){
-	if (typeof $.history != 'undefined') {
-		if (typeof YWC.f.uiOnHashChange == 'undefined') {
-			YWC.f.uiOnHashChange = function(){ };
-		}
-		$.history.init(function(hash){
-			YWC.uri.hash = hash;
-			if (hash != "") {
-				YWC.f.uiOnHashChange();
-			}
-		},{ unescape: ",/" });
-	}
 }
 
 YWC.f.uiAlertToggle = function(input){
