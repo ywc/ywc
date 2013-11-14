@@ -394,8 +394,10 @@ YWC.f.dateConvert = function(inputDateTime,wh) {
 			if (wh.format === "local") {
 				if (wh.type.indexOf('date') > -1) {
 					rtrn += obj.toLocaleDateString();
-				} else {
-					rtrn += ' time...';
+				}
+				if (wh.type.indexOf('time') > -1) {
+					if (rtrn.length > 0) { rtrn += ", "; }
+					rtrn += obj.toLocaleTimeString();
 				}
 				
 			// use custom date output format	
