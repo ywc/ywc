@@ -364,6 +364,12 @@ YWC.f.intranetPopupPostEdit = function(listName,assetId,inputParams) {
 		,'id':'ywc-intranet-popup-edit-'+listName
 		,'params':params
 	});
+
+
+	var eventObj = {category:"popup-post", action: "create-"+listName, label: null };
+	if (assetId!=null) { eventObj.action = "edit-"+listName; eventObj.label = assetId.substr(1+assetId.lastIndexOf("_")); }
+	YWC.f.trackEvent(eventObj);
+
 }
 
 YWC.f.intranetPopupPostEditDurationCheck = function(listName) {
@@ -409,9 +415,9 @@ YWC.f.intranetPostPopup = function(listName,assetId,srcIdVal){
 		YWC.f.popupLoad(popupParams);
 	}
 	
-	YWC.f.trackEvent({category:"posting"
-					,action:"view-detail"
-					,label:assetId
+	YWC.f.trackEvent({category:"popup-post"
+					,action: "view-detail-"+listName
+					,label: assetId.substr(1+assetId.lastIndexOf("_"))
 					});
 }
 

@@ -1,4 +1,12 @@
-﻿var _gaq = _gaq || []; if ((YWC.track.google != null) && (YWC.track.google.appId != "")) { _gaq.push(["_setAccount", YWC.track.google.appId]); _gaq.push(["_trackPageview"]); (function() { var ga = document.createElement("script"); ga.type = "text/javascript"; ga.async = true; ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ga, s); })(); }
-var mpq=[]; if ((YWC.track.mixpanel != null) && (YWC.track.mixpanel.appId != "")) { mpq.push(["init",YWC.track.mixpanel.appId]);(function(){var b,a,e,d,c;b=document.createElement("script");b.type="text/javascript";b.async=true;b.src=(document.location.protocol==="https:"?"https:":"http:")+"//api.mixpanel.com/site_media/js/api/mixpanel.js";a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a);e=function(f){return function(){mpq.push([f].concat(Array.prototype.slice.call(arguments,0)))}};d=["init","track","track_links","track_forms","register","register_once","identify","name_tag","set_config"];for(c=0;c<d.length;c++){mpq[d[c]]=e(d[c])}})();
-if (YWC.user.id !== "") { mpq.identify(YWC.user.id); } if (YWC.user.name !== "") { mpq.name_tag(YWC.user.name); } }
-YWC.f.trackEvent = function(inp) { inp.fields=["category","action","label","value"]; for (var i = 0; i < inp.fields.length; i++){if((typeof inp[inp.fields[i]]!=="string")&&(typeof inp[inp.fields[i]]!=="number")){inp[inp.fields[i]]=null;}} if ((YWC.track.google!=null)&&(YWC.track.google.appId!="")){ /*_gaq.push("_trackEvent", inp.category, inp.action, inp.label, inp.value);*/ window._trackEvent(inp.category, inp.action, inp.label, inp.value); } if ((YWC.track.mixpanel!=null)&&(YWC.track.mixpanel.appId!="")){ mpq.track(inp.action, {category:inp.category, label:inp.label, value:inp.value}); } console.log("YWC: trackEvent -> "+inp.category+", "+inp.action+", "+inp.label+", "+inp.value); }
+﻿var _gaq = _gaq || [];
+if ((YWC.track.google != null) && (YWC.track.google.appId != "")) {
+  _gaq.push(["_setAccount", YWC.track.google.appId]);
+  _gaq.push(["_trackPageview"]);
+  (function() { var ga = document.createElement("script"); ga.type = "text/javascript"; ga.async = true; ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ga, s); })();
+}
+YWC.f.trackEvent = function(inp) {
+  inp.fields=["category","action","label","value"];
+  for (var i = 0; i < inp.fields.length; i++){if((typeof inp[inp.fields[i]]!=="string")&&(typeof inp[inp.fields[i]]!=="number")){inp[inp.fields[i]]=null;}}
+  if ((YWC.track.google!=null)&&(YWC.track.google.appId!="")){ _gaq.push("_trackEvent", inp.category, inp.action, inp.label, inp.value); }
+  console.log("YWC: trackEvent -> "+inp.category+", "+inp.action+", "+inp.label+", "+inp.value);
+}

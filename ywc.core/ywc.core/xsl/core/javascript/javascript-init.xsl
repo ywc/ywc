@@ -27,7 +27,7 @@
 				-->,"dateTime":[{"format":{}}]<!--
 				-->,"lastValue":{"text":{},"select":{},"checkbox":{},"file":{},"datetime":{},"hidden":{}}<!--
 			-->}<!--
-		-->},"track":{<!--	-->"google":{"appId":"","meta":{}},"mixpanel":{"appId":"","meta":{}}<!--,"kiss":{"appId":"","meta":{}}--><!--
+		-->},"track":{<!--	-->"google":{"appId":"","meta":{}}<!--
 		-->},"api":{<!--	"ipinfodb":{},"geonames":{},"foursquare":{}
 		-->},"user":{<!--
 			-->"id":"","name":"","email":"","scope":"","role":"","geo":{"lat":0,"lng":0},"date":{"now":0,"zone":{}}<!--
