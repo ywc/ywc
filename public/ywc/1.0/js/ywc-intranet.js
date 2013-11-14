@@ -763,13 +763,15 @@ YWC.f.intranetInitGlobalNavClose = function() {
 
 YWC.f.intranetInitGlobalNav = function() {
 	if (YWC.intranet.uiGlobalNavFlyout) {
-		$(".ywc-intranet-nav-global ul li").hoverIntent({
-			sensitivity: 2, // number = sensitivity threshold (must be 1 or higher)
-			interval: 333,  // number = milliseconds for onMouseOver polling interval 
-			over: YWC.f.intranetInitGlobalNavOpen,   // function = onMouseOver callback (REQUIRED)
-			timeout: 20,   // number = milliseconds delay before onMouseOut
-			out: YWC.f.intranetInitGlobalNavClose    // function = onMouseOut callback (REQUIRED)    
-    });
+		$(function(){
+			$(".ywc-intranet-nav-global ul li").hoverIntent({
+				sensitivity: 2, // number = sensitivity threshold (must be 1 or higher)
+				interval: 333,  // number = milliseconds for onMouseOver polling interval 
+				over: YWC.f.intranetInitGlobalNavOpen,   // function = onMouseOver callback (REQUIRED)
+				timeout: 20,   // number = milliseconds delay before onMouseOut
+				out: YWC.f.intranetInitGlobalNavClose    // function = onMouseOut callback (REQUIRED)    
+	    });
+	  });
 	}
 }
 YWC.exec.setQueue(YWC.f.intranetInitGlobalNav());
