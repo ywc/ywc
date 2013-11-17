@@ -174,7 +174,7 @@ YWC.f.inputCheckBoxValueSet = function(id,checkBoxType,onChangeJs) {
 
 YWC.f.inputLoadFileUpload = function(fileUploadId,callback) {
 	
-	var themeUri = "lib/vendor/jquery-ui/jquery-ui-themes/"+YWC.ui.jQueryUI.v+"/"+YWC.ui.jQueryUI.theme+"/jquery-ui.css";
+	var themeUri = "lib/vendor/jquery-ui/jquery-ui-themes/"+YWC.ui.jQueryUI.v+"/"+YWC.ui.jQueryUI.theme+"/jquery-ui.min.css";
 	if (YWC.ui.jQueryUI.themeUri != "") { themeUri = YWC.ui.jQueryUI.themeUri; }
 	
 	if (YWC.input.meta.uploadCallback == null) { YWC.input.meta.uploadCallback = {}; }
@@ -302,7 +302,7 @@ YWC.f.inputDrawFileUpload = function(fileUploadId,inputParams){
 
 YWC.f.inputLoadSelectMenu = function(targetSelector,optionString) {
 		
-	var themeUri = "lib/vendor/jquery-ui/jquery-ui-themes/"+YWC.ui.jQueryUI.v+"/"+YWC.ui.jQueryUI.theme+"/jquery-ui.css";
+	var themeUri = "lib/vendor/jquery-ui/jquery-ui-themes/"+YWC.ui.jQueryUI.v+"/"+YWC.ui.jQueryUI.theme+"/jquery-ui.min.css";
 	if (YWC.ui.jQueryUI.themeUri != "") { themeUri = YWC.ui.jQueryUI.themeUri; }
 	
 	if (YWC.f.coreLoadFileAsync("script","jquery-ui"
@@ -314,12 +314,12 @@ YWC.f.inputLoadSelectMenu = function(targetSelector,optionString) {
 			,"YWC.f.inputLoadSelectMenu(\""+targetSelector+"\",\""+optionString+"\");") ){
 
 	} else if (YWC.f.coreLoadFileAsync("link","jquery-ui-selectmenu"
-			,YWC.uri.pre+"lib/vendor/jquery-ui/jquery-ui-selectmenu/1.2.0/jquery-ui-selectmenu.css"
+			,YWC.uri.pre+"lib/vendor/jquery-ui/jquery-ui-selectmenu/1.5.0pre/jquery-ui-selectmenu.css"
 			,"YWC.f.inputLoadSelectMenu(\""+targetSelector+"\",\""+optionString+"\");") ){
 				
 	} else if (	(typeof $.widget != 'undefined')
 			&&	YWC.f.coreLoadFileAsync("script","jquery-ui-selectmenu"
-			,YWC.uri.cdn+"lib/vendor/jquery-ui/jquery-ui-selectmenu/1.2.0/jquery-ui-selectmenu.js"
+			,YWC.uri.cdn+"lib/vendor/jquery-ui/jquery-ui-selectmenu/1.5.0pre/jquery-ui-selectmenu.js"
 			,"YWC.f.inputLoadSelectMenu(\""+targetSelector+"\",\""+optionString+"\");") ){
 				
 	} else if ($().selectmenu) {
@@ -373,7 +373,7 @@ YWC.f.inputDateTimeLoad = function(wh,ywcId,onChange) {
 	var index = 0;
 	if (onChange != null) { YWC.input.meta.dateTime[index].onChange[ywcId] = onChange; }
 	
-	var themeUri = "lib/vendor/jquery-ui/jquery-ui-themes/"+YWC.ui.jQueryUI.v+"/"+YWC.ui.jQueryUI.theme+"/jquery-ui.css";
+	var themeUri = "lib/vendor/jquery-ui/jquery-ui-themes/"+YWC.ui.jQueryUI.v+"/"+YWC.ui.jQueryUI.theme+"/jquery-ui.min.css";
 	if (YWC.ui.jQueryUI.themeUri != "") { themeUri = YWC.ui.jQueryUI.themeUri; }
 		
 	if (YWC.f.coreLoadFileAsync("script","jquery-ui"

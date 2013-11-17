@@ -8,7 +8,7 @@ if (!Array.indexOf) { Array.prototype.indexOf = function(obj, start) { for (var 
 
 YWC.ui = {
 	"hoverIntent":{"timeout":0,"sensitivity":7,"interval":100}
-	,"jQueryUI":{"v":"1.8.22","theme":"smoothness","themeUri":"","onLoad":""}
+	,"jQueryUI":{"v":"1.10.3","theme":"smoothness","themeUri":"","onLoad":""}
 };
 
 YWC.f.coreLoadFileAsync = function(type,id,uri,callback) {
@@ -395,7 +395,7 @@ YWC.f.uiLoadJqueryUI = function(callback) {
 	
 	if (callback != null) { YWC.ui.jQueryUI.onLoad = callback; }
 	
-	var themeUri = "lib/vendor/jquery-ui/jquery-ui-themes/"+YWC.ui.jQueryUI.v+"/"+YWC.ui.jQueryUI.theme+"/jquery-ui.css";
+	var themeUri = "lib/vendor/jquery-ui/jquery-ui-themes/"+YWC.ui.jQueryUI.v+"/"+YWC.ui.jQueryUI.theme+"/jquery-ui.min.css";
 	if (YWC.ui.jQueryUI.themeUri != "") { themeUri = YWC.ui.jQueryUI.themeUri; }
 	
 	if (YWC.f.coreLoadFileAsync("script","jquery-ui"
