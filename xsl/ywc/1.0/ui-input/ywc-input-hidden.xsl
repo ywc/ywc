@@ -14,7 +14,7 @@
 					
 						,' id=&quot;ywc-input-hidden-',$id,'&quot;'
 						,' class=&quot;ywc-input-hidden ',$class,'&quot;'
-						,' value=&quot;',replace($value,'&quot;','\\&quot;'),'&quot;'
+						,' value=&quot;',ywc:escTags($value),'&quot;'
 						,' /&gt;'
 						
 					,'&lt;script type=&quot;text/javascript&quot;&gt;'

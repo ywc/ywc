@@ -27,6 +27,17 @@
 	<xsl:value-of select='replace(replace(replace($text,"&#xA;",""),"&#10;",""),"&#13;","")' disable-output-escaping="yes" />
 </xsl:function>
 
+<xsl:function name="ywc:swapSpecialChars" as="xs:string">
+	<xsl:param name="text" as="xs:string" />
+	<xsl:variable name="doubleQuot" select="replace(replace($text,'“','&quot;'),'”','&quot;')" />
+	<xsl:variable name="singleQuot" select='replace(replace($doubleQuot,"‘","&apos;"),"’","&apos;")' />
+	<xsl:variable name="weirdChars" select='
+		replace($singleQuot," ","")
+		' />
+	
+	<xsl:value-of select="$weirdChars" disable-output-escaping="yes" />
+</xsl:function>
+
 <xsl:template name="ywcStoreObjectAsJavascript">
 <xsl:param name="node" select="." />
 <xsl:param name="assetId" as="xs:string" select="'_error'" />
@@ -49,7 +60,7 @@
 		<xsl:value-of select='concat(""
 			,if (position() != 1) then "," else ""
 			,"&apos;",replace(lower-case(name()),"ows_",""),"&apos;"
-			,":&apos;",normalize-space(replace(.,"&apos;","\\&apos;")),"&apos;"
+			,":&apos;",normalize-space(replace(ywc:swapSpecialChars(.),"&apos;","\\&apos;")),"&apos;"
 		)' disable-output-escaping="yes" />
 	
 	</xsl:for-each>
@@ -81,7 +92,7 @@
 			or	exists(index-of(concat(lower-case($indexName),'text'),lower-case(substring-after(name(),'ows_'))))
 			or	exists(index-of(concat('posting',lower-case($indexName)),lower-case(substring-after(name(),'ows_'))))
 			]">
-			<xsl:value-of select='.' disable-output-escaping="yes" />
+			<xsl:value-of select='ywc:swapSpecialChars(.)' disable-output-escaping="yes" />
 		</xsl:for-each>
 	</xsl:variable>
 	<xsl:value-of select="concat('',string-join($values,' '))" disable-output-escaping="yes" />

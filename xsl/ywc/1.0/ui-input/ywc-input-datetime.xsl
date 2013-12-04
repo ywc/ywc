@@ -29,7 +29,7 @@
 							,'visibility:hidden;'
 						,'&quot;'
 						,' size=&quot;','11','&quot;'
-						,' value=&quot;',$verifiedValue,'&quot;'
+						,' value=&quot;',ywc:escTags($verifiedValue),'&quot;'
 						,' /&gt;'
 					
 					,'&lt;script type=&quot;text/javascript&quot;&gt;'
@@ -54,7 +54,7 @@
 							,'visibility:hidden;'
 						,'&quot;'
 						,' size=&quot;','8','&quot;'
-						,' value=&quot;',$verifiedValue,'&quot;'
+						,' value=&quot;',ywc:escTags($verifiedValue),'&quot;'
 						,' /&gt;'
 
 					,'&lt;script type=&quot;text/javascript&quot;&gt;'

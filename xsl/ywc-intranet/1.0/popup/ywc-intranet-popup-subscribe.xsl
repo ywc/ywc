@@ -8,6 +8,7 @@
 <xsl:output method="xml" encoding="UTF-8" omit-xml-declaration="yes" />
 
 <xsl:include href="../../../ywc/1.0/inc/ywc-core.xsl" />
+<xsl:include href="../../../ywc/1.0/inc/ywc-convert.xsl" />
 <xsl:include href="../../../ywc/1.0/ui-input/ywc-input-text.xsl" />
 <xsl:include href="../../../ywc/1.0/ui-input/ywc-input-button.xsl" />
 

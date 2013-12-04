@@ -417,11 +417,11 @@
 					<xsl:with-param name="richText" select="if (contains($listName,'questions')) then 0 else 1"/>
 					<xsl:with-param name="fontSize" select="$fontSize"/>
 					
- 					<xsl:with-param name="value" select="concat('',ywc:escQuot(ywc:removeNewLine(
+ 					<xsl:with-param name="value" select="concat('',ywc:removeNewLine(
 						if (string-length(ywc:getParam('valueBody',$params)) &gt; 0) then ywc:getParam('valueBody',$params)
 						else if (string-length(ywc:getNodeValue($srcNode,'body')) &gt; 0) then ywc:getNodeValue($srcNode,'body')
 						else ''
-					)))"/>
+					))"/>
 
 				</xsl:call-template>
 
