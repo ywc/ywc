@@ -11,6 +11,12 @@
 	<xsl:value-of select='replace($text,"&apos;","\\&apos;")' disable-output-escaping="yes" />
 </xsl:function>
 
+<xsl:function name="ywc:escTags" as="xs:string">
+	<xsl:param name="text" as="xs:string" />
+	<xsl:variable name="gtLt" select='replace(replace($text,"&gt;","&amp;gt;"),"&lt;","&amp;lt;")' />
+	<xsl:value-of select="replace($gtLt,'&quot;','&amp;quot;')" disable-output-escaping="yes" />
+</xsl:function>
+
 <xsl:function name="ywc:removeSpace" as="xs:string">
 	<xsl:param name="text" as="xs:string" />
 	<xsl:value-of select='replace($text," ","")' disable-output-escaping="yes" />

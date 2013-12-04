@@ -139,7 +139,7 @@
 						if (string-length(ywc:getParam('valueTitle',$params)) &gt; 0) then ywc:getParam('valueTitle',$params)
 						else if (string-length(ywc:getNodeValue($srcNode,'title')) &gt; 0) then ywc:getNodeValue($srcNode,'title')
 						else ''
-					)"/>
+						)"/>
 					<xsl:with-param name="fontSize" select="($fontSize+4)"/>
 					<xsl:with-param name="eraseBttn" select="if (contains($listName,'questions')) then 0 else 1"/>
 					<xsl:with-param name="readOnly" select="if (contains($listName,'questions')) then 1 else 0"/>

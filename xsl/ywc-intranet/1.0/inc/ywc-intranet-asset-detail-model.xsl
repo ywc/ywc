@@ -28,6 +28,8 @@
 <xsl:param name="attachments" as="xs:string*" select="()" />
 <xsl:param name="replyEmail" as="xs:string" select="''" />
 	
+	<xsl:variable name="adminMode" select="1" />
+
 	<xsl:variable as="xs:string*" name="adminUsers" select="
 			tokenize(
 			replace(
@@ -55,6 +57,7 @@
 					and ($useJavascript = 1)
 				)
 				or 	exists(index-of($adminUsers,lower-case($currentUser)))
+				or  ($adminMode = 1)
 				"> 
 			<!-- we don't need inline styles here because the edit controls should only be available on main intranet page -->
 

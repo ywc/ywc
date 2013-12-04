@@ -102,7 +102,7 @@
 						,'&quot;'
 					
 					, if ($readOnly = 1) then ' readonly=&quot;readonly&quot;' else ''
-					, if ($type != 'textarea') then concat(' value=&quot;',replace($value,'&quot;','&amp;quot;'),'&quot; /&gt;')
+					, if ($type != 'textarea') then concat(' value=&quot;',ywc:escTags($value),'&quot; /&gt;')
 							else concat('&gt;',$value,'&lt;/textarea&gt;')
 					
 					,'&lt;div class=&quot;ywc-input-text&quot;'

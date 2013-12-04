@@ -210,15 +210,15 @@ YWC.f.inputLoadFileUpload = function(fileUploadId,callback) {
 			,"YWC.f.inputLoadFileUpload('"+fileUploadId+"');") ){
 
 	} else if (YWC.f.coreLoadFileAsync("link","jquery-fileupload-ui"
-			,YWC.uri.pre+"lib/vendor/jquery/jquery-fileupload/jquery-fileupload/5.13/css/jquery.fileupload-ui.css"
+			,YWC.uri.pre+"lib/vendor/jquery/jquery-fileupload/jquery-fileupload/7.4.1/css/jquery.fileupload-ui.css"
 			,"YWC.f.inputLoadFileUpload('"+fileUploadId+"');") ){
 
 	} else if (YWC.f.coreLoadFileAsync("link","bootstrap"
-			,YWC.uri.pre+"lib/vendor/jquery/jquery-fileupload/jquery-fileupload/5.13/css/bootstrap.ywc.min.css"
+			,YWC.uri.pre+"lib/vendor/jquery/jquery-fileupload/jquery-fileupload/7.4.1/css/bootstrap.ywc.min.css"
 			,"YWC.f.inputLoadFileUpload('"+fileUploadId+"');") ){
 
 	} else if (YWC.f.coreLoadFileAsync("link","bootstrap-responsive"
-			,YWC.uri.pre+"lib/vendor/jquery/jquery-fileupload/jquery-fileupload/5.13/css/bootstrap-responsive.min.css"
+			,YWC.uri.pre+"lib/vendor/jquery/jquery-fileupload/jquery-fileupload/7.4.1/css/bootstrap-responsive.min.css"
 			,"YWC.f.inputLoadFileUpload('"+fileUploadId+"');") ){
 
 	} else if (YWC.f.coreLoadFileAsync("script","jquery-tmpl"
@@ -226,26 +226,26 @@ YWC.f.inputLoadFileUpload = function(fileUploadId,callback) {
 			,"YWC.f.inputLoadFileUpload('"+fileUploadId+"');") ){
 				
 	} else if (YWC.f.coreLoadFileAsync("script","jquery-iframe-transport"
-			,YWC.uri.cdn+"lib/vendor/jquery/jquery-fileupload/jquery-fileupload/5.13/js/jquery.iframe-transport.js"
+			,YWC.uri.cdn+"lib/vendor/jquery/jquery-fileupload/jquery-fileupload/7.4.1/js/jquery.iframe-transport.js"
 			,"YWC.f.inputLoadFileUpload('"+fileUploadId+"');") ){
 				
 	} else if (YWC.f.coreLoadFileAsync("script","jquery-xdr-transport"
-			,YWC.uri.cdn+"lib/vendor/jquery/jquery-fileupload/jquery-fileupload/5.13/js/cors/jquery.xdr-transport.js"
+			,YWC.uri.cdn+"lib/vendor/jquery/jquery-fileupload/jquery-fileupload/7.4.1/js/cors/jquery.xdr-transport.js"
 			,"YWC.f.inputLoadFileUpload('"+fileUploadId+"');") ){
 
 	} else if ( (typeof $.widget != 'undefined')
 			&&	YWC.f.coreLoadFileAsync("script","jquery-fileupload"
-			,YWC.uri.cdn+"lib/vendor/jquery/jquery-fileupload/jquery-fileupload/5.13/js/jquery.fileupload.js"
+			,YWC.uri.cdn+"lib/vendor/jquery/jquery-fileupload/jquery-fileupload/7.4.1/js/jquery.fileupload.js"
 			,"YWC.f.inputLoadFileUpload('"+fileUploadId+"');") ){
 
 	} else if ( 
 			YWC.f.coreLoadFileAsync("script","jquery-fileupload-fp"
-			,YWC.uri.cdn+"lib/vendor/jquery/jquery-fileupload/jquery-fileupload/5.13/js/jquery.fileupload-fp.js"
+			,YWC.uri.cdn+"lib/vendor/jquery/jquery-fileupload/jquery-fileupload/7.4.1/js/jquery.fileupload-fp.js"
 			,"YWC.f.inputLoadFileUpload('"+fileUploadId+"');") ){
 	
 	} else if ( 
 			YWC.f.coreLoadFileAsync("script","jquery-fileupload-ui"
-			,YWC.uri.cdn+"lib/vendor/jquery/jquery-fileupload/jquery-fileupload/5.13/js/jquery.fileupload-ui.js"
+			,YWC.uri.cdn+"lib/vendor/jquery/jquery-fileupload/jquery-fileupload/7.4.1/js/jquery.fileupload-ui.js"
 			,"YWC.f.inputLoadFileUpload('"+fileUploadId+"');") ){
 							
 	} else if (	$().fileupload && $().submit
@@ -264,7 +264,7 @@ YWC.f.inputDrawFileUpload = function(fileUploadId,inputParams){
 		,limitMultiFileUploads:3
 		,sequentialUploads:true
 		,maxNumberOfFiles:100
-		,redirect:YWC.uri.pre+"lib/vendor/jquery/jquery-fileupload/jquery-fileupload/5.13/cors/result.html?%s"
+		,redirect:YWC.uri.pre+"lib/vendor/jquery/jquery-fileupload/jquery-fileupload/7.4.1/cors/result.html?%s"
 	};
 	
 	if (inputParams != null) {
@@ -385,11 +385,11 @@ YWC.f.inputDateTimeLoad = function(wh,ywcId,onChange) {
 			,"YWC.f.inputDateTimeLoad('"+wh+"','"+ywcId+"');")) {
 				
 	} else if (YWC.f.coreLoadFileAsync("script","jquery-ui-timepicker"
-			,YWC.uri.cdn+"lib/vendor/jquery-ui/jquery-ui-timepicker/0.3.1/jquery-ui-timepicker.js"
+			,YWC.uri.cdn+"lib/vendor/jquery-ui/jquery-ui-timepicker/0.3.3/jquery-ui-timepicker.js"
 			,"YWC.f.inputDateTimeLoad('"+wh+"','"+ywcId+"');")) {
 
 	} else if (YWC.f.coreLoadFileAsync("link","jquery-ui-timepicker"
-			,YWC.uri.pre+"lib/vendor/jquery-ui/jquery-ui-timepicker/0.3.1/jquery-ui-timepicker.css"
+			,YWC.uri.pre+"lib/vendor/jquery-ui/jquery-ui-timepicker/0.3.3/jquery-ui-timepicker.css"
 			,"YWC.f.inputDateTimeLoad('"+wh+"','"+ywcId+"');")) {
 				
 	} else if ($().datepicker && $().timepicker) {
