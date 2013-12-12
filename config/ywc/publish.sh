@@ -14,6 +14,6 @@ sudo mv /tmp/bws.war /var/lib/tomcat6/webapps/bws.war;
 cd /tmp;
 tar -zxvf /tmp/ywc.backend.d.tar.gz;
 sudo rm -R $YWC_HOME/ywc.core/ywc.java/ywc.backend.d/dist/lib $YWC_HOME/ywc.core/ywc.java/ywc.backend.d/dist/ywc.backend.d.jar;
-sudo cp -R /tmp/ywc.backend.d/lib $YWC_HOME/ywc.core/ywc.java/ywc.backend.d/dist/lib;
+sudo cp -R /tmp/ywc_backend_d/lib $YWC_HOME/ywc.core/ywc.java/ywc.backend.d/dist/lib;
 sudo cp /tmp/ywc_backend_d/ywc.backend.d.jar $YWC_HOME/ywc.core/ywc.java/ywc.backend.d/dist/ywc.backend.d.jar;
-rm -Rf /tmp/ywc.backend.d /tmp/ywc.backend.d.tar.gz;
+rm -Rf /tmp/ywc_backend_d /tmp/ywc.backend.d.tar.gz;
