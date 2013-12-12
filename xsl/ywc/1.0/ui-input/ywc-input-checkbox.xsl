@@ -12,6 +12,7 @@
 <xsl:param name="checked" as="xs:integer*" select="()" />
 <xsl:param name="onChangeJs" as="xs:string" select="''" />
 <xsl:param name="onLoadJs" as="xs:string" select="''" />
+<xsl:param name="isRequired" as="xs:integer" select="0" />
 
 <xsl:variable name="a" select='"&apos;"' />
 
@@ -20,7 +21,8 @@
 			<xsl:value-of select="concat('&lt;div'
 					,' class=&quot;ywc-input-checkbox'
 						,' ywc-input-checkbox-',$id
-						,' ',$class
+								, if ($isRequired = 1) then ' ywc-input-required' else ''
+								,' ', $class
 						,'&quot;'
 					,' style=&quot;'
 						,'font-size:',$fontSize,'px;'

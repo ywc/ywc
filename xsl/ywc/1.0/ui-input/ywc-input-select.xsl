@@ -13,13 +13,16 @@
 <xsl:param name="menuStyle" as="xs:string" select="'popup'" /><!-- other option is 'dropdown' -->
 <xsl:param name="onSelectJs" as="xs:string" select="''" />
 <xsl:param name="onLoadJs" as="xs:string" select="''" />
+<xsl:param name="isRequired" as="xs:integer" select="0" />
 
 <xsl:variable name="a" select='"&apos;"' />
 
 <xsl:value-of select="concat(''
 					,'&lt;select'
 						,' id=&quot;ywc-input-select-',$id,'&quot;'
-						,' class=&quot;ywc-input-select ',$class,'&quot;'
+						,' class=&quot;ywc-input-select '
+								, if ($isRequired = 1) then ' ywc-input-required' else ''
+								,' ', $class,'&quot;'
 						,' onChange=&quot;'
 							,'YWC.input.value.select[',$a,replace($id,$a,concat('\\',$a)),$a,']=this.options[this.selectedIndex].value;'
 							,replace($onSelectJs,'&quot;','\\&quot;')

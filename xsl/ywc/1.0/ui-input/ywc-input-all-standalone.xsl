@@ -46,6 +46,7 @@
 				<xsl:with-param name="onFocusJs" select="ywc:getParam('onFocusJs',$params)" />
 				<xsl:with-param name="onBlurJs" select="ywc:getParam('onBlurJs',$params)"/>
 				<xsl:with-param name="onClearJs" select="ywc:getParam('onClearJs',$params)"/>
+				<xsl:with-param name="isRequired" select="ywc:getParam('isRequired',$params)"/>
 			</xsl:call-template>		
 			
 		</xsl:when>
@@ -80,6 +81,7 @@
 				<xsl:with-param name="value" select="if (string-length(ywc:getParam('value',$params)) &gt; 0) then ywc:getParam('value',$params) else xs:string(ywc:unixTime())"/>
 				<xsl:with-param name="fontSize" select="if (string-length(ywc:getParam('fontSize',$params)) &gt; 0) then xs:integer(ywc:getParam('fontSize',$params)) else 18"/>
 				<xsl:with-param name="onChangeJs" select="ywc:getParam('onChangeJs',$params)" />
+				<xsl:with-param name="isRequired" select="ywc:getParam('isRequired',$params)"/>
 			</xsl:call-template>
 			
 		</xsl:when>
@@ -114,6 +116,7 @@
 				<xsl:with-param name="values" select="$values"/>
 				<xsl:with-param name="labels" select="$labels"/>
 				<xsl:with-param name="checked" select="$checked"/>
+				<xsl:with-param name="isRequired" select="ywc:getParam('isRequired',$params)"/>
 			</xsl:call-template>
 			
 		</xsl:when>
@@ -156,6 +159,7 @@
 					else 'popup'" />
 				<xsl:with-param name="onSelectJs" select="ywc:getParam('onSelectJs',$params)" />
 				<xsl:with-param name="onLoadJs" select="ywc:getParam('onLoadJs',$params)" />
+				<xsl:with-param name="isRequired" select="ywc:getParam('isRequired',$params)"/>
 			</xsl:call-template>
 
 		</xsl:when>

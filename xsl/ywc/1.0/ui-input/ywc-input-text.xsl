@@ -24,6 +24,7 @@
 <xsl:param name="richText" as="xs:integer" select="1" />
 <xsl:param name="icon" as="xs:string" select="''" />
 <xsl:param name="preUri" as="xs:string" select="'/'" />
+<xsl:param name="isRequired" as="xs:integer" select="0" />
 
 <xsl:param name="onEscapeKeyJs" as="xs:string" select="''" />
 <xsl:param name="onClearJs" as="xs:string" select="''" /><!-- not yet implemented -->
@@ -58,7 +59,9 @@
 						,' id=&quot;ywc-input-text-',$id,'&quot;'
 						,' name=&quot;ywc-input-text-',$id,'&quot;'
 						,' title=&quot;',replace($placeholder,'&quot;','&amp;quot;'),'&quot;'
-						,' class=&quot;ywc-input-text ywc-crnr-5 ',$class,'&quot;'
+						,' class=&quot;ywc-input-text ywc-crnr-5'
+								, if ($isRequired = 1) then ' ywc-input-required' else ''
+								,' ', $class,'&quot;'
 						,' style=&quot;'
 							,'font-size:',$fontSize,'px;'
 							,'padding:',round(0.5 * $fontSize),'px;'

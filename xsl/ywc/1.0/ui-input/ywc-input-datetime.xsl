@@ -10,6 +10,7 @@
 <xsl:param name="fontSize" as="xs:integer" select="18" />
 <xsl:param name="unitLengthInSeconds" as="xs:integer" select="300" />
 <xsl:param name="onChangeJs" as="xs:string" select="''" />
+<xsl:param name="isRequired" as="xs:integer" select="0" />
 
 <xsl:variable name="a" select='"&apos;"' />
 
@@ -22,7 +23,9 @@
 	<xsl:value-of select="concat(''
 					,'&lt;input type=&quot;text&quot;'
 						,' id=&quot;ywc-input-datetime-date-',$id,'&quot;'
-						,' class=&quot;ywc-input-text ywc-input-datetime ywc-crnr-5 ',$class,'&quot;'
+						,' class=&quot;ywc-input-text ywc-input-datetime ywc-crnr-5 '
+								, if ($isRequired = 1) then ' ywc-input-required' else ''
+								,' ', $class,'&quot;'
 						,' style=&quot;'
 							,'font-size:',$fontSize,'px;'
 							,'padding:',round(0.5 * $fontSize),'px 5px;'
@@ -47,7 +50,9 @@
 	<xsl:value-of select="concat(''
 					,'&lt;input type=&quot;text&quot;'
 						,' id=&quot;ywc-input-datetime-time-',$id,'&quot;'
-						,' class=&quot;ywc-input-text ywc-input-datetime ywc-crnr-5 ',$class,'&quot;'
+						,' class=&quot;ywc-input-text ywc-input-datetime ywc-crnr-5 '
+								, if ($isRequired = 1) then ' ywc-input-required' else ''
+								,' ', $class,'&quot;'
 						,' style=&quot;'
 							,'font-size:',$fontSize,'px;'
 							,'padding:',round(0.5 * $fontSize),'px 5px;'

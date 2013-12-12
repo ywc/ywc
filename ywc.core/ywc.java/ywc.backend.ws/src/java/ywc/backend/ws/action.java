@@ -128,9 +128,9 @@ public class action extends HttpServlet {
                         DrupalDAO drupal = new DrupalDAO();
                         if (!drupal.subscribeList(listID, mail)) {
                             isOK = false;
-                        } else {
-                            ywc.dao.CacheDAO.refreshCache("aaaaaj"); //TODO better
                         }
+                        ywc.dao.CacheDAO.refreshCache("aaaaaj"); //TODO better
+                        
 
                     } else if (request.getMethod().equals("DELETE")) {
                         logger.info("Unsubscribe user from list " + listID + " with mail " + mail);
@@ -138,9 +138,9 @@ public class action extends HttpServlet {
                         DrupalDAO drupal = new DrupalDAO();
                         if (!drupal.unsubscribeList(listID, mail)) {
                             isOK = false;
-                        } else {
-                            ywc.dao.CacheDAO.refreshCache("aaaaaj"); //TODO better
                         }
+                        ywc.dao.CacheDAO.refreshCache("aaaaaj"); //TODO better
+                        
 
                     }
                 } else {
@@ -221,13 +221,13 @@ public class action extends HttpServlet {
                             if (!drupal.deleteNode(assetID)) {
                                 isOK = false;
 
-                            } else {
-                                //refresh ywc cache
-                                String cacheID = request.getParameter("ywc_cache_id");
-                                if (cacheID != null && !"".equals(cacheID)) {
-                                    ywc.dao.CacheDAO.refreshCache(cacheID);
-                                }
                             }
+                            //refresh ywc cache
+                            String cacheID = request.getParameter("ywc_cache_id");
+                            if (cacheID != null && !"".equals(cacheID)) {
+                                ywc.dao.CacheDAO.refreshCache(cacheID);
+                            }
+                            
                         }
 
                     }

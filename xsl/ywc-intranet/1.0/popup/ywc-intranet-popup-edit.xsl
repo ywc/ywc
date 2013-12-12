@@ -265,6 +265,7 @@
 						<xsl:with-param name="labels" select="$valuesCategory"/>
 						<xsl:with-param name="selected" select="$checkedCategoryValue"/>
 						<xsl:with-param name="menuWidth" select="200"/>
+						<xsl:with-param name="isRequired" select="1"/>
 					</xsl:call-template>
 				</xsl:when>
 				<xsl:otherwise>
