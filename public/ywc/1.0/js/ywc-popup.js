@@ -227,22 +227,25 @@ YWC.f.popupGenerateHtml = function(inputParams) {
 		dragHtml.css = 'cursor:move;';
 	}
 	
-	var xImg = {'src':YWC.uri.pre+'img/special/popupx/'+xType+'/'+xBgColor+'/'+xColor,'mouseOff':'.png','mouseOn':'_.png'};
-	if (xInvert) { xImg.mouseOn = '.png'; xImg.mouseOff = '_.png'; }
+	// var xImg = {'src':YWC.uri.pre+'img/special/popupx/'+xType+'/'+xBgColor+'/'+xColor,'mouseOff':'.png','mouseOn':'_.png'};
+	// if (xInvert) { xImg.mouseOn = '.png'; xImg.mouseOff = '_.png'; }
 	
-	var xHtml = '<div class="ywc-popup-x ywc-unselectable" unselectable="on" onClick="YWC.f.popupKill('+z+')"'
+	var xHtml = '<div class="ywc-popup-x ywc-x ywc-unselectable" unselectable="on" onClick="YWC.f.popupKill('+z+')"'
 			+' style="'
 				+'top:'+(brdrWidth-xOffset)+'px;'
 				+'right:-'+(brdrWidth+xOffset)+'px;'
 				+'width:'+xWidth+'px;'
 				+'height:'+xWidth+'px;'
+				+'font-size:'+xWidth+'px'
 			+'"'
-			+' onMouseOver="document.getElementById(\'ywc-popup-x-img-'+id+'\')'
-				+'.src=\''+xImg.src+xImg.mouseOn+'\';"'
-			+' onMouseOut="document.getElementById(\'ywc-popup-x-img-'+id+'\')	'
-				+'.src=\''+xImg.src+xImg.mouseOff+'\';"'
-			+'><img id="ywc-popup-x-img-'+id+'" class="ywc-unselectable" unselectable="on" alt="Close" title="Close"'
-				+' src="'+xImg.src+xImg.mouseOff+'" />'
+			+' onMouseOver="YWC.f.xHover(true,\''+id+'\');"'
+			+' onMouseOut="YWC.f.xHover(false,\''+id+'\');"'
+			+'>'
+//				+'<img id="ywc-popup-x-img-'+id+'" class="ywc-unselectable" unselectable="on" alt="Close" title="Close"'
+//				+' src="'+xImg.src+xImg.mouseOff+'" />'
+				+'<i id="ywc-x-1-'+id+'" class="ywc-x-1 fa fa-'+((xType=='box') ? 'square' : 'circle')+'" style="color:#'+xBgColor+';"></i>'
+				+'<i id="ywc-x-2-'+id+'" class="ywc-x-2 fa fa-'+((xType=='box') ? 'square' : 'circle')+'" style="color:#'+xColor+';"></i>'
+				+'<i id="ywc-x-3-'+id+'" class="ywc-x-3 fa fa-times" style="color:#'+xBgColor+';"></i>'
 			+'</div>';
 			
 	if (!xToggle) { xHtml = ''; }
@@ -569,3 +572,12 @@ YWC.f.popupCornerCss = function(radius,topBottom,leftRight) {
 	}
 	return html;
 }
+
+YWC.f.xHover = function(toggle,id) {
+	var clr = [YWC.popup.xColor,YWC.popup.xBgColor];
+	if (toggle) { clr = [clr[1],clr[0]]; }
+	document.getElementById('ywc-x-1-'+id).style.color = '#'+clr[1];
+	document.getElementById('ywc-x-2-'+id).style.color = '#'+clr[0];
+	document.getElementById('ywc-x-3-'+id).style.color = '#'+clr[1];
+}
+
