@@ -57,7 +57,7 @@
 		<xsl:if test="(string-length($labelCircle) &gt; 0)">
 			<div class="ywc-input-button-circle"
 				style="height:{($labelFontSize + $padding)}px;width:{($labelFontSize + $padding)}px;top:{($padding - round($padding div 2))}px;">
-				<img src="{$preUri}lib/ywc-image/1.0/bttn/ywc/circle-gray-01{
+				<img src="{$preUri}lib/ywc-image/bttn/ywc/circle-gray-01{
 					if ($isAlreadyClicked = 1) then '_' else ''
 				}.png" />
 				<div style="font-size:{round($labelFontSize * .6)}px;top:{round(($labelFontSize + $padding) * .33)}px;">

@@ -59,7 +59,7 @@
 						<xsl:with-param name="value" select="$link"/>
 						<xsl:with-param name="readOnly" select="1"/>
 						<xsl:with-param name="autoFocus" select="1"/>
-						<xsl:with-param name="icon" select="'lib/ywc-image/1.0/bttn/link/blue-01.png'"/>
+						<xsl:with-param name="icon" select="'lib/ywc-image/bttn/link/blue-01.png'"/>
 					</xsl:call-template>
 					</div>
 					
@@ -131,7 +131,7 @@
 						<xsl:with-param name="placeholder" select="'E-mail Address of the Recipient...'"/>
 						<xsl:with-param name="autoFocus" select="0"/>
 						<xsl:with-param name="eraseBttn" select="1"/>
-						<xsl:with-param name="icon" select="'lib/ywc-image/1.0/bttn/mail/envelope-01.png'"/>
+						<xsl:with-param name="icon" select="'lib/ywc-image/bttn/mail/envelope-01.png'"/>
 						<xsl:with-param name="onReturnKeyJs" select='$onSubmitJs'/>
 					</xsl:call-template>
 					</div>

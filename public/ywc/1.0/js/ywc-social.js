@@ -134,7 +134,7 @@ YWC.f.socialCheckAuthPopup = function(site,authCallback) {
 			+"position:relative;clear:both;font-size:18px;"
 		+"\">In order to complete your request, please sign into your "+site+" account:</span>"
 		+"<br /><br /><img style=\"position:relative;width:230px;clear:both;cursor:pointer;\""
-			+" src=\""+YWC.uri.pre+"lib/ywc-image/1.0/bttn/social/"+site+"-login-02.png\""
+			+" src=\""+YWC.uri.pre+"lib/ywc-image/bttn/social/"+site+"-login-02.png\""
 			+" class=\"ywc-social-"+site+"-login-bttn\" onLoad=\"YWC.f.uiSetHoverImageToggle(this)\" />"
 		+"</div>";
 	

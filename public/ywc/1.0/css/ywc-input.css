@@ -17,10 +17,10 @@ div.ywc-input-checkbox label { position:relative; float:left; margin-left:8px; }
 input.ywc-input-text, textarea.ywc-input-text {
 	position:relative; float:left; border:solid 1px #bbbbbb; color:#333333; background-color:white; z-index:1001; resize:none; }
 div.ywc-input-text { position:relative; float:left; width:0px; height:0px; left:0px; top:7px; border:none; overflow:visible; z-index:2; z-index:1002; }
-div.ywc-input-text img { position:absolute; cursor:pointer; background-color:transparent; visibility:hidden; }
+div.ywc-input-text img, div.ywc-input-text i { position:absolute; cursor:pointer; background-color:transparent; visibility:hidden; }
 div.ywc-input-text img.icon { visibility:visible; }
 div.ywc-input-text img.erase { z-index:1; }
-div.ywc-input-text img.loading { z-index:2; }
+div.ywc-input-text i.loading { z-index:2; }
 input.ywc-input-label, textarea.ywc-input-label { color:#c8c8c8; }
 
 .ywc-input-button { position:relative; cursor:pointer; height:auto; width:auto; background-color:#e8e8e8; clear:none; border:solid 1px #a1a1a1; text-align:center; margin:1px; overflow:hidden; }

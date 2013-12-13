@@ -100,7 +100,7 @@ YWC.f.inputTextLoadingIndicator = function(id,toggle) {
 
 YWC.f.inputLoadRichText = function(targetSelector) {
 	
-	var ckEditorVersion = "4.2.1";
+	var ckEditorVersion = "4.3.1";
 	
 	if (YWC.f.coreLoadFileAsync("script","ckeditor-base"
 				,YWC.uri.pre+"lib/vendor/ckeditor/"+ckEditorVersion+"/ckeditor.js"

@@ -51,7 +51,7 @@
 				<xsl:with-param name="placeholder" select="'Enter your e-mail address..'"/>
 				<xsl:with-param name="autoFocus" select="0"/>
 				<xsl:with-param name="eraseBttn" select="1"/>
-				<xsl:with-param name="icon" select="'lib/ywc-image/1.0/bttn/mail/envelope-01.png'"/>
+				<xsl:with-param name="icon" select="'lib/ywc-image/bttn/mail/envelope-01.png'"/>
 			<!--	<xsl:with-param name="value" select="ywc:rtrnUserEmail($user)"/>-->	
 				<xsl:with-param name="onReturnKeyJs" select='concat($buttonToggleJs,$submitJs)'/>
 			</xsl:call-template>
