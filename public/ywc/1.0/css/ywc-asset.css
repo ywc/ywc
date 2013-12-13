@@ -15,7 +15,7 @@
 .ywc-asset-list div.asset-controls a:hover { text-decoration:underline; color:#333333; }
 .ywc-asset-list div.delim { display:none; }
 
-.ywc-asset-list-loading { position:relative; width:20%; float:left; left:40%; border:none; margin:20px 0px; }
+.ywc-asset-list-loading { position:relative; width:100%; font-size:112px; margin:10% 0%; color:#fff; text-align:center; border:none; }
 
 .ywc-asset-list-empty { visibility:hidden; background-color:transparent; border:none; cursor:default; }
 .ywc-asset-list-empty:hover { background-color:transparent; border:none; }

@@ -255,12 +255,14 @@ public class render {
                 bg = "#" + (String) opts.get("background");
             }
 
-            String fontDir = settings.getPathYwcLib() + "ywc-font/1.0/";
-            String fontPath = fontDir + "arial.ttf";
+            String fontDir = settings.getPathYwcLib() + "ywc-font/";
+            String fontName = "arial";
+            String fontPath = fontDir + fontName + "/" + fontName + ".ttf";
             if (opts.get("font") != null) {
-                fontPath = fontDir + ((String) opts.get("font")).toLowerCase() + ".ttf";
+                fontName = ((String) opts.get("font")).toLowerCase();
+                fontPath = fontDir + fontName + "/" + fontName + ".ttf";
                 if (!(new File(fontPath)).exists()) {
-                    fontPath = fontDir + "arial.ttf";
+                    fontPath = fontDir + "arial/arial.ttf";
                 }
             }
 

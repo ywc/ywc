@@ -10,7 +10,7 @@ div.ywc-clmn-block { position:relative; float:left; width:100%; clear:both; }
 img.ywc-load { position:absolute; left:0px; top:0px; width:0px; height:0px; visibility:hidden; border:none; }
 
 div.ywc-alert { position:fixed; left:42%; top:25%; width:16%; height:auto; min-height:150px; z-index:10001; border:solid 1px black; background-color:#444444; }
-div.ywc-alert img.loading { position:relative; width:60%; margin:10px 20%; border:none; }
+div.ywc-alert i.fa { position:relative; width:100%; font-size:112px; margin:10% 0%; color:#fff; text-align:center; border:none; }
 
 div.ywc-input-message { position:relative; float:left; clear:both; width:90%; height:auto; border:none; margin-bottom:10px; font-weight:bold; }
 

@@ -214,7 +214,7 @@ YWC.f.uiAlertToggle = function(input){
 	if (input.toggle) {
 		$("body").append(
 			"<div class=\"ywc-alert ywc-crnr-10 ywc-unselectable ywc-trans-75\">"
-				+"<img class=\"loading\" src=\""+YWC.uri.pre+"lib/ywc-image/1.0/anim/spin-01.gif\" />"
+				+"<i class=\"fa fa-refresh fa-spin\"></i>"
 				+msgHtml
 			+"</div>");
 	} else {
