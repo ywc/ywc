@@ -519,3 +519,19 @@ YWC.f.inputButtonClick = function(bttnObj,force) {
 	}
 	return false;
 }
+
+YWC.f.inputValidate = function(inputIds) {
+	var rtrn = [true,[],[]];
+	if (typeof inputIds === "string") { inputIds = [inputIds]; }
+	for (id in inputIds) {
+		if (YWC.input.meta.validation.required[inputIds[id]]) {
+			var currValue = YWC.input.value[YWC.input.meta.validation.type[inputIds[id]]][inputIds[id]];
+			if ((currValue=="") || (currValue.length==0) || (currValue==0)) {
+				rtrn[0] = false;
+				rtrn[1].push(inputIds[id]);
+				rtrn[2].push($("label[for='ywc-input-"+YWC.input.meta.validation.type[inputIds[id]]+"-"+inputIds[id]+"']").text().replace(/:/g,''));
+			}
+		}
+	}
+	return rtrn;
+}

@@ -144,6 +144,7 @@
 					<xsl:with-param name="eraseBttn" select="if (contains($listName,'questions')) then 0 else 1"/>
 					<xsl:with-param name="readOnly" select="if (contains($listName,'questions')) then 1 else 0"/>
 					<xsl:with-param name="eraseBttnJs" select="''"/>
+					<xsl:with-param name="isRequired" select="1"/>
 				</xsl:call-template>
 			
 			</div></td>
@@ -156,7 +157,7 @@
 		<tr>
 			<td class="label">
 				<label style="font-size:{$fontSize}px;"
-					for="ywc-input-text-{$listName}-type">Type:</label>
+					for="ywc-input-checkbox-{$listName}-type">Type:</label>
 			</td>
 			<td class="input" style="border-bottom:solid 1px #dddddd;">
 
@@ -193,6 +194,7 @@
 					<xsl:with-param name="id" select="concat($listName,'-type')"/>
 					<xsl:with-param name="values" select="$valuesType"/>
 					<xsl:with-param name="checked" select="$checkedType"/>
+					<xsl:with-param name="isRequired" select="1"/>
 				</xsl:call-template>
 			
 			</td>
@@ -208,7 +210,7 @@
 		<tr>
 			<td class="label">
 				<label style="font-size:{$fontSize}px;"
-					for="ywc-input-text-{$listName}-category">Category:</label>
+					for="ywc-input-{if ($listName = 'marketplace') then 'checkbox' else 'select'}-{$listName}-category">Category:</label>
 			</td>
 			<td class="input">
 				
@@ -255,6 +257,7 @@
 						<xsl:with-param name="id" select="concat($listName,'-category')"/>
 						<xsl:with-param name="values" select="$valuesCategory"/>
 						<xsl:with-param name="checked" select="$checkedCategory"/>
+						<xsl:with-param name="isRequired" select="1"/>
 					</xsl:call-template>
 				</xsl:when>
 				<xsl:when test="$listName = 'community'">
@@ -325,6 +328,7 @@
 					)"/>
 					<xsl:with-param name="type" select="'datetime'"/>
 					<xsl:with-param name="fontSize" select="16"/>
+					<xsl:with-param name="isRequired" select="1"/>
 				</xsl:call-template>
 			
 			</td>
@@ -364,6 +368,7 @@
 					<xsl:with-param name="fontSize" select="16"/>
 					<xsl:with-param name="onChangeJs" select='concat(
 							"YWC.f.intranetPopupPostEditDurationCheck(&apos;",$listName,"&apos;);")'/>
+					<xsl:with-param name="isRequired" select="1"/>
 				</xsl:call-template>
 			
 			</td>
@@ -392,6 +397,7 @@
 					<xsl:with-param name="fontSize" select="($fontSize+2)"/>
 					<xsl:with-param name="eraseBttn" select="1"/>
 					<xsl:with-param name="eraseBttnJs" select="''"/>
+					<xsl:with-param name="isRequired" select="1"/>
 				</xsl:call-template>
 			
 			</div></td>
@@ -417,6 +423,7 @@
 					<xsl:with-param name="id" select="concat($listName,'-body')"/>
 					<xsl:with-param name="richText" select="if (contains($listName,'questions')) then 0 else 1"/>
 					<xsl:with-param name="fontSize" select="$fontSize"/>
+					<xsl:with-param name="isRequired" select="1"/>
 					
  					<xsl:with-param name="value" select="concat('',ywc:removeNewLine(
 						if (string-length(ywc:getParam('valueBody',$params)) &gt; 0) then ywc:getParam('valueBody',$params)
@@ -473,6 +480,7 @@
 					<xsl:with-param name="targetUri" select="$uriUploadFile" />				
 					<xsl:with-param name="paramNames" select="('listName','assetId')" />
 					<xsl:with-param name="paramValues" select="($listName,$assetId)" />
+					<xsl:with-param name="isRequired" select="0" />
 				</xsl:call-template>
 			
 			</td>
@@ -498,6 +506,7 @@
 					)"/>
 					<xsl:with-param name="type" select="'date'"/>
 					<xsl:with-param name="fontSize" select="16"/>
+					<xsl:with-param name="isRequired" select="1"/>
 				</xsl:call-template>
 			
 			</td>

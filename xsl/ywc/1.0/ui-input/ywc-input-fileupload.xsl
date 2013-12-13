@@ -13,6 +13,7 @@
 	<xsl:param name="maxFiles" as="xs:integer" select="25" />
 	<xsl:param name="paramNames" as="xs:string*" select="()" />
 	<xsl:param name="paramValues" as="xs:string*" select="()" />
+	<xsl:param name="isRequired" as="xs:integer" select="0" />
 
 	<div id="ywc-fileupload-{$id}-container" class="ui-widget-header ywc-crnr-5 ywc-fileupload"
 		style="width:{
@@ -95,6 +96,15 @@
 				-->'<xsl:value-of select='replace($id,"&apos;","\\&apos;")' />'<!--
 				-->,'<xsl:value-of select='replace($onSuccessJs,"&apos;","\\&apos;")' />'<!--
 				-->);<!--
+			-->YWC.input.meta.validation.required[<!--
+				-->'<xsl:value-of select='replace($id,"&apos;","\\&apos;")' />'<!--
+				-->]=<!--
+			--><xsl:value-of select="if ($isRequired = 1) then 'true' else 'false'" /><!--
+				-->;<!--
+			-->YWC.input.meta.validation.type[<!--
+				-->'<xsl:value-of select='replace($id,"&apos;","\\&apos;")' />'<!--
+				-->]='file';<!--
+
 		-->});<!--
 	--></script>
 	

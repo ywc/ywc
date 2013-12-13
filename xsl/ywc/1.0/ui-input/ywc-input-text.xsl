@@ -176,6 +176,12 @@
 							, if ($autoFocus = 1) then 
 								concat('if(BrowserDetect.browser!==&quot;Explorer&quot;){YWC.f.inputTextFocus(&quot;',$id,'&quot;);}') 
 								else ''
+
+							,' YWC.input.meta.validation.required[',$a,replace($id,$a,concat('\\',$a)),$a,']='
+								, if ($isRequired = 1) then 'true' else 'false', ';'
+
+							,' YWC.input.meta.validation.type[',$a,replace($id,$a,concat('\\',$a)),$a,']=',$a,'text',$a,';'
+
 							,$onLoadJs,';'
 						,'});'
 					,'&lt;/script&gt;'

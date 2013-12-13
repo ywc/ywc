@@ -58,6 +58,12 @@
 							,if ($menuWidth != 0) then concat(',menuWidth:',$menuWidth) else ''
 							,if ($menuWidth != 0) then concat(',width:',$menuWidth) else ''
 							,'}&quot;);'
+							
+							,' YWC.input.meta.validation.required[',$a,replace($id,$a,concat('\\',$a)),$a,']='
+								, if ($isRequired = 1) then 'true' else 'false', ';'
+							
+							,' YWC.input.meta.validation.type[',$a,replace($id,$a,concat('\\',$a)),$a,']=',$a,'select',$a,';'
+
 							,$onLoadJs,';'
 						,' });'
 					,'&lt;/script&gt;'

@@ -24,6 +24,7 @@
 				-->"text":{},"select":{},"checkbox":{},"file":{},"datetime":{},"hidden":{},"button":{},"custom":{}<!--
 			-->},"meta":{<!--
 				-->"jsBlock":{},"valueLength":{}<!--
+				-->,"validation":{"required":{},"type":{}}<!--
 				-->,"dateTime":[{"format":{}}]<!--
 				-->,"lastValue":{"text":{},"select":{},"checkbox":{},"file":{},"datetime":{},"hidden":{}}<!--
 			-->}<!--
