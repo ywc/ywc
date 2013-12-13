@@ -28,6 +28,7 @@ img.ywc-img-txt { border:none; }
 div.ywc-header { clear:both; position:relative; width:99%; height:28px; left:0px; top:0px; z-index:1; background-color:#a0ce67; color:white; padding:none; margin:0px 0px 10px 0px; top:5px; font-size:14px; font-weight:bold; overflow:hidden; }
 div.ywc-header img.ywc-header-bg { position:absolute; left:0%; top:0%; padding-left:80%; z-index:0; }
 div.ywc-header img.ywc-img-txt { position:absolute; left:5px; top:4px; z-index:1; }
+div.ywc-header span.ywc-header-txt { position:absolute; z-index:1; }
 
 .ywc-unselectable { user-select:none; -webkit-touch-callout:none; -webkit-user-select:none; -khtml-user-select:none; -moz-user-select:none; -ms-user-select:none; -o-user-select:none; }
 .ywc-selectable { user-select:text; -webkit-touch-callout:text; -webkit-user-select:text; -khtml-user-select:text; -moz-user-select:text; -ms-user-select:text; -o-user-select:text; }
