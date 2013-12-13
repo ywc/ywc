@@ -35,8 +35,9 @@ INSERT INTO "data_include" VALUES('aaaabn','ywc-utils','YWC Plugin: Javascript U
 INSERT INTO "data_include" VALUES('aaaabo','ywc-maps','YWC Plugin: Maps','1.0','ywc/1.0/js/ywc-map.js','text/javascript','ywc-core;','-',6,0,0,'','bottom','all');
 INSERT INTO "data_include" VALUES('aaaabq','ywc-intranet','YWC Plugin: Intranet','1.0','ywc/1.0/js/ywc-intranet.js','text/javascript','ywc-core; font-awesome;','-',6,0,0,'','bottom','all');
 INSERT INTO "data_include" VALUES('aaaabr','ywc-intranet','YWC Plugin: Intranet','1.0','ywc/1.0/css/ywc-intranet.css','text/css','ywc-core; font-awesome;','-',6,0,0,'','top','all');
-INSERT INTO "data_include" VALUES('aaaaag','font-awesome','Font Awesome','3.2.1','vendor/font-awesome/3.2.1/css/font-awesome.min.css','text/css','-','-',3,0,0,' ','top','all');
+INSERT INTO "data_include" VALUES('aaaaag','font-awesome','Font Awesome, IE 7','3.2.1','vendor/font-awesome/3.2.1/css/font-awesome.min.css','text/css','-','browser:ie 7',3,0,0,' ','top','all');
 INSERT INTO "data_include" VALUES('aaaaah','font-awesome','Font Awesome, IE7 Override','3.2.1','vendor/font-awesome/3.2.1/css/font-awesome-ie7.min.css','text/css','-','browser:ie 7',4,0,0,' ','top','all');
+INSERT INTO "data_include" VALUES('aaaaai','font-awesome','Font Awesome','4.0.3','vendor/font-awesome/4.0.3/css/font-awesome.min.css','text/css','-','-',3,0,0,' ','top','all');
 CREATE TABLE "data_placeholder" ("placeholder_id" TEXT(6,0),"template_id" TEXT(6,0),"title" TEXT(1024,0),"top_left_x" INTEGER,"top_left_y" INTEGER,"bttm_right_x" INTEGER,"bttm_right_y" INTEGER,"default_xml" TEXT(1024,0),"default_xsl" TEXT(1024,0),"placement" TEXT(255,0),"default_classes" TEXT(255,0),"inline_styles" TEXT(2048,0),"scope" TEXT(255,0),primary key("placeholder_id"));
 INSERT INTO "data_placeholder" VALUES('aaaaaa','aaaaaa','Default Placeholder',0,0,100,100,'','','body','','','all');
 INSERT INTO "data_placeholder" VALUES('aaaaab','aaaaab','JSON Generic',0,0,0,0,'','','body','','','all');
