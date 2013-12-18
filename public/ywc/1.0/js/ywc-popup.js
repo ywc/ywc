@@ -573,11 +573,3 @@ YWC.f.popupCornerCss = function(radius,topBottom,leftRight) {
 	return html;
 }
 
-YWC.f.xHover = function(toggle,id) {
-	var clr = [YWC.popup.xColor,YWC.popup.xBgColor];
-	if (toggle) { clr = [clr[1],clr[0]]; }
-	document.getElementById('ywc-x-1-'+id).style.color = '#'+clr[1];
-	document.getElementById('ywc-x-2-'+id).style.color = '#'+clr[0];
-	document.getElementById('ywc-x-3-'+id).style.color = '#'+clr[1];
-}
-

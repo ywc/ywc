@@ -31,7 +31,7 @@
 
 <xsl:variable name="a" select='"&apos;"' />
 
-<xsl:variable name="bttnEraseVis" select="if (string-length($value) = 0) then 'hidden' else 'visible'" />
+<xsl:variable name="bttnEraseVis" select="if (string-length($value) = 0) then 'none' else 'block'" />
 
 <xsl:value-of select="concat(''
 	
@@ -80,7 +80,7 @@
 							,'if(this.value.length&gt;0){'
 							,'if(document.getElementById(this.id+',$a,'-x',$a,')!=null){'
 							,'document.getElementById(this.id+',$a,'-x',$a,')'
-								,'.style.visibility=',$a,'visible',$a,';'
+								,'.style.display=',$a,'block',$a,';'
 							,'}}else{YWC.f.inputTextClear(',$a,$id,$a,',false,false);}'
 							,'YWC.input.value.text[',$a,replace($id,$a,concat('\\',$a)),$a,']=$(this).val();'
 							,'if(!YWC.input.meta.jsBlock[',$a,replace($id,$a,concat('\\',$a)),$a,']){'
@@ -115,21 +115,28 @@
 					
 					, if (($eraseBttn = 1) and ($type != 'textarea')) then concat(''					
 					
-					,'&lt;img src=&quot;',$preUri,'img/special/popupx/circle/ffffff/9f9f9f.png&quot;'
-					,' style=&quot;width:',round(1.3 * $fontSize),'px;'
-						,'height:',round(1.3 * $fontSize),'px;'
+					,'&lt;div'
+					,' style=&quot;width:',round(1.5 * $fontSize),'px;'
+						,'height:',round(1.5 * $fontSize),'px;'
 						,'left:-',round(1.8 * $fontSize),'px;'
-						,'visibility:',$bttnEraseVis,';'
+						,'display:',$bttnEraseVis,';'
+						,'font-size:',(1.5 * $fontSize),'px;'
+						,'border:solid 1px black;'
 						,'&quot;'
+					,' unselectable=&quot;on&quot;'
 					,' id=&quot;ywc-input-text-',$id,'-x&quot;'
-					,' class=&quot;ywc-trans-50 erase&quot;'
-					,' onMouseOver=&quot;this.src=',$a,$preUri,'img/special/popupx/circle/ffffff/9f9f9f_.png',$a,'&quot;'
-					,' onMouseOut=&quot;this.src=',$a,$preUri,'img/special/popupx/circle/ffffff/9f9f9f.png',$a,'&quot;'
+					,' class=&quot;ywc-trans-50 erase ywc-x ywc-unselectable&quot;'
+					,' onMouseOver=&quot;YWC.f.xHover(true,',$a,'ywc-input-text-x-',$id,$a,',[',$a,'9f9f9f',$a,',',$a,'ffffff',$a,']);&quot;'
+					,' onMouseOut=&quot;YWC.f.xHover(false,',$a,'ywc-input-text-x-',$id,$a,',[',$a,'9f9f9f',$a,',',$a,'ffffff',$a,']);&quot;'
 					,' onClick=&quot;'
 						,'YWC.f.inputTextClear(',$a,$id,$a,',true,true);'
 						,$eraseBttnJs
 						,'&quot;'
-					,' /&gt;'
+					,'&gt;'
+					,'&lt;i id=&quot;ywc-x-1-ywc-input-text-x-',$id,'&quot; class=&quot;ywc-x-1 fa fa-circle&quot;&gt;&lt;/i&gt;'
+					,'&lt;i id=&quot;ywc-x-2-ywc-input-text-x-',$id,'&quot; class=&quot;ywc-x-2 fa fa-circle&quot;&gt;&lt;/i&gt;'
+					,'&lt;i id=&quot;ywc-x-3-ywc-input-text-x-',$id,'&quot; class=&quot;ywc-x-3 fa fa-times&quot;&gt;&lt;/i&gt;'
+					,'&lt;/div&gt;'
 					
 					) else ''
 					

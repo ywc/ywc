@@ -414,8 +414,17 @@ YWC.f.uiLoadJqueryUI = function(callback) {
 }
 
 
+YWC.f.xHover = function(toggle,id,colors) {
+	var clr = [YWC.popup.xColor,YWC.popup.xBgColor];
+	if (typeof colors == "object") { clr = colors; }
+	if (toggle) { clr = [clr[1],clr[0]]; }
+	document.getElementById('ywc-x-1-'+id).style.color = '#'+clr[1];
+	document.getElementById('ywc-x-2-'+id).style.color = '#'+clr[0];
+	document.getElementById('ywc-x-3-'+id).style.color = '#'+clr[1];
+}
 
-//YWC.f.coreSetDefault("uri","cdn","//d3e10wbd8r4gnl.cloudfront.net/");
+
+//YWC.f.coreSetDefault("uri","cdn","//ywccdn.s3.amazonaws.com/");
 YWC.f.coreSetDefault("uri","cdn",YWC.uri.pre,true);
 
 

@@ -233,7 +233,7 @@
 					style="{$bttnDivCss} width:{ round( 99 div sum($toggle-controls-each) ) }%;">
 					<xsl:if test="$toggle-thmb = 1">
 						<img src="{
-							if ($useJavascript = 0) then '//d3e10wbd8r4gnl.cloudfront.net/'
+							if ($useJavascript = 0) then '//ywccdn.s3.amazonaws.com/'
 							else $preUri
 							}lib/ywc-image/bttn/link/blue-01.png"
 							id="ywc-container-popup-detail-{$listName}-{$assetId}-img-1"
@@ -258,7 +258,7 @@
 					style="{$bttnDivCss} width:{ round( 99 div sum($toggle-controls-each) ) }%;">
 					<xsl:if test="$toggle-thmb = 1">
 						<img src="{
-							if ($useJavascript = 0) then '//d3e10wbd8r4gnl.cloudfront.net/'
+							if ($useJavascript = 0) then '//ywccdn.s3.amazonaws.com/'
 							else $preUri
 							}lib/ywc-image/bttn/event/calendar-blue-01.png"
 							id="ywc-container-popup-detail-{$listName}-{$assetId}-img-2"
@@ -290,7 +290,7 @@
 					style="{$bttnDivCss} width:{ round( 99 div sum($toggle-controls-each) ) }%;">
 					<xsl:if test="$toggle-thmb = 1">
 						<img src="{
-							if ($useJavascript = 0) then '//d3e10wbd8r4gnl.cloudfront.net/'
+							if ($useJavascript = 0) then '//ywccdn.s3.amazonaws.com/'
 							else $preUri
 							}lib/ywc-image/bttn/mail/reply-01.png"
 							id="ywc-container-popup-detail-{$listName}-{$assetId}-img-3"
@@ -325,7 +325,7 @@
 					style="{$bttnDivCss} width:{ round( 99 div sum($toggle-controls-each) ) }%;">
 					<xsl:if test="$toggle-thmb = 1">
 						<img src="{
-							if ($useJavascript = 0) then '//d3e10wbd8r4gnl.cloudfront.net/'
+							if ($useJavascript = 0) then '//ywccdn.s3.amazonaws.com/'
 							else $preUri
 							}lib/ywc-image/bttn/mail/forward-01.png"
 							id="ywc-container-popup-detail-{$listName}-{$assetId}-img-4"
