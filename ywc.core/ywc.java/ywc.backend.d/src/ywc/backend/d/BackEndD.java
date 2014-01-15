@@ -21,16 +21,17 @@ import ywc.model.CacheEntry;
  * @author topher
  */
 public class BackEndD {
+
     private static final org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(BackEndD.class);
-    
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         logger.info("Starting backend.d");
-        
+
         try {
-            
+
             if (settings.getYwcEnvApp() != null) {
 
                 String action = null;
@@ -39,14 +40,14 @@ public class BackEndD {
                 } else {
                     action = settings.getBackendDaemonProcesses();
                 }
-                
+
                 if (action != null && !"".equals(action)) {
 
                     if (action.contains("xml_generate")) {
                         xml.cycleThruDataTypes(settings.getPathYwcCache() + "/xml/data/");
-  
+
                         logger.info("Building ywc core db xml files");
-                        
+
                         Boolean outVal = false;
                         String typeList = xslt.exec(settings.getPathYwcCoreData() + "xml/core/datatypes.xml", settings.getPathYwcCoreData() + "xsl/core/router/datatypes.xsl", null, null, null);
 
@@ -65,21 +66,11 @@ public class BackEndD {
 
                     if (action.equals("ldap_import")) {
                         ldapImport();
-                        //updateLdapCache();
                     }
 
                     if (action.equals("test_mail")) {
                         DrupalDAO drupal = new DrupalDAO();
                         drupal.informSubscribers("22", "aaaaaa");
-                        //Mail mail = new Mail("smtp.free.fr", "25", "clear", "", "");
-                        /*Mail mail = new Mail("smtp.gmail.com", "465", "tls", "ywcmailer@gmail.com", "2ThumbsUP!");
-                        mail.sendMail("ywcmailer@gmail.com",
-                                "delaplagnejd@gmail.com",
-                                "Test Message",
-                                data.requestHTTP("http://www.iter.org/buzz/item/marketplace/656", null, null),
-                                "text/html");
-                                * 
-                                */
                     }
 
                     if (action.contains("ingest_media")) {
@@ -87,7 +78,6 @@ public class BackEndD {
                     }
 
                 }
-
 
             }
 
@@ -102,58 +92,48 @@ public class BackEndD {
         if (entries != null && entries.size() > 0) {
             for (int i = 0; i < entries.size(); i++) {
                 CacheEntry entry = (CacheEntry) entries.get(i);
-                logger.info("Caching " + entry.url);
+                logger.info("Caching "+entry.name+", "+entry.assetID+", "+entry.url);
                 
-                //check if entry.params include "dest" 
-                if (entry.properties.containsKey("destination") && entry.properties.get("destination").toString().equals("drupal")) {
-                    DrupalDAO drupal = new DrupalDAO();
-                    
-                    // override drupal endpoint
-                    if (entry.properties.containsKey("drupalEndpoint")) {
-                        logger.info("Override Drupal endpoint with " + entry.properties.get("drupalEndpoint"));
-                        drupal.setEndpoint(entry.properties.get("drupalEndpoint").toString(), 
-                                            entry.properties.get("drupalUser").toString(), 
-                                            entry.properties.get("drupalPass").toString());
-                    }
-                    
-                    if (drupal.login()) {
-                        entry.properties.put("Cookie", drupal.getCookie());
+                if ("http".equals(entry.type)) {
 
-                        String cacheData = data.retrieve(entry);
-                        if (cacheData != null) {
-                            if (!data.isCacheUpToDate(entry, cacheData)) {
-//                                System.out.println("\tsuccess");
+                    //check if entry.params include "dest" 
+                    if (entry.properties.containsKey("destination") && entry.properties.get("destination").toString().equals("drupal")) {
+                        DrupalDAO drupal = new DrupalDAO();
+
+                        // override drupal endpoint
+                        if (entry.properties.containsKey("drupalEndpoint")) {
+                            logger.info("Override Drupal endpoint with " + entry.properties.get("drupalEndpoint"));
+                            drupal.setEndpoint(entry.properties.get("drupalEndpoint").toString(),
+                                    entry.properties.get("drupalUser").toString(),
+                                    entry.properties.get("drupalPass").toString());
+                        }
+                        
+                        if (drupal.login()) {
+                            entry.properties.put("Cookie", drupal.getCookie());
+                            entry.properties.put("X-CSRF-Token", drupal.getToken());
+                            
+                            String cacheData = data.retrieve(entry);
+                            if ((cacheData != null) && !data.isCacheUpToDate(entry, cacheData)) {
                                 data.cache(entry, cacheData);
-
-                                //update cache entry
                                 entry.countUpdated++;
-
                             } else {
-//                                System.out.println("\tno_update_needed");
+                                logger.warn("Cache failed for " + entry.url);
                             }
+                            drupal.logoff();
+                        }
+                        
+                    } else {
+                        
+                        String cacheData = data.retrieve(entry);
+                        if ((cacheData != null) && !data.isCacheUpToDate(entry, cacheData)) {
+                            data.cache(entry, cacheData);
+                            entry.countUpdated++;
                         } else {
                             logger.warn("Cache failed for " + entry.url);
                         }
-                        drupal.logoff();
                     }
-
                 } else {
-
-                    String cacheData = data.retrieve(entry);
-                    if (cacheData != null) {
-                        if (!data.isCacheUpToDate(entry, cacheData)) {
-//                            System.out.println("\tsuccess");
-                            data.cache(entry, cacheData);
-
-                            //update cache entry
-                            entry.countUpdated++;
-
-                        } else {
-//                            System.out.println("\tno_update_needed");
-                        }
-                    } else {
-                        logger.warn("Cache failed for " + entry.url);
-                    }
+                    logger.info("Skipped");
                 }
             }
 
@@ -172,7 +152,6 @@ public class BackEndD {
                     settings.get("ywc.ldap.user"),
                     settings.get("ywc.ldap.pass"));
 
-
         } else {
             ldap = new ldap(settings.get("ywc.ldap.domain"),
                     settings.get("ywc.ldap.url"),
@@ -181,7 +160,6 @@ public class BackEndD {
                     settings.get("ywc.ldap.user"),
                     settings.get("ywc.ldap.pass"));
         }
-
 
         //get users
         ArrayList aUsers = new ArrayList();
@@ -192,84 +170,11 @@ public class BackEndD {
         for (int i = 0; i < aUsers.size(); i++) {
             Map user;
             user = (Map) aUsers.get(i);
-            //System.out.println(((ArrayList) user.get("sAMAccountName")).get(0));
             System.out.println("User:" + ((ArrayList) user.get("givenName")).get(0)
                     + " "
                     + ((ArrayList) user.get("sn")).get(0)
                     + " "
                     + ((ArrayList) user.get("memberOf")).size());
         }
-//
-//        //get ou
-//        ArrayList aOU = new ArrayList();
-//        aOU = ldap.getResults(new String[]{"name", "description"}, "OU=IO,OU=core,DC=iter,DC=org", "objectClass=organizationalUnit");
-//        for (int i = 0; i < aOU.size(); i++) {
-//            Map oU;
-//            oU = (Map) aOU.get(i);
-//            System.out.println("OU:" + ((ArrayList) oU.get("name")).get(0) + " " + ((ArrayList) oU.get("description")).get(0));
-//        }
-//
-//        //get groups
-//        ArrayList aGroups = new ArrayList();
-//        aGroups = ldap.getResults(new String[]{"name", "description", "mail", "member"}, "OU=IO_GD,OU=core,DC=iter,DC=org", "objectClass=group");
-//        for (int i = 0; i < aGroups.size(); i++) {
-//            Map group;
-//            group = (Map) aGroups.get(i);
-//
-//            if (((ArrayList) group.get("member")) != null) {
-//                System.out.println("Group:" + ((ArrayList) group.get("name")).get(0)
-//                        + " "
-//                        + ((ArrayList) group.get("description")).get(0)
-//                        + " "
-//                        + ((ArrayList) group.get("member")).size());
-//            } else {
-//                System.out.println("Group:" + ((ArrayList) group.get("name")).get(0)
-//                        + " "
-//                        + ((ArrayList) group.get("description")).get(0));
-//            }
-//        }
-
-//        //get users
-//        ArrayList aUsers = new ArrayList();
-//        aUsers = ldap.getResults(new String[]{"sAMAccountName", "sn", "givenName", "mail", "memberOf"}, "OU=IO,OU=core,DC=iter,DC=org", "objectClass=person");
-//        for (int i = 0; i < aUsers.size(); i++) {
-//            Map user;
-//            user = (Map) aUsers.get(i);
-//            //System.out.println(((ArrayList) user.get("sAMAccountName")).get(0));
-//            System.out.println("User:" + ((ArrayList) user.get("givenName")).get(0)
-//                    + " "
-//                    + ((ArrayList) user.get("sn")).get(0)
-//                    + " "
-//                    + ((ArrayList) user.get("memberOf")).size());
-//        }
-//
-//        //get ou
-//        ArrayList aOU = new ArrayList();
-//        aOU = ldap.getResults(new String[]{"name", "description"}, "OU=IO,OU=core,DC=iter,DC=org", "objectClass=organizationalUnit");
-//        for (int i = 0; i < aOU.size(); i++) {
-//            Map oU;
-//            oU = (Map) aOU.get(i);
-//            System.out.println("OU:" + ((ArrayList) oU.get("name")).get(0) + " " + ((ArrayList) oU.get("description")).get(0));
-//        }
-//
-//        //get groups
-//        ArrayList aGroups = new ArrayList();
-//        aGroups = ldap.getResults(new String[]{"name", "description", "mail", "member"}, "OU=IO_GD,OU=core,DC=iter,DC=org", "objectClass=group");
-//        for (int i = 0; i < aGroups.size(); i++) {
-//            Map group;
-//            group = (Map) aGroups.get(i);
-//
-//            if (((ArrayList) group.get("member")) != null) {
-//                System.out.println("Group:" + ((ArrayList) group.get("name")).get(0)
-//                        + " "
-//                        + ((ArrayList) group.get("description")).get(0)
-//                        + " "
-//                        + ((ArrayList) group.get("member")).size());
-//            } else {
-//                System.out.println("Group:" + ((ArrayList) group.get("name")).get(0)
-//                        + " "
-//                        + ((ArrayList) group.get("description")).get(0));
-//            }
-//        }
     }
 }

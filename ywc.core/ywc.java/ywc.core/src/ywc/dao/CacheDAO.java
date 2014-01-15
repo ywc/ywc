@@ -28,19 +28,13 @@ public class CacheDAO {
             for (int i=0; i<quRows.size(); i++) {
                 HashMap row = (HashMap) quRows.get(i);
                 CacheEntry entry = new CacheEntry(row.get("cache_id").toString(),
-                                                    row.get("title").toString(),
-                                                    row.get("name").toString(),
-                                          //          Double.parseDouble(row.get("created_time").toString()), 
-                                          //          Double.parseDouble(row.get("modified_time").toString()), 
-                                          //          row.get("created_user").toString(), 
-                                          //          row.get("modified_user").toString(), 
+                                                    row.get("title").toString(), row.get("name").toString(),
                                                     row.get("type").toString(), row.get("url").toString(), 
                                                     row.get("properties").toString(), row.get("params").toString(),
                                                     Double.parseDouble(row.get("last_updated").toString()), 
                                                     Integer.parseInt(row.get("count_updated").toString()));
-                
+           
                 return entry;
-                
             }
             
         }
@@ -54,17 +48,11 @@ public class CacheDAO {
             for (int i=0; i<quRows.size(); i++) {
                 HashMap row = (HashMap) quRows.get(i);
                 CacheEntry entry = new CacheEntry(row.get("cache_id").toString(),
-                                                    row.get("title").toString(),
-                                                    row.get("name").toString(),
-                                       //             Double.parseDouble(row.get("created_time").toString()), 
-                                       //             Double.parseDouble(row.get("modified_time").toString()), 
-                                       //             row.get("created_user").toString(), 
-                                       //             row.get("modified_user").toString(), 
+                                                    row.get("title").toString(), row.get("name").toString(),
                                                     row.get("type").toString(), row.get("url").toString(), 
                                                     row.get("properties").toString(), row.get("params").toString(),
                                                     Double.parseDouble(row.get("last_updated").toString()), 
                                                     Integer.parseInt(row.get("count_updated").toString()));
-                
                 entries.add(entry);
                 
             }
