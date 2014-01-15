@@ -177,9 +177,7 @@ public class data {
 
                     //set method
                     if (key != null) {
-                        if (!key.equals("method") 
-                                && !key.equals("http_user")
-                                && !key.equals("http_pass")) {
+                        if (!key.equals("method") && !key.equals("http_user") && !key.equals("http_pass")) {
                             connection.setRequestProperty(key, properties.get(key).toString());
                         }
                     }

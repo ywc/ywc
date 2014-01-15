@@ -28,9 +28,7 @@ import ywc.notification.Mail;
 public class DrupalDAO {
     private static final org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(DrupalDAO.class);
     
-    String contentType;
-    String url, user, pass, cookie;
-    String httpUser, httpPass;
+    String contentType, url, user, pass, cookie, token, httpUser, httpPass;
     
     public DrupalDAO() {
         url = settings.getProp("drupal.endpoint",null);
@@ -61,39 +59,50 @@ public class DrupalDAO {
         pass = pPass;
     }
     
-    public String getCookie() {return cookie;}
+    public String getCookie() { return this.cookie; }
+    private void setCookie(String cookie) { this.cookie = cookie.replaceAll("\\s", ""); }
+    
+    public String getToken() { return this.token; }
+    private void setToken(String token) { this.token = token.replaceAll("\\s", ""); }
+    
     public boolean login() {
-        boolean ret = false;
         
-        HashMap properties = new HashMap();
+        boolean rtrn = false;
+        
+        HashMap loginProperties = new HashMap();
+        HashMap loginParams = new HashMap();
+        HashMap tokenProperties = new HashMap();
+        
         if (httpUser != null && httpPass != null) {
-            properties.put("http_user", httpUser);properties.put("http_pass", httpPass);
+            loginProperties.put("http_user", httpUser);loginProperties.put("http_pass", httpPass);
         }
-        properties.put("Content-Type", "application/x-www-form-urlencoded");
-        properties.put("method", "POST");
         
-        HashMap params = new HashMap();
-        if (user != null && pass != null) {
-            params.put("username", user);params.put("password", pass);
+        loginProperties.put("method", "POST");
+        loginProperties.put("Connection", "keep-alive");
+        loginProperties.put("Content-Type", "application/x-www-form-urlencoded");
+        
+        if ((this.cookie==null) && user != null && pass != null) {
             
-            String json = data.requestHTTP(url + "/user/login.json", properties, params);
-            if (json != null) {
-                JsonObject jsobj = (JsonObject) new JsonParser().parse(json);
-                if (jsobj != null && jsobj.has("sessid") && jsobj.has("session_name")) {
-                    cookie = jsobj.get("session_name").getAsString() + "=" + jsobj.get("sessid").getAsString();
-                    //System.out.println(cookie);
-                    return true;
-                } else {
-                    return false;
+            loginParams.put("username", user);
+            loginParams.put("password", pass);
+            
+            String loginJson = data.requestHTTP(url + "/user/login.json", loginProperties, loginParams);
+            if (loginJson != null) {
+                JsonObject loginJsonObj = (JsonObject) new JsonParser().parse(loginJson);
+                if ((loginJsonObj != null) && loginJsonObj.has("sessid") && loginJsonObj.has("session_name")) {
+                    setCookie(loginJsonObj.get("session_name").getAsString() + "=" + loginJsonObj.get("sessid").getAsString());
+                    
+                    tokenProperties.put("method", "GET");
+                    tokenProperties.put("Cookie", getCookie());
+                    String csrfToken = data.requestHTTP("https://www.oist.jp/services/session/token", tokenProperties, new HashMap());
+                    if (csrfToken != null) {
+                        setToken(csrfToken);
+                        rtrn = true;
+                    }
                 }
-            } else {
-                return false;
             }
-            
-        } else {
-            return true;
         }
-        
+        return rtrn;
     }
     public void logoff() {
         HashMap properties = new HashMap();
@@ -101,7 +110,8 @@ public class DrupalDAO {
             properties.put("http_user", httpUser); properties.put("http_pass", httpPass);
         }
         properties.put("method", "POST");
-        properties.put("Cookie", cookie);
+        properties.put("Cookie", getCookie());
+        properties.put("X-CSRF-Token", getToken());
         
         HashMap params = new HashMap();
         String json = data.requestHTTP(url + "/user/logout.json", properties, params);
@@ -119,7 +129,8 @@ public class DrupalDAO {
                 properties.put("http_user", httpUser); properties.put("http_pass", httpPass);
             }
             properties.put("method", "GET");
-            properties.put("Cookie", cookie);
+            properties.put("Cookie", getCookie());
+            properties.put("X-CSRF-Token", getToken());
 
             HashMap params = new HashMap();
             String json = data.requestHTTP(url + "/node/" + nid + ".json", properties, params);
@@ -129,7 +140,7 @@ public class DrupalDAO {
             } 
             logoff();
         } else {
-            logger.warn("Logout failed to" + url);
+            logger.warn("Login failed to" + url);
         }
         return ret;
     }
@@ -144,8 +155,9 @@ public class DrupalDAO {
                 properties.put("http_user", httpUser); properties.put("http_pass", httpPass);
             }
             
-            properties.put("Cookie", cookie);
-            
+            properties.put("Cookie", getCookie());
+            properties.put("X-CSRF-Token", getToken());
+ 
             //if nid == null -> create node else update
             String json = null;
             if (nid == null) {
@@ -167,7 +179,7 @@ public class DrupalDAO {
                }
                
             }
-            logoff();
+      //      logoff();
         } else {
             logger.warn("Login failed to " + url);
         }
@@ -179,11 +191,8 @@ public class DrupalDAO {
             logger.debug("Login success to " + url);
             
             HashMap properties = new HashMap();
-            if (httpUser != null && httpPass != null) {
-                properties.put("http_user", httpUser); properties.put("http_pass", httpPass);
-            }
-            
-            properties.put("Cookie", cookie);
+            properties.put("Cookie", getCookie());
+            properties.put("X-CSRF-Token", getToken());
             
             //if nid == null -> create node else update
             String json = null;
@@ -209,7 +218,8 @@ public class DrupalDAO {
             if (httpUser != null && httpPass != null) {
                 properties.put("http_user", httpUser); properties.put("http_pass", httpPass);
             }
-            properties.put("Cookie", cookie);
+            properties.put("Cookie", getCookie());
+            properties.put("X-CSRF-Token", getToken());
             
             HashMap params = new HashMap();
             params.put("mail", mail);
@@ -238,7 +248,8 @@ public class DrupalDAO {
             if (httpUser != null && httpPass != null) {
                 properties.put("http_user", httpUser); properties.put("http_pass", httpPass);
             }
-            properties.put("Cookie", cookie);
+            properties.put("Cookie", getCookie());
+            properties.put("X-CSRF-Token", getToken());
             
             HashMap params = new HashMap();
             params.put("mail", mail);
