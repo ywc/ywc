@@ -114,6 +114,10 @@ public class settings {
         return getProp("sftp.host","localhost");
     }
     
+    public static int getCdnTypeSFTPPort() {
+        return Integer.parseInt(getProp("sftp.port","22"));
+    }
+    
     public static String getCdnTypeSFTPUser() {
         return getProp("sftp.user","");
     } 

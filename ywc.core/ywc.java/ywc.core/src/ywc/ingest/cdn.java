@@ -4,8 +4,16 @@
  */
 package ywc.ingest;
 
+import com.jcraft.jsch.Channel;
+import com.jcraft.jsch.ChannelSftp;
+import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.JSchException;
+import com.jcraft.jsch.Session;
+import com.jcraft.jsch.SftpException;
+import com.jcraft.jsch.UserInfo;
 import java.io.*;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,62 +39,121 @@ public class cdn {
             String[] dirs = {media_id.substring(0, 2), media_id.substring(2, 4)};
             String[] types = {"orig", "work", "thmb", "temp"};
 
-            if ("local".equals(storageMethod)) {
+            if ("local".equals(storageMethod) || "sftp".equals(storageMethod)) {
                 for (int i = 0; i < types.length; i++) {
                     String base = settings.getPathYwcCache() + "/doc";
-                    File dirA = new File(base + "/" + types[i] + "/" + dirs[0]);
-                    if (!dirA.exists()) {
+                    String dirA = types[i] + "/" + dirs[0];
+                    if (!directoryExists(dirA)) {
                         if ((types[i].equals(contextType)) || (!"temp".equals(contextType))) {
-                            dirA.mkdir();
+                            directoryCreate(dirA);
                         }
                     }
-                    File dirB = new File(base + "/" + types[i] + "/" + dirs[0] + "/" + dirs[1]);
-                    if (dirA.exists() && !dirB.exists()) {
-                        rtrn = dirB.mkdir();
+                    String dirB = types[i] + "/" + dirs[0] + "/" + dirs[1];
+                    if (directoryExists(dirA) && !directoryExists(dirB)) {
+                        rtrn = directoryCreate(dirB);
                     } else {
                         rtrn = true;
                     }
                 }
             } else if ("aws".equals(storageMethod)) {
                 rtrn = true;
-
-            } else if ("sftp".equals(storageMethod)) {
-                rtrn = false;
             }
         }
 
         return rtrn;
     }
 
+    private static Boolean directoryExists(String relativePath) {
+        Boolean rtrn = false;
+        String storageMethod = settings.getMediaStorageMethod();
+        String base;
+        if ("local".equals(storageMethod)) {
+            base = settings.getPathYwcCache() + "/doc/";
+            File file = new File(base + relativePath);
+            rtrn = file.exists();
+        } else if ("sftp".equals(storageMethod)) {
+            base = settings.getCdnTypeSFTPUri() + "/doc/";
+            try {
+                URL url = new URL(base + relativePath);
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("GET");  //OR  huc.setRequestMethod("HEAD");
+                conn.connect();
+                rtrn = !(conn.getResponseCode() == 404);
+            } catch (MalformedURLException ex) {
+                Logger.getLogger(cdn.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(cdn.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return rtrn;
+    }
+    
+    private static Boolean urlExists(String fullUrl) {
+        Boolean rtrn = false;
+        try {
+            HttpURLConnection.setFollowRedirects(false);
+            //HttpURLConnection.setInstanceFollowRedirects(false);
+            HttpURLConnection conn = (HttpURLConnection) new URL(fullUrl).openConnection();
+            conn.setRequestMethod("HEAD");
+            conn.connect();
+            rtrn = !(conn.getResponseCode() == 404);
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(cdn.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(cdn.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return rtrn;
+    }
+    
+    public static Boolean directoryCreate(String relativePath) {
+        Boolean rtrn = false;
+        String storageMethod = settings.getMediaStorageMethod();
+        String base;
+        if ("local".equals(storageMethod)) {
+            base = settings.getPathYwcCache() + "/doc/";
+            File file = new File(base + relativePath);
+            rtrn = file.mkdir();
+        } else if ("sftp".equals(storageMethod)) {
+            try {
+                JSch jsch = new JSch();
+                java.util.Properties config = new java.util.Properties(); 
+                config.put("StrictHostKeyChecking", "no");
+                config.put("VerifyHostKeyDNS", "no");
+                Session session = jsch.getSession( settings.getCdnTypeSFTPUser(), settings.getCdnTypeSFTPHost(), settings.getCdnTypeSFTPPort());
+                session.setConfig(config);
+                session.setPassword(settings.getCdnTypeSFTPPassword());
+                session.connect();
+                Channel channel = session.openChannel("sftp");
+                channel.connect();
+                ChannelSftp sftpChannel = (ChannelSftp) channel;
+                sftpChannel.mkdir(settings.getPathYwcCache() + "/doc/" + relativePath);
+                sftpChannel.exit();
+                session.disconnect();
+                rtrn = directoryExists(relativePath);
+            } catch (JSchException ex) {
+                Logger.getLogger(cdn.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SftpException ex) {
+                Logger.getLogger(cdn.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return rtrn;
+    }
+    
     public static Boolean mediaExists(String media_id, String ext, String version, String fileNameAddition) {
         Boolean rtrn = false;
-
+                    
         if (media_id.length() >= 4) {
             String storageMethod = settings.getMediaStorageMethod();
             String fileDir = "doc" + getFileDir(media_id, ext, version);
             String fileName = media_id + formatMediaFileNameAddition(fileNameAddition) + "." + ext;
 
             try {
-
                 if ("local".equals(storageMethod)) {
                     rtrn = new File(settings.getPathYwcCache() + "/" + fileDir + "/" + fileName).exists();
-
                 } else if ("aws".equals(storageMethod)) {
                     rtrn = S3DAO.fileExists(null, fileDir + "/" + fileName);
-                    
                 } else if ("sftp".equals(storageMethod)) {
-                    String fileUrl = ""+"/"+fileDir+"/"+fileName;
-                    try {
-                        HttpURLConnection.setFollowRedirects(false);
-                        // note : you may also need
-                        // HttpURLConnection.setInstanceFollowRedirects(false)
-                        HttpURLConnection con = (HttpURLConnection) new URL(fileUrl).openConnection();
-                        con.setRequestMethod("HEAD");
-                        rtrn = (con.getResponseCode() == HttpURLConnection.HTTP_OK);
-                    } catch (Exception ex) {
-                        Logger.getLogger(cdn.class.getName()).log(Level.SEVERE,null,ex);
-                        rtrn = false;
-                    }
+                    rtrn = urlExists(settings.getCdnTypeSFTPUri() + "/" + fileDir+"/"+fileName);
                 }
 
             } catch (IOException ex) {
@@ -101,7 +168,6 @@ public class cdn {
         Boolean rtrn = exists;
         String storageMethod = settings.getMediaStorageMethod();
         File localFile = new File(settings.getPathYwcCache() + "/tmp/" + currLoc + "." + ext);
-        
         try {
             if (localFile.exists() && checkOrMakeDirs(media_id, version) && !exists) {
 
@@ -109,8 +175,7 @@ public class cdn {
                 String fileName = media_id + formatMediaFileNameAddition(fileNameAddition) + "." + ext;
 
                 if ("local".equals(storageMethod)) {
-                    String fullFileDir = settings.getPathYwcCache() + "/" + fileDir;
-                    rtrn = localFile.renameTo(new File(new File(fullFileDir), fileName));
+                    rtrn = localFile.renameTo(new File(new File(settings.getPathYwcCache() + "/" + fileDir), fileName));
 
                 } else if ("aws".equals(storageMethod)) {
                     S3DAO.uploadFile(null, fileDir + "/" + fileName, localFile);
@@ -120,8 +185,27 @@ public class cdn {
                     rtrn = mediaExists(media_id, ext, version, fileNameAddition);
                 
                 } else if ("sftp".equals(storageMethod)) {
-                    rtrn = false;
-                    
+                    try {
+                        JSch jsch = new JSch();
+                        java.util.Properties config = new java.util.Properties(); 
+                        config.put("StrictHostKeyChecking", "no");
+                        config.put("VerifyHostKeyDNS", "no");
+                        Session session = jsch.getSession( settings.getCdnTypeSFTPUser(), settings.getCdnTypeSFTPHost(), settings.getCdnTypeSFTPPort());
+                        session.setConfig(config);
+                        session.setPassword(settings.getCdnTypeSFTPPassword());
+                        session.connect();
+                        Channel channel = session.openChannel("sftp");
+                        channel.connect();
+                        ChannelSftp sftpChannel = (ChannelSftp) channel;
+                        sftpChannel.put(localFile.getPath(), settings.getCdnTypeSFTPPath() + "/" + fileDir + "/" + fileName);
+                        rtrn = mediaExists(media_id, ext, version, fileNameAddition);
+                        sftpChannel.exit();
+                        session.disconnect();
+                    } catch (JSchException ex) {
+                        Logger.getLogger(cdn.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (SftpException ex) {
+                        Logger.getLogger(cdn.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             }
         } catch (IOException ex) {
@@ -153,8 +237,26 @@ public class cdn {
                     fileStream = S3DAO.getFile(null, fileDir + "/" + fileName);
 
                 } else if ("sftp".equals(storageMethod)) {
-                    fileStream = null;
-                    
+                    try {
+                        JSch jsch = new JSch();
+                        java.util.Properties config = new java.util.Properties(); 
+                        config.put("StrictHostKeyChecking", "no");
+                        config.put("VerifyHostKeyDNS", "no");
+                        Session session = jsch.getSession( settings.getCdnTypeSFTPUser(), settings.getCdnTypeSFTPHost(), settings.getCdnTypeSFTPPort());
+                        session.setConfig(config);
+                        session.setPassword(settings.getCdnTypeSFTPPassword());
+                        session.connect();
+                        Channel channel = session.openChannel("sftp");
+                        channel.connect();
+                        ChannelSftp sftpChannel = (ChannelSftp) channel;
+                        fileStream = sftpChannel.get( settings.getCdnTypeSFTPPath() + "/" + fileDir + "/" + fileName);
+//                        sftpChannel.exit();
+//                        session.disconnect();
+                    } catch (JSchException ex) {
+                        Logger.getLogger(cdn.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (SftpException ex) {
+                        Logger.getLogger(cdn.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(cdn.class.getName()).log(Level.SEVERE, null, ex);
