@@ -72,7 +72,7 @@ public class cdn {
             File file = new File(base + relativePath);
             rtrn = file.exists();
         } else if ("sftp".equals(storageMethod)) {
-            base = settings.getCdnTypeSFTPUri() + "/doc/";
+            base = "http://"+settings.getCdnTypeSFTPUri() + "/doc/";
             try {
                 URL url = new URL(base + relativePath);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -126,7 +126,7 @@ public class cdn {
                 Channel channel = session.openChannel("sftp");
                 channel.connect();
                 ChannelSftp sftpChannel = (ChannelSftp) channel;
-                sftpChannel.mkdir(settings.getPathYwcCache() + "/doc/" + relativePath);
+                sftpChannel.mkdir(settings.getCdnTypeSFTPPath() + "/doc/" + relativePath);
                 sftpChannel.exit();
                 session.disconnect();
                 rtrn = directoryExists(relativePath);
@@ -153,7 +153,7 @@ public class cdn {
                 } else if ("aws".equals(storageMethod)) {
                     rtrn = S3DAO.fileExists(null, fileDir + "/" + fileName);
                 } else if ("sftp".equals(storageMethod)) {
-                    rtrn = urlExists(settings.getCdnTypeSFTPUri() + "/" + fileDir+"/"+fileName);
+                    rtrn = urlExists("http://"+settings.getCdnTypeSFTPUri() + "/" + fileDir+"/"+fileName);
                 }
 
             } catch (IOException ex) {

@@ -41,7 +41,7 @@ public class rtrn {
                     response.sendRedirect(settings.getYwcEnvProtocol()+"://"+redirectDomain+"/"+fileDir+"/"+fileName);
 
                 } else if ("sftp".equals(storageMethod)) {
-                    response.sendRedirect(settings.getCdnTypeSFTPUri()+"/"+fileDir+"/"+fileName);
+                    response.sendRedirect(settings.getYwcEnvProtocol()+"://"+settings.getCdnTypeSFTPUri()+"/"+fileDir+"/"+fileName);
                     
                 }
 
