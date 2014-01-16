@@ -216,4 +216,9 @@
 	<xsl:value-of select="substring-after(concat($setting,''),'=')" />
 </xsl:function>
 
+<xsl:function name="ywc:getAppName" as="xs:string">
+	<xsl:value-of select="concat(replace(replace(unparsed-text('../../../../config/app_name'),'&#xA;',''),'&#xD;',''),'')" />
+</xsl:function>
+
+
 </xsl:stylesheet>
