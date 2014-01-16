@@ -15,5 +15,7 @@ sqlite3 database/ywc/ywccore.sqlite3 < database/ywc/ywccore.sqlite.sql;
 sqlite3 database/$YWC_APP/ywc$YWC_APP.sqlite3 < database/$YWC_APP/ywc$YWC_APP.sqlite.sql;
 chmod a+rwx database/ywc/ywccore.sqlite3 database/$YWC_APP/ywc$YWC_APP.sqlite3;
 
+config/ywc/publish.sh;
+
 config/ywc/cache.sh;
 
