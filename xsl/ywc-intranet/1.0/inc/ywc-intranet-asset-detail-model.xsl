@@ -29,11 +29,9 @@
 <xsl:param name="replyEmail" as="xs:string" select="''" />
 	
 	<xsl:variable as="xs:string*" name="adminUsers" select="
-			tokenize(
-			replace(
+			tokenize(replace(
 			unparsed-text(concat('../../../../config/',unparsed-text('../../../../config/app_name'),'/admin-users.txt'))
-			,'&#xD;','')
-			,'&#xA;')
+			,'&#xD;',''),'&#xA;')
 		" />
 	
 	<div class="{
@@ -51,12 +49,14 @@
 
 		<xsl:variable as="xs:integer" name="isReadOnly" select="if (contains(document('../../../../cache/xml/data/cache.xml')/ywc/cache[@name = $listName]/@properties,'read-only,')) then 1 else 0" />
 		
+		<xsl:variable name="currentEnv" select="ywc:getAppSetting('ywc.env.env')" />
+
  		<xsl:if test="
  				($isReadOnly = 0) and ($useJavascript = 1)
 				and (
 					( 	(string-length($currentUser) &gt; 1) and ($currentUser = $author) ) 
 					or 	exists(index-of($adminUsers,lower-case($currentUser)))
-					or 	(ywc:getAppSetting('ywc.env.env') != 'production')
+					or 	($currentEnv = 'development')
 				)
 				"> 
 			<!-- we don't need inline styles here because the edit controls should only be available on main intranet page -->
