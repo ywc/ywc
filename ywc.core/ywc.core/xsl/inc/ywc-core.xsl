@@ -209,4 +209,11 @@
 
 </xsl:function>
 
+<!-- fetch settings from ywc.properties file -->
+<xsl:function name="ywc:getAppSetting" as="xs:string">
+<xsl:param name="settingName" as="xs:string" />
+	<xsl:variable name="setting" as="xs:string*" select="tokenize(replace(unparsed-text('../../../../config/ywc.properties'),'&#xD;',''),'&#xA;')[contains(.,$settingName)]" />
+	<xsl:value-of select="substring-after(concat($setting,''),'=')" />
+</xsl:function>
+
 </xsl:stylesheet>

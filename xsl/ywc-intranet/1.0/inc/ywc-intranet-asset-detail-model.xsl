@@ -28,8 +28,6 @@
 <xsl:param name="attachments" as="xs:string*" select="()" />
 <xsl:param name="replyEmail" as="xs:string" select="''" />
 	
-	<xsl:variable name="adminMode" select="1" />
-
 	<xsl:variable as="xs:string*" name="adminUsers" select="
 			tokenize(
 			replace(
@@ -54,18 +52,11 @@
 		<xsl:variable as="xs:integer" name="isReadOnly" select="if (contains(document('../../../../cache/xml/data/cache.xml')/ywc/cache[@name = $listName]/@properties,'read-only,')) then 1 else 0" />
 		
  		<xsl:if test="
- 				($isReadOnly = 0)
+ 				($isReadOnly = 0) and ($useJavascript = 1)
 				and (
-					(	(string-length($currentUser) &gt; 1)
-						and ($currentUser = $author)
-						and ($useJavascript = 1)
-					)
-					or ( ($useJavascript = 1)
-							and (
-					 					exists(index-of($adminUsers,lower-case($currentUser)))
-								or 	($adminMode = 1)
-							)
-					)
+					( 	(string-length($currentUser) &gt; 1) and ($currentUser = $author) ) 
+					or 	exists(index-of($adminUsers,lower-case($currentUser)))
+					or 	(ywc:getAppSetting('ywc.env.env') != 'production')
 				)
 				"> 
 			<!-- we don't need inline styles here because the edit controls should only be available on main intranet page -->
@@ -94,7 +85,7 @@
 				<xsl:value-of select="
 					if (string-length($title) &gt; 0) then ywc:removeFormatting($title)
 					else '&lt;span style=&quot;display:none !important;&quot;&gt;Title&lt;/span&gt;'
-					" disable-output-escaping="yes" />
+					" disable-output-escaping="yes" /><xsl:value-of select="ywc:getAppSetting('ywc.env.env')" />
 			</div>
 			
 			<!-- asset meta container -->
