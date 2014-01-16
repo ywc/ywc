@@ -74,7 +74,7 @@
  				<div class="bttn-edit ywc-crnr-5 bttn-edit-lf"
 					onClick="YWC.f.intranetCheckAuth(function(){'{'}YWC.f.intranetPopupPostEdit('{$listName}','{substring-after($assetId,concat($listName,'_'))}');{'}'});">
 					<img src="{$preUri}lib/ywc-image/bttn/misc/edit-01.png" />
-					<span>Click here to edit <xsl:value-of select="$isReadOnly" />the content of this item...</span>
+					<span>Click here to edit the content of this item...</span>
 				</div> 
 				<div class="bttn-edit ywc-crnr-5 bttn-edit-rt"
 					onClick="YWC.f.intranetPostDelete('{$listName}','{substring-after($assetId,concat($listName,'_'))}','{$cacheId}');">
