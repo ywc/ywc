@@ -174,30 +174,6 @@ public class query {
             } catch (Exception e) {
                 System.out.println("Error loading SQLite database driver: " + e.toString());
             }
-        
-        } else if (engine.equals("mysql")) {
-           
-            String url = "jdbc:mysql://"+settings.getDBHost()+":"+settings.getDBPort()+"/";
-            String driver = "com.mysql.jdbc.Driver";
-            try {
-                Class.forName(driver).newInstance();
-                con = DriverManager.getConnection(url + "ywc"+settings.getYwcEnvApp(), settings.getDBUser(), settings.getDBPass());
-                
-            } catch (Exception e) {
-                
-            }
-           
-        } else if (engine.equals("sqlserver")) {
-        
-            String url = "jdbc:sqlserver://"+settings.getDBHost()+":"+settings.getDBPort();
-            String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-            try {
-                Class.forName(driver).newInstance();
-                con = DriverManager.getConnection(url + ";databaseName=ywc"+settings.getYwcEnvApp()+";user="+settings.getDBUser()+";password="+settings.getDBPass());
-                
-            } catch (Exception e) {
-                
-            }
         }
         return con;
     }
