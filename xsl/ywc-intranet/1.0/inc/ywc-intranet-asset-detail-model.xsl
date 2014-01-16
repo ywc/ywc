@@ -50,18 +50,23 @@
 		}">
 		
 		<div class="ywc-popup-detail" id="ywc-popup-detail-{$listName}-{$assetId}">
+
+		<xsl:variable as="xs:integer" name="isReadOnly" select="if (contains(document('../../../../cache/xml/data/cache.xml')/ywc/cache[@name = $listName]/@properties,'read-only,')) then 1 else 0" />
 		
  		<xsl:if test="
-				(	(string-length($currentUser) &gt; 1)
-					and ($currentUser = $author)
-					and ($useJavascript = 1)
-				)
-				or ( ($useJavascript = 1)
-						and (
-				 					exists(index-of($adminUsers,lower-case($currentUser)))
-							or 	($adminMode = 1)
-						)
+ 				($isReadOnly = 0)
+				and (
+					(	(string-length($currentUser) &gt; 1)
+						and ($currentUser = $author)
+						and ($useJavascript = 1)
 					)
+					or ( ($useJavascript = 1)
+							and (
+					 					exists(index-of($adminUsers,lower-case($currentUser)))
+								or 	($adminMode = 1)
+							)
+					)
+				)
 				"> 
 			<!-- we don't need inline styles here because the edit controls should only be available on main intranet page -->
 
@@ -69,7 +74,7 @@
  				<div class="bttn-edit ywc-crnr-5 bttn-edit-lf"
 					onClick="YWC.f.intranetCheckAuth(function(){'{'}YWC.f.intranetPopupPostEdit('{$listName}','{substring-after($assetId,concat($listName,'_'))}');{'}'});">
 					<img src="{$preUri}lib/ywc-image/bttn/misc/edit-01.png" />
-					<span>Click here to edit the content of this item...</span>
+					<span>Click here to edit <xsl:value-of select="$isReadOnly" />the content of this item...</span>
 				</div> 
 				<div class="bttn-edit ywc-crnr-5 bttn-edit-rt"
 					onClick="YWC.f.intranetPostDelete('{$listName}','{substring-after($assetId,concat($listName,'_'))}','{$cacheId}');">
