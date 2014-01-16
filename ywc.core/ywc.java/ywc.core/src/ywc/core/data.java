@@ -170,11 +170,11 @@ public class data {
                     }
                     
                 }
-            
+                
                 Iterator iteratorProp = properties.keySet().iterator();
                 while (iteratorProp.hasNext()) {
                     String key = (String) iteratorProp.next();
-
+                    
                     //set method
                     if (key != null) {
                         if (!key.equals("method") && !key.equals("http_user") && !key.equals("http_pass")) {
@@ -182,6 +182,7 @@ public class data {
                         }
                     }
                 }
+                
             
                 if (properties.containsKey("http_user")) {
                     BASE64Encoder enc = new sun.misc.BASE64Encoder();
@@ -199,7 +200,7 @@ public class data {
                 Iterator iterator = params.keySet().iterator();
                 while (iterator.hasNext()) {
                   String key = (String) iterator.next();
-                  //System.out.println("params: " + key + " means " + params.get(key));
+//                  System.out.println("params: " + key + " means " + params.get(key));
                   if (!parameters.equals("")) {
                       parameters = parameters + "&";
                   } 
@@ -210,9 +211,8 @@ public class data {
             }
             
             
-            BufferedReader in = new BufferedReader(
-                                    new InputStreamReader(
-                                    connection.getInputStream(), "UTF-8"));
+            
+            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream(),"UTF-8"));
             String inputLine;
 
             while ((inputLine = in.readLine()) != null) {
@@ -227,7 +227,6 @@ public class data {
             Logger.getLogger(data.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-//        System.out.println("requestHttp() -> " + data);
         return data;
         
     }

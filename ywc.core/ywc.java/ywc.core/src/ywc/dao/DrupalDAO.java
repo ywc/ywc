@@ -59,7 +59,6 @@ public class DrupalDAO {
     public HashMap getDrupalHeaders(String httpMethod) {
         HashMap drupalHeaders = new HashMap();
         drupalHeaders.put("method", httpMethod.toUpperCase());
-        drupalHeaders.put("Connection", "keep-alive");
         drupalHeaders.put("Content-Type", "application/x-www-form-urlencoded");
         if (httpUser != null && httpPass != null) {
             drupalHeaders.put("http_user", httpUser);
@@ -129,7 +128,7 @@ public class DrupalDAO {
                 updateUri = url + "/node/" + nid + ".json";
                 updateMethod = "PUT";
             }
-            String jsonResponse = data.requestHTTP(updateUri, getDrupalHeaders(updateMethod), new HashMap());
+            String jsonResponse = data.requestHTTP(updateUri, getDrupalHeaders(updateMethod), params);
 
             if (jsonResponse != null) {
                 JsonObject jsonObj = (JsonObject) new JsonParser().parse(jsonResponse);
