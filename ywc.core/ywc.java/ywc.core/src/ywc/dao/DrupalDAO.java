@@ -19,279 +19,204 @@ import ywc.core.settings;
 import ywc.model.CacheEntry;
 import ywc.notification.Mail;
 
-
-
-/**
- *
- * @author jd
- */
 public class DrupalDAO {
+
     private static final org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(DrupalDAO.class);
-    
-    String contentType, url, user, pass, cookie, token, httpUser, httpPass;
-    
+
+    String contentType, protocol, domain, path, url, drupalUsername, drupalPassword, cookie, token, httpUser, httpPass;
+
     public DrupalDAO() {
-        url = settings.getProp("drupal.endpoint",null);
-        user = settings.getProp("drupal.user",null);
-        pass = settings.getProp("drupal.pass",null);
-        httpUser = settings.getProp("drupal.http_user",null);
-        httpPass = settings.getProp("drupal.http_pass",null);
+        protocol = settings.getProp("drupal.protocol", null);
+        domain = settings.getProp("drupal.domain", null);
+        path = settings.getProp("drupal.path", null);
+        url = protocol + "://" + domain + path;
+        
+        drupalUsername = settings.getProp("drupal.user", null);
+        drupalPassword = settings.getProp("drupal.pass", null);
+        httpUser = settings.getProp("drupal.http_user", null);
+        httpPass = settings.getProp("drupal.http_pass", null);
     }
+
     public DrupalDAO(String pType) {
         contentType = pType;
-        url = settings.getProp("drupal.endpoint",null);
-        user = settings.getProp("drupal.user",null);
-        pass = settings.getProp("drupal.pass",null);
-        httpUser = settings.getProp("drupal.http_user",null);
-        httpPass = settings.getProp("drupal.http_pass",null);
+        protocol = settings.getProp("drupal.protocol", null);
+        domain = settings.getProp("drupal.domain", null);
+        path = settings.getProp("drupal.path", null);
+        url = protocol + "://" + domain + path;
+        
+        drupalUsername = settings.getProp("drupal.user", null);
+        drupalPassword = settings.getProp("drupal.pass", null);
+        httpUser = settings.getProp("drupal.http_user", null);
+        httpPass = settings.getProp("drupal.http_pass", null);
     }
-    public DrupalDAO(String pURL, String pUser, String pPass, String pHttpUser, String pHttpPass) {
-        url = pURL;
-        user = pUser;
-        pass = pPass;
-        httpUser = pHttpUser;
-        httpPass = pHttpPass;
-    } 
-    
+
     public void setEndpoint(String pEndpoint, String pUser, String pPass) {
         url = pEndpoint;
-        user = pUser;
-        pass = pPass;
+        drupalUsername = pUser;
+        drupalPassword = pPass;
     }
-    
-    public String getCookie() { return this.cookie; }
-    private void setCookie(String cookie) { this.cookie = cookie.replaceAll("\\s", ""); }
-    
-    public String getToken() { return this.token; }
-    private void setToken(String token) { this.token = token.replaceAll("\\s", ""); }
-    
-    public boolean login() {
-        
-        boolean rtrn = false;
-        
-        HashMap loginProperties = new HashMap();
-        HashMap loginParams = new HashMap();
-        HashMap tokenProperties = new HashMap();
-        
+
+    public HashMap getDrupalHeaders(String httpMethod) {
+        HashMap drupalHeaders = new HashMap();
+        drupalHeaders.put("method", httpMethod.toUpperCase());
+        drupalHeaders.put("Connection", "keep-alive");
+        drupalHeaders.put("Content-Type", "application/x-www-form-urlencoded");
         if (httpUser != null && httpPass != null) {
-            loginProperties.put("http_user", httpUser);loginProperties.put("http_pass", httpPass);
+            drupalHeaders.put("http_user", httpUser);
+            drupalHeaders.put("http_pass", httpPass);
         }
-        
-        loginProperties.put("method", "POST");
-        loginProperties.put("Connection", "keep-alive");
-        loginProperties.put("Content-Type", "application/x-www-form-urlencoded");
-        
-        if ((this.cookie==null) && user != null && pass != null) {
-            
-            loginParams.put("username", user);
-            loginParams.put("password", pass);
-            
-            String loginJson = data.requestHTTP(url + "/user/login.json", loginProperties, loginParams);
-            if (loginJson != null) {
-                JsonObject loginJsonObj = (JsonObject) new JsonParser().parse(loginJson);
-                if ((loginJsonObj != null) && loginJsonObj.has("sessid") && loginJsonObj.has("session_name")) {
-                    setCookie(loginJsonObj.get("session_name").getAsString() + "=" + loginJsonObj.get("sessid").getAsString());
-                    
-                    tokenProperties.put("method", "GET");
-                    tokenProperties.put("Cookie", getCookie());
-                    String csrfToken = data.requestHTTP("https://www.oist.jp/services/session/token", tokenProperties, new HashMap());
-                    if (csrfToken != null) {
-                        setToken(csrfToken);
-                        rtrn = true;
-                    }
+        if (this.cookie != null) {
+            drupalHeaders.put("Cookie", getCookie());
+        }
+        if (this.token != null) {
+            drupalHeaders.put("X-CSRF-Token", getToken());
+        }
+        return drupalHeaders;
+    }
+
+    public boolean validLogin() {
+
+        boolean rtrn = false;
+
+        HashMap loginCreds = new HashMap();
+        loginCreds.put("username", getUsername());
+        loginCreds.put("password", getPassword());
+
+        String loginResponse = data.requestHTTP(url + "/user/login.json", getDrupalHeaders("POST"), loginCreds);
+
+        if (loginResponse != null) {
+            JsonObject loginJsonObj = (JsonObject) new JsonParser().parse(loginResponse);
+            if ((loginJsonObj != null) && loginJsonObj.has("sessid") && loginJsonObj.has("session_name")) {
+                setCookie(loginJsonObj.get("session_name").getAsString() + "=" + loginJsonObj.get("sessid").getAsString());
+                String csrfResponse = data.requestHTTP(protocol+"://"+domain+"/services/session/token", getDrupalHeaders("GET"), new HashMap());
+                if (csrfResponse != null) {
+                    setToken(csrfResponse);
+                    rtrn = true;
                 }
             }
         }
         return rtrn;
     }
-    public void logoff() {
-        HashMap properties = new HashMap();
-        if (httpUser != null && httpPass != null) {
-            properties.put("http_user", httpUser); properties.put("http_pass", httpPass);
-        }
-        properties.put("method", "POST");
-        properties.put("Cookie", getCookie());
-        properties.put("X-CSRF-Token", getToken());
-        
-        HashMap params = new HashMap();
-        String json = data.requestHTTP(url + "/user/logout.json", properties, params);
+
+    public void doDrupalLogOff() {
+        String json = data.requestHTTP(url + "/user/logout.json", getDrupalHeaders("POST"), new HashMap());
         if (json != null && json.equals("true")) {
-            logger.debug("Logout successful from " + url);
+            logger.debug("Logout successful from " + domain);
         }
     }
-    public String getNode(String nid) {
-        String ret = null;
-        if (login()) {
-            logger.debug("Login success to " + url);
-            
-            HashMap properties = new HashMap();
-            if (httpUser != null && httpPass != null) {
-                properties.put("http_user", httpUser); properties.put("http_pass", httpPass);
-            }
-            properties.put("method", "GET");
-            properties.put("Cookie", getCookie());
-            properties.put("X-CSRF-Token", getToken());
 
-            HashMap params = new HashMap();
-            String json = data.requestHTTP(url + "/node/" + nid + ".json", properties, params);
+    public String getNode(String nid) {
+        String rtrn = null;
+        if (validLogin()) {
+            String json = data.requestHTTP(url + "/node/" + nid + ".json", getDrupalHeaders("GET"), new HashMap());
             //JsonObject jsobj = (JsonObject) new JsonParser().parse(json);
             if (json != null) {
-                ret = json;
-            } 
-            logoff();
-        } else {
-            logger.warn("Login failed to" + url);
+                rtrn = json;
+            }
+            doDrupalLogOff();
         }
-        return ret;
+        return rtrn;
     }
-    
+
     public String updateNode(String nid, HashMap params) {
-        String ret = null;
-        if (login()) {
-            logger.debug("Login success to " + url);
-            
-            HashMap properties = new HashMap();
-            if (httpUser != null && httpPass != null) {
-                properties.put("http_user", httpUser); properties.put("http_pass", httpPass);
+        String rtrn = null;
+        if (validLogin()) {
+            //if nid == null -> create node
+            String updateUri = url + "/node.json";
+            String updateMethod = "POST";
+
+            if (nid != null) {
+                updateUri = url + "/node/" + nid + ".json";
+                updateMethod = "PUT";
             }
-            
-            properties.put("Cookie", getCookie());
-            properties.put("X-CSRF-Token", getToken());
- 
-            //if nid == null -> create node else update
-            String json = null;
-            if (nid == null) {
-                properties.put("method", "POST");
-                json = data.requestHTTP(url + "/node.json", properties, params);
-                
-            } else {
-                properties.put("method", "PUT");
-                json = data.requestHTTP(url + "/node/" + nid + ".json", properties, params);
-                
+            String jsonResponse = data.requestHTTP(updateUri, getDrupalHeaders(updateMethod), new HashMap());
+
+            if (jsonResponse != null) {
+                JsonObject jsonObj = (JsonObject) new JsonParser().parse(jsonResponse);
+                if (nid == null) {
+                    rtrn = jsonObj.get("nid").getAsString();
+                } else {
+                    rtrn = nid;
+                }
             }
-            
-            if (json != null) {
-               JsonObject jsobj = (JsonObject) new JsonParser().parse(json);
-               if (nid == null) {
-                    ret = jsobj.get("nid").getAsString();
-               } else {
-                   ret = nid;
-               }
-               
-            }
-      //      logoff();
-        } else {
-            logger.warn("Login failed to " + url);
+            doDrupalLogOff();
         }
-        return ret;
+        return rtrn;
     }
+
     public boolean deleteNode(String nid) {
-        boolean ret = false;
-        if (login()) {
-            logger.debug("Login success to " + url);
-            
-            HashMap properties = new HashMap();
-            properties.put("Cookie", getCookie());
-            properties.put("X-CSRF-Token", getToken());
-            
-            //if nid == null -> create node else update
-            String json = null;
-            properties.put("method", "DELETE");
-            json = data.requestHTTP(url + "/node/" + nid + ".json", properties, null);
-             
-            if (json != null && json.equals("true")) {
-               ret = true;
+        boolean rtrn = false;
+        if (validLogin()) {
+
+            String jsonResponse = data.requestHTTP(url + "/node/" + nid + ".json", getDrupalHeaders("DELETE"), new HashMap());
+
+            if ((jsonResponse != null) && jsonResponse.equals("true")) {
+                rtrn = true;
             }
-            logoff();
-        } else {
-            logger.warn("Login failed to " + url);
+            doDrupalLogOff();
         }
-        return ret;
+        return rtrn;
     }
 
     public boolean subscribeList(String tid, String mail) {
-        boolean ret = false;
-        if (login()) {
-            logger.debug("Login success to " + url);
-            
-            HashMap properties = new HashMap();
-            if (httpUser != null && httpPass != null) {
-                properties.put("http_user", httpUser); properties.put("http_pass", httpPass);
-            }
-            properties.put("Cookie", getCookie());
-            properties.put("X-CSRF-Token", getToken());
-            
+        boolean rtrn = false;
+        if (validLogin()) {
+
             HashMap params = new HashMap();
             params.put("mail", mail);
             params.put("tid", tid);
-            
-            String json = null;
-            properties.put("method", "POST");
-            json = data.requestHTTP(url + "/simplenews/subscribe.json", properties, params);
-             
-            if (json != null && json.equals("true")) {
-               ret = true;
+
+            String jsonResponse = data.requestHTTP(url + "/simplenews/subscribe.json", getDrupalHeaders("POST"), params);
+
+            if ((jsonResponse != null) && jsonResponse.equals("true")) {
+                rtrn = true;
             }
-            logoff();
-        } else {
-            logger.warn("Login failed to " + url);
+            doDrupalLogOff();
         }
-        return ret;
+        return rtrn;
     }
 
     public boolean unsubscribeList(String tid, String mail) {
-        boolean ret = false;
-        if (login()) {
-            logger.debug("Login success to " + url);
-            
-            HashMap properties = new HashMap();
-            if (httpUser != null && httpPass != null) {
-                properties.put("http_user", httpUser); properties.put("http_pass", httpPass);
-            }
-            properties.put("Cookie", getCookie());
-            properties.put("X-CSRF-Token", getToken());
-            
+        boolean rtrn = false;
+        if (validLogin()) {
+
             HashMap params = new HashMap();
             params.put("mail", mail);
             params.put("tid", tid);
-            
-            String json = null;
-            properties.put("method", "POST");
-            json = data.requestHTTP(url + "/simplenews/unsubscribe.json", properties, params);
-             
-            if (json != null && json.equals("true")) {
-               ret = true;
+
+            String jsonResponse = data.requestHTTP(url + "/simplenews/unsubscribe.json", getDrupalHeaders("POST"), params);
+
+            if ((jsonResponse != null) && jsonResponse.equals("true")) {
+                rtrn = true;
             }
-            logoff();
-        } else {
-            logger.warn("Login failed to " + url);
+            doDrupalLogOff();
         }
-        return ret;
+        return rtrn;
     }
 
     public void informSubscribers(String nid, String cacheID) {
         HashMap properties = new HashMap();
         if (httpUser != null && httpPass != null) {
-            properties.put("http_user", "oist"); 
+            properties.put("http_user", "oist");
             properties.put("http_pass", "oist");
         }
-        
+
         CacheEntry entry = CacheDAO.getCacheEntry(cacheID);
-        
+
         // if mail is disabled, let's only notify the admins
         if (settings.getProp("ywc.mail.enable", null) != null
                 && settings.getProp("ywc.mail.enable", null).equals("false")) {
-            
+
             Mail mail = new Mail();
             // send mails to subscribers
             logger.info("Notify admins only since ywc.mail.enable=false");
-            mail.sendMail(settings.get("ywc.mail.admins"), 
-                        data.requestHTTP(settings.get("ywc.url.noauth") + "/ywc/intranet/title/" + entry.name + "/" + nid, properties, null), 
-                        data.requestHTTP(settings.get("ywc.url.noauth") + "/ywc/intranet/email/" + entry.name + "/" + nid, properties, null), 
-                        "text/html");
+            mail.sendMail(settings.get("ywc.mail.admins"),
+                    "ADMIN ONLY - " + data.requestHTTP(settings.get("ywc.url.noauth") + "/ywc/intranet/title/" + entry.name + "/" + nid, properties, null),
+                    data.requestHTTP(settings.get("ywc.url.noauth") + "/ywc/intranet/email/" + entry.name + "/" + nid, properties, null),
+                    "text/html");
             return;
         }
-            
+
         if (entry.properties.get("subscribe_id") != null) {
             Document dom;
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -302,42 +227,67 @@ public class DrupalDAO {
 
                 //get a nodelist of <employee> elements
                 NodeList nl = docEle.getElementsByTagName("simplenews_subscriber");
-                
-                if(nl != null && nl.getLength() > 0) {
-                    for(int i = 0 ; i < nl.getLength();i++) {
-                        Element el = (Element)nl.item(i);
+
+                if (nl != null && nl.getLength() > 0) {
+                    for (int i = 0; i < nl.getLength(); i++) {
+                        Element el = (Element) nl.item(i);
                         String listID = getTextValue(el, "list_id");
                         String address = getTextValue(el, "mail");
-                        
+
                         if (listID.equals(entry.properties.get("subscribe_id"))) {
                             Mail mail = new Mail();
-                            
+
                             // send mails to subscribers
                             logger.info("Notify subscriber of " + listID + " address:" + address);
-                            mail.sendMail(address, 
-                                        data.requestHTTP(settings.get("ywc.url.noauth") + "/ywc/intranet/title/" + entry.name + "/" + nid, properties, null), 
-                                        data.requestHTTP(settings.get("ywc.url.noauth") + "/ywc/intranet/email/" + entry.name + "/" + nid, properties, null), 
-                                        "text/html");
+                            mail.sendMail(address,
+                                    data.requestHTTP(settings.get("ywc.url.noauth") + "/ywc/intranet/title/" + entry.name + "/" + nid, properties, null),
+                                    data.requestHTTP(settings.get("ywc.url.noauth") + "/ywc/intranet/email/" + entry.name + "/" + nid, properties, null),
+                                    "text/html");
                         }
                     }
                 }
-            }catch(Exception ex) {
+            } catch (Exception ex) {
                 logger.warn("Something went wrong..");
             }
-        
+
         } else {
             logger.warn("No subscribe_id found in caching table for " + cacheID);
         }
-        
-    }
-    private String getTextValue(Element ele, String tagName) {
-            String textVal = null;
-            NodeList nl = ele.getElementsByTagName(tagName);
-            if(nl != null && nl.getLength() > 0) {
-                    Element el = (Element)nl.item(0);
-                    textVal = el.getFirstChild().getNodeValue();
-            }
 
-            return textVal;
     }
+
+    private String getTextValue(Element ele, String tagName) {
+        String textVal = null;
+        NodeList nl = ele.getElementsByTagName(tagName);
+        if (nl != null && nl.getLength() > 0) {
+            Element el = (Element) nl.item(0);
+            textVal = el.getFirstChild().getNodeValue();
+        }
+        return textVal;
+    }
+
+    public String getCookie() {
+        return this.cookie;
+    }
+
+    private void setCookie(String cookie) {
+        this.cookie = cookie.replaceAll("\\s", "");
+    }
+
+    public String getToken() {
+        return this.token;
+    }
+
+    private void setToken(String token) {
+        this.token = token.replaceAll("\\s", "");
+    }
+
+    public String getUsername() {
+        return this.drupalUsername;
+    }
+
+    public String getPassword() {
+        return this.drupalPassword;
+    }
+
 }

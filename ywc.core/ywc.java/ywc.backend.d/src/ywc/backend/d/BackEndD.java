@@ -108,7 +108,7 @@ public class BackEndD {
                                     entry.properties.get("drupalPass").toString());
                         }
                         
-                        if (drupal.login()) {
+                        if (drupal.validLogin()) {
                             entry.properties.put("Cookie", drupal.getCookie());
                             entry.properties.put("X-CSRF-Token", drupal.getToken());
                             
@@ -119,7 +119,7 @@ public class BackEndD {
                             } else {
                                 logger.warn("Cache failed for " + entry.url);
                             }
-                            drupal.logoff();
+                            drupal.doDrupalLogOff();
                         }
                         
                     } else {

@@ -79,7 +79,7 @@ public class CacheDAO {
                                         entry.properties.get("drupalPass").toString());
                 }
 
-                if (drupal.login()) {
+                if (drupal.validLogin()) {
                     entry.properties.put("Cookie", drupal.getCookie());
 
                     String cacheData = data.retrieve(entry);
@@ -96,7 +96,7 @@ public class CacheDAO {
                     } else {
                         logger.warn("Update cache of " + entry.url + " failed");
                     }
-                    drupal.logoff();
+                    drupal.doDrupalLogOff();
                 }
 
             } else {
