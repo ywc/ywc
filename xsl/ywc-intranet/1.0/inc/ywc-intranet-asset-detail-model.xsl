@@ -29,9 +29,11 @@
 <xsl:param name="replyEmail" as="xs:string" select="''" />
 	
 	<xsl:variable as="xs:string*" name="adminUsers" select="
-			tokenize(replace(
+			tokenize(
+			replace(
 			unparsed-text(concat('../../../../config/',unparsed-text('../../../../config/app_name'),'/admin-users.txt'))
-			,'&#xD;',''),'&#xA;')
+			,'&#xD;','')
+			,'&#xA;')
 		" />
 	
 	<div class="{
