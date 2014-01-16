@@ -286,7 +286,7 @@ public class DrupalDAO {
             // send mails to subscribers
             logger.info("Notify admins only since ywc.mail.enable=false");
             mail.sendMail(settings.get("ywc.mail.admins"), 
-                        "TEST - " + data.requestHTTP(settings.get("ywc.url.noauth") + "/ywc/intranet/title/" + entry.name + "/" + nid, properties, null), 
+                        data.requestHTTP(settings.get("ywc.url.noauth") + "/ywc/intranet/title/" + entry.name + "/" + nid, properties, null), 
                         data.requestHTTP(settings.get("ywc.url.noauth") + "/ywc/intranet/email/" + entry.name + "/" + nid, properties, null), 
                         "text/html");
             return;
