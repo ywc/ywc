@@ -23,7 +23,7 @@ public class DrupalDAO {
 
     private static final org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(DrupalDAO.class);
 
-    String contentType, protocol, domain, path, url, drupalUsername, drupalPassword, cookie, token, httpUser, httpPass;
+    String contentType, protocol, domain, path, url, drupalUsername, drupalPassword, cookie, token, httpUsername, httpPassword;
 
     public DrupalDAO() {
         protocol = settings.getProp("drupal.protocol", null);
@@ -33,8 +33,8 @@ public class DrupalDAO {
         
         drupalUsername = settings.getProp("drupal.user", null);
         drupalPassword = settings.getProp("drupal.pass", null);
-        httpUser = settings.getProp("drupal.http_user", null);
-        httpPass = settings.getProp("drupal.http_pass", null);
+        httpUsername = settings.getProp("drupal.http_user", null);
+        httpPassword = settings.getProp("drupal.http_pass", null);
     }
 
     public DrupalDAO(String pType) {
@@ -46,23 +46,27 @@ public class DrupalDAO {
         
         drupalUsername = settings.getProp("drupal.user", null);
         drupalPassword = settings.getProp("drupal.pass", null);
-        httpUser = settings.getProp("drupal.http_user", null);
-        httpPass = settings.getProp("drupal.http_pass", null);
+        httpUsername = settings.getProp("drupal.http_user", null);
+        httpPassword = settings.getProp("drupal.http_pass", null);
     }
 
-    public void setEndpoint(String pEndpoint, String pUser, String pPass) {
-        url = pEndpoint;
-        drupalUsername = pUser;
-        drupalPassword = pPass;
+    public void overrideDrupalSetup(String inputEndPoint, String inputDrupalUsername, String inputDrupalPassword) {
+        this.url = inputEndPoint;
+        this.protocol = this.url.substring(0, this.url.indexOf("://"));
+        this.domain = this.url.substring(this.protocol.length()+3,this.protocol.length()+3+this.url.substring(this.protocol.length()+3).indexOf("/"));
+        this.path = this.url.substring(3+this.protocol.length()+this.domain.length());
+        
+        this.drupalUsername = inputDrupalUsername;
+        this.drupalPassword = inputDrupalPassword;
     }
 
     public HashMap getDrupalHeaders(String httpMethod) {
         HashMap drupalHeaders = new HashMap();
         drupalHeaders.put("method", httpMethod.toUpperCase());
         drupalHeaders.put("Content-Type", "application/x-www-form-urlencoded");
-        if (httpUser != null && httpPass != null) {
-            drupalHeaders.put("http_user", httpUser);
-            drupalHeaders.put("http_pass", httpPass);
+        if (httpUsername != null && httpPassword != null) {
+            drupalHeaders.put("http_user", httpUsername);
+            drupalHeaders.put("http_pass", httpPassword);
         }
         if (this.cookie != null) {
             drupalHeaders.put("Cookie", getCookie());
@@ -195,7 +199,7 @@ public class DrupalDAO {
 
     public void informSubscribers(String nid, String cacheID) {
         HashMap properties = new HashMap();
-        if (httpUser != null && httpPass != null) {
+        if (httpUsername != null && httpPassword != null) {
             properties.put("http_user", "oist");
             properties.put("http_pass", "oist");
         }

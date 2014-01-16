@@ -86,63 +86,18 @@ public class BackEndD {
         }
     }
 
-    public static void updateCache() {
-
+    private static void updateCache() {
         ArrayList entries = CacheDAO.getCacheEntries();
         if (entries != null && entries.size() > 0) {
             for (int i = 0; i < entries.size(); i++) {
-                CacheEntry entry = (CacheEntry) entries.get(i);
-                logger.info("Caching "+entry.name+", "+entry.assetID+", "+entry.url);
-                
-                if ("http".equals(entry.type)) {
-
-                    //check if entry.params include "dest" 
-                    if (entry.properties.containsKey("destination") && entry.properties.get("destination").toString().equals("drupal")) {
-                        DrupalDAO drupal = new DrupalDAO();
-
-                        // override drupal endpoint
-                        if (entry.properties.containsKey("drupalEndpoint")) {
-                            logger.info("Override Drupal endpoint with " + entry.properties.get("drupalEndpoint"));
-                            drupal.setEndpoint(entry.properties.get("drupalEndpoint").toString(),
-                                    entry.properties.get("drupalUser").toString(),
-                                    entry.properties.get("drupalPass").toString());
-                        }
-                        
-                        if (drupal.validLogin()) {
-                            entry.properties.put("Cookie", drupal.getCookie());
-                            entry.properties.put("X-CSRF-Token", drupal.getToken());
-                            
-                            String cacheData = data.retrieve(entry);
-                            if ((cacheData != null) && !data.isCacheUpToDate(entry, cacheData)) {
-                                data.cache(entry, cacheData);
-                                entry.countUpdated++;
-                            } else {
-                                logger.warn("Cache failed for " + entry.url);
-                            }
-                            drupal.doDrupalLogOff();
-                        }
-                        
-                    } else {
-                        
-                        String cacheData = data.retrieve(entry);
-                        if ((cacheData != null) && !data.isCacheUpToDate(entry, cacheData)) {
-                            data.cache(entry, cacheData);
-                            entry.countUpdated++;
-                        } else {
-                            logger.warn("Cache failed for " + entry.url);
-                        }
-                    }
-                } else {
-                    logger.info("Skipped");
-                }
+                CacheDAO.refreshCache( (CacheEntry) entries.get(i) );
             }
-
         } else {
-            logger.warn("No cache entry found");
+            logger.warn("No cache entries found");
         }
     }
 
-    public static void ldapImport() {
+    private static void ldapImport() {
         ldap ldap;
         if (settings.get("ywc.ldap.start_tls").equals("yes")) {
             ldap = new ldap(settings.get("ywc.ldap.domain"),

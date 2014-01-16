@@ -60,65 +60,56 @@ public class CacheDAO {
         }
         return entries;
     }
+    
+    // this method clearly does nothing... why is it here?
     public static Boolean updateCacheEntry(CacheEntry obj, String id) {
         return true;
     }
     
     public static boolean refreshCache(String cacheID) {
-        
-        CacheEntry entry = getCacheEntry(cacheID);
-        if (entry != null) {
-            if (entry.properties.containsKey("destination") && entry.properties.get("destination").toString().equals("drupal")) {
-                DrupalDAO drupal = new DrupalDAO();
-                
-                // override drupal endpoint
-                if (entry.properties.containsKey("drupalEndpoint")) {
-                    logger.info("Override Drupal endpoint with " + entry.properties.get("drupalEndpoint"));
-                    drupal.setEndpoint(entry.properties.get("drupalEndpoint").toString(), 
-                                        entry.properties.get("drupalUser").toString(), 
-                                        entry.properties.get("drupalPass").toString());
-                }
-
-                if (drupal.validLogin()) {
-                    entry.properties.put("Cookie", drupal.getCookie());
-
-                    String cacheData = data.retrieve(entry);
-                    if (cacheData != null) {
-                        if (!data.isCacheUpToDate(entry, cacheData)) {
-                            logger.info("Cache updated for " + entry.url);
-                            data.cache(entry, cacheData);
-                            mccon.mc.flushAll();
-                            return true;
-
-                        } else {
-                            //System.out.println("\tno_update_needed");
-                        }
-                    } else {
-                        logger.warn("Update cache of " + entry.url + " failed");
-                    }
-                    drupal.doDrupalLogOff();
-                }
-
-            } else {
-
-                String cacheData = data.retrieve(entry);
-                if (cacheData != null) {
-                    if (!data.isCacheUpToDate(entry, cacheData)) {
-                        logger.info("Cache updated for " + entry.url);
-                        data.cache(entry, cacheData);
-                        mccon.mc.flushAll();
-                        return true;
-                        
-                    } else {
-                        //Logger.getLogger(data.class.getName()).log(Level.INFO, "Updated cache of {0} success", entry.url);
-                    }
-                } else {
-                    logger.warn("Update cache of " + entry.url + " failed");
-                }
-            }
-            
-        }
-        return false;
+        return refreshCache(getCacheEntry(cacheID));
     }
     
+    
+    public static boolean refreshCache(CacheEntry entry) {
+        boolean rtrn = false;
+        String cacheData;
+        if (entry != null) {
+            if ("http".equals(entry.type)) {
+                if (entry.properties.containsKey("destination") && entry.properties.get("destination").toString().equals("drupal")) {
+                    DrupalDAO drupal = new DrupalDAO();
+                    if (entry.properties.containsKey("drupalEndpoint")) {
+                        drupal.overrideDrupalSetup(entry.properties.get("drupalEndpoint").toString(),
+                                entry.properties.get("drupalUser").toString(),
+                                entry.properties.get("drupalPass").toString());
+                    }
+                    if (drupal.validLogin()) {
+                        cacheData = data.requestHTTP(entry.url, drupal.getDrupalHeaders("GET"), entry.params);
+                        if ((cacheData != null) && !data.isCacheUpToDate(entry, cacheData)) {
+                            data.cache(entry, cacheData);
+                            rtrn = true;
+                        }
+                        drupal.doDrupalLogOff();
+                    }
+                } else {
+                    cacheData = data.requestHTTP(entry.url, entry.properties, entry.params);
+                    if ((cacheData != null) && !data.isCacheUpToDate(entry, cacheData)) {
+                        data.cache(entry, cacheData);
+                        rtrn = true;
+                    } 
+                }
+            }
+
+            if ("skip".equals(entry.type)) {
+                logger.info("Cache update: Skipped -> " + entry.url);
+                rtrn = true;
+            } else if (!rtrn) {
+                logger.warn("Cache update: Failure ->" + entry.url);
+            } else {
+                logger.info("Cache update: Success -> " + entry.url);
+                mccon.mc.flushAll();
+            }
+        }
+        return rtrn;
+    }
 }
