@@ -56,8 +56,12 @@
 					and ($currentUser = $author)
 					and ($useJavascript = 1)
 				)
-				or 	exists(index-of($adminUsers,lower-case($currentUser)))
-				or  ($adminMode = 1)
+				or ( ($useJavascript = 1)
+						and (
+				 					exists(index-of($adminUsers,lower-case($currentUser)))
+							or 	($adminMode = 1)
+						)
+					)
 				"> 
 			<!-- we don't need inline styles here because the edit controls should only be available on main intranet page -->
 
