@@ -21,7 +21,7 @@ chmod -Rf 1777 cache ywc.core/ywc.core/xml/data;
 
 cat config/ywc/templates/httpd.conf >> /etc/apache2/httpd.conf;
 
-yum install -y tomcat6 tomcat6-webapps tomcat6-admin-webapps ImageMagick;
+yum install -y tomcat6 tomcat6-webapps tomcat6-admin-webapps ImageMagick expect;
 
 # publish latest WARs & JARs
 config/ywc/publish.sh;
