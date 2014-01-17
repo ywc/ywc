@@ -87,7 +87,7 @@
 				<xsl:value-of select="
 					if (string-length($title) &gt; 0) then ywc:removeFormatting($title)
 					else '&lt;span style=&quot;display:none !important;&quot;&gt;Title&lt;/span&gt;'
-					" disable-output-escaping="yes" /><xsl:value-of select="ywc:getAppSetting('ywc.env.env')" />
+					" disable-output-escaping="yes" />
 			</div>
 			
 			<!-- asset meta container -->
