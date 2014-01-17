@@ -9,12 +9,12 @@
 <xsl:param name="user" as="xs:string" select="''" />
 <xsl:output method="xml" encoding="UTF-8" omit-xml-declaration="yes" />
 
-<xsl:include href="../../../ywc/1.0/inc/ywc-core.xsl" />
-<xsl:include href="../../../ywc/1.0/inc/ywc-convert.xsl" />
-<xsl:include href="../../../ywc-intranet/1.0/inc/ywc-intranet-asset-detail-model.xsl" />
-<xsl:include href="../../../ywc-intranet/1.0/inc/ywc-intranet-asset-detail-draw.xsl" />
-<xsl:include href="../../../ywc-intranet/1.0/inc/ywc-intranet-retrieve-node.xsl" />
-<xsl:include href="../../../ywc-intranet/1.0/inc/ywc-intranet-directory.xsl" />
+<xsl:include href="../../ywc/1.0/inc/ywc-core.xsl" />
+<xsl:include href="../../ywc/1.0/inc/ywc-convert.xsl" />
+<xsl:include href="../../ywc-intranet/inc/ywc-intranet-asset-detail-model.xsl" />
+<xsl:include href="../../ywc-intranet/inc/ywc-intranet-asset-detail-draw.xsl" />
+<xsl:include href="../../ywc-intranet/inc/ywc-intranet-retrieve-node.xsl" />
+<xsl:include href="../../ywc-intranet/inc/ywc-intranet-directory.xsl" />
 
 <xsl:variable name="listName" select="ywc:getParam('listName',$params)"/>
 <xsl:variable name="assetId" select="ywc:getParam('assetId',$params)"/>

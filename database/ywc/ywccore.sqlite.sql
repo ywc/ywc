@@ -10,7 +10,7 @@
  Target Server Version : 3008001
  File Encoding         : utf-8
 
- Date: 12/12/2013 22:37:30 PM
+ Date: 01/17/2014 14:24:21 PM
 */
 
 PRAGMA foreign_keys = false;
@@ -155,22 +155,22 @@ BEGIN;
 INSERT INTO "data_transform" VALUES ('aaaaaa', 'aaaaaa', 'aaaaaa', 'Default Transform', 1, '', '', 'all');
 INSERT INTO "data_transform" VALUES ('aaaaab', 'aaaaab', 'aaaaah', 'JSON List Countries', 1, '', '', 'all');
 INSERT INTO "data_transform" VALUES ('aaaaac', 'aaaaab', 'aaaaac', 'CSS Wrapped as JSONP', 1, '', 'ywc/1.0/generic/css-as-jsonp.xsl', 'all');
-INSERT INTO "data_transform" VALUES ('aaaaad', 'aaaaae', 'aaaaaj', 'YWC Intranet: Asset Detail Utilities', 1, 'data/cache.xml', 'ywc-intranet/1.0/popup/ywc-intranet-popup-utility.xsl', 'all');
+INSERT INTO "data_transform" VALUES ('aaaaad', 'aaaaae', 'aaaaaj', 'YWC Intranet: Asset Detail Utilities', 1, 'data/cache.xml', 'ywc-intranet/popup/ywc-intranet-popup-utility.xsl', 'all');
 INSERT INTO "data_transform" VALUES ('aaaaae', 'aaaaae', 'aaaaab', 'YWC Inputs', 1, '', 'ywc/1.0/ui-input/ywc-input-all-standalone.xsl', 'all');
-INSERT INTO "data_transform" VALUES ('aaaaaf', 'aaaaae', 'aaaaad', 'YWC Intranet: Asset Detail Popup', 1, 'data/cache.xml', 'ywc-intranet/1.0/popup/ywc-intranet-popup-detail.xsl', 'all');
-INSERT INTO "data_transform" VALUES ('aaaaag', 'aaaaae', 'aaaaak', 'YWC Intranet: Subscribe Popup', 1, 'data/cache.xml', 'ywc-intranet/1.0/popup/ywc-intranet-popup-subscribe.xsl', 'all');
-INSERT INTO "data_transform" VALUES ('aaaaah', 'aaaaae', 'aaaaal', 'YWC Intranet: Authentication Popup', 1, '', 'ywc-intranet/1.0/popup/ywc-intranet-popup-auth.xsl', 'all');
-INSERT INTO "data_transform" VALUES ('aaaaai', 'aaaaae', 'aaaaan', 'YWC Intranet: Asset Archive Popup', 1, 'data/cache.xml', 'ywc-intranet/1.0/list/ywc-intranet-list-archive.xsl', 'all');
-INSERT INTO "data_transform" VALUES ('aaaaaj', 'aaaaag', 'aaaaao', 'YWC Intranet: Asset Paging', 1, 'data/cache.xml', 'ywc-intranet/1.0/list/ywc-intranet-list-data.xsl', 'all');
-INSERT INTO "data_transform" VALUES ('aaaaak', 'aaaaae', 'aaaaap', 'YWC Intranet: Directory Popup', 1, 'data/cache.xml', 'ywc-intranet/1.0/list/ywc-intranet-list-directory.xsl', 'all');
-INSERT INTO "data_transform" VALUES ('aaaaal', 'aaaaae', 'aaaaar', 'YWC Intranet: News Article Popup', 1, 'data/cache.xml', 'ywc-intranet/1.0/news/ywc-intranet-news-full-popup.xsl', 'all');
-INSERT INTO "data_transform" VALUES ('aaaaam', 'aaaaae', 'aaaaam', 'YWC Intranet: Asset Edit Popup', 1, 'data/cache.xml', 'ywc-intranet/1.0/popup/ywc-intranet-popup-edit.xsl', 'all');
-INSERT INTO "data_transform" VALUES ('aaaaan', 'aaaaad', 'aaaaas', 'YWC Intranet: Posting E-mail', 1, 'data/cache.xml', 'ywc-intranet/1.0/detail/ywc-intranet-detail-link.xsl', 'all');
-INSERT INTO "data_transform" VALUES ('aaaaao', 'aaaaaa', 'aaaaat', 'YWC Intranet: Posting Permalink', 1, 'data/cache.xml', 'ywc-intranet/1.0/detail/ywc-intranet-detail-link.xsl', 'all');
+INSERT INTO "data_transform" VALUES ('aaaaaf', 'aaaaae', 'aaaaad', 'YWC Intranet: Asset Detail Popup', 1, 'data/cache.xml', 'ywc-intranet/popup/ywc-intranet-popup-detail.xsl', 'all');
+INSERT INTO "data_transform" VALUES ('aaaaag', 'aaaaae', 'aaaaak', 'YWC Intranet: Subscribe Popup', 1, 'data/cache.xml', 'ywc-intranet/popup/ywc-intranet-popup-subscribe.xsl', 'all');
+INSERT INTO "data_transform" VALUES ('aaaaah', 'aaaaae', 'aaaaal', 'YWC Intranet: Authentication Popup', 1, '', 'ywc-intranet/popup/ywc-intranet-popup-auth.xsl', 'all');
+INSERT INTO "data_transform" VALUES ('aaaaai', 'aaaaae', 'aaaaan', 'YWC Intranet: Asset Archive Popup', 1, 'data/cache.xml', 'ywc-intranet/list/ywc-intranet-list-archive.xsl', 'all');
+INSERT INTO "data_transform" VALUES ('aaaaaj', 'aaaaag', 'aaaaao', 'YWC Intranet: Asset Paging', 1, 'data/cache.xml', 'ywc-intranet/list/ywc-intranet-list-data.xsl', 'all');
+INSERT INTO "data_transform" VALUES ('aaaaak', 'aaaaae', 'aaaaap', 'YWC Intranet: Directory Popup', 1, 'data/cache.xml', 'ywc-intranet/list/ywc-intranet-list-directory.xsl', 'all');
+INSERT INTO "data_transform" VALUES ('aaaaal', 'aaaaae', 'aaaaar', 'YWC Intranet: News Article Popup', 1, 'data/cache.xml', 'ywc-intranet/news/ywc-intranet-news-full-popup.xsl', 'all');
+INSERT INTO "data_transform" VALUES ('aaaaam', 'aaaaae', 'aaaaam', 'YWC Intranet: Asset Edit Popup', 1, 'data/cache.xml', 'ywc-intranet/popup/ywc-intranet-popup-edit.xsl', 'all');
+INSERT INTO "data_transform" VALUES ('aaaaan', 'aaaaad', 'aaaaas', 'YWC Intranet: Posting E-mail', 1, 'data/cache.xml', 'ywc-intranet/detail/ywc-intranet-detail-link.xsl', 'all');
+INSERT INTO "data_transform" VALUES ('aaaaao', 'aaaaaa', 'aaaaat', 'YWC Intranet: Posting Permalink', 1, 'data/cache.xml', 'ywc-intranet/detail/ywc-intranet-detail-link.xsl', 'all');
 INSERT INTO "data_transform" VALUES ('aaaaap', 'aaaaae', 'aaaaaq', 'YWC Intranet: Quick Links Popup', 1, 'data/cache.xml', '', 'all');
-INSERT INTO "data_transform" VALUES ('aaaaaq', 'aaaaas', 'aaaaav', 'YWC Intranet: Posting Title', 1, 'data/cache.xml', 'ywc-intranet/1.0/detail/ywc-intranet-detail-title.xsl', 'all');
-INSERT INTO "data_transform" VALUES ('aaaaar', 'aaaaar', 'aaaaau', 'YWC Intranet: Who Am I', 1, '', 'ywc-intranet/1.0/auth/ywc-intranet-whoami.xsl', 'all');
-INSERT INTO "data_transform" VALUES ('aaaaas', 'aaaaar', 'aaaaaw', 'YWC Intranet: Cache ID', 1, 'data/cache.xml', 'ywc-intranet/1.0/list/ywc-intranet-list-cacheid.xsl', 'all');
+INSERT INTO "data_transform" VALUES ('aaaaaq', 'aaaaas', 'aaaaav', 'YWC Intranet: Posting Title', 1, 'data/cache.xml', 'ywc-intranet/detail/ywc-intranet-detail-title.xsl', 'all');
+INSERT INTO "data_transform" VALUES ('aaaaar', 'aaaaar', 'aaaaau', 'YWC Intranet: Who Am I', 1, '', 'ywc-intranet/auth/ywc-intranet-whoami.xsl', 'all');
+INSERT INTO "data_transform" VALUES ('aaaaas', 'aaaaar', 'aaaaaw', 'YWC Intranet: Cache ID', 1, 'data/cache.xml', 'ywc-intranet/list/ywc-intranet-list-cacheid.xsl', 'all');
 INSERT INTO "data_transform" VALUES ('tttttt', 'aaaaaa', 'tttttt', 'YWC Input Test', 1, '', 'ywc/1.0/ui-input/ywc-input-all-test.xsl', 'all');
 COMMIT;
 

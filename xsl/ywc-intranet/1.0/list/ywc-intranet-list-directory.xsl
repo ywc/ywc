@@ -7,14 +7,14 @@
 <xsl:param name="cache_path" as="xs:string" select="'-'" />
 <xsl:output method="xml" encoding="UTF-8" omit-xml-declaration="yes" />
 
-<xsl:include href="../../../ywc/1.0/inc/ywc-core.xsl" />
-<xsl:include href="../../../ywc/1.0/inc/ywc-convert.xsl" />
-<xsl:include href="../../../ywc/1.0/ui-asset/asset-list-controls.xsl" />
-<xsl:include href="../../../ywc-intranet/1.0/inc/ywc-intranet-asset-list.xsl" />
-<xsl:include href="../../../ywc-intranet/1.0/inc/ywc-intranet-asset-full.xsl" />
-<xsl:include href="../../../ywc-intranet/1.0/inc/ywc-intranet-directory.xsl" />
-<xsl:include href="../../../ywc-intranet/1.0/inc/ywc-intranet-retrieve-node.xsl" />
-<xsl:include href="../../../ywc/1.0/ui-elements/ywc-header.xsl" />
+<xsl:include href="../../ywc/1.0/inc/ywc-core.xsl" />
+<xsl:include href="../../ywc/1.0/inc/ywc-convert.xsl" />
+<xsl:include href="../../ywc/1.0/ui-asset/asset-list-controls.xsl" />
+<xsl:include href="../../ywc-intranet/inc/ywc-intranet-asset-list.xsl" />
+<xsl:include href="../../ywc-intranet/inc/ywc-intranet-asset-full.xsl" />
+<xsl:include href="../../ywc-intranet/inc/ywc-intranet-directory.xsl" />
+<xsl:include href="../../ywc-intranet/inc/ywc-intranet-retrieve-node.xsl" />
+<xsl:include href="../../ywc/1.0/ui-elements/ywc-header.xsl" />
 
 <xsl:variable name="uiHeaderColor" as="xs:string" select="ywc:getParam('uiHeaderColor',$params)" />
 <xsl:variable name="uiHeaderBgColor" as="xs:string" select="ywc:getParam('uiHeaderBgColor',$params)" />

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ywc="http://www.iter.org/ywc" xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882" xmlns:rs="urn:schemas-microsoft-com:rowset" xmlns:z="#RowsetSchema" exclude-result-prefixes="xs xsl ywc dt rs z">
 
-<xsl:include href="../../../ywc/1.0/ui-asset/asset-list-item.xsl" />
-<xsl:include href="../../../vendor/xcal-calendar/1.0/xcal-calendar.xsl" />
+<xsl:include href="../../ywc/1.0/ui-asset/asset-list-item.xsl" />
+<xsl:include href="../../vendor/xcal-calendar/1.0/xcal-calendar.xsl" />
 	
 <xsl:template name="ywcIntranetAssetList">
 <xsl:param name="listName" as="xs:string" select="''" /><!-- system name of list (can be matched to a ywcCacheId) -->
@@ -19,7 +19,7 @@
 	<xsl:variable name="listTarget_" select="if (string-length($listTarget) = 0) then $listName else $listTarget" />
 	
 	<xsl:variable name="cacheXml" select="document(
-						'../../../../cache/xml/data/cache.xml'
+						'../../../cache/xml/data/cache.xml'
 						)/ywc/cache[lower-case(@name)=lower-case($listName)]" />
 	
 	<xsl:variable as="xs:string" name="ywcCacheId">
@@ -36,7 +36,7 @@
 
 	<!-- constructs path for xml cache file, or blank if it suspects an invalid path -->
 	<xsl:variable name="srcXmlPath" select="
-		concat('../../../../cache/xml/'
+		concat('../../../cache/xml/'
 			,if (contains($ywcCacheId,'..')) then 'core/blank'
 			else concat('cache/',$ywcCacheId)
 		,'.xml')" />

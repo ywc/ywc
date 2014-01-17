@@ -8,7 +8,7 @@
 <xsl:param name="logoImage" as="xs:string" select="''" />
 <xsl:param name="collapsed" as="xs:integer" select="0" />
 	
-	<xsl:for-each select="document('../../../../cache/xml/data/cache.xml'
+	<xsl:for-each select="document('../../../cache/xml/data/cache.xml'
 							)/ywc/cache[lower-case(@name)=lower-case($listName)]">
 			
 			<xsl:variable as="xs:string" name="ywcCacheId">
@@ -16,7 +16,7 @@
 			</xsl:variable>
 			
 			 <xsl:variable name="srcXml" select="
-		document(concat('../../../../cache/xml/'
+		document(concat('../../../cache/xml/'
 			,if (contains($ywcCacheId,'..')) then 'core/blank'
 			else concat('cache/',$ywcCacheId)
 		,'.xml'))/rss/channel/item" />
@@ -67,7 +67,7 @@
 <xsl:param name="logoImage" as="xs:string" select="''" />
 <xsl:param name="title" as="xs:string" select="'ywc'" />
 
-	<xsl:for-each select="document('../../../../cache/xml/data/cache.xml'
+	<xsl:for-each select="document('../../../cache/xml/data/cache.xml'
 							)/ywc/cache[lower-case(@name)=lower-case($listName)]">
 			
 		<xsl:variable as="xs:string" name="ywcCacheId">
@@ -75,7 +75,7 @@
 		</xsl:variable>
 			
 		<xsl:variable name="srcXml" select="
-			document(concat('../../../../cache/xml/'
+			document(concat('../../../cache/xml/'
 				,if (contains($ywcCacheId,'..')) then 'core/blank'
 				else concat('cache/',$ywcCacheId)
 				,'.xml'))/geonames/timezone" />
