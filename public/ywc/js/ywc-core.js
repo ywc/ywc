@@ -27,7 +27,7 @@ YWC.f.coreLoadFileAsync = function(type,id,uri,callback) {
 		if (document.getElementById('script-browser-detect') == null) {
 			var s = document.createElement("script");
 			s.type = "text/javascript"; s.async = true; s.id = "script-browser-detect";
-			s.src = YWC.uri.pre+"lib/browser-detect/1.0/browser-detect.js";
+			s.src = YWC.uri.pre+"public/vendor/browser-detect/1.0/browser-detect.js";
 			s.onload = setTimeout(callback,25);
 			s.onreadystatechange = function() { setTimeout(callback,25); }
 			var x = document.getElementsByTagName("head")[0]; x.appendChild(s);
@@ -40,7 +40,7 @@ YWC.f.coreLoadFileAsync = function(type,id,uri,callback) {
 		if (document.getElementById('script-jquery') == null) {
 			var s = document.createElement("script");
 			s.type = "text/javascript"; s.async = true; s.id = "script-jquery";
-			s.src = YWC.uri.pre+"lib/vendor/jquery/jquery/1.10.2/jquery.min.js";
+			s.src = YWC.uri.pre+"public/vendor/jquery/jquery/1.10.2/jquery.min.js";
 			if (window.BrowserDetect.browser != 'Explorer') { s.onload = setTimeout(callback,25); }
 			s.onreadystatechange = function() { setTimeout(callback,25); }
 			var x = document.getElementsByTagName("head")[0]; x.appendChild(s);
@@ -70,7 +70,7 @@ YWC.f.coreLoadFileChainAsync = function(chainId,fileChainObjArr,callback){
 		YWC.f.aSyncChain.sequence[chainId] = fileChainObjArr; }
 	
 	// fileChainObjArr expects array of objects like this:
-	// { 'type':'script', 'id':'ywc-core', 'init':['$'], 'uri':'/lib/ywc/js/ywc-core.js' }
+	// { 'type':'script', 'id':'ywc-core', 'init':['$'], 'uri':'/public/ywc/js/ywc-core.js' }
 	
 	var insertLoop = false;
 	var initLoop = false;
@@ -233,12 +233,12 @@ YWC.f.uiSetSquImg = function(inputObj,style,brdrColor){
 		if (style == 'circle') {
 			if (brdrColor == null) { var brdrColor = 'ffffff'; }
 			obj.before('<img class="mask" unselectable="on"'
-				+' src="'+YWC.uri.pre+'lib/ywc-image/mask/png/circle-'+brdrColor+'.png"'
+				+' src="'+YWC.uri.pre+'public/ywc-image/mask/png/circle-'+brdrColor+'.png"'
 				+' />').parent('div.ywc-thmb').addClass('ywc-mask-circle');
 		} else if (style == 'border-radius') {
 			obj
 			//.before('<img class="mask" unselectable="on"'
-			//	+' src="'+YWC.uri.pre+'lib/ywc-image/mask/png/circle-'+brdrColor+'.png"'
+			//	+' src="'+YWC.uri.pre+'public/ywc-image/mask/png/circle-'+brdrColor+'.png"'
 			//	+' />')
 				.parent('div.ywc-thmb').addClass('ywc-mask-border-radius').addClass('ywc-crnr-5');
 		}
@@ -395,11 +395,11 @@ YWC.f.uiLoadJqueryUI = function(callback) {
 	
 	if (callback != null) { YWC.ui.jQueryUI.onLoad = callback; }
 	
-	var themeUri = "lib/vendor/jquery-ui/jquery-ui-themes/"+YWC.ui.jQueryUI.v+"/"+YWC.ui.jQueryUI.theme+"/jquery-ui.min.css";
+	var themeUri = "public/vendor/jquery-ui/jquery-ui-themes/"+YWC.ui.jQueryUI.v+"/"+YWC.ui.jQueryUI.theme+"/jquery-ui.min.css";
 	if (YWC.ui.jQueryUI.themeUri != "") { themeUri = YWC.ui.jQueryUI.themeUri; }
 	
 	if (YWC.f.coreLoadFileAsync("script","jquery-ui"
-			,YWC.uri.cdn+"lib/vendor/jquery-ui/jquery-ui/"+YWC.ui.jQueryUI.v+"/jquery-ui.min.js"
+			,YWC.uri.cdn+"public/vendor/jquery-ui/jquery-ui/"+YWC.ui.jQueryUI.v+"/jquery-ui.min.js"
 			,"YWC.f.uiLoadJqueryUI();") ){
 
 	} else if (YWC.f.coreLoadFileAsync("link","jquery-ui"

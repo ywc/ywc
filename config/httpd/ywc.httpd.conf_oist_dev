@@ -19,11 +19,11 @@ NameVirtualHost *:80
   ProxyPassReverse  /bws  http://localhost:8081/bws
 
   RewriteEngine on
-  RewriteCond    %{REQUEST_URI} !/lib
+  RewriteCond    %{REQUEST_URI} !/public
   RewriteCond    %{REQUEST_URI} !/bws
   RewriteRule ^(.*)$ http://localhost:8081/fws/router?uri=$1 [P,QSA]
  
-  Alias /lib /data/ywc/public
+  Alias /public /data/ywc/public
   <Directory /data/ywc/public>
     Order allow,deny
     Allow from all

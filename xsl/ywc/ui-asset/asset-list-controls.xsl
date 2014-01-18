@@ -19,7 +19,7 @@
 		<xsl:if test="$show = 0"><xsl:attribute name="style" select="'display:none;'" /></xsl:if>
 
 		<xsl:if test="$showBttnAdd = 1">
-			<img src="{$preUri}lib/ywc-image/bttn/misc/add-item-01.png" class="bttn-add-item" onClick="YWC.f.intranetCheckAuth(function(){'{'}YWC.f.intranetPopupPostEdit('{$listName}');{'}'});" onLoad="YWC.f.uiSetHoverBulge(this,10,'hz',true)" />
+			<img src="{$preUri}public/ywc-image/bttn/misc/add-item-01.png" class="bttn-add-item" onClick="YWC.f.intranetCheckAuth(function(){'{'}YWC.f.intranetPopupPostEdit('{$listName}');{'}'});" onLoad="YWC.f.uiSetHoverBulge(this,10,'hz',true)" />
 		</xsl:if>
 
 		<div class="asset-list-search {
@@ -40,20 +40,20 @@
 						"YWC.f.assetSearchReset(&apos;",$listName,"&apos;"
 						,if (string-length($filterByDateTime) &gt; 0) then concat(",{&apos;dateTime&apos;:&apos;",$filterByDateTime,"&apos;}") else ""
 						,");")'/>
-				<xsl:with-param name="icon" select="'lib/ywc-image/bttn/misc/search-01.png'"/>
+				<xsl:with-param name="icon" select="'public/ywc-image/bttn/misc/search-01.png'"/>
 				<xsl:with-param name="onTypeJs" select='concat("YWC.f.assetPagingGo(&apos;",$listName,"&apos;);")'/>
 				<xsl:with-param name="onTypeJsMinLength" select="2"/>
 			</xsl:call-template>
 		</div>
 
 		<xsl:if test="$showBttnArchive = 1">
-			<img src="{$preUri}lib/ywc-image/bttn/misc/books-01.png" class="bttn-archive {
+			<img src="{$preUri}public/ywc-image/bttn/misc/books-01.png" class="bttn-archive {
 				if (($showBttnAdd = 0) and ($showBttnSubscribe = 0) and ($showBttnArchive = 1)) then 'bttn-archive-right' else ''
 				}" id="ywc-list-controls-bttn-archive-{$listName}" onClick="YWC.f.intranetPostArchivePopup('{$listName}');" onLoad="YWC.f.uiSetHoverBulge(this,4,'hz',true)" />
 		</xsl:if>
 		
 		<xsl:if test="$showBttnSubscribe = 1">
-			<img src="{$preUri}lib/ywc-image/bttn/mail/envelope-01.png" class="bttn-subscribe" id="ywc-list-controls-bttn-subscribe-{$listName}" onClick="YWC.f.intranetCheckAuth(function(){'{'}YWC.f.intranetSubscribePopup('{$listName}');{'}'});" onLoad="YWC.f.uiSetHoverBulge(this,4,'hz',true)" />
+			<img src="{$preUri}public/ywc-image/bttn/mail/envelope-01.png" class="bttn-subscribe" id="ywc-list-controls-bttn-subscribe-{$listName}" onClick="YWC.f.intranetCheckAuth(function(){'{'}YWC.f.intranetSubscribePopup('{$listName}');{'}'});" onLoad="YWC.f.uiSetHoverBulge(this,4,'hz',true)" />
 		</xsl:if>
 
 	</div>

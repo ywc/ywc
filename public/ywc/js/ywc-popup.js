@@ -337,7 +337,7 @@ YWC.f.popupGenerateHtml = function(inputParams) {
 			;
 	}
 			
-	var dragBufferOuter = '<img src="'+YWC.uri.pre+'lib/ywc-image/core/trans.gif"'
+	var dragBufferOuter = '<img src="'+YWC.uri.pre+'public/ywc-image/core/trans.gif"'
 		+' id="ywc-popup-'+id+'-buffer"'
 		+' style="visibility:hidden;position:absolute;border:none;left:-'+(1*marginWidth)+'px;top:-'+(2*marginWidth)+'px;width:'+(width+(4*marginWidth))+'px;height:'+(width+(4*marginWidth))+'px;background-color:blue;z-index:0;-moz-user-select:none;user-select:none;" unselectable="on" />';		
 

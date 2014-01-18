@@ -132,12 +132,12 @@
 						
 						<div class="ywc-crnr-5 ywc-asset-list ywc-vertical-list ywc-intranet-news-controls">
 							
-							<img src="{$preUri}lib/ywc-image/bttn/misc/books-01.png"
+							<img src="{$preUri}public/ywc-image/bttn/misc/books-01.png"
 								class="bttn bttn-archive" onLoad="YWC.f.uiSetHoverBulge(this,4,'hz',true)"
 								id="ywc-list-controls-bttn-archive-news"
 								onClick="YWC.f.intranetPostArchivePopup('news',{'{'}sortBy:'{$sortBy}'{'}'});" />
 								
-							<img src="{$preUri}lib/ywc-image/bttn/mail/envelope-01.png"
+							<img src="{$preUri}public/ywc-image/bttn/mail/envelope-01.png"
 								class="bttn bttn-subscribe" onLoad="YWC.f.uiSetHoverBulge(this,4,'hz',true)"
 								id="ywc-list-controls-bttn-subscribe-news"
 								onClick="YWC.f.intranetCheckAuth(function(){'{'}YWC.f.intranetSubscribePopup('news');{'}'});" />

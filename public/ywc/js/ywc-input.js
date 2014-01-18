@@ -103,12 +103,12 @@ YWC.f.inputLoadRichText = function(targetSelector) {
 	var ckEditorVersion = "4.3.1";
 	
 	if (YWC.f.coreLoadFileAsync("script","ckeditor-base"
-				,YWC.uri.pre+"lib/vendor/ckeditor/"+ckEditorVersion+"/ckeditor.js"
+				,YWC.uri.pre+"public/vendor/ckeditor/"+ckEditorVersion+"/ckeditor.js"
 				,"YWC.f.inputLoadRichText('"+targetSelector+"');") ){
 					
 	} else if ((typeof CKEDITOR != 'undefined') && 
 				YWC.f.coreLoadFileAsync("script","ckeditor-jquery"
-				,YWC.uri.cdn+"lib/vendor/ckeditor/"+ckEditorVersion+"/adapters/jquery.js"
+				,YWC.uri.cdn+"public/vendor/ckeditor/"+ckEditorVersion+"/adapters/jquery.js"
 				,"YWC.f.inputLoadRichText('"+targetSelector+"');") ){
 					
 	} else if ((typeof CKEDITOR != 'undefined') && (typeof CKEDITOR.instances != 'undefined') && $().ckeditor) {
@@ -131,7 +131,7 @@ YWC.f.inputLoadRichText = function(targetSelector) {
 				,[ 'SpecialChar']
 				,[ 'Source']
 			]
-			,contentsCss:YWC.uri.pre+"lib/vendor/ckeditor/"+ckEditorVersion+"/samples/assets/outputxhtml/outputxhtml.css"
+			,contentsCss:YWC.uri.pre+"public/vendor/ckeditor/"+ckEditorVersion+"/samples/assets/outputxhtml/outputxhtml.css"
 			,baseHref:''
 			,blockedKeystrokes:[]
 			,browserContextMenuOnCtrl:true
@@ -174,7 +174,7 @@ YWC.f.inputCheckBoxValueSet = function(id,checkBoxType,onChangeJs) {
 
 YWC.f.inputLoadFileUpload = function(fileUploadId,callback) {
 	
-	var themeUri = "lib/vendor/jquery-ui/jquery-ui-themes/"+YWC.ui.jQueryUI.v+"/"+YWC.ui.jQueryUI.theme+"/jquery-ui.min.css";
+	var themeUri = "public/vendor/jquery-ui/jquery-ui-themes/"+YWC.ui.jQueryUI.v+"/"+YWC.ui.jQueryUI.theme+"/jquery-ui.min.css";
 	if (YWC.ui.jQueryUI.themeUri != "") { themeUri = YWC.ui.jQueryUI.themeUri; }
 	
 	if (YWC.input.meta.uploadCallback == null) { YWC.input.meta.uploadCallback = {}; }
@@ -202,7 +202,7 @@ YWC.f.inputLoadFileUpload = function(fileUploadId,callback) {
 
 
 	if (YWC.f.coreLoadFileAsync("script","jquery-ui"
-			,YWC.uri.cdn+"lib/vendor/jquery-ui/jquery-ui/"+YWC.ui.jQueryUI.v+"/jquery-ui.min.js"
+			,YWC.uri.cdn+"public/vendor/jquery-ui/jquery-ui/"+YWC.ui.jQueryUI.v+"/jquery-ui.min.js"
 			,"YWC.f.inputLoadFileUpload('"+fileUploadId+"');") ){
 
 	} else if (YWC.f.coreLoadFileAsync("link","jquery-ui"
@@ -210,42 +210,42 @@ YWC.f.inputLoadFileUpload = function(fileUploadId,callback) {
 			,"YWC.f.inputLoadFileUpload('"+fileUploadId+"');") ){
 
 	} else if (YWC.f.coreLoadFileAsync("link","jquery-fileupload-ui"
-			,YWC.uri.pre+"lib/vendor/jquery/jquery-fileupload/jquery-fileupload/7.4.1/css/jquery.fileupload-ui.css"
+			,YWC.uri.pre+"public/vendor/jquery/jquery-fileupload/jquery-fileupload/7.4.1/css/jquery.fileupload-ui.css"
 			,"YWC.f.inputLoadFileUpload('"+fileUploadId+"');") ){
 
 	} else if (YWC.f.coreLoadFileAsync("link","bootstrap"
-			,YWC.uri.pre+"lib/vendor/jquery/jquery-fileupload/jquery-fileupload/7.4.1/css/bootstrap.ywc.min.css"
+			,YWC.uri.pre+"public/vendor/jquery/jquery-fileupload/jquery-fileupload/7.4.1/css/bootstrap.ywc.min.css"
 			,"YWC.f.inputLoadFileUpload('"+fileUploadId+"');") ){
 
 	} else if (YWC.f.coreLoadFileAsync("link","bootstrap-responsive"
-			,YWC.uri.pre+"lib/vendor/jquery/jquery-fileupload/jquery-fileupload/7.4.1/css/bootstrap-responsive.min.css"
+			,YWC.uri.pre+"public/vendor/jquery/jquery-fileupload/jquery-fileupload/7.4.1/css/bootstrap-responsive.min.css"
 			,"YWC.f.inputLoadFileUpload('"+fileUploadId+"');") ){
 
 	} else if (YWC.f.coreLoadFileAsync("script","jquery-tmpl"
-			,YWC.uri.cdn+"lib/vendor/jquery/jquery-fileupload/jquery-tmpl/1.0/jquery-tmpl.min.js"
+			,YWC.uri.cdn+"public/vendor/jquery/jquery-fileupload/jquery-tmpl/1.0/jquery-tmpl.min.js"
 			,"YWC.f.inputLoadFileUpload('"+fileUploadId+"');") ){
 				
 	} else if (YWC.f.coreLoadFileAsync("script","jquery-iframe-transport"
-			,YWC.uri.cdn+"lib/vendor/jquery/jquery-fileupload/jquery-fileupload/7.4.1/js/jquery.iframe-transport.js"
+			,YWC.uri.cdn+"public/vendor/jquery/jquery-fileupload/jquery-fileupload/7.4.1/js/jquery.iframe-transport.js"
 			,"YWC.f.inputLoadFileUpload('"+fileUploadId+"');") ){
 				
 	} else if (YWC.f.coreLoadFileAsync("script","jquery-xdr-transport"
-			,YWC.uri.cdn+"lib/vendor/jquery/jquery-fileupload/jquery-fileupload/7.4.1/js/cors/jquery.xdr-transport.js"
+			,YWC.uri.cdn+"public/vendor/jquery/jquery-fileupload/jquery-fileupload/7.4.1/js/cors/jquery.xdr-transport.js"
 			,"YWC.f.inputLoadFileUpload('"+fileUploadId+"');") ){
 
 	} else if ( (typeof $.widget != 'undefined')
 			&&	YWC.f.coreLoadFileAsync("script","jquery-fileupload"
-			,YWC.uri.cdn+"lib/vendor/jquery/jquery-fileupload/jquery-fileupload/7.4.1/js/jquery.fileupload.js"
+			,YWC.uri.cdn+"public/vendor/jquery/jquery-fileupload/jquery-fileupload/7.4.1/js/jquery.fileupload.js"
 			,"YWC.f.inputLoadFileUpload('"+fileUploadId+"');") ){
 
 	} else if ( 
 			YWC.f.coreLoadFileAsync("script","jquery-fileupload-fp"
-			,YWC.uri.cdn+"lib/vendor/jquery/jquery-fileupload/jquery-fileupload/7.4.1/js/jquery.fileupload-fp.js"
+			,YWC.uri.cdn+"public/vendor/jquery/jquery-fileupload/jquery-fileupload/7.4.1/js/jquery.fileupload-fp.js"
 			,"YWC.f.inputLoadFileUpload('"+fileUploadId+"');") ){
 	
 	} else if ( 
 			YWC.f.coreLoadFileAsync("script","jquery-fileupload-ui"
-			,YWC.uri.cdn+"lib/vendor/jquery/jquery-fileupload/jquery-fileupload/7.4.1/js/jquery.fileupload-ui.js"
+			,YWC.uri.cdn+"public/vendor/jquery/jquery-fileupload/jquery-fileupload/7.4.1/js/jquery.fileupload-ui.js"
 			,"YWC.f.inputLoadFileUpload('"+fileUploadId+"');") ){
 							
 	} else if (	$().fileupload && $().submit
@@ -264,7 +264,7 @@ YWC.f.inputDrawFileUpload = function(fileUploadId,inputParams){
 		,limitMultiFileUploads:3
 		,sequentialUploads:true
 		,maxNumberOfFiles:100
-		,redirect:YWC.uri.pre+"lib/vendor/jquery/jquery-fileupload/jquery-fileupload/7.4.1/cors/result.html?%s"
+		,redirect:YWC.uri.pre+"public/vendor/jquery/jquery-fileupload/jquery-fileupload/7.4.1/cors/result.html?%s"
 	};
 	
 	if (inputParams != null) {
@@ -302,11 +302,11 @@ YWC.f.inputDrawFileUpload = function(fileUploadId,inputParams){
 
 YWC.f.inputLoadSelectMenu = function(targetSelector,optionString) {
 		
-	var themeUri = "lib/vendor/jquery-ui/jquery-ui-themes/"+YWC.ui.jQueryUI.v+"/"+YWC.ui.jQueryUI.theme+"/jquery-ui.min.css";
+	var themeUri = "public/vendor/jquery-ui/jquery-ui-themes/"+YWC.ui.jQueryUI.v+"/"+YWC.ui.jQueryUI.theme+"/jquery-ui.min.css";
 	if (YWC.ui.jQueryUI.themeUri != "") { themeUri = YWC.ui.jQueryUI.themeUri; }
 	
 	if (YWC.f.coreLoadFileAsync("script","jquery-ui"
-			,YWC.uri.cdn+"lib/vendor/jquery-ui/jquery-ui/"+YWC.ui.jQueryUI.v+"/jquery-ui.min.js"
+			,YWC.uri.cdn+"public/vendor/jquery-ui/jquery-ui/"+YWC.ui.jQueryUI.v+"/jquery-ui.min.js"
 			,"YWC.f.inputLoadSelectMenu(\""+targetSelector+"\",\""+optionString+"\");") ){
 
 	} else if (YWC.f.coreLoadFileAsync("link","jquery-ui"
@@ -314,12 +314,12 @@ YWC.f.inputLoadSelectMenu = function(targetSelector,optionString) {
 			,"YWC.f.inputLoadSelectMenu(\""+targetSelector+"\",\""+optionString+"\");") ){
 
 	} else if (YWC.f.coreLoadFileAsync("link","jquery-ui-selectmenu"
-			,YWC.uri.pre+"lib/vendor/jquery-ui/jquery-ui-selectmenu/1.5.0pre/jquery-ui-selectmenu.css"
+			,YWC.uri.pre+"public/vendor/jquery-ui/jquery-ui-selectmenu/1.5.0pre/jquery-ui-selectmenu.css"
 			,"YWC.f.inputLoadSelectMenu(\""+targetSelector+"\",\""+optionString+"\");") ){
 				
 	} else if (	(typeof $.widget != 'undefined')
 			&&	YWC.f.coreLoadFileAsync("script","jquery-ui-selectmenu"
-			,YWC.uri.cdn+"lib/vendor/jquery-ui/jquery-ui-selectmenu/1.5.0pre/jquery-ui-selectmenu.js"
+			,YWC.uri.cdn+"public/vendor/jquery-ui/jquery-ui-selectmenu/1.5.0pre/jquery-ui-selectmenu.js"
 			,"YWC.f.inputLoadSelectMenu(\""+targetSelector+"\",\""+optionString+"\");") ){
 				
 	} else if ($().selectmenu) {
@@ -373,11 +373,11 @@ YWC.f.inputDateTimeLoad = function(wh,ywcId,onChange) {
 	var index = 0;
 	if (onChange != null) { YWC.input.meta.dateTime[index].onChange[ywcId] = onChange; }
 	
-	var themeUri = "lib/vendor/jquery-ui/jquery-ui-themes/"+YWC.ui.jQueryUI.v+"/"+YWC.ui.jQueryUI.theme+"/jquery-ui.min.css";
+	var themeUri = "public/vendor/jquery-ui/jquery-ui-themes/"+YWC.ui.jQueryUI.v+"/"+YWC.ui.jQueryUI.theme+"/jquery-ui.min.css";
 	if (YWC.ui.jQueryUI.themeUri != "") { themeUri = YWC.ui.jQueryUI.themeUri; }
 		
 	if (YWC.f.coreLoadFileAsync("script","jquery-ui"
-			,YWC.uri.cdn+"lib/vendor/jquery-ui/jquery-ui/"+YWC.ui.jQueryUI.v+"/jquery-ui.min.js"
+			,YWC.uri.cdn+"public/vendor/jquery-ui/jquery-ui/"+YWC.ui.jQueryUI.v+"/jquery-ui.min.js"
 			,"YWC.f.inputDateTimeLoad('"+wh+"','"+ywcId+"');")) {
 
 	} else if (YWC.f.coreLoadFileAsync("link","jquery-ui"
@@ -385,11 +385,11 @@ YWC.f.inputDateTimeLoad = function(wh,ywcId,onChange) {
 			,"YWC.f.inputDateTimeLoad('"+wh+"','"+ywcId+"');")) {
 				
 	} else if (YWC.f.coreLoadFileAsync("script","jquery-ui-timepicker"
-			,YWC.uri.cdn+"lib/vendor/jquery-ui/jquery-ui-timepicker/0.3.3/jquery-ui-timepicker.js"
+			,YWC.uri.cdn+"public/vendor/jquery-ui/jquery-ui-timepicker/0.3.3/jquery-ui-timepicker.js"
 			,"YWC.f.inputDateTimeLoad('"+wh+"','"+ywcId+"');")) {
 
 	} else if (YWC.f.coreLoadFileAsync("link","jquery-ui-timepicker"
-			,YWC.uri.pre+"lib/vendor/jquery-ui/jquery-ui-timepicker/0.3.3/jquery-ui-timepicker.css"
+			,YWC.uri.pre+"public/vendor/jquery-ui/jquery-ui-timepicker/0.3.3/jquery-ui-timepicker.css"
 			,"YWC.f.inputDateTimeLoad('"+wh+"','"+ywcId+"');")) {
 				
 	} else if ($().datepicker && $().timepicker) {

@@ -255,7 +255,7 @@ public class render {
                 bg = "#" + (String) opts.get("background");
             }
 
-            String fontDir = settings.getPathYwcLib() + "ywc-font/";
+            String fontDir = settings.getPathYwcPublic() + "ywc-font/";
             String fontName = "arial";
             String fontPath = fontDir + fontName + "/" + fontName + ".ttf";
             if (opts.get("font") != null) {

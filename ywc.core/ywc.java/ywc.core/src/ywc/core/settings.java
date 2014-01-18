@@ -58,7 +58,7 @@ public class settings {
         return getYWCpath() + "/xsl/";
     }
 
-    public static String getPathYwcLib() {
+    public static String getPathYwcPublic() {
         return getYWCpath() + "/public/";
     }
 

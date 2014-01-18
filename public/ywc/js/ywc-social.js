@@ -134,7 +134,7 @@ YWC.f.socialCheckAuthPopup = function(site,authCallback) {
 			+"position:relative;clear:both;font-size:18px;"
 		+"\">In order to complete your request, please sign into your "+site+" account:</span>"
 		+"<br /><br /><img style=\"position:relative;width:230px;clear:both;cursor:pointer;\""
-			+" src=\""+YWC.uri.pre+"lib/ywc-image/bttn/social/"+site+"-login-02.png\""
+			+" src=\""+YWC.uri.pre+"public/ywc-image/bttn/social/"+site+"-login-02.png\""
 			+" class=\"ywc-social-"+site+"-login-bttn\" onLoad=\"YWC.f.uiSetHoverImageToggle(this)\" />"
 		+"</div>";
 	
@@ -259,7 +259,7 @@ YWC.f.socialInit = function(site) {
 		if ((typeof twttr != 'undefined') && (typeof twttr.anywhere != 'undefined')) {
 			console.log('YWC: socialInit '+site);
 			twttr.anywhere.config({ 
-				callbackURL: document.location.protocol+"//"+document.domain+"/lib/ywc/oauth/twitter/?appId="+YWC.social.twitter.appId });
+				callbackURL: document.location.protocol+"//"+document.domain+"/public/ywc/oauth/twitter/?appId="+YWC.social.twitter.appId });
 			twttr.anywhere(function(T){ window.YWC.social[site].doInit = false;});
 		}
 	} else {	

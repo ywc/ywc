@@ -20,8 +20,8 @@ div.ywc-input-message { position:relative; float:left; clear:both; width:90%; he
 div.ywc-thmb { position:relative; z-index:1; border:none; overflow:hidden; width:40px; height:40px; }
 div.ywc-thmb img { position:absolute; left:0%; top:0%; border:none; visibility:hidden; z-index:0; }
 div.ywc-thmb img.mask { position:absolute; left:-1.67%; top:-1.67%; height:103.33%; width:103.33%; border:none; z-index:3; visibility:visible; }
-div.ywc-mask-circle { -webkit-mask-box-image: url(//ywccdn.s3.amazonaws.com/lib/ywc-image/mask/svg/circle.svg); }
-div.ywc-mask-border-radius { -webkit-mask-box-image: url(//ywccdn.s3.amazonaws.com/lib/ywc-image/mask/svg/square-border-radius.svg); }
+div.ywc-mask-circle { -webkit-mask-box-image: url(../../ywc-image/mask/svg/circle.svg); }
+div.ywc-mask-border-radius { -webkit-mask-box-image: url(../../ywc-image/mask/svg/square-border-radius.svg); }
 
 img.ywc-img-txt { border:none; }
 
