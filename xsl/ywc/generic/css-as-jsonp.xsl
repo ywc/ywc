@@ -6,22 +6,22 @@
 <xsl:param name="cache_path" as="xs:string" select="'-'" />
 <xsl:output method="xml" encoding="UTF-8" omit-xml-declaration="yes" />
 
-<xsl:include href="../../../ywc/inc/ywc-core.xsl" />
-<xsl:include href="../../../ywc/inc/ywc-convert.xsl" />
+<xsl:include href="../../ywc/inc/ywc-core.xsl" />
+<xsl:include href="../../ywc/inc/ywc-convert.xsl" />
 
 <xsl:variable name="includeName" select="lower-case(substring-after($uri,'/css-as-jsonp/'))" />
 
 <xsl:template match="/">
 	
-	<xsl:for-each select="	(	document('../../../../ywc.core/ywc.core/xml/data/include.xml')
-							| 	document('../../../../cache/xml/data/include.xml')
+	<xsl:for-each select="	(	document('../../../ywc.core/ywc.core/xml/data/include.xml')
+							| 	document('../../../cache/xml/data/include.xml')
 							)/ywc/include[@name = $includeName][@content_type = 'text/css']"><!--
 		-->if ((typeof $ != 'undefined')<!--
 		--> <xsl:value-of select="'&amp;&amp;'" disable-output-escaping="yes"/><!--
 		--> ($('#link-<xsl:value-of select="$includeName" />, link.link-ywc-aggregate[id*=link-<xsl:value-of select="$includeName" />\\;]').length == 0)<!--
 		-->) {<!--
 		--> $('head').append('<style type="text/css" id="link-{$includeName}"><!--
-		--> <xsl:value-of select="concat(' ',replace(ywc:escApos(unparsed-text(concat('../../../../ywc.',@uri))),'&#xA;',''),' ')" /><!--
+		--> <xsl:value-of select="concat(' ',replace(ywc:escApos(unparsed-text(concat('../../../ywc.',@uri))),'&#xA;',''),' ')" /><!--
 		--></style>'); }<!--
 	--></xsl:for-each>
 

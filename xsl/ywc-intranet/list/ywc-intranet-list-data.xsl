@@ -7,11 +7,11 @@
 <xsl:param name="cache_path" as="xs:string" select="'-'" />
 <xsl:output method="xml" encoding="UTF-8" omit-xml-declaration="yes" />
 
-<xsl:include href="../../../ywc/inc/ywc-core.xsl" />
-<xsl:include href="../../../ywc/inc/ywc-convert.xsl" />
-<xsl:include href="../../../ywc-intranet/inc/ywc-intranet-asset-list.xsl" />
-<xsl:include href="../../../ywc-intranet/inc/ywc-intranet-directory.xsl" />
-<xsl:include href="../../../ywc-intranet/inc/ywc-intranet-retrieve-node.xsl" />
+<xsl:include href="../../ywc/inc/ywc-core.xsl" />
+<xsl:include href="../../ywc/inc/ywc-convert.xsl" />
+<xsl:include href="../../ywc-intranet/inc/ywc-intranet-asset-list.xsl" />
+<xsl:include href="../../ywc-intranet/inc/ywc-intranet-directory.xsl" />
+<xsl:include href="../../ywc-intranet/inc/ywc-intranet-retrieve-node.xsl" />
 
 <xsl:template match="/">
 	

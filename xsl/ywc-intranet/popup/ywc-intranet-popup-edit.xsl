@@ -7,11 +7,11 @@
 <xsl:param name="user" as="xs:string" select="''" />
 <xsl:output method="xml" encoding="UTF-8" omit-xml-declaration="yes" />
 
-<xsl:include href="../../../ywc/inc/ywc-core.xsl" />
-<xsl:include href="../../../ywc/inc/ywc-convert.xsl" />
+<xsl:include href="../../ywc/inc/ywc-core.xsl" />
+<xsl:include href="../../ywc/inc/ywc-convert.xsl" />
 <xsl:include href="../inc/ywc-intranet-directory.xsl" />
-<xsl:include href="../../../ywc/ui-elements/ywc-header.xsl" />
-<xsl:include href="../../../ywc/ui-input/ywc-input-all.xsl" />
+<xsl:include href="../../ywc/ui-elements/ywc-header.xsl" />
+<xsl:include href="../../ywc/ui-input/ywc-input-all.xsl" />
 
 <xsl:variable name="preUri" select="ywc:getParam('preUri',$params)"/>
 <xsl:variable name="listName" select="ywc:getParam('listName',$params)"/>
@@ -67,7 +67,7 @@
 	</xsl:variable>
 
 	<xsl:variable name="srcXml" select="
-				document(concat('../../../../cache/xml/'
+				document(concat('../../../cache/xml/'
 				,if (contains($ywcCacheId,'..')) then 'core/blank'
 				else concat('cache/',$ywcCacheId)
 				,'.xml'))" />
