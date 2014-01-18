@@ -7,12 +7,12 @@
 <xsl:param name="cache_path" as="xs:string" select="'-'" />
 <xsl:output method="xml" encoding="UTF-8" omit-xml-declaration="yes" />
 
-<xsl:include href="../../ywc/1.0/inc/ywc-core.xsl" />
-<xsl:include href="../../ywc/1.0/inc/ywc-convert.xsl" />
-<xsl:include href="../../ywc-intranet/news/ywc-intranet-news-full.xsl" />
-<xsl:include href="../../ywc-intranet/inc/ywc-intranet-retrieve-node.xsl" />
-<xsl:include href="../../ywc/1.0/ui-elements/ywc-header.xsl" />
-<xsl:include href="../../ywc/1.0/ui-input/ywc-input-button.xsl" />
+<xsl:include href="../../../ywc/inc/ywc-core.xsl" />
+<xsl:include href="../../../ywc/inc/ywc-convert.xsl" />
+<xsl:include href="../../../ywc-intranet/news/ywc-intranet-news-full.xsl" />
+<xsl:include href="../../../ywc-intranet/inc/ywc-intranet-retrieve-node.xsl" />
+<xsl:include href="../../../ywc/ui-elements/ywc-header.xsl" />
+<xsl:include href="../../../ywc/ui-input/ywc-input-button.xsl" />
 
 <xsl:variable name="preUri" as="xs:string" select="ywc:getParam('preUri',$params)" />
 <xsl:variable name="listName" as="xs:string" select="ywc:getParam('listName',$params)" />

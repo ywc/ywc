@@ -2,9 +2,9 @@
 <ywc>
 <transform transform_id="aaaaaa" xsl="" title="Default Transform" scope="all" ordering="1" xml="" uri_id="aaaaaa" placeholder_id="aaaaaa" />
 <transform transform_id="aaaaab" xsl="" title="JSON List Countries" scope="all" ordering="1" xml="" uri_id="aaaaah" placeholder_id="aaaaab" />
-<transform transform_id="aaaaac" xsl="ywc/1.0/generic/css-as-jsonp.xsl" title="CSS Wrapped as JSONP" scope="all" ordering="1" xml="" uri_id="aaaaac" placeholder_id="aaaaab" />
+<transform transform_id="aaaaac" xsl="ywc/generic/css-as-jsonp.xsl" title="CSS Wrapped as JSONP" scope="all" ordering="1" xml="" uri_id="aaaaac" placeholder_id="aaaaab" />
 <transform transform_id="aaaaad" xsl="ywc-intranet/popup/ywc-intranet-popup-utility.xsl" title="YWC Intranet: Asset Detail Utilities" scope="all" ordering="1" xml="data/cache.xml" uri_id="aaaaaj" placeholder_id="aaaaae" />
-<transform transform_id="aaaaae" xsl="ywc/1.0/ui-input/ywc-input-all-standalone.xsl" title="YWC Inputs" scope="all" ordering="1" xml="" uri_id="aaaaab" placeholder_id="aaaaae" />
+<transform transform_id="aaaaae" xsl="ywc/ui-input/ywc-input-all-standalone.xsl" title="YWC Inputs" scope="all" ordering="1" xml="" uri_id="aaaaab" placeholder_id="aaaaae" />
 <transform transform_id="aaaaaf" xsl="ywc-intranet/popup/ywc-intranet-popup-detail.xsl" title="YWC Intranet: Asset Detail Popup" scope="all" ordering="1" xml="data/cache.xml" uri_id="aaaaad" placeholder_id="aaaaae" />
 <transform transform_id="aaaaag" xsl="ywc-intranet/popup/ywc-intranet-popup-subscribe.xsl" title="YWC Intranet: Subscribe Popup" scope="all" ordering="1" xml="data/cache.xml" uri_id="aaaaak" placeholder_id="aaaaae" />
 <transform transform_id="aaaaah" xsl="ywc-intranet/popup/ywc-intranet-popup-auth.xsl" title="YWC Intranet: Authentication Popup" scope="all" ordering="1" xml="" uri_id="aaaaal" placeholder_id="aaaaae" />
@@ -19,5 +19,5 @@
 <transform transform_id="aaaaaq" xsl="ywc-intranet/detail/ywc-intranet-detail-title.xsl" title="YWC Intranet: Posting Title" scope="all" ordering="1" xml="data/cache.xml" uri_id="aaaaav" placeholder_id="aaaaas" />
 <transform transform_id="aaaaar" xsl="ywc-intranet/auth/ywc-intranet-whoami.xsl" title="YWC Intranet: Who Am I" scope="all" ordering="1" xml="" uri_id="aaaaau" placeholder_id="aaaaar" />
 <transform transform_id="aaaaas" xsl="ywc-intranet/list/ywc-intranet-list-cacheid.xsl" title="YWC Intranet: Cache ID" scope="all" ordering="1" xml="data/cache.xml" uri_id="aaaaaw" placeholder_id="aaaaar" />
-<transform transform_id="tttttt" xsl="ywc/1.0/ui-input/ywc-input-all-test.xsl" title="YWC Input Test" scope="all" ordering="1" xml="" uri_id="tttttt" placeholder_id="aaaaaa" />
+<transform transform_id="tttttt" xsl="ywc/ui-input/ywc-input-all-test.xsl" title="YWC Input Test" scope="all" ordering="1" xml="" uri_id="tttttt" placeholder_id="aaaaaa" />
 </ywc>

@@ -18,44 +18,41 @@ import ywc.core.*;
  * @author topher
  */
 public class xml {
-    private static final org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(xml.class);
-    
-    public static Boolean cycleThruDataTypes(String destinationDirectory) {
-        Boolean outVal = false;
-        try {
-            String typeList = xslt.exec(settings.getPathYwcCoreData()+ "xml/core/datatypes.xml", settings.getPathYwcCoreData() + "xsl/core/router/datatypes.xsl", null, null, null);
 
+    private static final org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(xml.class);
+
+    public static Boolean cacheAllDataTypes(String destinationDirectory) {
+        Boolean rtrn = false;
+        String pathCore = settings.getPathYwcCoreData();
+        String pathCache = settings.getPathYwcCache();
+        try {
+            String typeList = xslt.exec(pathCore + "xml/core/datatypes.xml", pathCore + "xsl/core/router/datatypes.xsl", null, null, null);
             String[] lines = typeList.split("\\r?\\n");
             if (lines.length > 0) {
-                for (int i=0; i < lines.length; i++) {
-                    cacheDataType(lines[i],settings.getPathYwcCache() + "/xml/data/","");
+                for (int i = 0; i < lines.length; i++) {
+                    cacheDataType(lines[i], pathCore + "xml/data/", "ywccore.");
+                    cacheDataType(lines[i], pathCache + "/xml/data/", "");
                 }
-                outVal = true;
+                rtrn = true;
             }
-
         } catch (Exception ex) {
             logger.warn(ex);
         }
-
-        return outVal;
+        return rtrn;
     }
 
     public static Boolean cacheDataType(String dataType, String destinationDirectory, String databasePrefix) {
-
-        Boolean writeSucc = false;
-        
-        ArrayList quRows = query.exec("SELECT * FROM "+databasePrefix+"data_"+dataType+" ORDER BY " + dataType + "_id", new String[]{});
+        Boolean rtrn = false;
+        ArrayList quRows = query.exec("SELECT * FROM " + databasePrefix + "data_" + dataType + " ORDER BY " + dataType + "_id", new String[]{});
         String outXml = conv.objToXml(dataType, quRows);
-        
         int rowCnt = -1;
         try {
-           ArrayList quNumRows = query.exec("SELECT COUNT(*) AS numRows FROM "+databasePrefix+"data_"+dataType, new String[]{});
+            ArrayList quNumRows = query.exec("SELECT COUNT(*) AS numRows FROM " + databasePrefix + "data_" + dataType, new String[]{});
             rowCnt = Integer.parseInt((String) ((HashMap) quNumRows.get(0)).get("numRows"));
         } catch (Exception e) {
-            
+            logger.warn(e);
         }
         if (rowCnt >= 0) {
-        
             FileWriter outFile;
             try {
                 outFile = new FileWriter(new File(destinationDirectory + dataType + ".xml"));
@@ -63,22 +60,19 @@ public class xml {
                 writeXml.println(outXml);
                 writeXml.close();
                 if (filesystem.fileExists(destinationDirectory + dataType + ".xml")) {
-                    writeSucc = true;
+                    rtrn = true;
                 }
             } catch (IOException ex) {
                 logger.warn(ex);
             }
-
-            if (writeSucc) {
+            if (rtrn) {
                 logger.info("Cache " + dataType + " success");
             } else {
                 logger.warn("Cache " + dataType + " failure");
             }
-
         } else {
             logger.info("Cache " + dataType + " skipped");
         }
-        
-        return writeSucc;
+        return rtrn;
     }
 }

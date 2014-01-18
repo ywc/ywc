@@ -8,13 +8,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/**
- *
- * @author topher
- */
 public class query {
 
-    
     public static ArrayList exec(String quStr, String[] quVars) {
 
         long queryStart = System.currentTimeMillis();
@@ -24,8 +19,7 @@ public class query {
         int quRowCount = 0;
         HashMap quReturn = null;
         ArrayList rtrnObj = new ArrayList();
-        
-        
+
         try {
 
             String action = quStr.substring(0, 6).toUpperCase();
@@ -34,18 +28,14 @@ public class query {
             }
 
             quCon = query.getCon(quStr);
-            
-            String DbEngine = settings.getDBEngine();
-            
-            if ("sqlite".equals(DbEngine)) {
-                String quPrefix = quStr.substring(0,quStr.indexOf("_")).substring(quStr.substring(0,quStr.indexOf("_")).lastIndexOf(" ")+1);
-                String quDb = "ywc"+settings.getYwcEnvApp();
-                if (quPrefix.contains(".")) {
-                    quDb = quPrefix.substring(0,quPrefix.indexOf("."));
-                }
-                String quTable = quPrefix+"_"+quStr.substring(1+quStr.indexOf("_")).substring(0,quStr.substring(1+quStr.indexOf("_")).indexOf(" ")).replace(quDb+".", "");
-                quStr = quStr.replace(quDb+".","");
+
+            String quPrefix = quStr.substring(0, quStr.indexOf("_")).substring(quStr.substring(0, quStr.indexOf("_")).lastIndexOf(" ") + 1);
+            String quDb = "ywc" + settings.getYwcEnvApp();
+            if (quPrefix.contains(".")) {
+                quDb = quPrefix.substring(0, quPrefix.indexOf("."));
             }
+            String quTable = quPrefix + "_" + quStr.substring(1 + quStr.indexOf("_")).substring(0, quStr.substring(1 + quStr.indexOf("_")).indexOf(" ")).replace(quDb + ".", "");
+            quStr = quStr.replace(quDb + ".", "");
 
             if (quCon != null) {
 
@@ -56,9 +46,8 @@ public class query {
                         quStatement.setString(i + 1, quVars[i]);
                     }
                 }
-                
-                //System.out.println("query: "+quStr/*+"\nQuery Values: "+ quVars.toString()*/);
 
+                //System.out.println("query: "+quStr/*+"\nQuery Values: "+ quVars.toString()*/);
                 if (!action.equals("SELECT")) {
 
                     try {
@@ -70,7 +59,7 @@ public class query {
                         } catch (Exception ex2) {
                         }
                     }
-                    
+
                     quReturn = new HashMap();
                     quReturn.put("success", true);
                     quReturn.put("affected", quRowCount);
@@ -115,13 +104,13 @@ public class query {
                     }
                     quResultSet.close();
                 }
-                
+
                 long queryEnd = System.currentTimeMillis();
-                
+
                 quStatement.close();
                 quCon.close();
             } else {
-                
+
                 quReturn = new HashMap();
                 quReturn.put("success", false);
                 quReturn.put("error", "no connection");
@@ -131,64 +120,58 @@ public class query {
             }
 
         } catch (SQLException ex) {
-              System.out.print(" query error: " + ex.toString());
+            System.out.print(" query error: " + ex.toString());
             try {
                 quCon.close();
             } catch (Exception ex2) {
             }
         } catch (NullPointerException ex) {
-              System.out.print(" query error: " + ex.toString());
+            System.out.print(" query error: " + ex.toString());
             try {
                 quCon.close();
             } catch (Exception ex2) {
             }
         }
 
-            
         return rtrnObj;
     }
 
     public static Connection getCon(String quStr) throws SQLException {
         Connection con = null;
-        
-        //if (settings.getProp("ywc.db.engine") == null) {throw XXException;}
-        //need to create custom exception class 
-        
-        String engine = settings.getDBEngine();
-        if (engine.equals("sqlite")) {
+
+        try {
+            Driver d = (Driver) Class.forName("org.sqlite.JDBC").newInstance();
+            DriverManager.registerDriver(d);
             try {
-                Driver d = (Driver) Class.forName("org.sqlite.JDBC").newInstance();
-                DriverManager.registerDriver(d);
-                try {
-                    String quPrefix = quStr.substring(0,quStr.indexOf("_")).substring(quStr.substring(0,quStr.indexOf("_")).lastIndexOf(" ")+1);
-                    String quDb = "ywc"+settings.getYwcEnvApp();
-                    if (quPrefix.contains(".")) {
-                        quDb = quPrefix.substring(0,quPrefix.indexOf("."));
-                    }
-                    String quTable = quPrefix+"_"+quStr.substring(1+quStr.indexOf("_")).substring(0,quStr.substring(1+quStr.indexOf("_")).indexOf(" ")).replace(quDb+".", "");
-                    String dbSubDir = (quDb.equals("ywccore")) ? "ywc" : settings.getYwcEnvApp();
-                    con = DriverManager.getConnection("jdbc:sqlite:"+settings.getYWCpath()+"/database/"+dbSubDir+"/"+quDb+".sqlite3");
-                } catch (SQLException e) {
-                    System.out.println("Error creating SQLite connection: " + e.toString());
+                String quPrefix = quStr.substring(0, quStr.indexOf("_")).substring(quStr.substring(0, quStr.indexOf("_")).lastIndexOf(" ") + 1);
+                String quDb = "ywc" + settings.getYwcEnvApp();
+                if (quPrefix.contains(".")) {
+                    quDb = quPrefix.substring(0, quPrefix.indexOf("."));
                 }
-            } catch (Exception e) {
-                System.out.println("Error loading SQLite database driver: " + e.toString());
+                String quTable = quPrefix + "_" + quStr.substring(1 + quStr.indexOf("_")).substring(0, quStr.substring(1 + quStr.indexOf("_")).indexOf(" ")).replace(quDb + ".", "");
+                String dbSubDir = (quDb.equals("ywccore")) ? "ywc" : settings.getYwcEnvApp();
+                con = DriverManager.getConnection("jdbc:sqlite:" + settings.getYWCpath() + "/database/" + dbSubDir + "/" + quDb + ".sqlite3");
+            } catch (SQLException e) {
+                System.out.println("Error creating SQLite connection: " + e.toString());
             }
+        } catch (Exception e) {
+            System.out.println("Error loading SQLite database driver: " + e.toString());
         }
+
         return con;
     }
 
     public static String genId(String assetType, int len) {
-        
+
         String id = "";
         Boolean is_unique = false;
-        
+
         while (is_unique == false) {
             id = str.basicId(len);
     //        ArrayList qu = query.exec("SELECT * FROM data_" + assetType + " WHERE "+assetType+"_id=\""+id+"\"", new String[]{});
-    //        if (qu.isEmpty()) {
-                is_unique = true;
-    //        }
+            //        if (qu.isEmpty()) {
+            is_unique = true;
+            //        }
         }
         return id;
     }

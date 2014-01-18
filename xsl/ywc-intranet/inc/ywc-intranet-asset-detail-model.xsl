@@ -31,7 +31,7 @@
 	<xsl:variable as="xs:string*" name="adminUsers" select="
 			tokenize(
 			replace(
-			unparsed-text(concat('../../../config/',ywc:getAppName(),'/admin-users.txt'))
+			unparsed-text(concat('../../../../config/',ywc:getAppName(),'/admin-users.txt'))
 			,'&#xD;','')
 			,'&#xA;')
 		" />
@@ -49,7 +49,7 @@
 		
 		<div class="ywc-popup-detail" id="ywc-popup-detail-{$listName}-{$assetId}">
 
-		<xsl:variable as="xs:integer" name="isReadOnly" select="if (contains(document('../../../cache/xml/data/cache.xml')/ywc/cache[@name = $listName]/@properties,'read-only,')) then 1 else 0" />
+		<xsl:variable as="xs:integer" name="isReadOnly" select="if (contains(document('../../../../cache/xml/data/cache.xml')/ywc/cache[@name = $listName]/@properties,'read-only,')) then 1 else 0" />
 		
 		<xsl:variable name="currentEnv" select="ywc:getAppSetting('ywc.env.env')" />
 

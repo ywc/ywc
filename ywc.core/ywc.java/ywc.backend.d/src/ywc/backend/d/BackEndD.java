@@ -44,20 +44,7 @@ public class BackEndD {
                 if (action != null && !"".equals(action)) {
 
                     if (action.contains("xml_generate")) {
-                        xml.cycleThruDataTypes(settings.getPathYwcCache() + "/xml/data/");
-
-                        logger.info("Building ywc core db xml files");
-
-                        Boolean outVal = false;
-                        String typeList = xslt.exec(settings.getPathYwcCoreData() + "xml/core/datatypes.xml", settings.getPathYwcCoreData() + "xsl/core/router/datatypes.xsl", null, null, null);
-
-                        String[] lines = typeList.split("\\r?\\n");
-                        if (lines.length > 0) {
-                            for (int i = 0; i < lines.length; i++) {
-                                ywc.backend.data.xml.cacheDataType(lines[i], settings.getPathYwcCoreData() + "xml/data/", "ywccore.");
-                            }
-                            outVal = true;
-                        }
+                        xml.cacheAllDataTypes(settings.getPathYwcCache() + "/xml/data/");
                     }
 
                     if (action.contains("uri_cache")) {

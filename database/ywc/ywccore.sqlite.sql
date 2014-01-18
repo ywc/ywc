@@ -10,7 +10,7 @@
  Target Server Version : 3008001
  File Encoding         : utf-8
 
- Date: 01/17/2014 14:24:21 PM
+ Date: 01/18/2014 00:25:11 AM
 */
 
 PRAGMA foreign_keys = false;
@@ -48,8 +48,8 @@ INSERT INTO "data_include" VALUES ('aaaaab', 'css-reset', 'CSS Reset', 2.0, 'ven
 INSERT INTO "data_include" VALUES ('aaaaac', 'jquery', 'jQuery Core', '1.10.2', 'vendor/jquery/jquery/1.10.2/jquery.min.js', 'text/javascript', '-', '-', 2, 0, 0, '', 'top', 'all');
 INSERT INTO "data_include" VALUES ('aaaaae', 'jquery-hoverintent', 'jQuery Plugin: HoverIntent', 'r6', 'vendor/jquery/jquery-hoverintent/r6/jquery-hoverintent.modified.min.js', 'text/javascript', 'jquery;', '-', 3, 0, 0, '', 'bottom', 'all');
 INSERT INTO "data_include" VALUES ('aaaaaf', 'jquery-list-attributes', 'jQuery Plugin: List Attributes', '1.1.0.mod', 'vendor/jquery/jquery-list-attributes/1.1.0.mod/jquery-list-attributes.js', 'text/javascript', 'jquery;', '-', 3, 0, 0, '', 'bottom', 'all');
-INSERT INTO "data_include" VALUES ('aaaaba', 'ywc-core', 'YWC Core', 1.0, 'ywc/1.0/js/ywc-core.js', 'text/javascript', 'css-reset; browser-detect; jquery; ywc-social; ywc-popup; ywc-input; ywc-utils; ywc-api; ywc-asset;', '-', 5, 0, 0, '', 'top', 'all');
-INSERT INTO "data_include" VALUES ('aaaabb', 'ywc-core', 'YWC Core', 1.0, 'ywc/1.0/css/ywc-core.css', 'text/css', 'css-reset; browser-detect; jquery; ywc-social; ywc-popup; ywc-input; ywc-utils; ywc-api; ywc-asset;', '-', 5, 0, 0, '', 'top', 'all');
+INSERT INTO "data_include" VALUES ('aaaaba', 'ywc-core', 'YWC Core', 1.0, 'ywc/1.0/js/ywc-core.js', 'text/javascript', 'css-reset; browser-detect; jquery; ywc-popup; ywc-input; ywc-utils; ywc-api; ywc-asset;', '-', 5, 0, 0, '', 'top', 'all');
+INSERT INTO "data_include" VALUES ('aaaabb', 'ywc-core', 'YWC Core', 1.0, 'ywc/1.0/css/ywc-core.css', 'text/css', 'css-reset; browser-detect; jquery; ywc-popup; ywc-input; ywc-utils; ywc-api; ywc-asset;', '-', 5, 0, 0, '', 'top', 'all');
 INSERT INTO "data_include" VALUES ('aaaabc', 'ywc-api', 'YWC Plugin: External API', 1.0, 'ywc/1.0/js/ywc-api.js', 'text/javascript', 'ywc-core;', '-', 6, 0, 0, '', 'bottom', 'all');
 INSERT INTO "data_include" VALUES ('aaaabd', 'ywc-asset', 'YWC Plugin: Asset List', 1.0, 'ywc/1.0/js/ywc-asset.js', 'text/javascript', 'ywc-core; jquery-list-attributes; jquery-hoverintent;', '-', 6, 0, 0, '', 'bottom', 'all');
 INSERT INTO "data_include" VALUES ('aaaabe', 'ywc-asset', 'YWC Plugin: Asset List', 1.0, 'ywc/1.0/css/ywc-asset.css', 'text/css', 'ywc-core; jquery-list-attributes; jquery-hoverintent;', '-', 6, 0, 0, '', 'top', 'all');
@@ -81,8 +81,8 @@ CREATE TABLE "data_placeholder" ("placeholder_id" TEXT(6,0),"template_id" TEXT(6
 BEGIN;
 INSERT INTO "data_placeholder" VALUES ('aaaaaa', 'aaaaaa', 'Default Placeholder', 0, 0, 100, 100, '', '', 'body', '', '', 'all');
 INSERT INTO "data_placeholder" VALUES ('aaaaab', 'aaaaab', 'JSON Generic', 0, 0, 0, 0, '', '', 'body', '', '', 'all');
-INSERT INTO "data_placeholder" VALUES ('aaaaac', 'aaaaac', 'Generic E-mail Header', 0, 0, 100, 100, '', 'ywc/1.0/ui-email/ywc-email-header.xsl', 'head', '', '', 'all');
-INSERT INTO "data_placeholder" VALUES ('aaaaad', 'aaaaac', 'Generic E-mail Body', 0, 0, 100, 100, '', 'ywc/1.0/ui-email/ywc-email-body.xsl', 'body', '', '', 'all');
+INSERT INTO "data_placeholder" VALUES ('aaaaac', 'aaaaac', 'Generic E-mail Header', 0, 0, 100, 100, '', 'ywc/ui-email/ywc-email-header.xsl', 'head', '', '', 'all');
+INSERT INTO "data_placeholder" VALUES ('aaaaad', 'aaaaac', 'Generic E-mail Body', 0, 0, 100, 100, '', 'ywc/ui-email/ywc-email-body.xsl', 'body', '', '', 'all');
 INSERT INTO "data_placeholder" VALUES ('aaaaae', 'aaaaag', 'AJAX Shell', 0, 0, 100, 600, '', '', 'body', '', '', 'all');
 INSERT INTO "data_placeholder" VALUES ('aaaaag', 'aaaaah', 'Javascript Generic', 0, 0, 0, 0, '', '', 'body', '', '', 'all');
 INSERT INTO "data_placeholder" VALUES ('aaaaah', 'aaaaaf', 'Single Placeholder', 0, 0, 100, 100, '', '', 'body', '', '', 'all');
@@ -154,9 +154,9 @@ CREATE TABLE "data_transform" (
 BEGIN;
 INSERT INTO "data_transform" VALUES ('aaaaaa', 'aaaaaa', 'aaaaaa', 'Default Transform', 1, '', '', 'all');
 INSERT INTO "data_transform" VALUES ('aaaaab', 'aaaaab', 'aaaaah', 'JSON List Countries', 1, '', '', 'all');
-INSERT INTO "data_transform" VALUES ('aaaaac', 'aaaaab', 'aaaaac', 'CSS Wrapped as JSONP', 1, '', 'ywc/1.0/generic/css-as-jsonp.xsl', 'all');
+INSERT INTO "data_transform" VALUES ('aaaaac', 'aaaaab', 'aaaaac', 'CSS Wrapped as JSONP', 1, '', 'ywc/generic/css-as-jsonp.xsl', 'all');
 INSERT INTO "data_transform" VALUES ('aaaaad', 'aaaaae', 'aaaaaj', 'YWC Intranet: Asset Detail Utilities', 1, 'data/cache.xml', 'ywc-intranet/popup/ywc-intranet-popup-utility.xsl', 'all');
-INSERT INTO "data_transform" VALUES ('aaaaae', 'aaaaae', 'aaaaab', 'YWC Inputs', 1, '', 'ywc/1.0/ui-input/ywc-input-all-standalone.xsl', 'all');
+INSERT INTO "data_transform" VALUES ('aaaaae', 'aaaaae', 'aaaaab', 'YWC Inputs', 1, '', 'ywc/ui-input/ywc-input-all-standalone.xsl', 'all');
 INSERT INTO "data_transform" VALUES ('aaaaaf', 'aaaaae', 'aaaaad', 'YWC Intranet: Asset Detail Popup', 1, 'data/cache.xml', 'ywc-intranet/popup/ywc-intranet-popup-detail.xsl', 'all');
 INSERT INTO "data_transform" VALUES ('aaaaag', 'aaaaae', 'aaaaak', 'YWC Intranet: Subscribe Popup', 1, 'data/cache.xml', 'ywc-intranet/popup/ywc-intranet-popup-subscribe.xsl', 'all');
 INSERT INTO "data_transform" VALUES ('aaaaah', 'aaaaae', 'aaaaal', 'YWC Intranet: Authentication Popup', 1, '', 'ywc-intranet/popup/ywc-intranet-popup-auth.xsl', 'all');
@@ -171,7 +171,7 @@ INSERT INTO "data_transform" VALUES ('aaaaap', 'aaaaae', 'aaaaaq', 'YWC Intranet
 INSERT INTO "data_transform" VALUES ('aaaaaq', 'aaaaas', 'aaaaav', 'YWC Intranet: Posting Title', 1, 'data/cache.xml', 'ywc-intranet/detail/ywc-intranet-detail-title.xsl', 'all');
 INSERT INTO "data_transform" VALUES ('aaaaar', 'aaaaar', 'aaaaau', 'YWC Intranet: Who Am I', 1, '', 'ywc-intranet/auth/ywc-intranet-whoami.xsl', 'all');
 INSERT INTO "data_transform" VALUES ('aaaaas', 'aaaaar', 'aaaaaw', 'YWC Intranet: Cache ID', 1, 'data/cache.xml', 'ywc-intranet/list/ywc-intranet-list-cacheid.xsl', 'all');
-INSERT INTO "data_transform" VALUES ('tttttt', 'aaaaaa', 'tttttt', 'YWC Input Test', 1, '', 'ywc/1.0/ui-input/ywc-input-all-test.xsl', 'all');
+INSERT INTO "data_transform" VALUES ('tttttt', 'aaaaaa', 'tttttt', 'YWC Input Test', 1, '', 'ywc/ui-input/ywc-input-all-test.xsl', 'all');
 COMMIT;
 
 -- ----------------------------

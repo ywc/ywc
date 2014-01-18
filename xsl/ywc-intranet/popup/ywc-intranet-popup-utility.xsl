@@ -9,10 +9,10 @@
 <xsl:param name="cache_path" as="xs:string" select="'-'" />
 <xsl:output method="xml" encoding="UTF-8" omit-xml-declaration="yes" />
 
-<xsl:include href="../../ywc/1.0/inc/ywc-core.xsl" />
-<xsl:include href="../../ywc/1.0/inc/ywc-convert.xsl" />
-<xsl:include href="../../ywc/1.0/ui-input/ywc-input-text.xsl" />
-<xsl:include href="../../ywc/1.0/ui-input/ywc-input-button.xsl" />
+<xsl:include href="../../../ywc/inc/ywc-core.xsl" />
+<xsl:include href="../../../ywc/inc/ywc-convert.xsl" />
+<xsl:include href="../../../ywc/ui-input/ywc-input-text.xsl" />
+<xsl:include href="../../../ywc/ui-input/ywc-input-button.xsl" />
 
 <xsl:variable name="title" as="xs:string*" select="(
 	'Perma-Link','Add to Outlook','Reply to this Posting','Forward this Posting'			

@@ -8,8 +8,8 @@
 <xsl:param name="cache_path" as="xs:string" select="'-'" />
 <xsl:output method="xml" encoding="UTF-8" omit-xml-declaration="yes" />
 
-<xsl:include href="../../ywc/1.0/inc/ywc-core.xsl" />
-<xsl:include href="../../ywc/1.0/inc/ywc-convert.xsl" />
+<xsl:include href="../../../ywc/inc/ywc-core.xsl" />
+<xsl:include href="../../../ywc/inc/ywc-convert.xsl" />
 
 <!-- get list and post id from URL pattern -->
 <xsl:variable name="listName" select="substring-before(substring-after(substring-after($uri,'ywc/intranet/'),'/'),'/')"/>
@@ -30,7 +30,7 @@
 	</xsl:variable>
 
 	<xsl:variable name="srcXml" select="
-				document(concat('../../../cache/xml/'
+				document(concat('../../../../cache/xml/'
 				,if (contains($ywcCacheId,'..')) then 'core/blank'
 				else concat('cache/',$ywcCacheId)
 				,'.xml'))" />

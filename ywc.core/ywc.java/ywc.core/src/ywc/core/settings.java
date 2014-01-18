@@ -41,26 +41,6 @@ public class settings {
     public static String getYwcEnvProtocol() {
         return getProp("ywc.env.protocol","http");
     } //protocol of site
-    
-    public static String getDBEngine() {
-        return getProp("ywc.db.engine",null);
-    }
-
-    public static String getDBHost() {
-        return getProp("ywc.db.host",null);
-    }
-
-    public static String getDBPort() {
-        return getProp("ywc.db.port",null);
-    }
-
-    public static String getDBUser() {
-        return getProp("ywc.db.user",null);
-    }
-
-    public static String getDBPass() {
-        return getProp("ywc.db.pass",null);
-    }
 
     public static String getContentDest() {
         return getProp("ywc.content_destination",null);
