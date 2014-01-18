@@ -9,6 +9,7 @@
 <xsl:param name="ywc_delim_command" as="xs:string" select="''" />
 <xsl:param name="ywc_env_env" as="xs:string" select="'env'" />
 <xsl:param name="ywc_env_app" as="xs:string" select="'app'" />
+<xsl:param name="ywc_env_domain" as="xs:string" select="'domain'" />
 <xsl:output method="xml" encoding="UTF-8" omit-xml-declaration="yes" />
 
 <xsl:include href="../render/template.xsl" />
@@ -27,7 +28,7 @@
 					<xsl:with-param name="ywc_delim_header" select="$ywc_delim_header"/>
 					<xsl:with-param name="template_id" select="@asset_id"/>
 					<xsl:with-param name="parent_node_uri" select="."/>
-					<xsl:with-param name="env" select="($ywc_env_env,$ywc_env_app)"/>
+					<xsl:with-param name="env" select="($ywc_env_env,$ywc_env_app,$ywc_env_domain)"/>
 				</xsl:call-template>
 			</xsl:for-each>
 		</xsl:when>
@@ -38,7 +39,7 @@
 					<xsl:with-param name="ywc_delim_header" select="$ywc_delim_header"/>
 					<xsl:with-param name="template_id" select="@asset_id"/>
 					<xsl:with-param name="parent_node_uri" select="."/>
-					<xsl:with-param name="env" select="($ywc_env_env,$ywc_env_app)"/>
+					<xsl:with-param name="env" select="($ywc_env_env,$ywc_env_app,$ywc_env_domain)"/>
 				</xsl:call-template>
 			</xsl:for-each>
 		</xsl:otherwise>

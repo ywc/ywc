@@ -15,20 +15,20 @@
 				{'type':'script','id':'ywc-core-css','init':[],'uri':
 					YWC.uri.pre+'ywc/css-as-jsonp/ywc-core'}
 				,{'type':'script','id':'ywc-utils','init':[],'uri':
-					YWC.uri.pre+'public/ywc/js/ywc-utils.js'}
+					YWC.uri.cdn+'ywc/js/ywc-utils.js'}
 						
 				,{'type':'script','id':'ywc-popup','init':[],'uri':
-					YWC.uri.pre+'public/ywc/js/ywc-popup.js'}
+					YWC.uri.cdn+'ywc/js/ywc-popup.js'}
 				,{'type':'script','id':'ywc-popup-css','init':[],'uri':
 					YWC.uri.pre+'ywc/css-as-jsonp/ywc-popup'}
 				
 				,{'type':'script','id':'ywc-asset','init':[],'uri':
-					YWC.uri.pre+'public/ywc/js/ywc-asset.js'}
+					YWC.uri.cdn+'ywc/js/ywc-asset.js'}
 				,{'type':'script','id':'ywc-asset-css','init':[],'uri':
 					YWC.uri.pre+'ywc/css-as-jsonp/ywc-asset'}
 				
 				,{'type':'script','id':'ywc-maps','init':[],'uri':
-					YWC.uri.pre+'public/ywc/js/ywc-map.js'}
+					YWC.uri.cdn+'ywc/js/ywc-map.js'}
 				
 				],"YWC.f.loadYwcRemotelyCallback();"
 			);			
@@ -39,7 +39,7 @@
 
 	var s = document.createElement("script");
 	s.type = "text/javascript"; s.async = true; s.id = "script-ywc-core";
-	s.src = YWC.uri.pre+"public/ywc/js/ywc-core.js";
+	s.src = YWC.uri.cdn+"ywc/js/ywc-core.js";
 	s.onload = setTimeout("YWC.f.loadYwcRemotely();",10);
 	s.onreadystatechange = function() { setTimeout("YWC.f.loadYwcRemotely();",10); }
 	var x = document.getElementsByTagName("head")[0]; x.appendChild(s);

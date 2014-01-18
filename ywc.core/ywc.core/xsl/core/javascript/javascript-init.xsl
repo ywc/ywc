@@ -5,14 +5,19 @@
 <xsl:template name="ywcJavascriptInitialize">
 <xsl:param name="preUri" as="xs:string" select="'/'" />
 <xsl:param name="absUri" as="xs:string" select="'/'" />
-<xsl:param name="env" as="xs:string*" select="('env','app')" />
+<xsl:param name="publicUri" as="xs:string" select="'/'" />
+<xsl:param name="env" as="xs:string*" select="('env','app','domain')" />
 
 <script type="text/javascript"> var YWC={<!--
 		-->"uri":{<!--
 			-->"pre":"<xsl:value-of select="$preUri"/>","abs":"<xsl:value-of select="$absUri"/>"<!--
+			-->,"cdn":"<xsl:value-of select="
+					if (string-length($publicUri) &gt; 0) then concat('//',$publicUri,'/')
+					else concat($preUri,'public/')
+				"/>"<!--
 		-->},"popup":{<!--
 		-->},"f":{<!--
-		-->},"env":{"env":"<xsl:value-of select="$env[1]"/>","app":"<xsl:value-of select="$env[2]"/>"<!--
+		-->},"env":{"env":"<xsl:value-of select="$env[1]"/>","app":"<xsl:value-of select="$env[2]"/>","domain":"<xsl:value-of select="$env[3]"/>"<!--
 		-->},"map":{<!--
 		-->},"ui":{<!--
 		-->},"store":{<!--

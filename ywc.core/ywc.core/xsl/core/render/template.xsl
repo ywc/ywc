@@ -4,13 +4,16 @@
 <xsl:include href="../render/placeholder.xsl" />
 <xsl:include href="../../inc/ywc-core.xsl" />
 <xsl:include href="../javascript/javascript-init.xsl" />
-	
+
+<xsl:variable name="ywcPublicAggregate" select="ywc:getAppSetting('ywc.public.aggregate')" />
+<xsl:variable name="ywcPublicCdn" select="ywc:getAppSetting('ywc.public.uri')" />
+
 <xsl:template name="render_template">
 <xsl:param name="uri_params_lang_delims" as="xs:string*" select="('/','','en','','','')" />
 <xsl:param name="ywc_delim_header" as="xs:string" select="''" />
 <xsl:param name="template_id" as="xs:string" select="'aaaaaa'" />
 <xsl:param name="parent_node_uri" select="." />
-<xsl:param name="env" as="xs:string*" select="('env','app')" />
+<xsl:param name="env" as="xs:string*" select="('env','app','domain')" />
 	
 	<xsl:variable name="preUri" select="ywc:preUri($uri_params_lang_delims[1],$uri_params_lang_delims[3])" />
 	<xsl:variable name="xml_template" select="document('../../../xml/data/template.xml') | document('../../../../../cache/xml/data/template.xml')" />
@@ -66,7 +69,7 @@
 <xsl:param name="template_row" select="." />
 <xsl:param name="placeholders" select="." />
 <xsl:param name="preUri" select="." />
-<xsl:param name="env" as="xs:string*" select="('env','app')" />
+<xsl:param name="env" as="xs:string*" select="('env','app','domain')" />
 
 <xsl:choose>
 	<xsl:when test="$template_row[1]/@content_type = 'text/html'">
@@ -84,6 +87,7 @@
 	<xsl:call-template name="ywcJavascriptInitialize">
 		<xsl:with-param name="preUri" select="$preUri"/>
 		<xsl:with-param name="absUri" select="$uri_params_lang_delims[1]"/>
+		<xsl:with-param name="publicUri" select="$ywcPublicCdn"/>
 		<xsl:with-param name="env" select="$env"/>
 	</xsl:call-template>
 </xsl:if>
@@ -154,6 +158,7 @@
 <xsl:param name="template_row" select="." />
 <xsl:param name="placeholders" select="." />
 <xsl:param name="preUri" select="." />
+<xsl:param name="env" as="xs:string*" select="('env','app','domain')" />
 
 <xsl:choose>
 	<xsl:when test="$template_row[1]/@content_type = 'text/html'">
@@ -290,7 +295,10 @@
 		<xsl:value-of select="concat('&#xA;&lt;link rel=&quot;stylesheet&quot;'
 									,' type=&quot;text/css&quot;'				
 									,' id=&quot;link-',@name,'&quot;'
-									,' href=&quot;',$preUri,'public/',@uri
+									,' href=&quot;'
+										, if (string-length($ywcPublicCdn) &gt; 0) then concat('//',$ywcPublicCdn,'/')
+											else concat($preUri,'public/')
+										,@uri
 										,'?ywc_v=',@version
 										, if (@force_update = '1') then concat('&amp;update=',current-time()) else ''								
 										,@params,'&quot;'
@@ -302,7 +310,10 @@
 								,' rel=&quot;stylesheet&quot;'
 								,' type=&quot;text/css&quot;'			
 								,' id=&quot;link-',@name,'&quot;'
-								,' href=&quot;',$preUri,'public/',@uri
+								,' href=&quot;'
+										, if (string-length($ywcPublicCdn) &gt; 0) then concat('//',$ywcPublicCdn,'/')
+											else concat($preUri,'public/')
+										,@uri
 									,'?ywc_v=',@version
 									, if (@force_update = '1') then concat('&amp;update=',current-time()) else ''
 									,@params,'&quot;'

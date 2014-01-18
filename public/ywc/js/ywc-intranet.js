@@ -177,7 +177,7 @@ YWC.f.intranetPopupNewsRefine = function(listName,articleId) {
 			putHtml += "<br /><a target=\"_blank\" href=\""
 				+decodeURIComponent(YWC.store[assetId].attachments[i].orig)
 				+"\">"
-				+"<img src=\""+YWC.uri.pre+"public/ywc-image/bttn/misc/attach-01.png\" />"
+				+"<img src=\""+YWC.uri.cdn+"ywc-image/bttn/misc/attach-01.png\" />"
 				+decodeURIComponent(YWC.store[assetId].attachments[i].name)
 				+"</a>";
 		}
@@ -187,7 +187,7 @@ YWC.f.intranetPopupNewsRefine = function(listName,articleId) {
 		putHtml += "<br /><a target=\"_blank\" href=\""
 			+YWC.store[assetId].url
 			+"\">"
-			+"<img src=\""+YWC.uri.pre+"public/ywc-image/bttn/misc/attach-01.png\" />"
+			+"<img src=\""+YWC.uri.cdn+"ywc-image/bttn/misc/attach-01.png\" />"
 			+YWC.store[assetId].url
 			+"</a>";
 	}
@@ -494,7 +494,7 @@ YWC.f.intranetPostPopupRefine = function(listName,assetId) {
 						,'titleMaxLength':200
 						,'cssClasses':'ywc-intranet-detail-attachments'
 						,'clickAltHtml':'Click anywhere<br />to download'
-						,'thmb':YWC.uri.pre+'public/ywc-image/bttn/misc/attach-01.png'
+						,'thmb':YWC.uri.cdn+'ywc-image/bttn/misc/attach-01.png'
 						,'title':obj.attachments[i].name
 						,'clickAction':'window.open(\''+YWC.f.strEscApos(YWC.uri.pre+obj.attachments[i].orig)+'\')'
 					});
@@ -677,7 +677,7 @@ YWC.f.intranetPostEditAttachmentsList = function(listName,assetId,append) {
 			else { fileSize+=' kB'; }
 			
 			// if it's an image, show the thumbnail
-			var thmb = YWC.uri.pre+'public/ywc-image/bttn/misc/attach-01.png';
+			var thmb = YWC.uri.cdn+'ywc-image/bttn/misc/attach-01.png';
 			if (attObj.image != null) { thmb = attObj.image; }
 			var orig = attObj.orig.substr(0,attObj.orig.lastIndexOf('/'))
 				+'/orig.'+attObj.orig.substr(1+attObj.orig.lastIndexOf('.'));

@@ -60,7 +60,7 @@ YWC.f.mapInit = function(mapId,mapParams,onLoad) {
 	YWC.f.mapSetParams(mapId,mapParams);
 	if (onLoad != null) { YWC.map.google[mapId].onLoad = onLoad; }
 	
-	var themeUri = "public/vendor/jquery-ui/jquery-ui-themes/"+YWC.ui.jQueryUI.v+"/"+YWC.ui.jQueryUI.theme+"/jquery-ui.min.css";
+	var themeUri = "vendor/jquery-ui/jquery-ui-themes/"+YWC.ui.jQueryUI.v+"/"+YWC.ui.jQueryUI.theme+"/jquery-ui.min.css";
 	if (YWC.ui.jQueryUI.themeUri != "") { themeUri = YWC.ui.jQueryUI.themeUri; }
 	
 	for (i in YWC.map.google) { var firstMapId = i; break; }
@@ -72,19 +72,19 @@ YWC.f.mapInit = function(mapId,mapParams,onLoad) {
 		YWC.f.coreLoadFileAsync("script","google-maps"
 			,"//maps.googleapis.com/maps/api/js?ywc_v=3.0&sensor=false&callback=YWC.f.mapInit","");
 	} else if (YWC.f.coreLoadFileAsync("script","google-maps-richmarker"
-			,YWC.uri.cdn+"public/vendor/google-maps/rich-marker/1.0/src/richmarker-compiled.js"
+			,YWC.uri.cdn+"vendor/google-maps/rich-marker/1.0/src/richmarker-compiled.js"
 			,"YWC.f.mapInit('"+mapId+"',{})")){
 			
 	} else if (YWC.f.coreLoadFileAsync("script","google-maps-markerclusterer"
-			,YWC.uri.cdn+"public/vendor/google-maps/marker-clusterer-plus/2.0.6/src/markerclusterer_packed.js"
+			,YWC.uri.cdn+"vendor/google-maps/marker-clusterer-plus/2.0.6/src/markerclusterer_packed.js"
 			,"YWC.f.mapInit('"+mapId+"',{})")){
 
 	} else if (YWC.f.coreLoadFileAsync("script","jquery-ui"
-			,YWC.uri.cdn+"public/vendor/jquery-ui/jquery-ui/"+YWC.ui.jQueryUI.v+"/jquery-ui.min.js"
+			,YWC.uri.cdn+"vendor/jquery-ui/jquery-ui/"+YWC.ui.jQueryUI.v+"/jquery-ui.min.js"
 			,"YWC.f.mapInit('"+mapId+"',{})")){
 
 	} else if (YWC.f.coreLoadFileAsync("link","jquery-ui"
-			,YWC.uri.pre+themeUri
+			,YWC.uri.cdn+themeUri
 			,"YWC.f.mapInit('"+mapId+"',{})")){
 				
 	} else if (typeof MarkerClusterer != 'undefined') {
@@ -401,7 +401,7 @@ YWC.f.mapDrawSearch = function(mapId) {
 						+" id=\"ywc-map-search-container-"+mapId+"\""
 						+" style=\"left:"+YWC.f.mapGetElementPosLeft(mapId,'search')+"px;\">"
 						+"<img class=\"bttn\" onLoad=\"YWC.f.uiSetHoverImageToggle(this)\" alt=\"Search Map\""
-							+" src=\""+YWC.uri.pre+"public/ywc-image/bttn/misc/search-01.png\""
+							+" src=\""+YWC.uri.cdn+"ywc-image/bttn/misc/search-01.png\""
 							+" onClick=\"YWC.f.mapToggleElement('"+mapId+"','search')\" />"
 						+"<img class=\"ywc-map-extra-close\" onLoad=\"YWC.f.uiSetHoverImageToggle(this)\" alt=\"Close Search\""
 							+" src=\""+YWC.uri.pre+"img/special/popupx/box/eeeeee/9f9f9f.png\""
@@ -439,7 +439,7 @@ YWC.f.mapDrawConsole = function(mapId) {
 					+"<div class=\"console-text\""
 						+" style=\"width:"+(mapCont.width()-90)+"px;\"></div>"
 						+"<img class=\"bttn\" onLoad=\"YWC.f.uiSetHoverImageToggle(this)\" alt=\"\""
-							+" src=\""+YWC.uri.pre+"public/ywc-image/bttn/misc/compass-01.png\""
+							+" src=\""+YWC.uri.cdn+"ywc-image/bttn/misc/compass-01.png\""
 							+" onClick=\"YWC.f.mapToggleElement('"+mapId+"','console')\" />"
 						+"<img class=\"ywc-map-extra-close\" onLoad=\"YWC.f.uiSetHoverImageToggle(this)\" alt=\"Close Console\""
 							+" src=\""+YWC.uri.pre+"img/special/popupx/box/eeeeee/9f9f9f.png\""
