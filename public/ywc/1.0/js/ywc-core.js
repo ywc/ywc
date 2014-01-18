@@ -70,7 +70,7 @@ YWC.f.coreLoadFileChainAsync = function(chainId,fileChainObjArr,callback){
 		YWC.f.aSyncChain.sequence[chainId] = fileChainObjArr; }
 	
 	// fileChainObjArr expects array of objects like this:
-	// { 'type':'script', 'id':'ywc-core', 'init':['$'], 'uri':'/lib/ywc/1.0/js/ywc-core.js' }
+	// { 'type':'script', 'id':'ywc-core', 'init':['$'], 'uri':'/lib/ywc/js/ywc-core.js' }
 	
 	var insertLoop = false;
 	var initLoop = false;

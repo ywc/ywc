@@ -259,7 +259,7 @@ YWC.f.socialInit = function(site) {
 		if ((typeof twttr != 'undefined') && (typeof twttr.anywhere != 'undefined')) {
 			console.log('YWC: socialInit '+site);
 			twttr.anywhere.config({ 
-				callbackURL: document.location.protocol+"//"+document.domain+"/lib/ywc/1.0/oauth/twitter/?appId="+YWC.social.twitter.appId });
+				callbackURL: document.location.protocol+"//"+document.domain+"/lib/ywc/oauth/twitter/?appId="+YWC.social.twitter.appId });
 			twttr.anywhere(function(T){ window.YWC.social[site].doInit = false;});
 		}
 	} else {	
