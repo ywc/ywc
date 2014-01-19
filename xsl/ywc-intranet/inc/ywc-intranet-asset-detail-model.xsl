@@ -35,6 +35,8 @@
 			,'&#xD;','')
 			,'&#xA;')
 		" />
+
+	<xsl:variable name="ywcPublicCdn" select="ywc:getAppSetting('ywc.public.uri')" />
 	
 	<div class="{
 			if ($show = 0) then 'ywc-popup-detail-model'
@@ -66,12 +68,18 @@
 			<div class="ywc-popup-detail-edit-bttns">
  				<div class="bttn-edit ywc-crnr-5 bttn-edit-lf"
 					onClick="YWC.f.intranetCheckAuth(function(){'{'}YWC.f.intranetPopupPostEdit('{$listName}','{substring-after($assetId,concat($listName,'_'))}');{'}'});">
-					<img src="{$preUri}public/ywc-image/bttn/misc/edit-01.png" />
+					<img src="{
+						if (string-length($ywcPublicCdn) &gt; 0) then concat('//',$ywcPublicCdn,'/')
+								else concat($preUri,'public/')
+						}ywc-image/bttn/misc/edit-01.png" />
 					<span>Click here to edit the content of this item...</span>
 				</div> 
 				<div class="bttn-edit ywc-crnr-5 bttn-edit-rt"
 					onClick="YWC.f.intranetPostDelete('{$listName}','{substring-after($assetId,concat($listName,'_'))}','{$cacheId}');">
-					<img src="{$preUri}public/ywc-image/bttn/misc/trash-01.png" />
+					<img src="{
+						if (string-length($ywcPublicCdn) &gt; 0) then concat('//',$ywcPublicCdn,'/')
+								else concat($preUri,'public/')
+						}ywc-image/bttn/misc/trash-01.png" />
 					<span>...or here to delete it.</span>
 				</div>
 
@@ -235,9 +243,9 @@
 					style="{$bttnDivCss} width:{ round( 99 div sum($toggle-controls-each) ) }%;">
 					<xsl:if test="$toggle-thmb = 1">
 						<img src="{
-							if ($useJavascript = 0) then '//ywccdn.s3.amazonaws.com/'
-							else $preUri
-							}public/ywc-image/bttn/link/blue-01.png"
+								if (string-length($ywcPublicCdn) &gt; 0) then concat('//',$ywcPublicCdn,'/')
+									else concat($preUri,'public/')
+								}ywc-image/bttn/link/blue-01.png"
 							id="ywc-container-popup-detail-{$listName}-{$assetId}-img-1"
 							style="{$bttnImgCss}" 
 							class="ywc-crnr-5"
@@ -260,9 +268,9 @@
 					style="{$bttnDivCss} width:{ round( 99 div sum($toggle-controls-each) ) }%;">
 					<xsl:if test="$toggle-thmb = 1">
 						<img src="{
-							if ($useJavascript = 0) then '//ywccdn.s3.amazonaws.com/'
-							else $preUri
-							}public/ywc-image/bttn/event/calendar-blue-01.png"
+								if (string-length($ywcPublicCdn) &gt; 0) then concat('//',$ywcPublicCdn,'/')
+									else concat($preUri,'public/')
+								}ywc-image/bttn/event/calendar-blue-01.png"
 							id="ywc-container-popup-detail-{$listName}-{$assetId}-img-2"
 							style="{$bttnImgCss}"
 							class="ywc-crnr-5"
@@ -292,9 +300,9 @@
 					style="{$bttnDivCss} width:{ round( 99 div sum($toggle-controls-each) ) }%;">
 					<xsl:if test="$toggle-thmb = 1">
 						<img src="{
-							if ($useJavascript = 0) then '//ywccdn.s3.amazonaws.com/'
-							else $preUri
-							}public/ywc-image/bttn/mail/reply-01.png"
+								if (string-length($ywcPublicCdn) &gt; 0) then concat('//',$ywcPublicCdn,'/')
+									else concat($preUri,'public/')
+								}ywc-image/bttn/mail/reply-01.png"
 							id="ywc-container-popup-detail-{$listName}-{$assetId}-img-3"
 							style="{$bttnImgCss}"
 							class="ywc-crnr-5"
@@ -327,9 +335,9 @@
 					style="{$bttnDivCss} width:{ round( 99 div sum($toggle-controls-each) ) }%;">
 					<xsl:if test="$toggle-thmb = 1">
 						<img src="{
-							if ($useJavascript = 0) then '//ywccdn.s3.amazonaws.com/'
-							else $preUri
-							}public/ywc-image/bttn/mail/forward-01.png"
+								if (string-length($ywcPublicCdn) &gt; 0) then concat('//',$ywcPublicCdn,'/')
+									else concat($preUri,'public/')
+								}ywc-image/bttn/mail/forward-01.png"
 							id="ywc-container-popup-detail-{$listName}-{$assetId}-img-4"
 							style="{$bttnImgCss}" 
 							class="ywc-crnr-5"
