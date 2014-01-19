@@ -220,5 +220,9 @@
 	<xsl:value-of select="concat(replace(replace(unparsed-text('../../../../config/app_name'),'&#xA;',''),'&#xD;',''),'')" />
 </xsl:function>
 
+<xsl:function name="ywc:getAppVersion" as="xs:string">
+	<xsl:value-of select="concat(replace(replace(unparsed-text('../../../../config/app_version'),'&#xA;',''),'&#xD;',''),'')" />
+</xsl:function>
+
 
 </xsl:stylesheet>

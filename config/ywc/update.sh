@@ -9,6 +9,8 @@ export YWC_APP=`cat config/app_name`;
 # pulling in latest core
 git pull;
 
+config/ywc/reset_app_version.sh;
+
 # rebuilding SQLite databases
 rm database/ywc/ywccore.sqlite3 database/$YWC_APP/ywc$YWC_APP.sqlite3;
 sqlite3 database/ywc/ywccore.sqlite3 < database/ywc/ywccore.sqlite.sql;

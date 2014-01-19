@@ -5,6 +5,7 @@
 <xsl:include href="../../inc/ywc-core.xsl" />
 <xsl:include href="../javascript/javascript-init.xsl" />
 
+<xsl:variable name="ywcAppVersion" select="ywc:getAppVersion()" />
 <xsl:variable name="ywcPublicAggregate" select="ywc:getAppSetting('ywc.public.aggregate')" />
 <xsl:variable name="ywcPublicCdn" select="ywc:getAppSetting('ywc.public.uri')" />
 
@@ -275,8 +276,8 @@
 	
 	<xsl:variable name="initial-includes" select="$includes[string-length(@conditional) &lt;= 1][@async = 0]" />
 
-	
-	<xsl:if test="count($initial-includes[@content_type = 'text/javascript']) &gt; 0">
+	<!-- aggregate javascript files into single file -->
+	<xsl:if test="($ywcPublicAggregate = 'true') and (count($initial-includes[@content_type = 'text/javascript']) &gt; 0)">
 	<xsl:value-of select="'&#xA;&lt;script type=&quot;text/javascript&quot; class=&quot;script-ywc-aggregate&quot; id=&quot;'" />
 	<xsl:for-each select="$initial-includes[@content_type = 'text/javascript']">
 		<xsl:sort select="@ordering" data-type="number" />
@@ -289,6 +290,24 @@
 	</xsl:for-each>
 	<xsl:value-of select="'&quot;&gt;&lt;/script&gt;'" />
 	</xsl:if>
+
+	<!-- list javascript files individually -->
+	<xsl:if test="($ywcPublicAggregate = 'false') and (count($initial-includes[@content_type = 'text/javascript']) &gt; 0)">
+		<xsl:for-each select="$initial-includes[@content_type = 'text/javascript']">
+			<xsl:sort select="@ordering" data-type="number" />
+
+			<xsl:value-of select="concat('&#xA;&lt;script type=&quot;text/javascript&quot;'
+					,' id=&quot;script-',@name,'&quot; src=&quot;'
+							, if (string-length($ywcPublicCdn) &gt; 0) then concat('//',$ywcPublicCdn,'/')
+								else concat($preUri,'public/')
+							,@uri
+								, if (substring-before(@uri,'/') != 'vendor') then concat('?v=',$ywcAppVersion) else ''
+							, if (@force_update = '1') then concat('&amp;update=',current-time()) else ''								
+							,@params,'&quot;'
+					,'&quot;&gt;&lt;/script&gt;')" />
+		</xsl:for-each>
+	</xsl:if>
+
 	
 	<xsl:for-each select="$initial-includes[@content_type = 'text/css']">
 		<xsl:sort select="@ordering" data-type="number" />
@@ -299,7 +318,7 @@
 										, if (string-length($ywcPublicCdn) &gt; 0) then concat('//',$ywcPublicCdn,'/')
 											else concat($preUri,'public/')
 										,@uri
-										,'?ywc_v=',@version
+											, if (substring-before(@uri,'/') != 'vendor') then concat('?v=',$ywcAppVersion) else ''
 										, if (@force_update = '1') then concat('&amp;update=',current-time()) else ''								
 										,@params,'&quot;'
 									,'&gt;&lt;/link&gt;')" />
@@ -314,7 +333,7 @@
 										, if (string-length($ywcPublicCdn) &gt; 0) then concat('//',$ywcPublicCdn,'/')
 											else concat($preUri,'public/')
 										,@uri
-									,'?ywc_v=',@version
+											, if (substring-before(@uri,'/') != 'vendor') then concat('?v=',$ywcAppVersion) else ''
 									, if (@force_update = '1') then concat('&amp;update=',current-time()) else ''
 									,@params,'&quot;'
 							,'/&gt;&#xA;&lt;![endif]--&gt;')" disable-output-escaping="yes" />
