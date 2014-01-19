@@ -5,6 +5,7 @@
 
 /cache
 /config/app_name
+/config/app_version
 
 /public/oist
 /xsl/oist
