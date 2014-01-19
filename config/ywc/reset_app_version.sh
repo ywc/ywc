@@ -11,7 +11,7 @@ do
 done
 
 # turns random number into 10 character hash
-export APP_VERSION=`echo -n $RAND | md5 | cut -c 1-10`;
+export APP_VERSION=`echo -n $RAND | md5sum | cut -c 1-10`;
 
 # saves hash to local file
 echo $APP_VERSION > config/app_version;
