@@ -3,6 +3,7 @@
 export SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
 cd $SCRIPT_DIR/../..;
 
+# generate "big" random number
 export RAND=$RANDOM;
 for (( b=0; b<32000; b++ ))
 do
