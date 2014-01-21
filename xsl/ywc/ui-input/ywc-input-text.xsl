@@ -115,6 +115,7 @@
 					
 					, if (($eraseBttn = 1) and ($type != 'textarea')) then concat(''					
 					
+					,'&lt;span class=&quot;ywc-x&quot;&gt;'
 					,'&lt;div'
 					,' style=&quot;width:',round(1.5 * $fontSize),'px;'
 						,'height:',round(1.5 * $fontSize),'px;'
@@ -125,7 +126,7 @@
 						,'&quot;'
 					,' unselectable=&quot;on&quot;'
 					,' id=&quot;ywc-input-text-',$id,'-x&quot;'
-					,' class=&quot;ywc-trans-50 erase ywc-x ywc-unselectable&quot;'
+					,' class=&quot;ywc-trans-50 erase fa-stack fa-fw ywc-x-box ywc-unselectable&quot;'
 					,' onMouseOver=&quot;YWC.f.xHover(true,',$a,'ywc-input-text-x-',$id,$a,',[',$a,'9f9f9f',$a,',',$a,'ffffff',$a,']);&quot;'
 					,' onMouseOut=&quot;YWC.f.xHover(false,',$a,'ywc-input-text-x-',$id,$a,',[',$a,'9f9f9f',$a,',',$a,'ffffff',$a,']);&quot;'
 					,' onClick=&quot;'
@@ -133,10 +134,11 @@
 						,$eraseBttnJs
 						,'&quot;'
 					,'&gt;'
-					,'&lt;i id=&quot;ywc-x-1-ywc-input-text-x-',$id,'&quot; class=&quot;ywc-x-1 fa fa-circle&quot;&gt;&lt;/i&gt;'
-					,'&lt;i id=&quot;ywc-x-2-ywc-input-text-x-',$id,'&quot; class=&quot;ywc-x-2 fa fa-circle&quot;&gt;&lt;/i&gt;'
-					,'&lt;i id=&quot;ywc-x-3-ywc-input-text-x-',$id,'&quot; class=&quot;ywc-x-3 fa fa-times&quot;&gt;&lt;/i&gt;'
+					,'&lt;i id=&quot;ywc-x-1-ywc-input-text-x-',$id,'&quot; class=&quot;ywc-x-3 fa fa-stack-1x fa-circle&quot;&gt;&lt;/i&gt;'
+					,'&lt;i id=&quot;ywc-x-2-ywc-input-text-x-',$id,'&quot; class=&quot;ywc-x-2 fa fa-stack-1x fa-circle&quot;&gt;&lt;/i&gt;'
+					,'&lt;i id=&quot;ywc-x-3-ywc-input-text-x-',$id,'&quot; class=&quot;ywc-x-1 fa fa-stack-1x fa-times&quot;&gt;&lt;/i&gt;'
 					,'&lt;/div&gt;'
+					,'&lt;/span&gt;'
 					
 					) else ''
 					
