@@ -27,6 +27,8 @@
 <xsl:variable name="action" as="xs:integer" select="xs:integer(ywc:getParam('action',$params))" />	
 	<xsl:variable name="assetId" as="xs:string" select="ywc:getParam('assetId',$params)" />
 <xsl:variable name="preUri" as="xs:string" select="ywc:getParam('preUri',$params)" />
+<xsl:variable name="ywcPublicCdn" select="ywc:getAppSetting('ywc.public.uri')" />
+<xsl:variable name="ywcPublicUri" select="if (string-length($ywcPublicCdn) &gt; 0) then concat('//',$ywcPublicCdn,'/') else concat($preUri,'public/')" />
 
 <xsl:template match="/">
 
@@ -59,7 +61,7 @@
 						<xsl:with-param name="value" select="$link"/>
 						<xsl:with-param name="readOnly" select="1"/>
 						<xsl:with-param name="autoFocus" select="1"/>
-						<xsl:with-param name="icon" select="'public/ywc-image/bttn/link/blue-01.png'"/>
+						<xsl:with-param name="icon" select="concat($ywcPublicUri,'ywc-image/bttn/link/blue-01.png')"/>
 					</xsl:call-template>
 					</div>
 					
@@ -131,7 +133,7 @@
 						<xsl:with-param name="placeholder" select="'E-mail Address of the Recipient...'"/>
 						<xsl:with-param name="autoFocus" select="0"/>
 						<xsl:with-param name="eraseBttn" select="1"/>
-						<xsl:with-param name="icon" select="'public/ywc-image/bttn/mail/envelope-01.png'"/>
+						<xsl:with-param name="icon" select="concat($ywcPublicUri,'ywc-image/bttn/mail/envelope-01.png')"/>
 						<xsl:with-param name="onReturnKeyJs" select='$onSubmitJs'/>
 					</xsl:call-template>
 					</div>

@@ -10,6 +10,9 @@
 <xsl:param name="uiHeaderColor" as="xs:string" select="'bbbbbb'" />
 <xsl:param name="uiHeaderBgColor" as="xs:string" select="'444444'" />
 
+	<xsl:variable name="ywcPublicCdn" select="ywc:getAppSetting('ywc.public.uri')" />
+  <xsl:variable name="ywcPublicUri" select="if (string-length($ywcPublicCdn) &gt; 0) then concat('//',$ywcPublicCdn,'/') else concat($preUri,'public/')" />
+
 	<xsl:for-each select="ywc/cache[@name=$listName]">
 		
 		<xsl:call-template name="ywcHeader">
@@ -132,12 +135,12 @@
 						
 						<div class="ywc-crnr-5 ywc-asset-list ywc-vertical-list ywc-intranet-news-controls">
 							
-							<img src="{$preUri}public/ywc-image/bttn/misc/books-01.png"
+							<img src="{$ywcPublicUri}ywc-image/bttn/misc/books-01.png"
 								class="bttn bttn-archive" onLoad="YWC.f.uiSetHoverBulge(this,4,'hz',true)"
 								id="ywc-list-controls-bttn-archive-news"
 								onClick="YWC.f.intranetPostArchivePopup('news',{'{'}sortBy:'{$sortBy}'{'}'});" />
 								
-							<img src="{$preUri}public/ywc-image/bttn/mail/envelope-01.png"
+							<img src="{$ywcPublicUri}ywc-image/bttn/mail/envelope-01.png"
 								class="bttn bttn-subscribe" onLoad="YWC.f.uiSetHoverBulge(this,4,'hz',true)"
 								id="ywc-list-controls-bttn-subscribe-news"
 								onClick="YWC.f.intranetCheckAuth(function(){'{'}YWC.f.intranetSubscribePopup('news');{'}'});" />

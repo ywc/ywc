@@ -16,6 +16,10 @@
 <xsl:variable name="me-xml" select="document('../../../cache/xml/cache/ldap.xml')/users/user[@uid=$user]" />
 
 <xsl:variable name="preUri" as="xs:string" select="ywc:getParam('preUri',$params)" />
+
+<xsl:variable name="ywcPublicCdn" select="ywc:getAppSetting('ywc.public.uri')" />
+<xsl:variable name="ywcPublicUri" select="if (string-length($ywcPublicCdn) &gt; 0) then concat('//',$ywcPublicCdn,'/') else concat($preUri,'public/')" />
+
 <xsl:variable name="listName" as="xs:string" select="ywc:getParam('listName',$params)" />
 
 <xsl:template match="/">
@@ -51,7 +55,7 @@
 				<xsl:with-param name="placeholder" select="'Enter your e-mail address..'"/>
 				<xsl:with-param name="autoFocus" select="0"/>
 				<xsl:with-param name="eraseBttn" select="1"/>
-				<xsl:with-param name="icon" select="'public/ywc-image/bttn/mail/envelope-01.png'"/>
+				<xsl:with-param name="icon" select="concat($ywcPublicUri,'ywc-image/bttn/mail/envelope-01.png')"/>
 			<!--	<xsl:with-param name="value" select="ywc:rtrnUserEmail($user)"/>-->	
 				<xsl:with-param name="onReturnKeyJs" select='concat($buttonToggleJs,$submitJs)'/>
 			</xsl:call-template>

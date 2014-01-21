@@ -122,7 +122,7 @@
 						,'left:-',round(1.9 * $fontSize),'px;'
 						,'display:',$bttnEraseVis,';'
 						,'font-size:',((1.6 * $fontSize) div 10),'%;'
-						,'border:none;'
+						,'top:-',round($fontSize div 10),'px;'
 						,'&quot;'
 					,' unselectable=&quot;on&quot;'
 					,' id=&quot;ywc-input-text-',$id,'-x&quot;'
