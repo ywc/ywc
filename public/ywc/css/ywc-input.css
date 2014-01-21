@@ -21,9 +21,9 @@ div.ywc-input-text img, div.ywc-input-text div.erase i.fa, div.ywc-input-text di
 div.ywc-input-text img.icon { visibility:visible; }
 div.ywc-input-text div.erase { z-index:1; display:none; text-align:center; }
 div.ywc-input-text div.erase i.fa { color:#ffffff; visibility:visible; }
-div.ywc-input-text div.erase i.ywc-x-1 { /*position:absolute; font-size:116%; top:-8%; left:0%;*/ }
-div.ywc-input-text div.erase i.ywc-x-2 { color:#9f9f9f; /*position:absolute; font-size:90%; top:5%; left:0%;*/ }
-div.ywc-input-text div.erase i.ywc-x-3 { /*position:absolute; font-size:70%; top:10%; left:0%;*/ }
+div.ywc-input-text div.erase i.ywc-x-1 { top:-1px; }
+div.ywc-input-text div.erase i.ywc-x-2 { color:#9f9f9f; }
+div.ywc-input-text div.erase i.ywc-x-3 { }
 
 div.ywc-input-text i.loading { z-index:2; }
 
