@@ -15,10 +15,6 @@ import org.apache.log4j.Logger;
 import ywc.core.settings;
 import ywc.core.xslt;
 
-/**
- *
- * @author topher
- */
 public class router extends HttpServlet {
     private static final Logger logger = Logger.getLogger(router.class);
 
