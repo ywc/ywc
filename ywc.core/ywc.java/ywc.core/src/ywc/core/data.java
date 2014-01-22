@@ -43,7 +43,7 @@ public class data {
             //outFile = new FileWriter(new File());
             OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(settings.getPathYwcCache() + "/xml/cache/" + entry.assetID + ".xml"),"UTF-8");
             PrintWriter writeXml = new PrintWriter(out);
-            writeXml.println(data);
+            writeXml.println(data.trim());
             writeXml.close();
             if (filesystem.fileExists(settings.getPathYwcCache() + "/xml/cache/" + entry.assetID + ".xml")) {
                 writeSucc = true;
