@@ -16,7 +16,6 @@ import java.util.Random;
  */
 public class str {
    
-    
     public static String trimFileName(String filename) {
         return filename.replaceAll("\\.\\.", "").replaceAll("/", "_").trim();
     }
@@ -37,9 +36,6 @@ public class str {
         return rand_sequence;
     }
 
-    
-    
-    
     private static String md5val = "";
     private static MessageDigest algorithm = null;
     
@@ -66,5 +62,7 @@ public class str {
         md5val = hexString.toString();
         return md5val;
     }
+    
+    
     
 }

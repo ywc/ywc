@@ -5,20 +5,15 @@
 package ywc.frontend.input;
 
 import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import java.io.File;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import ywc.core.filesystem;
 import ywc.core.settings;
-import ywc.frontend.ws.process;
 
 /**
  *
@@ -26,37 +21,28 @@ import ywc.frontend.ws.process;
  */
 public class upload {
     private static final org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(upload.class);
+    
     public static void processUpload(PrintWriter out, HttpServletRequest request, HttpServletResponse response) {
-   //     try {
-            
-            // let's try this... might need to be removed.
-   //         request.setCharacterEncoding("UTF-8");
-
-            response.setCharacterEncoding("UTF-8");
-            response.setHeader("Pragma", "no-cache");
-            response.setHeader("Content-Disposition", "inline; filename=\"files.json\"");
-            response.setHeader("X-Content-Type-Options", "nosniff");
+        response.setCharacterEncoding("UTF-8");
+        response.setHeader("Pragma", "no-cache");
+        response.setHeader("Content-Disposition", "inline; filename=\"files.json\"");
+        response.setHeader("X-Content-Type-Options", "nosniff");
+        
         if (request.getHeader("User-Agent").toLowerCase().indexOf("msie") > 0) {
-            response.setContentType("text/plain;charset=-8");
+            response.setContentType("text/plain;charset=UTF-8");
         } else {
             response.setContentType("application/json;charset=UTF-8");
         }
               
-            if ("GET".equals(request.getMethod())) {
-                out.println(ywc.core.str.rtrnJson(get(request, response)));
-
-            } else if ("POST".equals(request.getMethod())) {
-                out.println(ywc.core.str.rtrnJson(post(request, response)));
-
-            } else if ("DELETE".equals(request.getMethod())) {
-                out.println(ywc.core.str.rtrnJson(delete(request, response)));
-
-            } else {
-                out.println(ywc.core.str.rtrnJson(empty()));
-            }
-       /* } catch (UnsupportedEncodingException ex) {
-            logger.warn(ex);
-        }*/
+        if ("GET".equals(request.getMethod())) {
+            out.println(ywc.core.str.rtrnJson(get(request, response)));
+        } else if ("POST".equals(request.getMethod())) {
+            out.println(ywc.core.str.rtrnJson(post(request, response)));
+        } else if ("DELETE".equals(request.getMethod())) {
+            out.println(ywc.core.str.rtrnJson(delete(request, response)));
+        } else {
+            out.println(ywc.core.str.rtrnJson(empty()));
+        }
     }
     
     public static ArrayList empty() {
@@ -80,7 +66,7 @@ public class upload {
         try {
             String outMsg;
             
-            String media_id = ywc.frontend.data.data.generateAssetId("media",null);
+            String media_id = ywc.core.str.basicId(32);
             
             MultipartRequest uploadRequest = new MultipartRequest(request
                             ,settings.getPathYwcCache() + "/tmp/upl/" //saved to (renamed after)
@@ -103,8 +89,6 @@ public class upload {
                 fileObj.put("name", filename);
                 fileObj.put("ext", file_ext);
 
-                // removed to make image thing much more independent
-                //ywc.frontend.data.data.createAsset("media", fileObj);
                 outMsg = "setup";
                 logger.debug(outMsg + " " + (System.currentTimeMillis() - ingestTime));
                 ingestTime = System.currentTimeMillis();

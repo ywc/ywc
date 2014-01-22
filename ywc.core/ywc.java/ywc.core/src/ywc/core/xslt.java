@@ -20,10 +20,6 @@ import net.sf.saxon.Configuration;
 import net.sf.saxon.PreparedStylesheet;
 import net.sf.saxon.trans.CompilerInfo;
 
-/**
- *
- * @author topher
- */
 public class xslt {
 
     private Configuration config;
@@ -72,9 +68,6 @@ public class xslt {
             }
 
             transformer.transform(streamSourceInput, new StreamResult(out));
-
-            //      System.out.println(net.sf.saxon.Version.getProductVariantAndVersion(this.config));
-
             outStr = out.toString();
 
         } catch (Exception ex) {
@@ -108,9 +101,6 @@ public class xslt {
         CompilerInfo info = new CompilerInfo();
         info.setURIResolver(config.getURIResolver());
         info.setErrorListener(config.getErrorListener());
-//        info.setCompileWithTracing(config.isCompileWithTracing());
-
-
         return PreparedStylesheet.compile(source, config, info);
     }
 
@@ -132,7 +122,6 @@ public class xslt {
             outMCStr = (String) mccon.mc.get(mcHash);
         }
 
-
         String outStr = "";
         if (outMCStr != null) {
             outStr = outMCStr;
@@ -144,7 +133,6 @@ public class xslt {
             if (isCachedEnabled && (mcHash != null)) {
                 mccon.mc.set(mcHash, outStr);
             }
-
         }
         
         if (settings.enableXslVerboseLogging()) {

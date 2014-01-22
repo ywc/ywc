@@ -18,8 +18,8 @@ import ywc.model.CacheEntry;
  *
  * @author jd
  */
-public class CacheDAO {
-    private static final org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(CacheDAO.class);
+public class Cache {
+    private static final org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(Cache.class);
     
     public static CacheEntry getCacheEntry(String cacheID) {
         ArrayList entries = new ArrayList();
@@ -77,7 +77,7 @@ public class CacheDAO {
         if (entry != null) {
             if ("http".equals(entry.type)) {
                 if (entry.properties.containsKey("destination") && entry.properties.get("destination").toString().equals("drupal")) {
-                    DrupalDAO drupal = new DrupalDAO();
+                    Drupal drupal = new Drupal();
                     if (entry.properties.containsKey("drupalEndpoint")) {
                         drupal.overrideDrupalSetup(entry.properties.get("drupalEndpoint").toString(),
                                 entry.properties.get("drupalUser").toString(),

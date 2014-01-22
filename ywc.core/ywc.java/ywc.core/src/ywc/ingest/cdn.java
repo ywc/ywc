@@ -18,7 +18,7 @@ import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import ywc.core.settings;
-import ywc.dao.S3DAO;
+import ywc.dao.S3;
 
 /**
  *
@@ -151,7 +151,7 @@ public class cdn {
                 if ("local".equals(storageMethod)) {
                     rtrn = new File(settings.getPathYwcCache() + "/" + fileDir + "/" + fileName).exists();
                 } else if ("aws".equals(storageMethod)) {
-                    rtrn = S3DAO.fileExists(null, fileDir + "/" + fileName);
+                    rtrn = S3.fileExists(null, fileDir + "/" + fileName);
                 } else if ("sftp".equals(storageMethod)) {
                     rtrn = urlExists("http://"+settings.getCdnTypeSFTPUri() + "/" + fileDir+"/"+fileName);
                 }
@@ -178,7 +178,7 @@ public class cdn {
                     rtrn = localFile.renameTo(new File(new File(settings.getPathYwcCache() + "/" + fileDir), fileName));
 
                 } else if ("aws".equals(storageMethod)) {
-                    S3DAO.uploadFile(null, fileDir + "/" + fileName, localFile);
+                    S3.uploadFile(null, fileDir + "/" + fileName, localFile);
                     if ((keepOrig == null) || (keepOrig == false)) {
                         localFile.delete();
                     }
@@ -234,7 +234,7 @@ public class cdn {
                         fileStream = new FileInputStream(settings.getPathYwcCache() + "/" + fileDir + "/" + fileName);
                     }
                 } else if ("aws".equals(storageMethod)) {
-                    fileStream = S3DAO.getFile(null, fileDir + "/" + fileName);
+                    fileStream = S3.getFile(null, fileDir + "/" + fileName);
 
                 } else if ("sftp".equals(storageMethod)) {
                     try {

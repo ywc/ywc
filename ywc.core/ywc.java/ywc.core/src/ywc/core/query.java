@@ -160,19 +160,5 @@ public class query {
 
         return con;
     }
-
-    public static String genId(String assetType, int len) {
-
-        String id = "";
-        Boolean is_unique = false;
-
-        while (is_unique == false) {
-            id = str.basicId(len);
-    //        ArrayList qu = query.exec("SELECT * FROM data_" + assetType + " WHERE "+assetType+"_id=\""+id+"\"", new String[]{});
-            //        if (qu.isEmpty()) {
-            is_unique = true;
-            //        }
-        }
-        return id;
-    }
+    
 }

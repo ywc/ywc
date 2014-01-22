@@ -9,7 +9,6 @@ div.ywc-fileupload form.ywc-fileupload div.fileupload-buttonbar div.fileupload-p
 div.ywc-fileupload form.ywc-fileupload div.fileupload-buttonbar span.fileinput-button { position:relative; float:left; margin:2px; margin-right:50px; }
 div.ywc-fileupload form.ywc-fileupload div.fileupload-buttonbar button { position:relative; float:left; margin-left:8px; }
 div.ywc-fileupload span.fileupload-secondary-buttons { float:right; }
-
 div.ywc-fileupload .fileupload-buttonbar .fade, div.ywc-fileupload .files .fade { display:block; }
 
 div.ywc-input-checkbox { position:relative; float:left; width:auto; height:auto; clear:both; border:none; }

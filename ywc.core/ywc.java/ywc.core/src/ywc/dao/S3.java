@@ -23,7 +23,7 @@ import ywc.core.settings;
  *
  * @author jd
  */
-public class S3DAO {
+public class S3 {
     
     /*
  * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.

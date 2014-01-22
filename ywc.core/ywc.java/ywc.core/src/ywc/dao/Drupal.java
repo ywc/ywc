@@ -19,13 +19,13 @@ import ywc.core.settings;
 import ywc.model.CacheEntry;
 import ywc.notification.Mail;
 
-public class DrupalDAO {
+public class Drupal {
 
-    private static final org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(DrupalDAO.class);
+    private static final org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(Drupal.class);
 
     String contentType, protocol, domain, path, url, drupalUsername, drupalPassword, cookie, token, httpUsername, httpPassword;
 
-    public DrupalDAO() {
+    public Drupal() {
         protocol = settings.getProp("drupal.protocol", null);
         domain = settings.getProp("drupal.domain", null);
         path = settings.getProp("drupal.path", null);
@@ -37,7 +37,7 @@ public class DrupalDAO {
         httpPassword = settings.getProp("drupal.http_pass", null);
     }
 
-    public DrupalDAO(String pType) {
+    public Drupal(String pType) {
         contentType = pType;
         protocol = settings.getProp("drupal.protocol", null);
         domain = settings.getProp("drupal.domain", null);
@@ -204,7 +204,7 @@ public class DrupalDAO {
             properties.put("http_pass", "oist");
         }
 
-        CacheEntry entry = CacheDAO.getCacheEntry(cacheID);
+        CacheEntry entry = Cache.getCacheEntry(cacheID);
 
         // if mail is disabled, let's only notify the admins
         if (settings.getProp("ywc.mail.enable", null) != null

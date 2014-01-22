@@ -200,7 +200,6 @@ public class data {
                 Iterator iterator = params.keySet().iterator();
                 while (iterator.hasNext()) {
                   String key = (String) iterator.next();
-//                  System.out.println("params: " + key + " means " + params.get(key));
                   if (!parameters.equals("")) {
                       parameters = parameters + "&";
                   } 
@@ -241,22 +240,17 @@ public class data {
                 config.put("StrictHostKeyChecking", "no");
                 config.put("VerifyHostKeyDNS", "no");
                 
-                //System.out.println("sftp_getsession");
                 Session session = jsch.getSession(user, server);
                 session.setConfig(config);
                 session.setPassword(pass);
-                //System.out.println("sftp_connect");
                 session.connect();
 
-                //System.out.println("sftp_open_channel");
                 Channel channel = session.openChannel("sftp");
                 channel.connect();
 
                 ChannelSftp sftpChannel = (ChannelSftp) channel;
-                System.out.println("sftp_put " + localDir + "/" + localFile + " -> " + remoteDir + "/" + remoteFile);
                 sftpChannel.put(localDir + "/" + localFile, remoteDir + "/" + remoteFile);
 
-                System.out.println("sftp_read");
                 String res = sftpChannel.ls(remoteDir + "/" + remoteFile).toString();
                 if (res.indexOf(remoteFile) != -1) {
                     ret = true;

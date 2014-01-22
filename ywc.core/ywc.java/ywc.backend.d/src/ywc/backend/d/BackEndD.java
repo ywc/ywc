@@ -12,8 +12,8 @@ import ywc.core.data;
 import ywc.core.ldap;
 import ywc.core.settings;
 import ywc.core.xslt;
-import ywc.dao.CacheDAO;
-import ywc.dao.DrupalDAO;
+import ywc.dao.Cache;
+import ywc.dao.Drupal;
 import ywc.ingest.cdn;
 import ywc.model.CacheEntry;
 
@@ -56,7 +56,7 @@ public class BackEndD {
                     }
 
                     if (action.equals("test_mail")) {
-                        DrupalDAO drupal = new DrupalDAO();
+                        Drupal drupal = new Drupal();
                         drupal.informSubscribers("22", "aaaaaa");
                     }
 
@@ -74,10 +74,10 @@ public class BackEndD {
     }
 
     private static void updateCache() {
-        ArrayList entries = CacheDAO.getCacheEntries();
+        ArrayList entries = Cache.getCacheEntries();
         if (entries != null && entries.size() > 0) {
             for (int i = 0; i < entries.size(); i++) {
-                CacheDAO.refreshCache( (CacheEntry) entries.get(i) );
+                Cache.refreshCache( (CacheEntry) entries.get(i) );
             }
         } else {
             logger.warn("No cache entries found");

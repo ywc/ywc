@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import ywc.core.data;
 import ywc.core.settings;
-import ywc.dao.DrupalDAO;
+import ywc.dao.Drupal;
 import ywc.notification.Mail;
 
 /**
@@ -125,21 +125,21 @@ public class action extends HttpServlet {
                     } else if (request.getMethod().equals("POST")) {
                         logger.info("Subscribe user to list " + listID + " with mail " + mail);
                         
-                        DrupalDAO drupal = new DrupalDAO();
+                        Drupal drupal = new Drupal();
                         if (!drupal.subscribeList(listID, mail)) {
                             isOK = false;
                         }
-                        ywc.dao.CacheDAO.refreshCache("aaaaaj"); //TODO better
+                        ywc.dao.Cache.refreshCache("aaaaaj"); //TODO better
                         
 
                     } else if (request.getMethod().equals("DELETE")) {
                         logger.info("Unsubscribe user from list " + listID + " with mail " + mail);
                         
-                        DrupalDAO drupal = new DrupalDAO();
+                        Drupal drupal = new Drupal();
                         if (!drupal.unsubscribeList(listID, mail)) {
                             isOK = false;
                         }
-                        ywc.dao.CacheDAO.refreshCache("aaaaaj"); //TODO better
+                        ywc.dao.Cache.refreshCache("aaaaaj"); //TODO better
                         
 
                     }
@@ -165,7 +165,7 @@ public class action extends HttpServlet {
                             isOK = false;
                             isOKMsg = "missing_id";
                         } else {
-                            DrupalDAO drupal = new DrupalDAO(asset);
+                            Drupal drupal = new Drupal(asset);
                             //System.out.println(drupal.getNode(assetID));
                             output = drupal.getNode(assetID);
                         }
@@ -188,7 +188,7 @@ public class action extends HttpServlet {
                             logger.info("Creating item " + asset);
                         }
                         
-                        DrupalDAO drupal = new DrupalDAO(asset);
+                        Drupal drupal = new Drupal(asset);
                         String nid = drupal.updateNode(assetID, parameters);
                         if (nid != null) {
                             isOKMsg = nid;
@@ -197,7 +197,7 @@ public class action extends HttpServlet {
                             //refresh ywc cache
                             String cacheID = request.getParameter("ywc_cache_id");
                             if (cacheID != null && !"".equals(cacheID)) {
-                                ywc.dao.CacheDAO.refreshCache(cacheID);
+                                ywc.dao.Cache.refreshCache(cacheID);
                             }
 
                             //sendmail
@@ -217,7 +217,7 @@ public class action extends HttpServlet {
                         } else {
                             logger.info("Deleting item " + asset + " nid:" + assetID);
                             
-                            DrupalDAO drupal = new DrupalDAO(asset);
+                            Drupal drupal = new Drupal(asset);
                             if (!drupal.deleteNode(assetID)) {
                                 isOK = false;
 
@@ -225,7 +225,7 @@ public class action extends HttpServlet {
                             //refresh ywc cache
                             String cacheID = request.getParameter("ywc_cache_id");
                             if (cacheID != null && !"".equals(cacheID)) {
-                                ywc.dao.CacheDAO.refreshCache(cacheID);
+                                ywc.dao.Cache.refreshCache(cacheID);
                             }
                             
                         }
