@@ -19,5 +19,7 @@ chmod a+rwx database/ywc/ywccore.sqlite3 database/$YWC_APP/ywc$YWC_APP.sqlite3;
 
 config/ywc/publish.sh;
 
+/usr/bin/java -jar ywc.core/ywc.java/ywc.backend.d/dist/ywc.backend.d.jar "xml_generate";
+
 config/ywc/cache.sh;
 
