@@ -17,12 +17,12 @@ sqlite3 database/ywc/ywccore.sqlite3 < database/ywc/ywccore.sqlite.sql;
 sqlite3 database/$YWC_APP/ywc$YWC_APP.sqlite3 < database/$YWC_APP/ywc$YWC_APP.sqlite.sql;
 chmod a+rwx database/ywc/ywccore.sqlite3 database/$YWC_APP/ywc$YWC_APP.sqlite3;
 
-if [ $OPT -eq "full" ]
+if [ $OPT -eq "full" ]; then
   config/ywc/publish.sh;
 fi
 
 /usr/bin/java -jar ywc.core/ywc.java/ywc.backend.d/dist/ywc.backend.d.jar "xml_generate";
 
-if [ $OPT -eq "full" ]
+if [ $OPT -eq "full" ]; then
   config/ywc/cache.sh;
 fi
