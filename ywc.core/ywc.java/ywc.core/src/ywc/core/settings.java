@@ -32,7 +32,11 @@ public class settings {
     
     public static String getYwcEnvDomain() {
         return getProp("ywc.env.domain","y-w-c.org");
-    } //domain name of site
+    }
+
+    public static String getYwcEnvServer() {
+        return getProp("ywc.env.server","y-w-c.org");
+    }
     
     public static String getYWCMediaDomain() {
         return getProp("ywc.media.domain","y-w-c.org");

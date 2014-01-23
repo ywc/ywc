@@ -79,6 +79,7 @@ public class router extends HttpServlet {
                     paramObj.put("ywc_env_env", settings.getYwcEnv());
                     paramObj.put("ywc_env_app", settings.getYwcEnvApp());
                     paramObj.put("ywc_env_domain", settings.getYwcEnvDomain());
+                    paramObj.put("ywc_env_server", settings.getYwcEnvServer());
 
                     mcHash = "ywc_" + ywc.core.str.md5sum(settings.getPathYwcCache() + "/xml/data/uri.xml" + "%" + settings.getPathYwcCoreData() + "xsl/core/render/master.xsl" + "%" + uri + "%" + params + "%" + lang + "%" + user);
 

@@ -6,7 +6,7 @@
 <xsl:param name="preUri" as="xs:string" select="'/'" />
 <xsl:param name="absUri" as="xs:string" select="'/'" />
 <xsl:param name="publicUri" as="xs:string" select="'/'" />
-<xsl:param name="env" as="xs:string*" select="('env','app','domain')" />
+<xsl:param name="env" as="xs:string*" select="('env','app','domain','server')" />
 
 <script type="text/javascript"> var YWC={<!--
 		-->"uri":{<!--
@@ -17,7 +17,7 @@
 				"/>"<!--
 		-->},"popup":{<!--
 		-->},"f":{<!--
-		-->},"env":{"env":"<xsl:value-of select="$env[1]"/>","app":"<xsl:value-of select="$env[2]"/>","domain":"<xsl:value-of select="$env[3]"/>"<!--
+		-->},"env":{"env":"<xsl:value-of select="$env[1]"/>","app":"<xsl:value-of select="$env[2]"/>","domain":"<xsl:value-of select="$env[3]"/>","server":"<xsl:value-of select="$env[4]"/>"<!--
 		-->},"map":{<!--
 		-->},"ui":{<!--
 		-->},"store":{<!--
