@@ -85,9 +85,11 @@ public class Cache {
                     }
                     if (drupal.validLogin()) {
                         cacheData = data.requestHTTP(entry.url, drupal.getDrupalHeaders("GET"), entry.params);
-                        if ((cacheData != null) && !data.isCacheUpToDate(entry, cacheData)) {
-                            data.cache(entry, cacheData);
-                            rtrn = true;
+                        if (data.isCacheUpToDate(entry, cacheData)) {
+                           rtrn = true;
+                        } else if (cacheData != null) {
+                           data.cache(entry, cacheData);
+                           rtrn = true;
                         }
                         drupal.doDrupalLogOff();
                     }
