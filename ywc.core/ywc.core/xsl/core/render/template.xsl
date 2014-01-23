@@ -301,7 +301,7 @@
 							, if (string-length($ywcPublicCdn) &gt; 0) then concat('//',$ywcPublicCdn,'/')
 								else concat($preUri,'public/')
 							,@uri
-								, if (substring-before(@uri,'/') != 'vendor') then concat('?v=',$ywcAppVersion) else ''
+								, if (substring-before(@uri,'/') != 'vendor') then concat('?v=',$ywcAppVersion) else concat('?v=',$ywcAppVersion)
 							, if (@force_update = '1') then concat('&amp;update=',current-time()) else ''								
 							,@params,'&quot;'
 					,'&quot;&gt;&lt;/script&gt;')" />
@@ -318,7 +318,7 @@
 										, if (string-length($ywcPublicCdn) &gt; 0) then concat('//',$ywcPublicCdn,'/')
 											else concat($preUri,'public/')
 										,@uri
-											, if (substring-before(@uri,'/') != 'vendor') then concat('?v=',$ywcAppVersion) else ''
+											, if (substring-before(@uri,'/') != 'vendor') then concat('?v=',$ywcAppVersion) else concat('?v=',$ywcAppVersion)
 										, if (@force_update = '1') then concat('&amp;update=',current-time()) else ''								
 										,@params,'&quot;'
 									,'&gt;&lt;/link&gt;')" />
@@ -333,7 +333,7 @@
 										, if (string-length($ywcPublicCdn) &gt; 0) then concat('//',$ywcPublicCdn,'/')
 											else concat($preUri,'public/')
 										,@uri
-											, if (substring-before(@uri,'/') != 'vendor') then concat('?v=',$ywcAppVersion) else ''
+											, if (substring-before(@uri,'/') != 'vendor') then concat('?v=',$ywcAppVersion) else concat('?v=',$ywcAppVersion)
 									, if (@force_update = '1') then concat('&amp;update=',current-time()) else ''
 									,@params,'&quot;'
 							,'/&gt;&#xA;&lt;![endif]--&gt;')" disable-output-escaping="yes" />
