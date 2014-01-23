@@ -17,9 +17,11 @@ sqlite3 database/ywc/ywccore.sqlite3 < database/ywc/ywccore.sqlite.sql;
 sqlite3 database/$YWC_APP/ywc$YWC_APP.sqlite3 < database/$YWC_APP/ywc$YWC_APP.sqlite.sql;
 chmod a+rwx database/ywc/ywccore.sqlite3 database/$YWC_APP/ywc$YWC_APP.sqlite3;
 
-config/ywc/publish.sh;
 
-/usr/bin/java -jar ywc.core/ywc.java/ywc.backend.d/dist/ywc.backend.d.jar "xml_generate";
+if [ $1 -eq "full" ]
 
-config/ywc/cache.sh;
+  config/ywc/publish.sh;
+  /usr/bin/java -jar ywc.core/ywc.java/ywc.backend.d/dist/ywc.backend.d.jar "xml_generate";
+  config/ywc/cache.sh;
 
+fi
