@@ -74,6 +74,7 @@ public class Cache {
     public static boolean refreshCache(CacheEntry entry) {
         boolean rtrn = false;
         String cacheData;
+        long cacheDataSize = 0;
         if (entry != null) {
             if ("http".equals(entry.type)) {
                 if (entry.properties.containsKey("destination") && entry.properties.get("destination").toString().equals("drupal")) {
@@ -88,28 +89,32 @@ public class Cache {
                         if (data.isCacheUpToDate(entry, cacheData)) {
                            rtrn = true;
                         } else if (cacheData != null) {
-                           data.cache(entry, cacheData);
+                           cacheDataSize = data.cache(entry, cacheData);
                            rtrn = true;
                         }
                         drupal.doDrupalLogOff();
                     }
                 } else {
                     cacheData = data.requestHTTP(entry.url, entry.properties, entry.params);
-                    if ((cacheData != null) && !data.isCacheUpToDate(entry, cacheData)) {
-                        data.cache(entry, cacheData);
+                    if (data.isCacheUpToDate(entry, cacheData)) {
+                        rtrn = true;
+                    } else if (cacheData != null) {
+                        cacheDataSize = data.cache(entry, cacheData);
                         rtrn = true;
                     } 
                 }
             }
 
             if ("skip".equals(entry.type)) {
-                logger.info("Cache update: Skipped -> " + entry.url);
                 rtrn = true;
-            } else if (!rtrn) {
-                logger.warn("Cache update: Failure ->" + entry.url);
-            } else {
-                logger.info("Cache update: Success -> " + entry.url);
+                logger.info("Skipped -> " + entry.name + " (" + entry.assetID + ")");
+            } else if (rtrn && (cacheDataSize == 0)) {
+                logger.info("Unchanged -> " + entry.name + " (" + entry.assetID + ")");
+            } else if (rtrn) {
+                logger.info("Success -> " + entry.name + " (" + entry.assetID + ")" + " (" + cacheDataSize + " bytes)");
                 mccon.mc.flushAll();
+            } else {
+                logger.warn("Failure ->" + entry.name + " (" + entry.assetID + ")");
             }
         }
         return rtrn;

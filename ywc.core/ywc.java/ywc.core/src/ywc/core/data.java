@@ -37,27 +37,31 @@ public class data {
         }
         return data;
     }
-    public static void cache(CacheEntry entry, String data) {
-        //FileWriter outFile;
-        boolean writeSucc;
+    public static long cache(CacheEntry entry, String data) {
+        long rtrn = 0;
+        String filePath = settings.getPathYwcCache() + "/xml/cache/" + entry.assetID + ".xml";
         try {
-            //outFile = new FileWriter(new File());
-            OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(settings.getPathYwcCache() + "/xml/cache/" + entry.assetID + ".xml"),"UTF-8");
+            OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(filePath), "UTF-8");
+
             PrintWriter writeXml = new PrintWriter(out);
             writeXml.println(data.trim());
             writeXml.close();
-            if (filesystem.fileExists(settings.getPathYwcCache() + "/xml/cache/" + entry.assetID + ".xml")) {
-                writeSucc = true;
+            if (filesystem.fileExists(filePath)) {
                 
                 //make sure tomcat will be able to update the file
-                ProcessBuilder pb = new ProcessBuilder("chmod", "777", settings.getPathYwcCache() + "/xml/cache/" + entry.assetID + ".xml");
+                ProcessBuilder pb = new ProcessBuilder("chmod", "777", filePath);
                 pb.start();
-            }
-            
-        } catch (Exception ex) {
-            //Logger.getLogger(xml.class.getName()).log(Level.SEVERE, null, ex);
-        }
 
+                rtrn = filesystem.fileSize(filePath);
+            }
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(data.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(data.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(data.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return rtrn;
     }
     public static boolean isCacheUpToDate(CacheEntry entry, String data) {
         
