@@ -17,6 +17,7 @@ import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
+import org.apache.commons.codec.binary.Base64;
 import sun.misc.BASE64Encoder;
 import ywc.model.CacheEntry;
 /**
