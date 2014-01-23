@@ -303,9 +303,10 @@
 							,@uri
 								, if (substring-before(@uri,'/') != 'vendor') then concat('?v=',$ywcAppVersion) else ''
 							, if (@force_update = '1') then concat('&amp;update=',current-time()) else ''								
-							,@params,'&quot;'
-					,'&quot;&gt;&lt;/script&gt;')" />
+							,normalize-space(@params),'&quot;'
+					,'&gt;&lt;/script&gt;')" />
 		</xsl:for-each>
+
 	</xsl:if>
 
 	
@@ -320,12 +321,12 @@
 										,@uri
 											, if (substring-before(@uri,'/') != 'vendor') then concat('?v=',$ywcAppVersion) else ''
 										, if (@force_update = '1') then concat('&amp;update=',current-time()) else ''								
-										,@params,'&quot;'
+										,normalize-space(@params),'&quot;'
 									,'&gt;&lt;/link&gt;')" />
 	</xsl:for-each>
 	
 	<xsl:for-each select="$includes[contains(@conditional,'browser:ie')][@content_type = 'text/css']">
-		<xsl:value-of select="concat('&#xA;&lt;!--[if ',upper-case(substring-after(@conditional,':')),']&gt;&#xA;&lt;link'
+		<xsl:value-of select="concat('&#xA;&lt;!--[if ',replace(substring-after(@conditional,':'),'ie ','IE '),']&gt;&#xA;&lt;link'
 								,' rel=&quot;stylesheet&quot;'
 								,' type=&quot;text/css&quot;'			
 								,' id=&quot;link-',@name,'&quot;'
@@ -335,10 +336,25 @@
 										,@uri
 											, if (substring-before(@uri,'/') != 'vendor') then concat('?v=',$ywcAppVersion) else ''
 									, if (@force_update = '1') then concat('&amp;update=',current-time()) else ''
-									,@params,'&quot;'
+									,normalize-space(@params),'&quot;'
 							,'/&gt;&#xA;&lt;![endif]--&gt;')" disable-output-escaping="yes" />
 	</xsl:for-each>		
 
+	<xsl:for-each select="$includes[contains(@conditional,'browser:ie')][@content_type = 'text/javascript']">
+		<xsl:sort select="@ordering" data-type="number" />
+
+		<xsl:value-of select="concat('&#xA;&lt;!--[if ',replace(substring-after(@conditional,':'),'ie ','IE '),']&gt;&#xA;&lt;script'
+				,' type=&quot;text/javascript&quot;'
+				,' id=&quot;script-',@name,'&quot; src=&quot;'
+						, if (string-length($ywcPublicCdn) &gt; 0) then concat('//',$ywcPublicCdn,'/')
+							else concat($preUri,'public/')
+						,@uri
+							, if (substring-before(@uri,'/') != 'vendor') then concat('?v=',$ywcAppVersion) else ''
+						, if (@force_update = '1') then concat('&amp;update=',current-time()) else ''								
+						,normalize-space(@params),'&quot;'
+				,'&gt;&lt;/script&gt;'
+				,'&#xA;&lt;![endif]--&gt;')" />
+	</xsl:for-each>		
 	
 </xsl:function>
 

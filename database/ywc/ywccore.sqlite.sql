@@ -10,7 +10,7 @@
  Target Server Version : 3008001
  File Encoding         : utf-8
 
- Date: 01/23/2014 12:27:51 PM
+ Date: 01/23/2014 13:06:18 PM
 */
 
 PRAGMA foreign_keys = false;
@@ -48,8 +48,8 @@ INSERT INTO "data_include" VALUES ('aaaaab', 'css-reset', 'CSS Reset', 2.0, 'ven
 INSERT INTO "data_include" VALUES ('aaaaac', 'jquery', 'jQuery Core', '1.10.2', 'vendor/jquery/jquery/1.10.2/jquery.min.js', 'text/javascript', '-', '-', 2, 0, 0, '', 'top', 'all');
 INSERT INTO "data_include" VALUES ('aaaaae', 'jquery-hoverintent', 'jQuery Plugin: HoverIntent', 'r6', 'vendor/jquery/jquery-hoverintent/r6/jquery-hoverintent.modified.min.js', 'text/javascript', 'jquery;', '-', 3, 0, 0, '', 'bottom', 'all');
 INSERT INTO "data_include" VALUES ('aaaaaf', 'jquery-list-attributes', 'jQuery Plugin: List Attributes', '1.1.0.mod', 'vendor/jquery/jquery-list-attributes/1.1.0.mod/jquery-list-attributes.js', 'text/javascript', 'jquery;', '-', 3, 0, 0, '', 'bottom', 'all');
-INSERT INTO "data_include" VALUES ('aaaaba', 'ywc-core', 'YWC Core', 1.0, 'ywc/js/ywc-core.js', 'text/javascript', 'css-reset; browser-detect; modernizr; jquery; ywc-popup; ywc-input; ywc-utils; ywc-api; ywc-asset;', '-', 5, 0, 0, '', 'top', 'all');
-INSERT INTO "data_include" VALUES ('aaaabb', 'ywc-core', 'YWC Core', 1.0, 'ywc/css/ywc-core.css', 'text/css', 'css-reset; browser-detect; modernizr; jquery; ywc-popup; ywc-input; ywc-utils; ywc-api; ywc-asset;', '-', 5, 0, 0, '', 'top', 'all');
+INSERT INTO "data_include" VALUES ('aaaaba', 'ywc-core', 'YWC Core', 1.0, 'ywc/js/ywc-core.js', 'text/javascript', 'css-reset; browser-detect; modernizr; html5shiv; jquery; ywc-popup; ywc-input; ywc-utils; ywc-api; ywc-asset;', '-', 5, 0, 0, '', 'top', 'all');
+INSERT INTO "data_include" VALUES ('aaaabb', 'ywc-core', 'YWC Core', 1.0, 'ywc/css/ywc-core.css', 'text/css', 'css-reset; browser-detect; modernizr; html5shiv; jquery; ywc-popup; ywc-input; ywc-utils; ywc-api; ywc-asset;', '-', 5, 0, 0, '', 'top', 'all');
 INSERT INTO "data_include" VALUES ('aaaabc', 'ywc-api', 'YWC Plugin: External API', 1.0, 'ywc/js/ywc-api.js', 'text/javascript', 'ywc-core;', '-', 6, 0, 0, '', 'bottom', 'all');
 INSERT INTO "data_include" VALUES ('aaaabd', 'ywc-asset', 'YWC Plugin: Asset List', 1.0, 'ywc/js/ywc-asset.js', 'text/javascript', 'ywc-core; jquery-list-attributes; jquery-hoverintent;', '-', 6, 0, 0, '', 'bottom', 'all');
 INSERT INTO "data_include" VALUES ('aaaabe', 'ywc-asset', 'YWC Plugin: Asset List', 1.0, 'ywc/css/ywc-asset.css', 'text/css', 'ywc-core; jquery-list-attributes; jquery-hoverintent;', '-', 6, 0, 0, '', 'top', 'all');
@@ -64,10 +64,11 @@ INSERT INTO "data_include" VALUES ('aaaabn', 'ywc-utils', 'YWC Plugin: Javascrip
 INSERT INTO "data_include" VALUES ('aaaabo', 'ywc-maps', 'YWC Plugin: Maps', 1.0, 'ywc/js/ywc-map.js', 'text/javascript', 'ywc-core;', '-', 6, 0, 0, '', 'bottom', 'all');
 INSERT INTO "data_include" VALUES ('aaaabq', 'ywc-intranet', 'YWC Plugin: Intranet', 1.0, 'ywc/js/ywc-intranet.js', 'text/javascript', 'ywc-core; font-awesome;', '-', 6, 0, 0, '', 'bottom', 'all');
 INSERT INTO "data_include" VALUES ('aaaabr', 'ywc-intranet', 'YWC Plugin: Intranet', 1.0, 'ywc/css/ywc-intranet.css', 'text/css', 'ywc-core; font-awesome;', '-', 6, 0, 0, '', 'top', 'all');
-INSERT INTO "data_include" VALUES ('aaaaag', 'font-awesome', 'Font Awesome, IE 7', '3.2.1', 'vendor/font-awesome/3.2.1/css/font-awesome.min.css', 'text/css', '-', 'browser:ie 7', 3, 0, 0, ' ', 'top', 'all');
-INSERT INTO "data_include" VALUES ('aaaaah', 'font-awesome', 'Font Awesome, IE7 Override', '3.2.1', 'vendor/font-awesome/3.2.1/css/font-awesome-ie7.min.css', 'text/css', '-', 'browser:ie 7', 4, 0, 0, ' ', 'top', 'all');
+INSERT INTO "data_include" VALUES ('aaaaag', 'font-awesome', 'Font Awesome, IE 7', '3.2.1', 'vendor/font-awesome/3.2.1/css/font-awesome.min.css', 'text/css', '-', 'browser:ie lt 8', 3, 0, 0, ' ', 'top', 'all');
+INSERT INTO "data_include" VALUES ('aaaaah', 'font-awesome', 'Font Awesome, IE7 Override', '3.2.1', 'vendor/font-awesome/3.2.1/css/font-awesome-ie7.min.css', 'text/css', '-', 'browser:ie lt 8', 4, 0, 0, ' ', 'top', 'all');
 INSERT INTO "data_include" VALUES ('aaaaai', 'font-awesome', 'Font Awesome', '4.0.3', 'vendor/font-awesome/4.0.3/css/font-awesome.min.css', 'text/css', '-', '-', 3, 0, 0, ' ', 'top', 'all');
-INSERT INTO "data_include" VALUES ('aaaaad', 'modernizr', 'Modernizr', '2.6.2', 'vendor/modernizr/2.6.2/modernizr.min.js', 'text/javascript', '-', '-', 1, 0, 0, null, 'bottom', 'all');
+INSERT INTO "data_include" VALUES ('aaaaad', 'modernizr', 'Modernizr', '2.6.2', 'vendor/modernizr/2.6.2/modernizr.min.js', 'text/javascript', '-', '-', 1, 0, 0, ' ', 'bottom', 'all');
+INSERT INTO "data_include" VALUES ('aaaaaj', 'html5shiv', 'HTML5shiv', '3.6.1', 'vendor/html5shiv/3.6.1/html5shiv.js', 'text/javascript', '-', 'browser:ie lt 9', 2, 0, 0, ' ', 'top', 'all');
 COMMIT;
 
 -- ----------------------------
