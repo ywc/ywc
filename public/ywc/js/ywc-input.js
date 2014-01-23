@@ -36,7 +36,7 @@ YWC.f.inputGetById = function(id,type,suppressWarning) {
 		if (obj != null) { return obj; }
 	}
 	if ((typeof suppressWarning === "boolean") && !suppressWarning) {
-		console.log('YWC: no input object found with id \''+id+'\'');
+		console.warn('YWC: no input object found with id \''+id+'\'');
 	}
 	return null;
 };

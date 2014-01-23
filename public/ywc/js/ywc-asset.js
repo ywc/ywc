@@ -86,7 +86,7 @@ YWC.f.assetParseAttachments = function(assetId) {
 		} else if (attStr == "[]") {
 			YWC.store[assetId].attachments = [];
 		} else {
-			console.log("YWC: function failure -> assetParseData -> unparsable attachment format ("+assetId+") -> "+attStr);
+			console.warn("YWC: function failure -> assetParseData -> unparsable attachment format ("+assetId+") -> "+attStr);
 		}
 		for (i in YWC.store[assetId].attachments) {
 			if (typeof YWC.store[assetId].attachments[i].orig === "string") {
@@ -157,7 +157,7 @@ YWC.f.assetDrawSingle = function(listId,assetId,animate) {
 			+modelObj.html()
 		+"</div>");
 	} else {
-		console.log('YWC: Error in assetDrawSingle -> no list container found in DOM'
+		console.warn('YWC: Error in assetDrawSingle -> no list container found in DOM'
 			+' (div.ywc-container-'+displayFormat+'-'+listId+')');
 	}
 	
