@@ -5,4 +5,5 @@ cd $DIR/../..;
 export YWC_HOME=`pwd`;
 
 # running backend.d
-/usr/bin/java -jar ywc.core/ywc.java/ywc.backend.d/dist/ywc.backend.d.jar;
+/usr/bin/java -jar ywc.core/ywc.java/ywc.backend.d/dist/ywc.backend.d.jar "xml_generate";
+/usr/bin/java -jar ywc.core/ywc.java/ywc.backend.d/dist/ywc.backend.d.jar "uri_cache";
