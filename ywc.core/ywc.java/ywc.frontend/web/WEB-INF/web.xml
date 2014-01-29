@@ -5,17 +5,9 @@
         <servlet-class>ywc.frontend.ws.router</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>version</servlet-name>
-        <servlet-class>ywc.frontend.ws.version</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>input</servlet-name>
         <servlet-class>ywc.frontend.input.router</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>version</servlet-name>
-        <url-pattern>/version</url-pattern>
-    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>input</servlet-name>
         <url-pattern>/file</url-pattern>

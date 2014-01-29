@@ -154,6 +154,7 @@ public class router extends HttpServlet {
                         //set response header
                         response.setDateHeader("Last-Modified", System.currentTimeMillis());
                         response.setHeader("Cache-Control", "private, no-cache, no-store, must-revalidate");
+                        response.setHeader("Access-Control-Allow-Origin", "*");
 
                         String pageOutput = pageOutputBuilder.toString();
 
@@ -180,8 +181,9 @@ public class router extends HttpServlet {
                     logger.debug("Tranform: " + (System.currentTimeMillis() - routerStart) + "ms\t" + uri + "\txsl");
 
                 }
-            } catch (Exception ex) {
-                logger.error("Render failed for " + uri);
+            } catch (IOException ex) {
+                logger.error("Render failed for " + uri +" - Exception: " + ex);
+                
             }
         }
     }
