@@ -154,7 +154,6 @@ public class router extends HttpServlet {
                         //set response header
                         response.setDateHeader("Last-Modified", System.currentTimeMillis());
                         response.setHeader("Cache-Control", "private, no-cache, no-store, must-revalidate");
-                        response.setHeader("Access-Control-Allow-Origin", "*");
 
                         String pageOutput = pageOutputBuilder.toString();
 
