@@ -2,7 +2,7 @@
 (function(){
 
 	if (typeof window.YWC == 'undefined') {		
-		window.YWC = {"uri":{"pre":"//widget.enthu.se/","abs":window.location},"popup":{},"f":{},"map":{},"ui":{},"store":{},"list":{"data":{},"meta":{},"list":{}},"detail":{"data":{},"meta":{}},"input":{"value":{"text":{},"select":{},"checkbox":{},"file":{},"datetime":{},"hidden":{},"custom":{}},"meta":{"jsBlock":{},"validation":{"required":{},"type":{}},"dateTime":[{"format":{}}],"lastValue":{"text":{},"select":{},"checkbox":{},"file":{},"datetime":{},"hidden":{}}}},"track":{"google":{"appId":"","domain":"","meta":{}}},"api":{},"user":{"id":"","name":"","email":"","scope":"","role":"","geo":{"lat":0,"lng":0},"date":{"now":0,"zone":{}}}};		
+		window.YWC = {"uri":{"pre":"//widget.enthu.se/","abs":window.location},"popup":{},"f":{},"ui":{},"store":{},"list":{"data":{},"meta":{},"list":{}},"detail":{"data":{},"meta":{}},"input":{"value":{"text":{},"select":{},"checkbox":{},"file":{},"datetime":{},"hidden":{},"custom":{}},"meta":{"jsBlock":{},"validation":{"required":{},"type":{}},"dateTime":[{"format":{}}],"lastValue":{"text":{},"select":{},"checkbox":{},"file":{},"datetime":{},"hidden":{}}}},"track":{"google":{"appId":"","domain":"","meta":{}}},"api":{},"user":{"id":"","name":"","email":"","scope":"","role":"","geo":{"lat":0,"lng":0},"date":{"now":0,"zone":{}}}};		
 		
 	}
 	
@@ -26,9 +26,6 @@
 					YWC.uri.cdn+'ywc/js/ywc-asset.js'}
 				,{'type':'script','id':'ywc-asset-css','init':[],'uri':
 					YWC.uri.pre+'ywc/css-as-jsonp/ywc-asset'}
-				
-				,{'type':'script','id':'ywc-maps','init':[],'uri':
-					YWC.uri.cdn+'ywc/js/ywc-map.js'}
 				
 				],"YWC.f.loadYwcRemotelyCallback();"
 			);			

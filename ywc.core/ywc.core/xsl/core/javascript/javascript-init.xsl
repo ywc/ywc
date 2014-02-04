@@ -18,7 +18,6 @@
 		-->},"popup":{<!--
 		-->},"f":{<!--
 		-->},"env":{"env":"<xsl:value-of select="$env[1]"/>","app":"<xsl:value-of select="$env[2]"/>","domain":"<xsl:value-of select="$env[3]"/>","server":"<xsl:value-of select="$env[4]"/>"<!--
-		-->},"map":{<!--
 		-->},"ui":{<!--
 		-->},"store":{<!--
 		-->},"intranet":{<!--
