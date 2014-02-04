@@ -37,11 +37,6 @@
 		-->},"api":{<!--	"ipinfodb":{},"geonames":{},"foursquare":{}
 		-->},"user":{<!--
 			-->"id":"","name":"","email":"","scope":"","role":"","geo":{"lat":0,"lng":0},"date":{"now":0,"zone":{}}<!--
-		-->},"social":{<!--
-			-->"facebook":{"appId":null,"onload":null,"var":["FB"],"doInit":true,"srcUri":[],"srcParams":[]}<!--
-			-->,"twitter":{"appId":null,"onload":null,"var":["twttr"],"doInit":true,"srcUri":[],"srcParams":[]}<!--
-			-->,"googleplus":{"appId":null,"onload":null,"var":["gapi"],"doInit":true,"srcUri":[],"srcParams":[]}<!--
-			-->,"pinterest":{"appId":null,"onload":null,"var":["gapi"],"doInit":true,"srcUri":[],"srcParams":[]}<!--
 		-->}<!--
 	-->}; </script>
 </xsl:template>

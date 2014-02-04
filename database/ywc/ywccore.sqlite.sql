@@ -10,7 +10,7 @@
  Target Server Version : 3008001
  File Encoding         : utf-8
 
- Date: 01/23/2014 13:06:18 PM
+ Date: 02/03/2014 20:23:30 PM
 */
 
 PRAGMA foreign_keys = false;
@@ -59,7 +59,6 @@ INSERT INTO "data_include" VALUES ('aaaabi', 'ywc-input', 'YWC Plugin: Input', 1
 INSERT INTO "data_include" VALUES ('aaaabj', 'ywc-input', 'YWC Plugin: Input', 1.0, 'ywc/css/ywc-input.css', 'text/css', 'ywc-core; ywc-gradient;', '-', 6, 0, 0, '', 'top', 'all');
 INSERT INTO "data_include" VALUES ('aaaabk', 'ywc-popup', 'YWC Plugin: Popups', 1.0, 'ywc/css/ywc-popup.css', 'text/css', 'ywc-core;', '-', 6, 0, 0, '', 'top', 'all');
 INSERT INTO "data_include" VALUES ('aaaabl', 'ywc-popup', 'YWC Plugin: Popups', 1.0, 'ywc/js/ywc-popup.js', 'text/javascript', 'ywc-core;', '-', 6, 0, 0, '', 'bottom', 'all');
-INSERT INTO "data_include" VALUES ('aaaabm', 'ywc-social', 'YWC Plugin: Social', 1.0, 'ywc/js/ywc-social.js', 'text/javascript', 'ywc-core;', '-', 6, 0, 0, '', 'bottom', 'all');
 INSERT INTO "data_include" VALUES ('aaaabn', 'ywc-utils', 'YWC Plugin: Javascript Utilities', 1.0, 'ywc/js/ywc-utils.js', 'text/javascript', 'ywc-core;', '-', 6, 0, 0, '', 'bottom', 'all');
 INSERT INTO "data_include" VALUES ('aaaabo', 'ywc-maps', 'YWC Plugin: Maps', 1.0, 'ywc/js/ywc-map.js', 'text/javascript', 'ywc-core;', '-', 6, 0, 0, '', 'bottom', 'all');
 INSERT INTO "data_include" VALUES ('aaaabq', 'ywc-intranet', 'YWC Plugin: Intranet', 1.0, 'ywc/js/ywc-intranet.js', 'text/javascript', 'ywc-core; font-awesome;', '-', 6, 0, 0, '', 'bottom', 'all');
