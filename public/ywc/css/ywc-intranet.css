@@ -60,7 +60,6 @@ div.ywc-popup-detail-body * { word-wrap:break-word; }
 body.ywc-body strong { font-weight:bold; }
 body.ywc-body em { font-style:italic; }
 body.ywc-body ol, div.ywc-popup-detail-body ul { word-wrap:normal; }
-/*span.ywc-popup-detail-body-content p { display:inline; } */
 div.ywc-popup-detail-attachments, div.ywc-popup-edit-attachments, div.ywc-intranet-detail-attachments-label {
 	position:relative; float:left; border:none; height:auto; width:99%; clear:both; border-bottom:solid 1px #cccccc; padding:8px 0px; }
 div.ywc-intranet-detail-attachments div.asset-controls { text-align:right; font-size:12px; }
@@ -167,5 +166,4 @@ div.weather-widget-container img.weather-curr-img { position:relative; width:52p
 div.weather-widget-container td.right { text-align:center; font-size:10px; vertical-align:top; border:none; margin:none; padding:5px 0px; }
 div.weather-widget-container td.left { text-align:center; font-size:10px; vertical-align:top; border:none; margin:none; padding:5px 0px; }
 */
-
 
