@@ -25,6 +25,9 @@ div.ywc-input-text div.erase i.fa { color:#ffffff; visibility:visible; }
 div.ywc-input-text div.erase i.ywc-x-1 { top:-1px; }
 div.ywc-input-text div.erase i.ywc-x-2 { color:#9f9f9f; }
 div.ywc-input-text div.erase i.ywc-x-3 { }
+@-moz-document url-prefix() {
+  div.ywc-input-text div.erase i.ywc-x-1 { top:0px; }
+}
 
 div.ywc-input-text i.loading { z-index:2; }
 

@@ -76,3 +76,7 @@ div.ywc-header span.ywc-header-txt { position:absolute; z-index:1; text-transfor
 .ywc-x i.ywc-x-1 { font-size:50%; line-height:1.72; }
 .ywc-x i.ywc-x-2 { font-size:76%; line-height:1.13; }
 .ywc-x i.ywc-x-3 { font-size:101%; line-height:0.88; }
+@-moz-document url-prefix() {
+/*  .ywc-x i.ywc-x-1 { margin-top:1px; }*/
+  .ywc-x i.ywc-x-3 { line-height:0.86; }
+}
