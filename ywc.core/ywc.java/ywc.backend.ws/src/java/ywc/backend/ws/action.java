@@ -62,6 +62,7 @@ public class action extends HttpServlet {
                 String to = request.getParameter("to");
                 String subject = request.getParameter("subject");
                 String url = request.getParameter("url");
+                String replyTo = request.getParameter("replyTo");
 
                 
                 if (subject.contains("http://") || subject.contains("https://")) {
@@ -75,12 +76,14 @@ public class action extends HttpServlet {
                     if (url.contains("http://") || url.contains("https://")) {
                         isOK = mail.sendMail(to, 
                                 subject, 
-                                data.requestHTTP(url, null, null), 
+                                data.requestHTTP(url, null, null),
+                                replyTo,
                                 "text/html");
                     } else {
                         isOK = mail.sendMail(to, 
                                 subject, 
-                                data.requestHTTP(settings.get("ywc.url.noauth") + "/" + url, null, null), 
+                                data.requestHTTP(settings.get("ywc.url.noauth") + "/" + url, null, null),
+                                replyTo,
                                 "text/html");
                     }
                             

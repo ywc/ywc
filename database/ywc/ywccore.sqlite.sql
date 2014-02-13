@@ -10,7 +10,7 @@
  Target Server Version : 3008001
  File Encoding         : utf-8
 
- Date: 02/03/2014 20:33:46 PM
+ Date: 02/13/2014 00:13:22 AM
 */
 
 PRAGMA foreign_keys = false;
@@ -172,6 +172,7 @@ INSERT INTO "data_transform" VALUES ('aaaaaq', 'aaaaas', 'aaaaav', 'YWC Intranet
 INSERT INTO "data_transform" VALUES ('aaaaar', 'aaaaar', 'aaaaau', 'YWC Intranet: Who Am I', 1, '', 'ywc-intranet/auth/ywc-intranet-whoami.xsl', 'all');
 INSERT INTO "data_transform" VALUES ('aaaaas', 'aaaaar', 'aaaaaw', 'YWC Intranet: Cache ID', 1, 'data/cache.xml', 'ywc-intranet/list/ywc-intranet-list-cacheid.xsl', 'all');
 INSERT INTO "data_transform" VALUES ('tttttt', 'aaaaaa', 'tttttt', 'YWC Input Test', 1, '', 'ywc/ui-input/ywc-input-all-test.xsl', 'all');
+INSERT INTO "data_transform" VALUES ('aaaaat', 'aaaaas', 'aaaaax', 'YWC Intranet: Posting Author', 1, 'data/cache.xml', 'ywc-intranet/detail/ywc-intranet-detail-author.xsl', 'all');
 COMMIT;
 
 -- ----------------------------
@@ -215,6 +216,7 @@ INSERT INTO "data_uri" VALUES ('aaaaau', 'page', '/ywc/intranet/whoami', 'templa
 INSERT INTO "data_uri" VALUES ('aaaaav', 'regex', '^/ywc/intranet/title/', 'template', 'aaaaaj', 'YWC Intranet: Title', '', '', '', 'all');
 INSERT INTO "data_uri" VALUES ('aaaaaw', 'page', '/ywc/intranet/cache', 'template', 'aaaaad', 'YWC Intranet: Cache ID', '', '', '', 'all');
 INSERT INTO "data_uri" VALUES ('tttttt', 'page', '/ywc/ui-input/test', 'template', 'aaaaaa', 'YWC Input Test', '', '', '', 'all');
+INSERT INTO "data_uri" VALUES ('aaaaax', 'regex', '^/ywc/intranet/author/', 'template', 'aaaaaj', 'YWC Intranet: Author', '', '', '', 'all');
 COMMIT;
 
 -- ----------------------------

@@ -18,5 +18,6 @@
 <uri uri_id="aaaaau" asset_id="aaaaad" title="YWC Intranet: Who Am I" scope="all" pattern="/ywc/intranet/whoami" onload="" required_params="" asset_type="template" includes="" type="page" />
 <uri uri_id="aaaaav" asset_id="aaaaaj" title="YWC Intranet: Title" scope="all" pattern="^/ywc/intranet/title/" onload="" required_params="" asset_type="template" includes="" type="regex" />
 <uri uri_id="aaaaaw" asset_id="aaaaad" title="YWC Intranet: Cache ID" scope="all" pattern="/ywc/intranet/cache" onload="" required_params="" asset_type="template" includes="" type="page" />
+<uri uri_id="aaaaax" asset_id="aaaaaj" title="YWC Intranet: Author" scope="all" pattern="^/ywc/intranet/author/" onload="" required_params="" asset_type="template" includes="" type="regex" />
 <uri uri_id="tttttt" asset_id="aaaaaa" title="YWC Input Test" scope="all" pattern="/ywc/ui-input/test" onload="" required_params="" asset_type="template" includes="" type="page" />
 </ywc>

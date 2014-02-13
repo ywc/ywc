@@ -216,6 +216,7 @@ public class Drupal {
             mail.sendMail(settings.get("ywc.mail.admins"),
                     "ADMIN ONLY - " + data.requestHTTP(settings.get("ywc.url.noauth") + "/ywc/intranet/title/" + entry.name + "/" + nid, properties, null),
                     data.requestHTTP(settings.get("ywc.url.noauth") + "/ywc/intranet/email/" + entry.name + "/" + nid, properties, null),
+                    data.requestHTTP(settings.get("ywc.url.noauth") + "/ywc/intranet/author/" + entry.name + "/" + nid, properties, null),
                     "text/html");
             return;
         }
@@ -245,6 +246,7 @@ public class Drupal {
                             mail.sendMail(address,
                                     data.requestHTTP(settings.get("ywc.url.noauth") + "/ywc/intranet/title/" + entry.name + "/" + nid, properties, null),
                                     data.requestHTTP(settings.get("ywc.url.noauth") + "/ywc/intranet/email/" + entry.name + "/" + nid, properties, null),
+                                    data.requestHTTP(settings.get("ywc.url.noauth") + "/ywc/intranet/author/" + entry.name + "/" + nid, properties, null),
                                     "text/html");
                         }
                     }

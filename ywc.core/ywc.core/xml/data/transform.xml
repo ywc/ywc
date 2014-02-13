@@ -19,5 +19,6 @@
 <transform transform_id="aaaaaq" xsl="ywc-intranet/detail/ywc-intranet-detail-title.xsl" title="YWC Intranet: Posting Title" scope="all" ordering="1" xml="data/cache.xml" uri_id="aaaaav" placeholder_id="aaaaas" />
 <transform transform_id="aaaaar" xsl="ywc-intranet/auth/ywc-intranet-whoami.xsl" title="YWC Intranet: Who Am I" scope="all" ordering="1" xml="" uri_id="aaaaau" placeholder_id="aaaaar" />
 <transform transform_id="aaaaas" xsl="ywc-intranet/list/ywc-intranet-list-cacheid.xsl" title="YWC Intranet: Cache ID" scope="all" ordering="1" xml="data/cache.xml" uri_id="aaaaaw" placeholder_id="aaaaar" />
+<transform transform_id="aaaaat" xsl="ywc-intranet/detail/ywc-intranet-detail-author.xsl" title="YWC Intranet: Posting Author" scope="all" ordering="1" xml="data/cache.xml" uri_id="aaaaax" placeholder_id="aaaaas" />
 <transform transform_id="tttttt" xsl="ywc/ui-input/ywc-input-all-test.xsl" title="YWC Input Test" scope="all" ordering="1" xml="" uri_id="tttttt" placeholder_id="aaaaaa" />
 </ywc>
