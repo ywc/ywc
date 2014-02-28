@@ -16,6 +16,7 @@ YWC.f.coreSetDefault("intranet","dataTypeDeletePost","json");
 YWC.f.coreSetDefault("intranet","uriSubmitPost","bws/action/ywc_");
 YWC.f.coreSetDefault("intranet","methodSubmitPost","POST");
 YWC.f.coreSetDefault("intranet","dataTypeSubmitPost","json");
+YWC.f.coreSetDefault("intranet","timeOutSubmitPost",30000);
 
 YWC.f.coreSetDefault("intranet","uriSendEmail",YWC.uri.pre+"bws/action/sendmail");
 YWC.f.coreSetDefault("intranet","methodSendEmail","POST");
