@@ -314,6 +314,9 @@ YWC.f.dateConvert = function(inputDateTime,wh) {
 		if (inputDateTime.toLowerCase().indexOf("(all day)") >= 0) {
 			inputDateTime = inputDateTime.toLowerCase().replace(/\(all day\)/g,"01:00:00").toUpperCase();
 		}
+		if (inputDateTime.substr(1+inputDateTime.lastIndexOf(" ")).length == 5) {
+			inputDateTime += ":00 GMT+0000 (GMT)";
+		}
 	}
 	
 	if (String(inputDateTime).length >= 14) {

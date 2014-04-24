@@ -197,10 +197,7 @@
 								," ",if (string-length(ywc:getNodeValue(.,"office")) &gt; 0)
 									then concat("Office: ",ywc:getNodeValue(.,"office")) else "" )
 						else if (contains($listName,"events")) then concat("YWC.f.dateConvert(&apos;"
-							,if ($srcXmlProfile = "drupal") then
-								if (string-length(substring-before(substring-after(substring-after(ywc:getNodeValue(.,"start-date"),"&gt;")," "),"&lt;")) &lt; 6)
-									then replace(ywc:getNodeValue(.,"start-date"),"&lt;/span&gt;",":00 GMT+0900&lt;/span&gt;")
-								else ywc:getNodeValue(.,"start-date")
+							,if ($srcXmlProfile = "drupal") then ywc:getNodeValue(.,"start-date")
 							else if ($srcXmlProfile = "sharepoint") then ywc:getNodeValue(.,"expirationdate")
 							else ""
 							,"&apos;,{&apos;type&apos;:&apos;datetime&apos;,&apos;format&apos;:&apos;local&apos;})")
