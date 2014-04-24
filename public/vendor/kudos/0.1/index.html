@@ -1,0 +1,65 @@
+<html>
+	<head>
+		<title>Kudos test</title>
+
+		<link href="kudos.min.css" media="screen" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="../../jquery/jquery/1.10.2/jquery.min.js"></script>
+		<script type="text/javascript" src="../../jquery/jquery-cookie/1.4.0/jquery.cookie.min.js"></script>
+		<script type="text/javascript" src="kudos.min.js"></script>
+		<script type="text/javascript">
+
+			var postId = 'x';
+			var kudosSelector = "figure.kudoable";
+			var kudosCount = 9;
+
+			$(function(){
+
+				$(kudosSelector).kudoable();
+
+				if ($.cookie(postId) == 'true') {
+					$(kudosSelector).removeClass("animate").addClass("complete").each(function(){
+						$(this).find("span.num").html(kudosCount);
+					});
+				}	
+
+				$(kudosSelector).bind("kudo:active",function(e){
+					$(this).find("span.num").html("Don't Move!");
+				});
+
+				$(kudosSelector).bind("kudo:inactive",function(e){
+					console.log("kudoing inactive");
+				});
+
+				$(kudosSelector).bind("kudo:added",function(e){
+					kudosCount++;
+					$(this).find("span.num").html(kudosCount);
+
+					// set cookie so user cannot kudo again for 7 days
+					$.cookie(postId, 'true', { expires: 7 });
+				});
+
+				// after removing a kudo
+				$(kudosSelector).bind("kudo:removed",function(e){
+					var element = $(this);
+					// ajax'y stuff or whatever you want
+					console.log("Un-Kudo'd:", element.data('id'), ":(");
+
+					// remove cookie
+					$.removeCookie(postId);
+				});
+
+			});
+		</script>
+	</head>
+	<body>
+		<figure class="kudo kudoable" data-id="x">
+			<a class="kudobject">
+				<div class="opening"><div class="circle">&nbsp;</div></div>
+			</a>
+			<a href="#kudo" class="count">
+				<span class="num">0</span>
+				<span class="txt">Kudos</span>
+			</a>
+		</figure>
+	</body>
+</html>

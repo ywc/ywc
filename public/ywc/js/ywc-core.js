@@ -236,11 +236,7 @@ YWC.f.uiSetSquImg = function(inputObj,style,brdrColor){
 				+' src="'+YWC.uri.cdn+'ywc-image/mask/png/circle-'+brdrColor+'.png"'
 				+' />').parent('div.ywc-thmb').addClass('ywc-mask-circle');
 		} else if (style == 'border-radius') {
-			obj
-			//.before('<img class="mask" unselectable="on"'
-			//	+' src="'+YWC.uri.cdn+'ywc-image/mask/png/circle-'+brdrColor+'.png"'
-			//	+' />')
-				.parent('div.ywc-thmb').addClass('ywc-mask-border-radius').addClass('ywc-crnr-5');
+			obj.parent('div.ywc-thmb').addClass('ywc-mask-border-radius').addClass('ywc-crnr-5');
 		}
 		if (wd >= ht) { obj.css({width:((wd/ht)*100)+'%',left:(0-(wd/ht-1)*50)+'%',height:'100%',top:'0%',visibility:'visible'}); }
 		else { obj.css({height:(100*ht/wd)+'%',width:'100%',top:(0-(ht/wd-1)*50)+'%',left:'0%',visibility:'visible'}); }

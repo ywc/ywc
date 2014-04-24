@@ -535,3 +535,26 @@ YWC.f.inputValidate = function(inputIds) {
 	}
 	return rtrn;
 }
+
+YWC.f.inputKudosSet = function(targetSelector) {
+		
+	if (YWC.f.coreLoadFileAsync("script","jquery-cookie"
+			,YWC.uri.cdn+"vendor/jquery/jquery-cookie/1.4.0/jquery-cookie.min.js"
+			,"YWC.f.inputKudosSet(\""+targetSelector+"\");") ){
+
+	} else if (YWC.f.coreLoadFileAsync("script","kudos"
+			,YWC.uri.cdn+"vendor/kudos/0.1/kudos.min.js"
+			,"YWC.f.inputKudosSet(\""+targetSelector+"\");") ){
+
+	} else if (YWC.f.coreLoadFileAsync("link","kudos"
+			,YWC.uri.cdn+"vendor/kudos/0.1/kudos.min.css"
+			,"YWC.f.inputKudosSet(\""+targetSelector+"\");") ){
+				
+	} else if ($().kudoable) {
+//		 var draw = setTimeout("YWC.f.inputKudosSet(\""+targetSelector+"\");",10);
+		console.log("add kudos to "+targetSelector);
+	} else {
+		var loop = setTimeout("YWC.f.inputKudosSet(\""+targetSelector+"\");",10);
+	}
+}
+
