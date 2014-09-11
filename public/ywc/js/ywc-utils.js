@@ -304,6 +304,7 @@ YWC.f.strTimeToMilliSeconds = function(timeStr) {
 */
 YWC.f.dateConvert = function(inputDateTime,wh) {
 	
+	if (YWC.user.date.zone.offset == null) { YWC.f.coreSetDateTime(); }
 	var timeStamp = 0;
 	if (wh.debug === true) { console.log('YWC: dateConvert -> input: '+inputDateTime); }
 	
@@ -340,8 +341,7 @@ YWC.f.dateConvert = function(inputDateTime,wh) {
 			,parseInt(inputDateTime.substr(8,2),10),parseInt(inputDateTime.substr(11,2),10)
 			,parseInt(inputDateTime.substr(14,2),10),parseInt(inputDateTime.substr(17,2),10)
 		)).valueOf();
-		if (YWC.user.date.zone.offset == null) { YWC.f.coreSetDateTime(); }
-		timeStamp = timeStamp-YWC.user.date.zone.offset;
+//		timeStamp = timeStamp-YWC.user.date.zone.offset;
 		if (wh.debug === true) { console.log('YWC: initial conversion error -> '+inputDateTime+' -> '+timeStamp); }
 	}
 

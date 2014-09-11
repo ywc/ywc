@@ -27,7 +27,9 @@ public class router extends HttpServlet {
 
         String uri = request.getParameter("uri");
         String action = process.getRouterAction(uri);
-
+        
+        System.out.println("Requested: "+uri);
+        
         String mcHash;
         Boolean noCache = false;
         if (request.getParameter("nocache") != null) {
