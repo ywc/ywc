@@ -303,7 +303,7 @@ YWC.f.strTimeToMilliSeconds = function(timeStr) {
 * @public
 */
 YWC.f.dateConvert = function(inputDateTime,wh) {
-	
+
 	if (YWC.user.date.zone.offset == null) { YWC.f.coreSetDateTime(); }
 	var timeStamp = 0;
 	if (wh.debug === true) { console.log('YWC: dateConvert -> input: '+inputDateTime); }
@@ -400,7 +400,11 @@ YWC.f.dateConvert = function(inputDateTime,wh) {
 				}
 				if (wh.type.indexOf('time') > -1) {
 					if (rtrn.length > 0) { rtrn += ", "; }
-					rtrn += obj.toLocaleTimeString();
+					var rtrnTime = obj.toLocaleTimeString();
+					if ((typeof wh.exclude !== 'undefined') && (wh.exclude.indexOf('s') > -1)) {
+						rtrnTime = rtrnTime.replace(/:00 /g,' ');
+					}
+					rtrn += rtrnTime;
 				}
 				
 			// use custom date output format	

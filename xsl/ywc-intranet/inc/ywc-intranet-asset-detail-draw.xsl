@@ -72,6 +72,7 @@
 			" />
 
 		<xsl:variable name="dateExpiration" as="xs:dateTime" select="
+
 				if (string-length(ywc:getNodeValue(.,'start_datetime')) &gt; 0)
 					then (xs:dateTime('1970-01-01T00:00:00Z')
 							+ xs:double(ywc:removeSpace(ywc:getNodeValue(.,'start_datetime'))) * xs:dayTimeDuration('PT1S')
@@ -115,11 +116,24 @@
 		<xsl:variable name="meta2" select="
 			if (string-length(ywc:getNodeValue(.,'price')) &gt; 0) then ywc:getNodeValue(.,'price')
 			else if ($dateExpiration &gt; xs:dateTime('1970-01-01T00:00:00Z')) then
-				if ($duration &lt; 86400)
+				
+				if ($duration &lt; 1)
+					then concat(
+					'&lt;span class=&quot;ywc-intranet-date-unformatted-date&quot;&gt;'
+					,if ($useJavascript = 1) then $dateExpiration else substring-before(concat('',$dateExpiration),'T')
+					,'&lt;/span&gt;'
+					,' at '
+					,'&lt;span class=&quot;ywc-intranet-date-unformatted-time&quot;&gt;'
+					,if ($useJavascript = 1) then $dateExpiration else substring(concat('',$dateExpiration),12,5)
+					,'&lt;/span&gt;'
+					)
+
+				else if ($duration &lt; 86400)
 					then concat(
 						'&lt;span class=&quot;ywc-intranet-date-unformatted-date&quot;&gt;'
 						,if ($useJavascript = 1) then $dateExpiration else substring-before(concat('',$dateExpiration),'T')
 						,'&lt;/span&gt;')
+
 				else concat(
 					'&lt;span class=&quot;ywc-intranet-date-unformatted-date&quot;&gt;'
 					,if ($useJavascript = 1) then $dateExpiration else substring-before(concat('',$dateExpiration),'T')

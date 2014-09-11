@@ -200,7 +200,7 @@
 							,if ($srcXmlProfile = "drupal") then ywc:getNodeValue(.,"start-date")
 							else if ($srcXmlProfile = "sharepoint") then ywc:getNodeValue(.,"expirationdate")
 							else ""
-							,"&apos;,{&apos;type&apos;:&apos;datetime&apos;,&apos;format&apos;:&apos;local&apos;})")
+							,"&apos;,{&apos;type&apos;:&apos;datetime&apos;,&apos;format&apos;:&apos;local&apos;,&apos;exclude&apos;:&apos;s&apos;})")
 						else if (contains($listName,"calendar")) then concat("YWC.f.dateConvert(&apos;"
 							,if ($srcXmlProfile = "ical") then ywc:getNodeValue(.,"dtstart")
 							else ""
